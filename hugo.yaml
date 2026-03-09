@@ -15,6 +15,7 @@ minify:
   minifyOutput: true
 
 params:
+  math: true
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
   title: ExampleSite
   description: "ExampleSite description"
@@ -115,6 +116,22 @@ params:
     keys: ["title", "permalink", "summary", "content"]
 menu:
   main:
+    - identifier: learning-path
+      name: Learning path
+      url: /learning-path/
+      weight: 4
+    - identifier: preliminary
+      name: Preliminary
+      url: /preliminary/
+      weight: 5
+    - identifier: prerequisites
+      name: Prerequisites
+      url: /prerequisites/
+      weight: 6
+    - identifier: curriculum
+      name: Curriculum
+      url: /curriculum/
+      weight: 7
     - identifier: categories
       name: categories
       url: /categories/

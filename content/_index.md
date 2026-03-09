@@ -1,6 +1,6 @@
 ---
-title: "My 1st post"
-date: 2020-09-15T11:30:03+00:00
+title: "Reinforcement Learning Curriculum"
+date: 2026-03-10
 # weight: 1
 # aliases: ["/first"]
 tags: ["first"]
@@ -34,3 +34,13 @@ editPost:
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 ---
+
+Welcome to the **Reinforcement Learning Curriculum**: 100 chapters from mathematical foundations to advanced topics, with exercises, prerequisites, and a readiness check.
+
+- **Start here:** [Learning path for absolute beginners](/learning-path/) — From zero programming to building RL systems, step by step.
+
+- **[Preliminary assessment](/preliminary/)** — 25 questions to check your readiness (math, Python, NumPy, PyTorch, basic RL). Answers included.
+- **[Prerequisites](/prerequisites/)** — Learn or brush up on Python, NumPy, Pandas, Matplotlib, PyTorch, TensorFlow, and related libraries used in the exercises.
+- **[Curriculum](/curriculum/)** — 10 volumes, 100 chapters with one exercise per chapter. Start with Volume 1: Mathematical Foundations and work your way through.
+
+Good luck on your journey to mastery.

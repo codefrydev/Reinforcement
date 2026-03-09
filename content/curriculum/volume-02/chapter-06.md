@@ -1,0 +1,36 @@
+---
+title: "Chapter 16: N-Step Bootstrapping"
+description: "n-step SARSA (n=4) on Cliff Walking."
+date: 2026-03-10T00:00:00Z
+weight: 16
+draft: false
+---
+
+**Learning objectives**
+
+- Implement n-step SARSA: accumulate \\(n\\) steps of experience, then update \\(Q(s_0,a_0)\\) using the n-step return \\(r_1 + \\gamma r_2 + \\cdots + \\gamma^{n-1} r_n + \\gamma^n Q(s_n,a_n)\\).
+- Compare n-step (\\(n=4\\)) with one-step SARSA on Cliff Walking (learning speed, stability).
+- Understand the trade-off: n-step uses more information per update but delays the update.
+
+**Concept and real-world RL**
+
+**N-step bootstrapping** uses a return over \\(n\\) steps: \\(G_{t:t+n} = r_{t+1} + \\gamma r_{t+2} + \\cdots + \\gamma^{n-1} r_{t+n} + \\gamma^n V(s_{t+n})\\) (or \\(Q(s_{t+n},a_{t+n})\\) for SARSA). \\(n=1\\) is TD(0); \\(n=\\infty\\) (until terminal) is Monte Carlo. Intermediate \\(n\\) balances bias and variance. In practice, n-step methods (e.g. n-step SARSA, A3C's n-step returns) can learn faster than one-step when \\(n\\) is chosen well; too large \\(n\\) delays updates and can hurt in non-stationary or long episodes.
+
+**Exercise:** Implement n-step SARSA (with \\(n=4\\)) for the Cliff Walking environment. Write a function that accumulates n steps before updating. Compare the learning speed with one-step SARSA.
+
+**Professor's hints**
+
+- Store a buffer of the last \\(n\\) transitions \\((s_t, a_t, r_t)\\). When you have \\(n\\) steps, compute \\(G = r_1 + \\gamma r_2 + \\gamma^2 r_3 + \\gamma^3 r_4 + \\gamma^4 Q(s_4, a_4)\\) and update \\(Q(s_0, a_0) \\leftarrow Q(s_0, a_0) + \\alpha [G - Q(s_0, a_0)]\\). Then shift the buffer (drop the oldest, add the new \\(s,a\\) for the next step) or use a circular buffer.
+- Handle episode end: if the episode terminates before \\(n\\) steps, use the truncated return (no bootstrap) or bootstrap with 0 for the terminal state.
+- Comparison: run one-step SARSA and n-step SARSA for the same number of *steps* (or episodes). Plot average reward per episode. n-step often improves faster early on because each update uses more reward signal.
+
+**Common pitfalls**
+
+- **Indexing the buffer:** \\(s_0, a_0\\) is the state-action being updated; \\(r_1\\) is the reward after taking \\(a_0\\), and \\(s_n, a_n\\) is the state-action after \\(n\\) steps. Align indices carefully.
+- **Updating only every n steps:** You update \\(Q(s_0,a_0)\\) when you have collected \\(n\\) steps. You can also do multi-step updates (update every \\((s_i, a_i)\\) in the buffer with its n-step return from that point); the exercise asks for the simpler "update the oldest when we have n steps."
+- **Terminal state:** If \\(s_n\\) is terminal, there is no \\(a_n\\); use \\(G = r_1 + \\cdots + \\gamma^{n-1} r_n\\) (no \\(Q(s_n,a_n)\\) term, or \\(Q(\\text{terminal},\\cdot)=0\\)).
+
+**Extra practice**
+
+1. **Warm-up:** For \\(n=2\\), write the n-step return \\(G_{t:t+2}\\) in terms of \\(r_{t+1}, r_{t+2}, Q(s_{t+2}, a_{t+2})\\) and \\(\\gamma\\).
+2. **Challenge:** Implement n-step *Q-learning*: use \\(G = r_1 + \\cdots + \\gamma^{n-1} r_n + \\gamma^n \\max_{a} Q(s_n, a)\\). Compare with n-step SARSA on Cliff Walking.
