@@ -1,0 +1,84 @@
+/* Nested nav dropdown – allow dropdown to show (theme’s #menu has overflow-x: auto which clips it) */
+#menu {
+  overflow: visible;
+}
+
+#menu li.nav-dropdown {
+  position: relative;
+}
+
+#menu .nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+#menu .nav-dropdown-arrow {
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+#menu li.nav-dropdown:hover .nav-dropdown-arrow,
+#menu li.nav-dropdown:focus-within .nav-dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+#menu .nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin: 0.25em 0 0 0;
+  padding: 0.5em 0;
+  min-width: 180px;
+  list-style: none;
+  background: var(--entry);
+  background-color: var(--entry);
+  color: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  z-index: 1000;
+  white-space: nowrap;
+}
+
+#menu li.nav-dropdown:hover .nav-dropdown-menu,
+#menu li.nav-dropdown:focus-within .nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#menu .nav-dropdown-menu li {
+  margin: 0;
+}
+
+#menu .nav-dropdown-menu a {
+  display: block;
+  padding: 0.4em 1em;
+  font-size: 14px;
+  color: var(--primary);
+}
+
+#menu .nav-dropdown-menu a:hover,
+#menu .nav-dropdown-menu a.active {
+  background: var(--code-bg);
+}
+
+#menu .nav-dropdown-menu .active {
+  font-weight: 500;
+  border-bottom: none;
+}
+
+/* Touch: show dropdown on tap (first tap opens, link goes to section) */
+@media (hover: none) {
+  #menu li.nav-dropdown .nav-dropdown-toggle:focus + .nav-dropdown-menu,
+  #menu li.nav-dropdown .nav-dropdown-menu:focus-within {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+}
