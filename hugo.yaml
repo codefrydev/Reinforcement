@@ -33,6 +33,7 @@ params:
   ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
+  ShowAllPagesInArchive: true  # list all sections (learning-path, math-for-rl, prerequisites, curriculum, etc.), not only mainSections
   UseHugoToc: true
   disableSpecial1stPost: false
   disableScrollToTop: false
