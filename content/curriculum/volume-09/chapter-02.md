@@ -4,6 +4,8 @@ description: "Nash equilibrium of 2×2 matrix; independent learning outcome."
 date: 2026-03-10T00:00:00Z
 weight: 82
 draft: false
+tags: ["multi-agent", "game theory", "MARL", "curriculum"]
+keywords: ["multi-agent game theory", "MARL", "game theory fundamentals"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Payoff order:** In a payoff matrix, (row, col) often means (agent1, agent2). Check the convention (who is row, who is column) and stick to it.
 - **Multiple equilibria:** Some games have more than one Nash equilibrium; mention which one(s) you found.
 - **Independent learning ≠ Nash:** Independent learners do not necessarily converge to Nash; they may cycle or converge to a different outcome. The exercise asks you to explain this possibility.
+
+{{< collapse summary="Worked solution (warm-up: independent learners)" >}}
+**Key idea:** Independent learners each run a single-agent algorithm (e.g. Q-learning) and treat others as part of the environment. The "environment" is non-stationary because other agents are learning too. So convergence guarantees for single-agent RL do not apply; we may get cycles (e.g. rock-paper-scissors) or convergence to a non-Nash outcome. Centralized training with decentralized execution (CTDE) or opponent modeling can help.
+{{< /collapse >}}
 
 **Extra practice**
 

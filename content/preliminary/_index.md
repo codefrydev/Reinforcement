@@ -3,6 +3,8 @@ title: "Preliminary Assessment"
 description: "25 questions to check readiness for the RL curriculum. Split by topic with solutions and explanations."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["preliminary assessment", "readiness", "25 questions", "solutions"]
+keywords: ["preliminary assessment", "readiness check", "25 questions", "RL curriculum readiness", "solutions"]
 ---
 
 Who is this for? This assessment checks whether you have the math, Python, NumPy, PyTorch, and basic RL concepts needed to start the curriculum comfortably.

@@ -3,6 +3,8 @@ title: "Value Functions and Bellman Equation"
 description: "V^π(s), Q^π(s,a), and the Bellman expectation equation — with worked examples and explanations."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["value function", "Bellman", "V pi", "Q pi", "preliminary"]
+keywords: ["value function", "Bellman expectation", "V pi Q pi", "Bellman equation", "worked examples"]
 ---
 
 This page covers value functions and the Bellman equation you need for the preliminary assessment: state-value \\(V^\pi(s)\\), action-value \\(Q^\pi(s,a)\\), and the Bellman expectation equation for \\(V^\pi\\). [Back to Preliminary](../).
@@ -75,6 +77,10 @@ From \\(s_1\\): \\(V^\pi(s_1) = 0 + 0.9 V^\pi(s_2) = 0.9 \times 10 = 9\\).
 
 In \\(s_2\\) we get reward 1 and stay in \\(s_2\\), so the return from \\(s_2\\) is \\(1 + \gamma + \gamma^2 + \cdots = 1/(1-\gamma) = 10\\). In \\(s_1\\) we get 0 and move to \\(s_2\\), so the return from \\(s_1\\) is \\(0 + \gamma V^\pi(s_2) = 9\\). This illustrates how the Bellman equation ties together values at different states; solving them (here by substitution) is what policy evaluation does.
 {{< /collapse >}}
+
+The graph below shows the two state values we computed: \\(V^\pi(s_1) = 9\\) and \\(V^\pi(s_2) = 10\\).
+
+{{< chart type="bar" title="V^π(s) for the two-state MDP" labels="s₁, s₂" data="9, 10" >}}
 
 ---
 

@@ -4,6 +4,8 @@ description: "Covariate shift; DAgger: mix expert and BC, retrain."
 date: 2026-03-10T00:00:00Z
 weight: 75
 draft: false
+tags: ["DAgger", "behavioral cloning", "covariate shift", "curriculum"]
+keywords: ["DAgger", "covariate shift", "expert and BC", "behavioral cloning limits"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Expert action at "bad" states:** In DAgger we need the expert's action at states the BC agent visits. If the expert is a policy, run it from that state (or from the start and stop at that state). Ensure the expert is still available (e.g. saved policy) to label new states.
 - **Overfitting to last iteration:** If you retrain from scratch each time, the dataset grows; if you only train on new data, you forget the old. Standard DAgger aggregates all data and retrains on the full D each time.
 - **Computational cost:** DAgger requires multiple rounds of data collection and retraining; use a small number of iterations and a small env for the exercise.
+
+{{< collapse summary="Worked solution (warm-up: DAgger)" >}}
+**Key idea:** DAgger: (1) Train BC on expert data. (2) Run the current policy in the env; when it visits a state, query the expert for the action. (3) Add (agent state, expert action) to the dataset. (4) Retrain BC on the aggregated data. Repeat. So the dataset now includes states the *agent* visits, not just the expert; this reduces covariate shift and often improves over BC.
+{{< /collapse >}}
 
 **Extra practice**
 

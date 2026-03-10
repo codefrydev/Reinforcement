@@ -4,6 +4,8 @@ description: "Train in sim (e.g. arm reaching); domain randomization; sim-to-rea
 date: 2026-03-10T00:00:00Z
 weight: 91
 draft: false
+tags: ["robotics", "sim-to-real", "domain randomization", "curriculum"]
+keywords: ["RL in robotics", "sim-to-real", "domain randomization", "arm reaching"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Over-randomization:** If parameters vary too much, the task may become impossible in some configs and the policy may not learn. Start with small ranges and increase gradually.
 - **Under-randomization:** If the real world is outside the training distribution, transfer may still fail. Consider which parameters matter most (e.g. delay, friction) and randomize those.
 - **No real robot:** The exercise can be completed with "test" sim parameters only; the key is to show that domain randomization improves robustness when evaluated on unseen parameters.
+
+{{< collapse summary="Worked solution (warm-up: sim-to-real)" >}}
+**Key idea:** We train in simulation with randomized parameters (physics, friction, masses, etc.). So the policy sees many "versions" of the world and learns to be robust. When we deploy in the real world (or in a test sim with different params), the policy generalizes better than if we had trained on a single fixed sim. Domain randomization is a simple but effective sim-to-real strategy; alternatives include system identification and domain adaptation.
+{{< /collapse >}}
 
 **Extra practice**
 

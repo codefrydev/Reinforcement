@@ -4,6 +4,8 @@ description: "QMIX: mixing network, monotonicity via hypernetworks."
 date: 2026-03-10T00:00:00Z
 weight: 87
 draft: false
+tags: ["QMIX", "mixing network", "multi-agent", "curriculum"]
+keywords: ["QMIX", "mixing network", "monotonicity", "hypernetworks", "MARL"]
 ---
 
 **Learning objectives**
@@ -35,6 +37,10 @@ draft: false
 - **Monotonicity broken:** If any weight can be negative, monotonicity fails. Use abs() or softplus on all hypernetwork outputs that become weights. For biases, no constraint.
 - **Gradient flow:** Ensure gradients flow through both the mixing network and the individual Q_i. The mixing network parameters and Q_i parameters are all updated.
 - **State dependency:** The hypernetwork must take the full state (or a sufficient statistic) so that Q_tot can vary with s in a non-additive way.
+
+{{< collapse summary="Worked solution (warm-up: QMIX vs VDN)" >}}
+**Key idea:** VDN: \\(Q_{tot} = \\sum_i Q_i\\) (additive). QMIX: \\(Q_{tot} = f(Q_1, \\ldots, Q_n; s)\\) with monotonic \\(f\\) so that argmax of \\(Q_{tot}\\) is the concatenation of per-agent argmaxes. The mixing weights can depend on state (e.g. hypernetwork), so we can represent non-additive returns. This allows better credit assignment when the value of one agent’s action depends on the state or others.
+{{< /collapse >}}
 
 **Extra practice**
 

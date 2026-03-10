@@ -4,6 +4,8 @@ description: "Plot true vs predicted states; compounding error visualization."
 date: 2026-03-10T00:00:00Z
 weight: 60
 draft: false
+tags: ["model-based", "rollouts", "compounding error", "visualization", "curriculum"]
+keywords: ["model rollouts", "compounding error", "predicted vs true states", "visualization"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Same actions:** Use the *same* action sequence for both env and model so the comparison is fair.
 - **Terminal state:** If the episode ends in the env, stop; the model may not have a terminal prediction, so just plot up to the min of (env steps, desired horizon).
+
+{{< collapse summary="Worked solution (warm-up: model vs model-free comparison)" >}}
+**Key idea:** To compare model-based and model-free: run both for the same number of *environment steps* (e.g. 200k). Plot mean return vs steps. Model-based (e.g. MBPO, Dreamer) often reaches a given return in fewer env steps because it uses imagined data; model-free may need more steps but has no model error. Report both final return and sample efficiency (steps to reach threshold).
+{{< /collapse >}}
 
 **Extra practice**
 

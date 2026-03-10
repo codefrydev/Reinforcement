@@ -3,6 +3,8 @@ title: "Phase 3 Foundations Quiz"
 description: "10–15 questions on MDPs, Bellman, MC vs TD, SARSA vs Q-learning. Solutions included."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["assessment", "phase 3", "foundations", "MDP", "Bellman", "SARSA", "Q-learning", "solutions"]
+keywords: ["phase 3 foundations", "MDP Bellman", "Monte Carlo TD", "SARSA Q-learning", "solutions", "RL foundations quiz"]
 ---
 
 Use this quiz after completing [Volume 1](../curriculum/volume-01/) and [Volume 2](../curriculum/volume-02/) (or the [Phase 3 mini-project](../learning-path/phase-3/)). If you can answer at least 12 of 15 correctly, you are ready for [Phase 4](../learning-path/#phase-4--deep-rl) and [Volume 3](../curriculum/volume-03/).
@@ -24,7 +26,7 @@ Agent, environment, **action**, **reward**. **State:** a representation of the c
 **Q:** For rewards [0, 0, 1] and \\(\gamma = 0.9\\), compute the discounted return \\(G_0\\) from step 0.
 
 {{< collapse summary="Answer" >}}
-\\(G_0 = 0 + 0.9 \\cdot 0 + 0.81 \\cdot 1 = 0.81\\).
+**Step 1:** Discounts are \\(\\gamma^0=1, \\gamma^1=0.9, \\gamma^2=0.81\\). **Step 2:** \\(G_0 = r_0 + \\gamma r_1 + \\gamma^2 r_2 = 0 + 0.9\\cdot 0 + 0.81\\cdot 1 = 0.81\\). **In RL:** The return from step 0 is the sum of discounted future rewards; we maximize this in every RL algorithm.
 {{< /collapse >}}
 
 ---
@@ -154,7 +156,7 @@ The model is a representation of the environment (e.g. (s,a) → (s', r)). We ca
 **Q:** For a 10×10 grid with 4 actions, how many entries does a tabular Q-table have? Why is this a problem for a 100×100 grid?
 
 {{< collapse summary="Answer" >}}
-10×10×4 = 400 entries. For 100×100: 40,000 entries; still feasible but large. For continuous state spaces we have infinitely many states, so tabular is impossible—hence function approximation.
+**Step 1:** Q-table size = states × actions = 100 × 4 = **400** entries. **Step 2:** For 100×100: 10,000 × 4 = 40,000 entries (still feasible but large). **Why it’s a problem:** For continuous or very large discrete spaces we have infinitely many or huge numbers of states; we cannot store or visit them all, so we need function approximation (e.g. neural net) with a fixed number of parameters.
 {{< /collapse >}}
 
 ---

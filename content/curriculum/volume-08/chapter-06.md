@@ -4,6 +4,8 @@ description: "Max-ent IRL: learn reward from expert; linear reward, forward RL."
 date: 2026-03-10T00:00:00Z
 weight: 76
 draft: false
+tags: ["inverse RL", "IRL", "reward learning", "max entropy", "curriculum"]
+keywords: ["inverse reinforcement learning", "IRL", "max entropy", "reward from expert"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Reward ambiguity:** Many reward functions can explain the same expert (e.g. all rewards that are constant along the expert path). Max-ent and regularization (e.g. prefer small ||w||) help. In practice, IRL often needs a prior or regularization on the reward.
 - **Forward RL cost:** Each IRL iteration requires solving an MDP; for large state spaces this is expensive. Use tabular or small neural policies for the exercise.
 - **Convergence:** IRL is often formulated as a two-player game; convergence can be tricky. Run for a fixed number of iterations and check that expert return under learned w is high.
+
+{{< collapse summary="Worked solution (warm-up: IRL)" >}}
+**Key idea:** IRL assumes the expert maximizes some unknown reward \\(r(s,a; w)\\). We learn \\(w\\) so that the expert gets higher return than other policies (e.g. max-margin: expert return minus max over policies). Alternately we maximize the likelihood of expert trajectories under a softmax over returns. Once we have \\(w\\), we can run RL with \\(r(s,a; w)\\) to recover a policy that mimics the expert.
+{{< /collapse >}}
 
 **Extra practice**
 

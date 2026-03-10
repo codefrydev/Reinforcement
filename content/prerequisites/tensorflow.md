@@ -4,6 +4,8 @@ description: "TensorFlow and Keras for RL: models, GradientTape, optimizers, and
 date: 2026-03-10T00:00:00Z
 weight: 60
 draft: false
+tags: ["TensorFlow", "Keras", "GradientTape", "RL", "prerequisites"]
+keywords: ["TensorFlow for RL", "Keras", "GradientTape", "optimizers", "GPU", "RL models"]
 ---
 
 Alternative to PyTorch for implementing DQN, policy gradients, and other deep RL algorithms. The Keras API provides layers and optimizers; `GradientTape` gives full control over custom loss functions (e.g. policy gradient, CQL).

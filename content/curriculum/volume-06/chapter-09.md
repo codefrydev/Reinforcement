@@ -4,6 +4,8 @@ description: "PETS: ensemble dynamics, MPC with random shooting."
 date: 2026-03-10T00:00:00Z
 weight: 59
 draft: false
+tags: ["PETS", "ensemble", "MPC", "random shooting", "curriculum"]
+keywords: ["PETS", "Probabilistic Ensembles", "MPC", "trajectory sampling"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Curse of dimensionality:** Random shooting over long horizons and high action dims is inefficient. Use short horizon (5–15) or CEM/cross-entropy method to focus samples.
 - **Model uncertainty:** The ensemble gives different predictions; use the mean or sample one model per trajectory for consistency.
+
+{{< collapse summary="Worked solution (warm-up: ensemble model)" >}}
+**Key idea:** An ensemble of models gives a distribution over next state (and reward). We can use the mean prediction, or sample one model per rollout to get diverse imagined trajectories. Uncertainty (variance across models) can be used to avoid long rollouts in uncertain regions (e.g. only plan where models agree). This reduces the risk of compounding error from an overconfident wrong model.
+{{< /collapse >}}
 
 **Extra practice**
 

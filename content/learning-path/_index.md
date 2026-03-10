@@ -3,6 +3,8 @@ title: "Learning Path: Zero to Reinforcement Learning"
 description: "A step-by-step roadmap from no programming experience to building and understanding RL. Start here if you are an absolute beginner."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["learning path", "roadmap", "beginner", "zero to RL", "reinforcement learning"]
+keywords: ["learning path", "zero to reinforcement learning", "beginner roadmap", "RL from scratch", "step-by-step RL"]
 ---
 
 This learning path takes you from **zero programming experience** to understanding and building reinforcement learning systems. Follow the phases in order; each phase builds on the previous one.

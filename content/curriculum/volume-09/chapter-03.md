@@ -4,6 +4,8 @@ description: "IQL in cooperative meet-up game; non-stationarity."
 date: 2026-03-10T00:00:00Z
 weight: 83
 draft: false
+tags: ["IQL", "independent Q-learning", "multi-agent", "non-stationarity", "curriculum"]
+keywords: ["IQL", "independent Q-learning", "cooperative", "non-stationarity"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Credit assignment:** In cooperative tasks, both agents get the same reward; each might not know if the success was due to its action or the other's. IQL does not address this explicitly; the hope is that enough exploration finds coordinated behavior.
 - **Exploration:** With two agents exploring independently, they may rarely "meet" early on; use sufficient exploration (e.g. ε-greedy with high ε initially) or a simple reward shaping (e.g. reward for getting closer).
 - **Partial observability:** If agents do not see each other's position, the state is partially observable and the task is harder; you can start with full observability (each sees both positions) to isolate the non-stationarity effect.
+
+{{< collapse summary="Worked solution (warm-up: multi-agent non-stationarity)" >}}
+**Key idea:** When multiple agents learn simultaneously, each agent’s best response depends on the others’ policies. So the transition and reward from one agent’s perspective change over time (non-stationary). Independent Q-learning may not converge; we can use centralized critics (each agent’s Q depends on all states/actions) during training, then deploy with decentralized execution (each agent uses only its own observation).
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Expert demos from PPO on LunarLander; behavioral cloning."
 date: 2026-03-10T00:00:00Z
 weight: 74
 draft: false
+tags: ["imitation learning", "behavioral cloning", "LunarLander", "PPO", "curriculum"]
+keywords: ["imitation learning", "behavioral cloning", "expert demos", "LunarLander"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Too few demos:** With very few trajectories, BC overfits and does not generalize; collect more episodes or add regularization.
 - **Expert not good enough:** If the expert is suboptimal, BC will copy its mistakes; ensure the expert is reasonably strong.
 - **Ignoring covariate shift:** BC is trained on expert state distribution; when the BC agent runs, it may make small errors, visit new states, and then get into regions where it has no training data and fail. We will address this with DAgger in the next chapter.
+
+{{< collapse summary="Worked solution (warm-up: behavioral cloning)" >}}
+**Key idea:** Behavioral cloning (BC) is supervised learning: given expert (s,a) pairs, train a policy \\(\\pi_\\theta(a|s)\\) to mimic the expert (e.g. cross-entropy or MSE). Simple and stable, but the agent only sees expert states; at test time it may drift to novel states and then fail (covariate shift). BC is a strong baseline for imitation; we improve with DAgger (query expert on agent states) or offline RL.
+{{< /collapse >}}
 
 **Extra practice**
 

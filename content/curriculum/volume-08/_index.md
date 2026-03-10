@@ -4,6 +4,8 @@ description: "Chapters 71–80 — Offline RL problem, CQL, Decision Transformer
 date: 2026-03-10T00:00:00Z
 weight: 8
 draft: false
+tags: ["curriculum", "volume 8", "offline RL", "CQL", "Decision Transformer", "imitation learning", "DAgger", "RLHF"]
+keywords: ["offline reinforcement learning", "CQL", "Decision Transformer", "behavioral cloning", "DAgger", "GAIL", "RLHF", "imitation learning"]
 ---
 
 The offline RL problem, Conservative Q-Learning (CQL), Decision Transformers, imitation learning, limitations of behavioral cloning, DAgger, inverse RL, GAIL, AMP, offline-to-online finetuning, and RLHF basics. Chapters 71–80.

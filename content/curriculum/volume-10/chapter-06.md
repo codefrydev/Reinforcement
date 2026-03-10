@@ -4,6 +4,8 @@ description: "Simulated preference data; Bradley-Terry reward model; PPO finetun
 date: 2026-03-10T00:00:00Z
 weight: 96
 draft: false
+tags: ["RLHF", "preference data", "Bradley-Terry", "PPO", "NLP", "curriculum"]
+keywords: ["RLHF implementation", "preference data", "Bradley-Terry", "reward model", "PPO"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Reward hacking:** The LM may exploit the reward model (e.g. repeat tokens that get high r). KL penalty and a good reward model (trained on diverse preferences) help.
 - **Overfitting the reward model:** If the reward model overfits the preference set, it may not generalize; use a held-out set and early stopping.
 - **Data size:** Simulated preferences can be generated in bulk; use at least a few thousand pairs for the reward model.
+
+{{< collapse summary="Worked solution (warm-up: reward model from preferences)" >}}
+**Key idea:** We have preference data: (response A, response B, preferred). We train a reward model \\(r_\\psi\\) so that \\(P(A > B) = \\sigma(r(A) - r(B))\\) (Bradley-Terry). Loss = cross-entropy between predicted preference and actual. We need enough pairs (e.g. thousands) so the reward model generalizes. Then we use \\(r_\\psi\\) in RLHF to optimize the policy. The reward model is a proxy for human preference and can have biases from the data.
+{{< /collapse >}}
 
 **Extra practice**
 

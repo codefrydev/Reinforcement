@@ -4,6 +4,8 @@ description: "Gridworld discounted return from a sequence of actions."
 date: 2026-03-10T00:00:00Z
 weight: 1
 draft: false
+tags: ["reinforcement learning", "gridworld", "discounted return", "MDP", "curriculum"]
+keywords: ["RL framework", "gridworld", "discounted return", "agent environment", "reward"]
 ---
 
 **Learning objectives**
@@ -17,6 +19,10 @@ draft: false
 In reinforcement learning, an **agent** interacts with an **environment**: at each step the agent is in a **state**, chooses an **action**, and receives a **reward** and a new state. The **return** is the sum of (discounted) rewards along a trajectory; the agent’s goal is to maximize this return. A **gridworld** is a simple environment where states are cells and actions move the agent; it models **robot navigation** (e.g. a robot moving to a goal in a warehouse) and **game AI** (e.g. a character moving on a map). In robot navigation, the state might be (row, col); the action is up/down/left/right; the reward is +1 at the goal and often 0 or a small penalty per step. Discounting (\\(\gamma < 1\\)) makes future rewards worth less than immediate ones and keeps the return finite in long or infinite horizons.
 
 **Where you see this in practice:** Gridworld-style MDPs appear in pathfinding, warehouse robots, and simple games. The same agent–environment–return framework is used in recommendation (state = user context, action = which item to show, return = long-term engagement).
+
+**Illustration (discounted return):** For rewards \\([0, 0, 1]\\) and \\(\gamma = 0.9\\), the return from step 0 is \\(0.81\\). The chart below shows how the return from step 0 changes as we add more future rewards (e.g. for a longer sequence). With only the first three rewards we get 0.81; if the episode continued with more zeros and a final 1, the pattern would extend similarly.
+
+{{< chart type="line" title="Cumulative discounted return (γ=0.9)" labels="1 step, 2 steps, 3 steps" data="0, 0.9, 0.81" >}}
 
 **Exercise:** In a 3×3 gridworld, the agent starts at (0,0) and aims to reach a goal at (2,2) with a reward of +1. Every other step gives 0 reward, and hitting a wall (outside grid) gives -1 and stays in place. Write a Python function that takes a sequence of actions (up, down, left, right) and returns the total discounted return (\\(\gamma = 0.9\\)).
 
@@ -32,6 +38,19 @@ In reinforcement learning, an **agent** interacts with an **environment**: at ea
 - **Off-by-one in grid indices:** (0,0) is top-left if row 0 is "up"; check whether "up" means row-1 or row+1 and be consistent.
 - **Forgetting to discount:** Each reward must be multiplied by \\(\gamma^t\\) where \\(t\\) is the step index (0, 1, 2, …). Do not sum raw rewards unless \\(\gamma=1\\).
 - **Wall semantics:** Clarify whether "hitting a wall" gives -1 and the agent stays in the same cell, or whether the action is simply not applied; implement one convention consistently.
+
+{{< collapse summary="Worked solution (warm-up: discounted return by hand)" >}}
+**Warm-up:** For rewards \\([0, 0, 1]\\) and \\(\gamma = 0.9\\), compute \\(G_0\\) by hand. Then write a one-line loop that computes it in Python.
+
+**Step 1 — By hand:** \\(G_0 = r_0 + \gamma r_1 + \gamma^2 r_2 = 0 + 0.9 \cdot 0 + 0.81 \cdot 1 = 0.81\\).
+
+**Step 2 — Python (one-line loop):**
+```python
+G = sum(0.9**t * r for t, r in enumerate([0, 0, 1]))
+# G == 0.81
+```
+Or: `G = 0 + 0.9*0 + 0.81*1`. The same discounting structure is used in the gridworld: at each step add \\(\gamma^t \cdot r_t\\) to the total. This is the return from step 0; the agent’s goal is to maximize such returns.
+{{< /collapse >}}
 
 **Extra practice**
 

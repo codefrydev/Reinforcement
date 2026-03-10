@@ -4,6 +4,8 @@ description: "Agents output message + action; train for coordination task."
 date: 2026-03-10T00:00:00Z
 weight: 90
 draft: false
+tags: ["MARL", "communication", "coordination", "message", "curriculum"]
+keywords: ["communication in MARL", "coordination", "message and action", "multi-agent"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Message not used:** Ensure the other agents' policies actually receive and use the message (e.g. concatenate to observation). Otherwise communication has no effect.
 - **Credit assignment:** The reward is often shared (team reward); the agent that sent a useful message may not get direct credit. Training with team return usually suffices for coordination.
 - **Task too simple:** If the task can be solved without communication (e.g. by luck or simple policy), the benefit of communication may be small. Choose a task where coordination is clearly needed (e.g. swap requires both to move in a coordinated way).
+
+{{< collapse summary="Worked solution (warm-up: communication in MARL)" >}}
+**Key idea:** Agents can send messages (discrete or continuous) that other agents observe. We train the full system (policies + message interpretation) so that the messages help coordination. The message can be part of the observation for the receiver; the sender’s policy outputs (action, message). Tasks like "swap positions" or "meet at a location" need coordination; without communication, independent policies may fail. CommNet and TarMAC are examples.
+{{< /collapse >}}
 
 **Extra practice**
 

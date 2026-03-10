@@ -3,6 +3,8 @@ title: "Probability & Statistics"
 description: "Expectations, variance, sample mean, distributions, and law of large numbers — with RL motivation and practice."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["probability", "statistics", "expectation", "variance", "math for RL"]
+keywords: ["probability for RL", "expectation", "variance", "sample mean", "law of large numbers"]
 ---
 
 This page covers the probability and statistics you need for RL: expectations, variance, sample means, and the idea that sample averages converge to expectations. [Back to Math for RL](../).
@@ -32,6 +34,10 @@ As the number of samples \\(n\\) grows, the **sample average** \\(\bar{x} = \fra
 
 **In reinforcement learning:** We cannot compute true \\(V(s)\\) in one shot; we run many episodes and average returns to get Monte Carlo estimates. Bandit algorithms use sample means of rewards per arm to estimate which arm is best.
 
+**Illustration (sample mean → expectation):** As the number of samples grows, the sample average tends to get closer to the expected value. The chart below shows a typical trend: sample mean (e.g. from a bandit arm with true mean 0.4) over different sample sizes. With more pulls, the estimate stabilizes near the true mean.
+
+{{< chart type="line" title="Sample mean vs number of samples" labels="5, 10, 20, 50, 100, 200" data="0.32, 0.36, 0.38, 0.39, 0.40, 0.40" >}}
+
 ### Distributions you will see
 
 - **Normal (Gaussian)** \\(\mathcal{N}(\mu, \sigma^2)\\): mean \\(\mu\\), variance \\(\sigma^2\\). Used for noise, rewards, and many continuous quantities.
@@ -42,12 +48,108 @@ As the number of samples \\(n\\) grows, the **sample average** \\(\bar{x} = \fra
 ## Practice questions
 
 1. **Bandit:** An arm has true expected reward 1. You get 4 samples: 1.2, 0.8, 1.0, 1.4. What is the sample mean? What is the (unbiased) sample variance?
+
+{{< collapse summary="Answer and explanation" >}}
+**Step 1 — Sample mean:** \\(\bar{x} = \frac{1}{n}\sum_i x_i = \frac{1.2 + 0.8 + 1.0 + 1.4}{4} = \frac{4.4}{4} = 1.1\\).
+
+**Step 2 — Deviations from mean:** \\(x_i - \bar{x}\\) are \\(0.1, -0.3, -0.1, 0.3\\). Squared: \\(0.01, 0.09, 0.01, 0.09\\). Sum = \\(0.20\\).
+
+**Step 3 — Unbiased sample variance:** \\(\frac{1}{n-1}\sum (x_i - \bar{x})^2 = \frac{0.20}{3} = 0.0\overline{6}\\) (or about 0.067).
+
+**Answer:** Sample mean = **1.1**; unbiased sample variance ≈ **0.067**.
+
+**Explanation:** The sample mean 1.1 is our estimate of the arm’s expected reward (true value 1). We use \\(n-1\\) in the denominator so that on average the sample variance equals the true variance of the distribution. In bandits we use these to compare arms and to quantify uncertainty.
+{{< /collapse >}}
+
+The graph below shows these four sample values; the mean 1.1 is the average of the bar heights.
+
+{{< chart type="bar" title="Sample values (mean = 1.1)" labels="Sample 1, Sample 2, Sample 3, Sample 4" data="1.2, 0.8, 1.0, 1.4" >}}
+
+---
+
 2. **Concept:** In one sentence, what is the difference between \\(\mathbb{E}[X]\\) and the sample average of 100 draws from \\(X\\)? When do they coincide (in the limit)?
+
+{{< collapse summary="Answer and explanation" >}}
+\\(\mathbb{E}[X]\\) is the theoretical long-run average (a fixed number determined by the distribution). The sample average of 100 draws is the average of one finite set of observations and is random. They coincide in the limit: as the number of draws \\(n \to \infty\\), the sample average converges to \\(\mathbb{E}[X]\\) (law of large numbers).
+
+**Explanation:** In RL we never know true expectations (e.g. true \\(V(s)\\) or true arm means). We estimate them from samples; the law of large numbers justifies why averaging many returns or rewards gives a good estimate.
+{{< /collapse >}}
+
+---
+
 3. **By hand:** For observations [0, 1, 2, 3, 4], compute the sample mean and the unbiased sample variance.
+
+{{< collapse summary="Answer and explanation" >}}
+**Step 1 — Sample mean:** \\(\bar{x} = \frac{0+1+2+3+4}{5} = \frac{10}{5} = 2\\).
+
+**Step 2 — Squared deviations:** \\((0-2)^2 = 4\\), \\((1-2)^2 = 1\\), \\((2-2)^2 = 0\\), \\((3-2)^2 = 1\\), \\((4-2)^2 = 4\\). Sum = \\(4+1+0+1+4 = 10\\).
+
+**Step 3 — Unbiased variance:** \\(\frac{1}{n-1}\sum (x_i - \bar{x})^2 = \frac{10}{4} = 2.5\\).
+
+**Answer:** Sample mean = **2**; unbiased sample variance = **2.5**.
+
+**Explanation:** With \\(n=5\\) we divide by 4 so the variance estimate is unbiased. This is the same formula we use for reward variance in bandits or return variance in Monte Carlo.
+{{< /collapse >}}
+
+---
+
 4. **Python:** Write a function `sample_mean(x)` that takes a list of numbers and returns their average. Then write `sample_variance(x)` that returns the unbiased variance. Test with [1, 2, 3, 4, 5].
+
+{{< collapse summary="Answer and explanation" >}}
+**Step 1 — sample_mean:** Sum the list and divide by length. **Step 2 — sample_variance:** Compute mean, then \\(\frac{1}{n-1}\sum (x_i - \bar{x})^2\\).
+
+```python
+def sample_mean(x):
+    return sum(x) / len(x)
+
+def sample_variance(x):
+    n = len(x)
+    mean = sample_mean(x)
+    squared_deviations = [(xi - mean) ** 2 for xi in x]
+    return sum(squared_deviations) / (n - 1)
+
+# Test with [1, 2, 3, 4, 5]
+data = [1, 2, 3, 4, 5]
+print(sample_mean(data))      # 3.0
+print(sample_variance(data))  # 2.5
+```
+
+**Explanation:** We use \\(n-1\\) so the expected value of this statistic equals the population variance. In RL you’ll do similar operations on reward batches or returns.
+{{< /collapse >}}
+
+---
+
 5. **RL:** Why do we need many episodes in Monte Carlo prediction to get a good value estimate? Relate your answer to the law of large numbers.
+
+{{< collapse summary="Answer and explanation" >}}
+\\(V(s)\\) is the *expected* return from state \\(s\\); we don’t have the distribution, only samples (returns from episodes that visit \\(s\\)). We estimate \\(V(s)\\) by the *sample average* of those returns. The law of large numbers says this sample average converges to the expectation as the number of episodes (samples) increases. So we need many episodes so that our average is close to the true \\(V(s)\\).
+
+**Explanation:** With few episodes, the estimate is noisy; with many, it stabilizes. This is the same idea as estimating a bandit arm’s mean by averaging many pulls.
+{{< /collapse >}}
+
+---
+
 6. **By hand:** For a Bernoulli with \\(p = 0.3\\), what is \\(\mathbb{E}[X]\\) and \\(\mathrm{Var}(X)\\)? (E[X]=0.3, Var(X)=p(1-p)=0.21.)
+
+{{< collapse summary="Answer and explanation" >}}
+**Step 1 — Expectation:** For Bernoulli, \\(\mathbb{E}[X] = 1 \cdot p + 0 \cdot (1-p) = p = 0.3\\).
+
+**Step 2 — Variance:** \\(\mathrm{Var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2\\). For Bernoulli, \\(X^2 = X\\), so \\(\mathbb{E}[X^2] = p\\). Thus \\(\mathrm{Var}(X) = p - p^2 = p(1-p) = 0.3 \times 0.7 = 0.21\\).
+
+**Answer:** \\(\mathbb{E}[X] = 0.3\\); \\(\mathrm{Var}(X) = 0.21\\).
+
+**Explanation:** Bernoulli is 0/1 with probability \\(p\\) and \\(1-p\\). This formula appears when we model binary outcomes (e.g. success/fail, left/right) in RL.
+{{< /collapse >}}
+
+---
+
 7. **RL:** In a bandit, we estimate \\(Q(a)\\) by the sample mean of rewards from arm \\(a\\). Why might we prefer this over using only the last reward from arm \\(a\\)?
+
+{{< collapse summary="Answer and explanation" >}}
+The sample mean uses *all* rewards observed from arm \\(a\\), so it has lower variance than a single reward. One reward is noisy and can be far from the true expected reward; the sample mean averages out the noise and, by the law of large numbers, converges to \\(Q(a)\\). Using only the last reward would ignore previous information and give a much noisier estimate.
+
+**Explanation:** In bandit algorithms we maintain a running mean (or equivalent) per arm. That’s exactly the sample mean of all rewards from that arm so far. The last reward alone is an unbiased but high-variance estimate.
+{{< /collapse >}}
 
 ---
 

@@ -4,6 +4,8 @@ description: "AMP paper: task reward + adversarial style reward; combined reward
 date: 2026-03-10T00:00:00Z
 weight: 78
 draft: false
+tags: ["AMP", "adversarial motion priors", "imitation", "style reward", "curriculum"]
+keywords: ["AMP", "Adversarial Motion Priors", "task reward", "adversarial style reward"]
 ---
 
 **Learning objectives**
@@ -33,6 +35,10 @@ draft: false
 - **λ too high:** If the style reward dominates, the agent may ignore the task (e.g. stand still in a natural pose). Tune λ so both task and style matter.
 - **Discriminator on single frames:** Single timesteps may not capture "motion"; AMP uses **temporal windows** so the discriminator sees dynamics, not just pose.
 - **Reference distribution:** The reference data should be diverse enough (e.g. many motion capture clips) so the policy does not overfit to one motion.
+
+{{< collapse summary="Worked solution (warm-up: imitation from reference)" >}}
+**Key idea:** We have reference trajectories (e.g. motion capture). We train a policy to match the reference state distribution or state-action distribution (e.g. supervised loss, or reward = similarity to reference). The policy learns to reproduce the reference behavior. For diverse references we get a multi-modal policy; for a single reference we get cloning. Used in character animation and robot manipulation.
+{{< /collapse >}}
 
 **Extra practice**
 

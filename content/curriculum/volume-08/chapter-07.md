@@ -4,6 +4,8 @@ description: "Discriminator expert vs agent; use as reward for policy gradient."
 date: 2026-03-10T00:00:00Z
 weight: 77
 draft: false
+tags: ["GAIL", "imitation", "discriminator", "policy gradient", "curriculum"]
+keywords: ["GAIL", "Generative Adversarial Imitation Learning", "discriminator", "expert vs agent"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Discriminator too strong:** If D quickly distinguishes expert from agent, the reward for the policy becomes near 0 or 1 and the gradient is weak. Use fewer D updates, or reward = log D so the policy always gets a useful gradient when D(s,a) < 1.
 - **Mode collapse:** The policy might find a small set of (s, a) that fool D instead of covering the full expert distribution. Use enough expert data and consider adding entropy bonus to the policy.
 - **Reward scale:** log D can be very negative when D is small; scale or clip the reward so policy gradient updates are stable.
+
+{{< collapse summary="Worked solution (warm-up: GAIL)" >}}
+**Key idea:** GAIL: train a discriminator \\(D(s,a)\\) to distinguish expert (s,a) from policy (s,a). The policy gets reward \\(r = -\\log D(s,a)\\) (or \\(\\log(1-D)\\)) so it tries to fool the discriminator—i.e. match the expert distribution. We do not need to recover an explicit reward; we directly imitate via the discriminator. Use policy gradient (e.g. PPO) with this reward; the discriminator is updated with the binary cross-entropy loss.
+{{< /collapse >}}
 
 **Extra practice**
 

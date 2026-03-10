@@ -4,6 +4,8 @@ description: "Derive Bellman optimality equation for Q*(s,a)."
 date: 2026-03-10T00:00:00Z
 weight: 6
 draft: false
+tags: ["Bellman equation", "value function", "MDP", "curriculum"]
+keywords: ["Bellman equation", "value function", "Bellman expectation", "MDP"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,14 @@ The **optimal action-value function** \\(Q^*(s,a)\\) is the expected return from
 - **Writing expectation of max instead of max of expectation:** The correct form is \\(\\mathbb{E}[r + \\gamma \\max_{a'} Q^*(s',a')]\\), not \\(\\max_{a'} \\mathbb{E}[r + \\gamma Q^*(s',a')]\\). The max is inside the expectation over the *next* state.
 - **Confusing \\(V^*(s)\\) with \\(\\max_a Q^*(s,a)\\):** They are equal: \\(V^*(s) = \\max_a Q^*(s,a)\\). So you can also write the equation in terms of \\(V^*\\) and then recover \\(Q^*\\).
 - **Claiming the system is linear:** It is not; fixed-point iteration (value iteration) or Q-iteration is used instead of one-shot matrix inversion.
+
+{{< collapse summary="Worked solution (Bellman optimality for Q*)" >}}
+**Derivation:** By definition, \\(Q^*(s,a)\\) is the expected return from \\(s\\), taking \\(a\\), then acting optimally. So the return is \\(R_{t+1} + \gamma G_{t+1}\\), where \\(G_{t+1}\\) is the return from \\(S_{t+1}\\) under the optimal policy, i.e. \\(V^*(S_{t+1}) = \max_{a'} Q^*(S_{t+1}, a')\\). Taking expectation over \\(s', r\\) given \\(s, a\\):
+
+\\(Q^*(s,a) = \sum_{s',r} P(s',r|s,a)\bigl[r + \gamma \max_{a'} Q^*(s', a')\bigr]\\).
+
+**Why nonlinear:** The Bellman *expectation* equation for \\(V^\pi\\) is linear in \\(V^\pi\\) because the policy \\(\pi\\) is fixed. Here we have \\(\max_{a'}\\) inside the right-hand side, so \\(Q^*(s,a)\\) depends on the *maximum* of other \\(Q^*\\) values, which is a nonlinear operation. So we cannot write this as a linear system \\(Q = A Q\\); we use fixed-point iteration (value iteration, Q-iteration) instead of matrix inversion.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "State-value baseline with REINFORCE; compare gradient variance."
 date: 2026-03-10T00:00:00Z
 weight: 34
 draft: false
+tags: ["REINFORCE", "baseline", "variance reduction", "curriculum"]
+keywords: ["variance reduction", "baseline", "state-value baseline", "policy gradient"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ The policy gradient with a baseline is \\(\mathbb{E}[ \nabla \log \pi(a|s) \, (G
 
 - **Baseline that depends on action:** If \\(b\\) depends on \\(a\\), the gradient estimate can become biased. The baseline must be a function of state (and optionally time) only.
 - **Training baseline too aggressively:** If the baseline fits \\(G_t\\) too well, \\(G_t - V(s_t)\\) becomes near zero and the policy gradient signal vanishes. Use a separate network or a slower learning rate for the baseline so it tracks but does not overfit.
+
+{{< collapse summary="Worked solution (warm-up: why baseline keeps gradient unbiased)" >}}
+**Warm-up:** \\(\\mathbb{E}[ \\nabla \\log \\pi(a|s) \\cdot b(s) ] = \\sum_a \\pi(a|s) \\nabla \\log \\pi(a|s) \\cdot b(s) = b(s) \\sum_a \\nabla \\pi(a|s) = b(s) \\nabla (\\sum_a \\pi(a|s)) = b(s) \\nabla 1 = 0\\). So subtracting \\(b(s)\\) does not change the expectation of the gradient; it only reduces variance when \\(b(s)\\) approximates \\(\\mathbb{E}[G_t|s]\\). That’s why we use \\(G_t - V(s)\\) or \\(G_t - b(s)\\) in REINFORCE with baseline.
+{{< /collapse >}}
 
 **Extra practice**
 

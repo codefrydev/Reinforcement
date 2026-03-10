@@ -3,9 +3,11 @@ title: "Math for RL"
 description: "Probability, linear algebra, and calculus with reinforcement learning motivation. Practice questions and Professor's hints included."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["math for RL", "probability", "linear algebra", "calculus", "prerequisites"]
+keywords: ["math for reinforcement learning", "probability linear algebra calculus", "RL prerequisites", "practice questions"]
 ---
 
-This track covers the **math you need to read and do reinforcement learning**: probability & statistics, linear algebra, and calculus. Each topic is tied to how it appears in RL (bandits, value functions, gradients). Work through the pages in order, or use them to fill gaps after the [Preliminary assessment](../preliminary/).
+This track covers the **math you need to read and do reinforcement learning**: probability & statistics, linear algebra, and calculus. Each topic is tied to how it appears in RL (bandits, value functions, gradients). **Each topic page includes practice questions with full step-by-step solutions** (collapsible “Answer and explanation”) so you can check your work and see the derivation. Work through the pages in order, or use them to fill gaps after the [Preliminary assessment](../preliminary/).
 
 **Recommended order:** [Probability & statistics](probability/) → [Linear algebra](linear-algebra/) → [Calculus](calculus/).
 

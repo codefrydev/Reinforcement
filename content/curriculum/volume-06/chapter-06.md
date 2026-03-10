@@ -4,6 +4,8 @@ description: "MuZero: model in latent space; reward prediction."
 date: 2026-03-10T00:00:00Z
 weight: 56
 draft: false
+tags: ["MuZero", "latent space", "reward prediction", "model-based", "curriculum"]
+keywords: ["MuZero", "latent model", "reward prediction", "model-based RL"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Confusing with world models:** MuZero's "model" is not a predictor of observations; it is a latent transition for planning. The loss is on value/reward/policy, not on state reconstruction.
 - **Paper:** Schrittwieser et al., "Mastering Atari, Go, Chess and Shogi by Planning with a Learned Model" (2020).
+
+{{< collapse summary="Worked solution (warm-up: MuZero)" >}}
+**Key idea:** MuZero learns a latent model: \\(s_{t+1} = f(s_t, a_t)\\) and reward/value in latent space. We do not predict pixels; we plan in the latent space. The value and reward heads are trained with TD (or n-step) on imagined rollouts. So we get the benefit of planning with a model without needing to decode to observation space. This scales to Atari and board games.
+{{< /collapse >}}
 
 **Extra practice**
 

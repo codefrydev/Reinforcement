@@ -4,6 +4,8 @@ description: "TD(0) prediction for blackjack; compare with Monte Carlo."
 date: 2026-03-10T00:00:00Z
 weight: 12
 draft: false
+tags: ["temporal difference", "TD", "blackjack", "prediction", "curriculum"]
+keywords: ["temporal difference learning", "TD(0)", "blackjack", "bootstrap"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Step size:** \\(\alpha=0.01\\) is small; values change slowly. If you use a large \\(\alpha\\), TD can be noisy or unstable. For tabular blackjack, 0.01–0.1 is typical.
 - **Comparing fairly:** Use the same number of episodes (10k) for both. MC needs full episodes; TD updates every step. So TD makes many more updates per episode—keep that in mind when comparing "convergence speed."
 - **Initial V(s'):** For terminal \\(s'\\), \\(V(s')=0\\) by definition. Do not update \\(V\\) for terminal states; use 0 when computing the target.
+
+{{< collapse summary="Worked solution (warm-up: TD(0) update in one line)" >}}
+**Warm-up:** Write the TD(0) update in one line: given \\(s, r, s', V, \\alpha, \\gamma\\), what is the new \\(V(s)\\)? **Answer:** \\(V(s) \\leftarrow V(s) + \\alpha [r + \\gamma V(s') - V(s)]\\). In Python: `V[s] = V[s] + alpha * (r + gamma * V[s'] - V[s])`. The TD error is \\(\\delta = r + \\gamma V(s') - V(s)\\); we move \\(V(s)\\) in the direction of the error. Unlike MC, we don’t need the full return—we bootstrap on \\(V(s')\\).
+{{< /collapse >}}
 
 **Extra practice**
 

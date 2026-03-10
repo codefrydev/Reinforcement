@@ -4,6 +4,8 @@ description: "Random policy dataset on Hopper; naive SAC overestimation."
 date: 2026-03-10T00:00:00Z
 weight: 71
 draft: false
+tags: ["offline RL", "Hopper", "SAC", "overestimation", "curriculum"]
+keywords: ["offline RL", "random policy dataset", "SAC overestimation", "Hopper"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ In **offline RL**, the agent learns from a **fixed dataset** of transitions (e.g
 - **Evaluating with environment steps:** For a true offline experiment, evaluation should be limited (e.g. a few eval episodes) or use offline metrics (e.g. estimated return from the dataset). Avoid "peeking" with online data during training.
 - **Data quality:** If the random policy rarely reaches good states, the dataset has little signal for high return; the agent may still overestimate but the gap between Q and actual return is the key observation.
 - **Confusing on-policy vs off-policy:** SAC is off-policy, but it is designed for **online** data; the issue is that in offline RL we do not have data for the actions the learned policy would take.
+
+{{< collapse summary="Worked solution (warm-up: offline RL)" >}}
+**Key idea:** In offline RL we have a fixed dataset (no env interaction). The problem: the policy we are learning would take actions that may not appear in the data, so Q-values for those actions are overestimated (extrapolation error). Methods like CQL, BCQ, or TD3+BC add a penalty for OOD actions or constrain the policy to stay close to the behavior policy so we do not rely on out-of-distribution Q-values.
+{{< /collapse >}}
 
 **Extra practice**
 

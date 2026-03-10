@@ -4,6 +4,8 @@ description: "Decision Transformer: returns-to-go, states, actions; GPT-like pre
 date: 2026-03-10T00:00:00Z
 weight: 73
 draft: false
+tags: ["Decision Transformer", "returns-to-go", "offline RL", "curriculum"]
+keywords: ["Decision Transformer", "returns-to-go", "GPT", "action prediction"]
 ---
 
 **Learning objectives**
@@ -35,6 +37,10 @@ draft: false
 - **Returns-to-go normalization:** If returns have very different scales across trajectories, normalize (e.g. z-score) or use a fixed scale so the model can generalize to "high" vs "low" return.
 - **Context length:** The transformer has a limited context; for long episodes, truncate or use a sliding window. For short episodes (e.g. 100 steps), full context is fine.
 - **Evaluation:** When testing, you must provide returns-to-go; if you always give the max return, the model should behave like the best trajectories in the dataset. Compare actual return when conditioning on max vs median return.
+
+{{< collapse summary="Worked solution (warm-up: decision transformer)" >}}
+**Key idea:** Decision Transformer conditions on (state, action, return-to-go) and predicts the next action. We train on offline trajectories; at test time we give a desired return-to-go (e.g. the max return in the dataset) and the model generates actions to achieve it. So we turn RL into supervised learning on sequences; the "return" is the conditioning signal that tells the model how well it should do.
+{{< /collapse >}}
 
 **Extra practice**
 

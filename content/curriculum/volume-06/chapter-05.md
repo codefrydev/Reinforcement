@@ -4,6 +4,8 @@ description: "Mini AlphaZero for tic-tac-toe: NN + MCTS, self-play."
 date: 2026-03-10T00:00:00Z
 weight: 55
 draft: false
+tags: ["AlphaZero", "MCTS", "tic-tac-toe", "self-play", "curriculum"]
+keywords: ["AlphaZero", "MCTS", "neural network", "self-play", "tic-tac-toe"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Visit counts as policy target:** Normalize MCTS visit counts at the root to get a probability distribution; that is the policy target for the root state.
 - **Value target:** Use the outcome from the perspective of the player to move at that state (win=1, loss=-1, draw=0).
+
+{{< collapse summary="Worked solution (warm-up: AlphaZero-style)" >}}
+**Key idea:** Train a network that takes state and outputs (policy \\(p\\), value \\(v\\)). Use MCTS with the policy as prior and the value at leaves; the MCTS visit distribution is the target policy. Loss = cross-entropy(p, MCTS_policy) + MSE(v, game outcome). Self-play generates data; the network improves and MCTS improves with it. This is the core of AlphaZero.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -3,6 +3,8 @@ title: "PyTorch Basics"
 description: "Tensors, requires_grad, backward, and autograd — with RL-relevant examples and explanations."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["PyTorch", "tensors", "autograd", "preliminary"]
+keywords: ["PyTorch basics", "tensors", "autograd", "RL", "neural networks"]
 ---
 
 This page covers the PyTorch you need for the preliminary assessment: creating tensors, enabling gradients, and computing gradients with `backward()`. [Back to Preliminary](../).

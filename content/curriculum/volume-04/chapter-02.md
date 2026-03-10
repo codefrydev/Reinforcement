@@ -4,6 +4,8 @@ description: "Derive policy gradient theorem for one-step MDP."
 date: 2026-03-10T00:00:00Z
 weight: 32
 draft: false
+tags: ["policy gradient", "policy objective", "gradient theorem", "curriculum"]
+keywords: ["policy objective function", "policy gradient theorem", "one-step MDP"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ In **policy gradient** methods we maximize the expected return \\(J(\theta) = \m
 
 - **Wrong sign:** We *maximize* \\(J\\), so the update is \\(\theta \leftarrow \theta + \alpha \nabla_\theta J\\), not minus. Loss-based frameworks often minimize \\(-J\\), in which case gradient descent on \\(-J\\) is equivalent.
 - **Forgetting the expectation:** The theorem gives an expectation; in practice we use a *sample* (one trajectory or one action) to get an unbiased estimate of the gradient.
+
+{{< collapse summary="Worked solution (warm-up: J(p) and policy gradient form)" >}}
+**Warm-up:** \\(J(p) = p r_1 + (1-p) r_2\\). So \\(dJ/dp = r_1 - r_2\\). In policy gradient form: \\(\\nabla_\\theta J = \\mathbb{E}[ \\nabla_\\theta \\log \\pi(a|s) \\cdot r ]\\); for this one-step MDP, \\(\\nabla \\log \\pi(a_1|s) = 1/p\\) and \\(\\nabla \\log \\pi(a_2|s) = -1/(1-p)\\), so \\(\\mathbb{E}[ \\nabla \\log \\pi \\cdot r ] = p \\cdot (1/p) \\cdot r_1 + (1-p) \\cdot (-1/(1-p)) \\cdot r_2 = r_1 - r_2 = dJ/dp\\). This is the policy gradient theorem in the simplest case.
+{{< /collapse >}}
 
 **Extra practice**
 

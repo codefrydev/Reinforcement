@@ -3,6 +3,8 @@ title: "Final Self-Assessment"
 description: "Reflect on your readiness across math, Python, NumPy, PyTorch, and RL concepts before starting the curriculum."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["self-assessment", "readiness", "math", "Python", "NumPy", "PyTorch", "preliminary"]
+keywords: ["self-assessment", "readiness", "math Python NumPy PyTorch", "RL concepts", "before curriculum"]
 ---
 
 This is the final self-assessment step of the preliminary material. Use it to reflect on your readiness and to find gaps before starting the 100-chapter curriculum. [Back to Preliminary](../).

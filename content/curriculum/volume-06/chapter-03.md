@@ -4,6 +4,8 @@ description: "BFS planner for gridworld; compare with DP."
 date: 2026-03-10T00:00:00Z
 weight: 53
 draft: false
+tags: ["planning", "BFS", "gridworld", "dynamic programming", "curriculum"]
+keywords: ["planning with known models", "BFS planner", "gridworld", "DP"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ When the **model is known** and deterministic, we can **plan** without learning:
 
 - **Ties:** If multiple actions are optimal, BFS may return one path; DP policy may break ties arbitrarily. Be consistent.
 - **Discount in BFS:** BFS finds shortest path (minimum steps); if rewards are -1 per step, that matches. For general rewards, use a cost-sensitive search or DP.
+
+{{< collapse summary="Worked solution (warm-up: planning with a model)" >}}
+**Key idea:** With a known or learned model we can plan: e.g. value iteration, policy iteration, or search (BFS/DFS) from the current state. BFS with -1 per step finds the shortest path to the goal. The model gives \\(P(s',r|s,a)\\); we use it to compute values or to simulate rollouts without taking real env steps.
+{{< /collapse >}}
 
 **Extra practice**
 

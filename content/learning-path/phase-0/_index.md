@@ -3,6 +3,8 @@ title: "Phase 0: Programming from Zero"
 description: "Learn programming from scratch: Python installation, variables, conditionals, loops, and functions. No prior experience required."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["phase 0", "programming", "Python", "beginner", "learning path"]
+keywords: ["programming from zero", "Python installation", "variables conditionals loops", "beginner programming", "no prior experience"]
 ---
 
 This phase is for anyone who has **never programmed before**. You will install Python, run your first script, and learn the core ideas (variables, conditionals, loops, functions) that every RL codebase uses. Work through the sections in order.

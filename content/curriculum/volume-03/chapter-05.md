@@ -4,6 +4,8 @@ description: "Hard vs soft target updates in DQN."
 date: 2026-03-10T00:00:00Z
 weight: 25
 draft: false
+tags: ["target network", "DQN", "hard update", "soft update", "curriculum"]
+keywords: ["target networks", "DQN", "hard update", "soft update"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ The **target network** in DQN provides a stable TD target: we use \\(Q_{target}(
 - **Soft update direction:** \\(\\theta_{target} = \\tau \\theta_{target} + (1-\\tau) \\theta_{online}\\). So the target moves *toward* the online network. \\(\\tau\\) close to 1 means target changes slowly; \\(\\tau\\) close to 0 means target tracks online quickly.
 - **In-place vs new tensor:** For soft update, you must update `target` parameters in place. Do not create a new network; copy data into the existing target parameters.
 - **Comparing fairly:** Use the same replay buffer, same \\(\\epsilon\\), same total steps. Only the target update rule should differ.
+
+{{< collapse summary="Worked solution (warm-up: soft update after 1000 steps)" >}}
+**Warm-up:** After 1000 steps with soft update \\(\\tau=0.001\\), roughly how much of the target parameters come from the initial target vs. the current online? **Answer:** Target is updated as \\(w_{target} \\leftarrow (1-\\tau) w_{target} + \\tau w_{online}\\). So each step multiplies the "old target" component by \\(1-\\tau = 0.999\\). After 1000 steps, the initial target’s contribution is \\((0.999)^{1000} \\approx 0.37\\). So about 63% of the target is from the online network’s recent copies; the target lags but tracks the online. With \\(\\tau=0.001\\) the target changes slowly, which stabilizes learning.
+{{< /collapse >}}
 
 **Extra practice**
 

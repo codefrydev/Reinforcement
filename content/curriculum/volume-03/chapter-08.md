@@ -4,6 +4,8 @@ description: "Sum-tree prioritized buffer with TD error; importance-sampling wei
 date: 2026-03-10T00:00:00Z
 weight: 28
 draft: false
+tags: ["prioritized experience replay", "PER", "sum-tree", "importance sampling", "curriculum"]
+keywords: ["prioritized replay", "PER", "TD error", "importance sampling", "DQN"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Forgetting IS weights:** Without them, the expected update is biased. Always multiply the loss (or gradient) by the IS weight for each sample in the batch.
 - **Numerical stability:** Priorities must be positive. Use \\(|\\delta| + \\epsilon\\) (e.g. \\(10^{-6}\\)) and clamp very large priorities if needed.
 - **Sum tree implementation:** If the full sum tree is complex, you can start with a simpler version: store priorities in an array and sample by proportional sampling (e.g. cumulative sum + binary search, or numpy.random.choice with p = priorities/sum). It is O(N) but correct for small buffers.
+
+{{< collapse summary="Worked solution (warm-up: why TD-error sampling is biased)" >}}
+**Warm-up:** Why does sampling by TD error introduce bias? **Answer:** We sample transitions with probability proportional to \\(|\\delta|\\), so we update more often from transitions we currently think are "wrong." The gradient is then weighted toward those transitions; the expected update is no longer a uniform average over the buffer. Importance sampling (weight the update by the inverse of the sampling probability) corrects this bias; PER uses approximate correction. In practice PER still helps because prioritizing "surprising" transitions often speeds learning despite the bias.
+{{< /collapse >}}
 
 **Extra practice**
 

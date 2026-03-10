@@ -3,6 +3,8 @@ title: "Phase 4 Deep RL Quiz"
 description: "10–12 questions on DQN, policy gradient, PPO, replay, target network. Solutions included."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["assessment", "phase 4", "deep RL", "DQN", "PPO", "policy gradient", "solutions"]
+keywords: ["phase 4 deep RL", "DQN", "policy gradient", "PPO", "replay target network", "solutions", "deep RL quiz"]
 ---
 
 Use this quiz after completing [Volumes 3–5](../curriculum/) (or the [Phase 4 coding challenges](../learning-path/phase-4/)). If you can answer at least 9 of 12 correctly, you are ready for [Phase 5](../learning-path/#phase-5--advanced-topics) and [Volume 6](../curriculum/volume-06/).
@@ -24,7 +26,7 @@ Tabular methods store one value per state (or state-action); the number of state
 **Q:** Write the TD target \\(y\\) for DQN given a transition \\((s, a, r, s', \\mathrm{done})\\). Why do we use a *target* network for \\(y\\)?
 
 {{< collapse summary="Answer" >}}
-\\(y = r + \\gamma (1 - \\mathrm{done}) \\max_{a'} Q_{target}(s', a')\\). We use a target network so the target does not change every step (reduces moving target and stabilizes learning).
+**Formula:** \\(y = r + \\gamma (1 - \\mathrm{done}) \\max_{a'} Q_{target}(s', a')\\). When done=1 we have \\(y = r\\) (no bootstrap). **Why target network:** The target would otherwise depend on the same network we are updating, so it would change every step (moving target) and training would be unstable. A slowly updated copy (e.g. soft or periodic update) gives a stable label.
 {{< /collapse >}}
 
 ---
@@ -54,7 +56,7 @@ Double DQN uses the **online** network to select \\(a^* = \\arg\\max_a Q_{online
 **Q:** Write the policy gradient update (gradient ascent) for expected return \\(J(\\theta)\\). What quantity do we use in place of the full return in practice (e.g. in REINFORCE)?
 
 {{< collapse summary="Answer" >}}
-\\(\\theta \\leftarrow \\theta + \\alpha \\nabla_\\theta J\\). In REINFORCE we use the **return** \\(G_t\\) from that step (or \\(G_t - b(s_t)\\) with a baseline). The gradient is estimated as \\(\\mathbb{E}[ \\nabla \\log \\pi(a|s) \\cdot (\\mathrm{return\\ or\\ advantage}) ]\\).
+**Update:** \\(\\theta \\leftarrow \\theta + \\alpha \\nabla_\\theta J\\) (gradient ascent because we maximize return). **In practice:** We use a sample: \\(\\nabla \\log \\pi(a_t|s_t) \\cdot G_t\\) (REINFORCE) or with a baseline \\(G_t - b(s_t)\\). The return \\(G_t\\) (or advantage) weights the gradient so we increase the probability of actions that led to high return. **Why log:** The policy gradient theorem expresses \\(\\nabla J\\) as an expectation of \\(\\nabla \\log \\pi \\cdot\\) (return or advantage).
 {{< /collapse >}}
 
 ---

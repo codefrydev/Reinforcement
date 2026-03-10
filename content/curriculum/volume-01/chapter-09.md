@@ -4,6 +4,8 @@ description: "Value iteration on 4×4 gridworld, optimal V and policy."
 date: 2026-03-10T00:00:00Z
 weight: 9
 draft: false
+tags: ["value iteration", "dynamic programming", "optimal policy", "gridworld", "curriculum"]
+keywords: ["value iteration", "optimal V", "optimal policy", "dynamic programming"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,12 @@ draft: false
 - **Updating terminals:** Do not update \\(V\\) for terminal states; they stay 0. Updating them can break convergence or give wrong values.
 - **Using \\(\\gamma=1\\) in the exercise:** The exercise specifies \\(\\gamma=0.9\\). With \\(\\gamma=1\\) and -1 per step, values can be very negative; the algorithm still converges but numbers differ.
 - **Policy from V:** The optimal policy is greedy w.r.t. \\(V\\), not w.r.t. the *previous* policy. Compute the one-step lookahead using the *final* \\(V\\) when extracting the policy.
+
+{{< collapse summary="Worked solution (warm-up: effect of γ on V)" >}}
+**Warm-up:** Run value iteration with \\(\gamma=0.5\\) and then \\(\gamma=0.99\\) on the same gridworld. How does the optimal \\(V\\) near the center change?
+
+**Answer:** With **higher \\(\gamma\\)** (e.g. 0.99), future rewards matter more, so the optimal \\(V\\) near the center is *less negative* (closer to 0 or higher) because the agent is “less discouraged” by the -1 per step—the distant terminal reward is weighted more. With **lower \\(\gamma\\)** (e.g. 0.5), the agent heavily discounts the future, so values near the center are more negative; the optimal policy may still go to the terminal, but the *magnitude* of \\(V\\) is smaller (more negative). So: higher \\(\gamma\\) ⇒ values reflect longer horizons and are typically larger (less negative when reward is -1 per step). This is the same trade-off in any discounted MDP: \\(\gamma\\) controls how much we care about the long term.
+{{< /collapse >}}
 
 **Extra practice**
 

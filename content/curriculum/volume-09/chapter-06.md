@@ -4,6 +4,8 @@ description: "VDN: sum individual Q to joint Q; compare with IQL."
 date: 2026-03-10T00:00:00Z
 weight: 86
 draft: false
+tags: ["VDN", "value decomposition", "multi-agent", "curriculum"]
+keywords: ["VDN", "value decomposition", "multi-agent", "cooperative MARL"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Greedy action selection:** For the TD target, use max over actions. With VDN, the max of the sum is the sum of maxes (per agent), so each agent can compute max_{a_i} Q_i(o'_i, a_i) independently. Do not use a joint max over (a_1,...,a_n) with a single network.
 - **Exploration:** Both VDN and IQL need exploration (e.g. ε-greedy or noise on actions). Use the same exploration schedule when comparing.
 - **Same reward:** Give the same joint reward to both methods so the comparison is fair.
+
+{{< collapse summary="Worked solution (warm-up: QMIX)" >}}
+**Key idea:** QMIX learns \\(Q_{tot}(s, u)\\) as a monotonic combination of per-agent \\(Q_i(o_i, u_i)\\): \\(Q_{tot} = f(Q_1, \\ldots, Q_n)\\) with \\(\\partial Q_{tot}/\\partial Q_i \\geq 0\\). So a greedy joint action is computed by each agent choosing greedy w.r.t. its \\(Q_i\\) (decentralized). The mixing network is trained so that \\(Q_{tot}\\) fits the true joint return; monotonicity ensures consistency between individual greedy and joint greedy.
+{{< /collapse >}}
 
 **Extra practice**
 

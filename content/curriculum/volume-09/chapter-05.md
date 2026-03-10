@@ -4,6 +4,8 @@ description: "MADDPG on simple spread; centralized critics, decentralized actors
 date: 2026-03-10T00:00:00Z
 weight: 85
 draft: false
+tags: ["MADDPG", "multi-agent", "centralized critic", "curriculum"]
+keywords: ["MADDPG", "multi-agent DDPG", "centralized critics", "decentralized actors"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Replay buffer:** Store (s, a_1,...,a_n, r_1,...,r_n, s'). When sampling, you have all actions; use them for the critic target and for the actor update (other agents' actions from the buffer).
 - **Continuous actions:** MADDPG is for continuous action spaces; ensure your env and policy output continuous actions (e.g. mean of a Gaussian, or bounded with tanh).
 - **Instability:** Use target networks for both actors and critics; soft or periodic updates. Tune learning rates (often critics need smaller LR than in single-agent DDPG).
+
+{{< collapse summary="Worked solution (warm-up: MADDPG)" >}}
+**Key idea:** MADDPG: each agent has an actor and a critic. The critic for agent \\(i\\) takes *all* agents’ observations and actions (centralized); the actor for \\(i\\) takes only \\(i\\)’s observation (decentralized). So we have CTDE: the critic handles multi-agent credit assignment and non-stationarity; the actor is executed with local info only. We train with DDPG-style updates and target networks.
+{{< /collapse >}}
 
 **Extra practice**
 

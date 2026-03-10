@@ -4,6 +4,8 @@ description: "Toy recommender, 100 items, changing user; maximize engagement."
 date: 2026-03-10T00:00:00Z
 weight: 94
 draft: false
+tags: ["recommender systems", "engagement", "RL", "curriculum"]
+keywords: ["RL in recommender systems", "recommendation", "engagement", "changing user"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Partial observability:** The agent may not see the user's true preference u; state is then history only. The policy must learn to infer or explore.
 - **Cold start:** With 100 items and little data, many items get few clicks; use exploration (e.g. entropy bonus, or prior over items).
 - **Reward design:** Click is a simple reward; in practice, long-term satisfaction may require diversity or novelty. You can add a small bonus for recommending less-seen items.
+
+{{< collapse summary="Worked solution (warm-up: recommender as RL)" >}}
+**Key idea:** Recommendation can be framed as RL: state = user context (history, profile), action = which item(s) to show, reward = click, watch time, or purchase. We want to maximize long-term engagement (return). Bandits are the single-step case; full RL handles delayed feedback (e.g. user returns later). We need a simulator or logged data (offline/batch RL) and a reward proxy (e.g. click) that correlates with true satisfaction.
+{{< /collapse >}}
 
 **Extra practice**
 

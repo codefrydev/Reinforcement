@@ -4,6 +4,8 @@ description: "Two-hidden-layer PyTorch network for Q-values; MSE loss."
 date: 2026-03-10T00:00:00Z
 weight: 22
 draft: false
+tags: ["neural networks", "PyTorch", "Q-values", "curriculum"]
+keywords: ["neural networks for RL", "PyTorch", "Q-values", "MSE loss"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Output dimension:** One output per action (for discrete actions). So for 2 actions, output dim = 2. Do not output a single scalar unless you are using a different parameterization (e.g. state and action as input).
 - **Target gradients:** When you compute `loss = mse_loss(q_pred, target)`, `target` should not require grad (use `.detach()` on the target when you build it from the target network in DQN).
 - **Device:** Keep model and tensors on the same device (CPU or GPU). Use `model.to(device)` and `states.to(device)`.
+
+{{< collapse summary="Worked solution (warm-up: batch shapes)" >}}
+**Warm-up:** For state dim 4 and 3 actions, what are the shapes of the input tensor and the output tensor for a batch of 32? **Answer:** Input: (32, 4)—batch size 32, state dimension 4. Output: (32, 3)—batch size 32, one Q-value per action (3 actions). So the network maps each state in the batch to a 3-vector of Q(s,a) for a=0,1,2. In PyTorch we use this for DQN: `q = net(states)` gives shape (batch, n_actions).
+{{< /collapse >}}
 
 **Extra practice**
 

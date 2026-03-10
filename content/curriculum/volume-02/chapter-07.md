@@ -4,6 +4,8 @@ description: "Dyna-Q on 4×4 deterministic gridworld."
 date: 2026-03-10T00:00:00Z
 weight: 17
 draft: false
+tags: ["Dyna-Q", "planning", "tabular", "gridworld", "curriculum"]
+keywords: ["Dyna-Q", "planning and learning", "tabular methods", "model-based"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Sampling only recently seen (s,a):** The model can store *all* observed \\((s,a)\\); sample uniformly from the model (or from a list of keys). If you only sample the last transition, planning is weak.
 - **Deterministic model:** In a deterministic gridworld, each \\((s,a)\\) has one \\((r,s')\\). In stochastic envs you would store a distribution or multiple samples; for this exercise deterministic is fine.
 - **Q-learning update in planning:** Use the same update rule: \\(Q(s,a) \\leftarrow Q(s,a) + \\alpha [r + \\gamma \\max_{a'} Q(s',a') - Q(s,a)]\\) with the \\((r,s')\\) from the model.
+
+{{< collapse summary="Worked solution (warm-up: Dyna-Q update count)" >}}
+**Warm-up:** After 100 real steps, how many (s,a) pairs might your model contain? How many total Q-updates does Dyna-Q do? **Answer:** The model stores at most one entry per (s,a) *observed*; after 100 steps you have at most 100 (s,a) pairs (fewer if repeated). Total Q-updates = 100 (one per real step) + 100 × 5 = 600 (100 real + 500 planning). So Dyna-Q does 6× more updates per real step; that’s why it can learn faster with the same number of env interactions.
+{{< /collapse >}}
 
 **Extra practice**
 

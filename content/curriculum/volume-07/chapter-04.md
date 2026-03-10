@@ -4,6 +4,8 @@ description: "RND: fixed target, predictor; prediction error as intrinsic reward
 date: 2026-03-10T00:00:00Z
 weight: 64
 draft: false
+tags: ["RND", "random network distillation", "intrinsic reward", "curriculum"]
+keywords: ["RND", "random network distillation", "prediction error", "intrinsic reward"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Predictor overtrains on recent states:** If the predictor fits the replay buffer too well, intrinsic reward drops everywhere; use a reasonable buffer size and learning rate so the predictor generalizes to "similar" states but fails on truly new ones.
 - **Scaling:** Raw MSE can be large or small depending on architecture; normalize or scale the intrinsic reward so it is on a similar scale to extrinsic reward.
 - **Continuous state spaces:** RND works well with raw pixels or state vectors; for high-dimensional states, the target and predictor need enough capacity to make "novel" states distinguishable.
+
+{{< collapse summary="Worked solution (warm-up: RND)" >}}
+**Key idea:** RND: a random fixed network maps state to a target; a predictor network is trained to match the target. Intrinsic reward = \\(\\|f_{target}(s) - f_{pred}(s)\\|^2\\). States where the predictor fails (high error) are "novel." The target is random so it does not change; only the predictor is trained. This gives a stable novelty signal without count-based memory.
+{{< /collapse >}}
 
 **Extra practice**
 

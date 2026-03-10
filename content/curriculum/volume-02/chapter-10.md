@@ -4,6 +4,8 @@ description: "Memory for Backgammon Q-table; necessity of function approximation
 date: 2026-03-10T00:00:00Z
 weight: 20
 draft: false
+tags: ["tabular methods", "function approximation", "Backgammon", "curriculum"]
+keywords: ["limits of tabular methods", "function approximation", "curse of dimensionality"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Underestimating state count:** Backgammon has many board configurations and dice outcomes; \\(10^{20}\\) is a common cited order of magnitude. Do not use a tiny number (e.g. 1000) for "Backgammon."
 - **Forgetting actions:** Q-table is states × actions. Backgammon has a variable number of legal moves; use an upper bound (e.g. a few hundred) for a rough estimate.
 - **Claiming FA has no downsides:** Function approximation can diverge, generalize poorly, or forget; it is necessary for scale but introduces new challenges (covered in Volumes 3–5).
+
+{{< collapse summary="Worked solution (warm-up: Q-table size for 10×10 grid)" >}}
+**Warm-up:** A 10×10 grid has 100 states and 4 actions. How many floats for a Q-table with 4 bytes each? **Step 1:** Entries = states × actions = 100 × 4 = 400 floats. **Step 2:** Bytes = 400 × 4 = **1600 bytes**. So a small grid is trivial; Backgammon’s \\(\\approx 10^{20}\\) states make a tabular Q-table infeasible, which is why we need function approximation (fixed number of parameters) for large or continuous spaces.
+{{< /collapse >}}
 
 **Extra practice**
 

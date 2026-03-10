@@ -4,6 +4,8 @@ description: "Chapters 11–20 — Monte Carlo, TD, SARSA, Q-learning, Expected 
 date: 2026-03-10T00:00:00Z
 weight: 2
 draft: false
+tags: ["curriculum", "volume 2", "Monte Carlo", "SARSA", "Q-learning", "temporal difference", "tabular methods"]
+keywords: ["tabular RL", "Monte Carlo methods", "Q-learning", "SARSA", "temporal difference", "Dyna-Q", "Gym environments"]
 ---
 
 Monte Carlo and temporal-difference methods, SARSA and Q-learning, n-step bootstrapping, planning with tabular methods, custom Gym environments, and the limits of tabular methods. Chapters 11–20.

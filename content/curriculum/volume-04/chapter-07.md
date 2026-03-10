@@ -4,6 +4,8 @@ description: "A3C with multiprocessing workers; compare speed with A2C."
 date: 2026-03-10T00:00:00Z
 weight: 37
 draft: false
+tags: ["A3C", "asynchronous", "multiprocessing", "actor-critic", "curriculum"]
+keywords: ["A3C", "asynchronous advantage actor-critic", "multiprocessing", "A2C"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Race conditions:** If two workers update the global network simultaneously, parameters can be corrupted. Use a lock or a single update queue.
 - **Stale gradients:** In A3C, by the time a worker’s gradient is applied, the global policy may have changed. This can increase variance; A2C avoids this by syncing.
+
+{{< collapse summary="Worked solution (warm-up: A3C vs A2C)" >}}
+**Warm-up:** Main advantage of A3C: parallel workers collect experience asynchronously, so we get more diverse data and can scale with more CPUs. Main disadvantage: gradients are computed on stale policy copies (workers may be many steps behind the global network), which can increase variance and hurt stability. A2C waits for all workers to finish a step then updates once with synchronized gradients, trading some parallelism for stability.
+{{< /collapse >}}
 
 **Extra practice**
 

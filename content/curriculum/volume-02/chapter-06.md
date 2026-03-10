@@ -4,6 +4,8 @@ description: "n-step SARSA (n=4) on Cliff Walking."
 date: 2026-03-10T00:00:00Z
 weight: 16
 draft: false
+tags: ["n-step", "SARSA", "Cliff Walking", "bootstrapping", "curriculum"]
+keywords: ["n-step SARSA", "n-step bootstrapping", "Cliff Walking", "TD"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Indexing the buffer:** \\(s_0, a_0\\) is the state-action being updated; \\(r_1\\) is the reward after taking \\(a_0\\), and \\(s_n, a_n\\) is the state-action after \\(n\\) steps. Align indices carefully.
 - **Updating only every n steps:** You update \\(Q(s_0,a_0)\\) when you have collected \\(n\\) steps. You can also do multi-step updates (update every \\((s_i, a_i)\\) in the buffer with its n-step return from that point); the exercise asks for the simpler "update the oldest when we have n steps."
 - **Terminal state:** If \\(s_n\\) is terminal, there is no \\(a_n\\); use \\(G = r_1 + \\cdots + \\gamma^{n-1} r_n\\) (no \\(Q(s_n,a_n)\\) term, or \\(Q(\\text{terminal},\\cdot)=0\\)).
+
+{{< collapse summary="Worked solution (warm-up: n=2 return)" >}}
+**Warm-up:** For \\(n=2\\), write the n-step return \\(G_{t:t+2}\\) in terms of \\(r_{t+1}, r_{t+2}, Q(s_{t+2}, a_{t+2})\\) and \\(\\gamma\\). **Answer:** \\(G_{t:t+2} = r_{t+1} + \\gamma r_{t+2} + \\gamma^2 Q(s_{t+2}, a_{t+2})\\). So we take two rewards and then bootstrap with the Q-value at the state-action after 2 steps. For \\(n=4\\) we’d have four rewards plus \\(\\gamma^4 Q(s_{t+4}, a_{t+4})\\).
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Count-based with hash table; pseudo-counts with density model for 
 date: 2026-03-10T00:00:00Z
 weight: 65
 draft: false
+tags: ["count-based exploration", "pseudo-counts", "density model", "curriculum"]
+keywords: ["count-based exploration", "hash table", "pseudo-counts", "density model"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Hash collisions:** In discrete spaces with a hash, ensure the hash is consistent and that different states do not collide too often; use a proper hash of the state.
 - **Pseudo-count implementation:** Pseudo-count formulas depend on the density model; use a standard derivation (e.g. based on learning progress or density ratio) to avoid ad hoc scaling.
 - **Computational cost:** PixelCNN or large density models can be slow; start with a small model or lower-resolution frames.
+
+{{< collapse summary="Worked solution (warm-up: density-based bonus)" >}}
+**Key idea:** Fit a density model \\(p(s)\\) (e.g. Gaussian mixture, flow, or PixelCNN on images) on visited states. Intrinsic reward can be \\(-\\log p(s)\\) (surprise) or a pseudo-count derived from the density. Novel states have low \\(p(s)\\) and get high bonus. This generalizes to continuous and high-dimensional state spaces; the cost is training the density model.
+{{< /collapse >}}
 
 **Extra practice**
 

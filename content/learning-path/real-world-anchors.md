@@ -3,6 +3,8 @@ title: "Real-World Scenarios in This Curriculum"
 description: "Anchor scenarios used throughout the learning path and curriculum to ground RL concepts in practice."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["real-world", "anchor scenarios", "robot navigation", "game AI", "recommendation", "learning path"]
+keywords: ["real-world RL scenarios", "anchor scenarios", "robot navigation", "game AI", "recommendation", "trading", "healthcare", "dialogue"]
 ---
 
 Throughout this curriculum we refer to **anchor scenarios**—concrete real-world settings where reinforcement learning is used. These help you see how each concept (MDPs, value functions, policy gradients, etc.) appears in practice. When you see a concept, ask: "How does this show up in robot navigation? In game AI? In recommendation?"

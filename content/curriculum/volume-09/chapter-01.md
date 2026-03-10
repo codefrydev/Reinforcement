@@ -4,6 +4,8 @@ description: "Model Rock-Paper-Scissors as Dec-POMDP."
 date: 2026-03-10T00:00:00Z
 weight: 81
 draft: false
+tags: ["multi-agent", "MARL", "Dec-POMDP", "game theory", "curriculum"]
+keywords: ["multi-agent RL", "Dec-POMDP", "Rock-Paper-Scissors", "game theory"]
 ---
 
 **Learning objectives**
@@ -35,6 +37,10 @@ draft: false
 - **Confusing state and observation:** In a Dec-POMDP, the state can be global (e.g. both actions); each agent's observation may be a function of the state (e.g. only own action). Be explicit.
 - **Simultaneous vs sequential:** RPS is simultaneous; the "state" before actions does not include the other's action. In sequential games, state would include whose turn and past actions.
 - **Zero-sum:** Ensure r_1 + r_2 = 0 for all outcomes.
+
+{{< collapse summary="Worked solution (warm-up: two-agent zero-sum)" >}}
+**Key idea:** In two-agent zero-sum games, one agent’s gain is the other’s loss (\\(r_1 + r_2 = 0\\)). The Nash equilibrium is a pair of policies where neither can improve by deviating. We can train with self-play: each agent (or a single policy that sees "which player am I") tries to maximize its own return; the equilibrium emerges when both play best response. Used in games (chess, Go) and adversarial settings.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Weights & Biases sweep for SAC on custom env."
 date: 2026-03-10T00:00:00Z
 weight: 50
 draft: false
+tags: ["hyperparameter tuning", "Weights and Biases", "SAC", "sweep", "curriculum"]
+keywords: ["hyperparameter tuning", "Weights and Biases", "wandb sweep", "SAC"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ Hyperparameter tuning is essential for getting the best from RL algorithms; **sw
 
 - **Too few runs per config:** Run at least 2–3 seeds per config so you see variance; otherwise one lucky seed can mislead.
 - **Sweep too large:** Start with 2–3 key hyperparameters (lr, entropy/alpha, hidden size); add more only if needed.
+
+{{< collapse summary="Worked solution (warm-up: hyperparameter tuning)" >}}
+**Key idea:** For tuning, fix the rest and vary one (or two) key hyperparameters: e.g. learning rate, \\(\\alpha\\) or entropy coefficient, clip range for PPO, or network size. Run a few seeds per setting and compare mean final return. Use a small grid first (e.g. 3 values); expand only if the best is at the boundary. Document the best setting and the metric (e.g. mean return over last 100 episodes).
+{{< /collapse >}}
 
 **Extra practice**
 

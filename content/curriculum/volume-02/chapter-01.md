@@ -4,6 +4,8 @@ description: "First-visit MC prediction for blackjack."
 date: 2026-03-10T00:00:00Z
 weight: 11
 draft: false
+tags: ["Monte Carlo", "prediction", "blackjack", "curriculum"]
+keywords: ["Monte Carlo methods", "first-visit MC", "blackjack", "prediction"]
 ---
 
 **Learning objectives**
@@ -32,6 +34,10 @@ draft: false
 - **First-visit vs every-visit:** First-visit uses at most one return per state per episode. Every-visit uses every time the state appears; estimates differ slightly. The exercise asks for first-visit.
 - **Return from first occurrence:** The return \\(G_t\\) to use is the return *from time \\(t\\) onward*, not the return from the start of the episode. So you need to compute partial returns from each first-visit index to the end.
 - **State representation:** Gym's Blackjack may return a tuple (sum, dealer, ace). Use it as the key for your \\(V\\) table; do not mix up the order (e.g. (dealer, sum) would be wrong).
+
+{{< collapse summary="Worked solution (warm-up: one episode, first-visit returns)" >}}
+**Warm-up:** For one episode with the given policy, list the states visited and the return from the first time each state is visited. Example for a 3-step episode: suppose states are (18, 6, False), (19, 6, False), (20, 6, False) and rewards are 0, 0, 1 (win at end). **Step 1:** Returns from first visit: from (18,6,F) use \\(G_0 = r_1 + \\gamma r_2 + \\gamma^2 r_3 = 0 + 0.9\\cdot 0 + 0.81\\cdot 1 = 0.81\\); from (19,6,F) use \\(G_1 = r_2 + \\gamma r_3 = 0.9\\); from (20,6,F) use \\(G_2 = r_3 = 1\\). **Step 2:** So first-visit returns are (18,6,F)→0.81, (19,6,F)→0.9, (20,6,F)→1. Each state gets one return per episode in first-visit MC; we average these over many episodes to estimate \\(V^\\pi\\).
+{{< /collapse >}}
 
 **Extra practice**
 

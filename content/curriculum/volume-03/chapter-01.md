@@ -4,6 +4,8 @@ description: "Linear FA with tile coding for MountainCar; semi-gradient SARSA."
 date: 2026-03-10T00:00:00Z
 weight: 21
 draft: false
+tags: ["function approximation", "linear FA", "tile coding", "MountainCar", "curriculum"]
+keywords: ["linear function approximation", "tile coding", "semi-gradient SARSA", "MountainCar"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Gradient through target:** Do not backprop through \\(Q(s',a';w)\\) when computing the gradient. The target \\(r + \\gamma Q(s',a')\\) is treated as a constant; only \\(Q(s,a)\\) is differentiated.
 - **Feature scale:** Tile coding gives binary features; if you use raw state as features, normalize (e.g. by state bounds) so that step size \\(\\alpha\\) is meaningful.
 - **Exploration:** MountainCar needs exploration (e.g. \\(\\epsilon\\)-greedy). Without it, the agent may never reach the goal and never get the positive reward.
+
+{{< collapse summary="Worked solution (warm-up: tile coding φ(0.25))" >}}
+**Warm-up:** For 1D state in [0,1] with one tiling of 4 tiles, what is \\(\\phi(0.25)\\)? **Answer:** With 4 tiles over [0,1], each tile covers an interval of length 0.25. So tile 0 covers [0, 0.25), tile 1 [0.25, 0.5), etc. The state 0.25 lies in tile 1 (or the boundary). So \\(\\phi(0.25)\\) is a 4-dim vector with a 1 in the position corresponding to that tile and 0 elsewhere, e.g. \\([0, 1, 0, 0]^T\\). This binary feature is used in linear \\(V(s) = w^T \\phi(s)\\) for value approximation.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Python basics for RL: data structures, classes, functions, control
 date: 2026-03-10T00:00:00Z
 weight: 10
 draft: false
+tags: ["Python", "data structures", "OOP", "prerequisites"]
+keywords: ["Python for RL", "data structures", "classes", "functions", "control flow", "OOP"]
 ---
 
 Concepts used in the curriculum and in [Preliminary: Python basics](../preliminary/python-basics/): **data structures** (list, tuple, dict, set), **classes and objects**, functions, list comprehensions, loops, and conditionals. RL code is full of trajectories, configs, and custom types (agents, buffers)—all built from these basics.
@@ -128,6 +130,22 @@ batch = buf.sample(1)
 - **Agent** — Holds policy/network, epsilon, step count; has `.act()`, `.update()`.
 - **ReplayBuffer** — Holds list of transitions; has `.push()`, `.sample()`.
 - **Config** — You can use a dict, or a class with attributes for clarity and tab-completion.
+
+---
+
+## Worked examples
+
+**Example 1 — Extract rewards from a trajectory.** A trajectory is a list of `(state, action, reward)` tuples. Write one line to get the list of rewards.
+
+{{< collapse summary="Solution" >}}
+**Step 1:** Each element is a tuple `(s, a, r)`; the reward is at index 2. **Step 2:** List comprehension: `rewards = [t[2] for t in trajectory]`. Or unpack: `rewards = [r for s, a, r in trajectory]`. **In RL:** We use this to compute returns, plot reward curves, or pass rewards into a training step.
+{{< /collapse >}}
+
+**Example 2 — Moving average.** Write a function that returns the moving average of a list with window size 3. For `[1, 2, 3, 4, 5]` the result is `[2.0, 3.0, 4.0]`.
+
+{{< collapse summary="Solution" >}}
+**Step 1:** Slide a window of length 3: indices 0–2, 1–3, 2–4. **Step 2:** For each start index `i`, take the mean of `arr[i:i+3]`. **Code:** `def moving_average(arr, window=3): return [sum(arr[i:i+window])/window for i in range(len(arr)-window+1)]`. **In RL:** We use this to smooth learning curves (episode return over time).
+{{< /collapse >}}
 
 ---
 

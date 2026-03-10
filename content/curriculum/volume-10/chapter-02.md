@@ -4,6 +4,8 @@ description: "Constrained MDP for self-driving; Lagrangian penalty."
 date: 2026-03-10T00:00:00Z
 weight: 92
 draft: false
+tags: ["safe RL", "constrained MDP", "Lagrangian", "self-driving", "curriculum"]
+keywords: ["safe reinforcement learning", "constrained MDP", "Lagrangian", "self-driving"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **λ too large:** If λ becomes huge, the policy may only minimize cost and ignore task reward. Clip λ or use a bounded dual update.
 - **Constraint not measurable:** Ensure cost is well-defined (e.g. binary collision per step) and that you can estimate E[cost] from rollouts.
 - **Delayed cost:** If cost (e.g. collision) is rare, the gradient may be high variance; use many episodes to estimate the constraint before updating λ.
+
+{{< collapse summary="Worked solution (warm-up: constrained RL)" >}}
+**Key idea:** We want to maximize return subject to \\(\\mathbb{E}[\\text{cost}] \\leq d\\). Lagrangian: \\(L = J - \\lambda (C - d)\\) where \\(C\\) is expected cost. We maximize over the policy and minimize over \\(\\lambda\\). So we increase \\(\\lambda\\) when the constraint is violated (cost > d) and decrease when satisfied. This yields a policy that satisfies the constraint at convergence. Used in safe RL (e.g. CPO, PPO-Lagrangian).
+{{< /collapse >}}
 
 **Extra practice**
 

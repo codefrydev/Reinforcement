@@ -4,6 +4,8 @@ description: "Essay: foundation models and RL; architectures; path toward AGI."
 date: 2026-03-10T00:00:00Z
 weight: 100
 draft: false
+tags: ["future of RL", "foundation models", "AGI", "essay", "curriculum"]
+keywords: ["future of reinforcement learning", "foundation models", "AGI", "RL architectures"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Too vague:** Avoid only high-level claims; include at least one or two concrete architecture or method ideas.
 - **Ignoring RL:** The essay should be about RL + foundation models, not only about foundation models. RL brings goals, exploration, and sequential decision-making.
 - **Overclaiming about AGI:** Speculation is fine, but avoid sounding like a press release. Acknowledge uncertainty and open problems.
+
+{{< collapse summary="Worked solution (warm-up: future of RL)" >}}
+**Key idea:** RL is used in games, robotics, recommendation, and LLM alignment. Open directions: more sample-efficient methods, better offline RL, safe and robust deployment, multi-agent and cooperative scaling, and combining RL with large models. The curriculum you completed (from bandits to deep RL, model-based, multi-agent, and applications) gives you the foundations to follow and contribute to these developments. Keep building and reading papers.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "REINFORCE for CartPole with softmax policy; note variance."
 date: 2026-03-10T00:00:00Z
 weight: 33
 draft: false
+tags: ["REINFORCE", "CartPole", "softmax policy", "variance", "curriculum"]
+keywords: ["REINFORCE algorithm", "policy gradient", "CartPole", "variance"]
 ---
 
 **Learning objectives**
@@ -32,6 +34,10 @@ draft: false
 - **Using reward instead of return:** The gradient uses \\(G_t\\) (return from step \\(t\\) to end), not just \\(r_t\\). Sum discounted rewards from \\(t\\) onward.
 - **Wrong sign on loss:** PyTorch minimizes loss; we want to maximize return, so loss = -\\( \sum_t G_t \log \pi(a_t|s_t) \\) (minus the policy gradient objective).
 - **Not normalizing returns (optional):** For stability, some implementations normalize \\(G_t\\) to zero mean and unit variance over the batch; helps with learning rate.
+
+{{< collapse summary="Worked solution (warm-up: G_t and REINFORCE update)" >}}
+**Warm-up:** \\(G_0 = 0 + 0.9\\cdot 0 + 0.81\\cdot 1 = 0.81\\), \\(G_1 = 0 + 0.9\\cdot 1 = 0.9\\), \\(G_2 = 1\\). REINFORCE update (one term per step): \\(\\theta \\leftarrow \\theta + \\alpha \\sum_t \\nabla_\\theta \\log \\pi(a_t|s_t) \\cdot G_t\\). So we multiply the log-probability gradient at each step by the return from that step; higher returns get more weight, which pushes the policy toward actions that led to high return.
+{{< /collapse >}}
 
 **Extra practice**
 

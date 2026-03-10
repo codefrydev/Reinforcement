@@ -4,6 +4,8 @@ description: "Simplified Go-Explore on deterministic maze; archive and return."
 date: 2026-03-10T00:00:00Z
 weight: 66
 draft: false
+tags: ["Go-Explore", "archive", "exploration", "maze", "curriculum"]
+keywords: ["Go-Explore", "archive", "deterministic maze", "exploration"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Stochastic environments:** Go-Explore assumes you can reset to an exact state; in stochastic envs you need a different formulation (e.g. robust or cell-based). Stick to deterministic for the simplified version.
 - **Archive explosion:** If you archive every state, the archive becomes huge and selection is slow; use criteria (e.g. only states that improved reward, or one state per cell) to keep the archive manageable.
 - **Forgetting the goal:** The explore phase should still reward or track progress toward the goal; otherwise the agent may only archive states that are easy to reach but not on the path to the goal.
+
+{{< collapse summary="Worked solution (warm-up: goal-conditioned exploration)" >}}
+**Key idea:** In goal-conditioned RL we train the agent to reach a set of goals. Exploration can be directed: e.g. sample a goal (from a curriculum or from an archive of reached states), then try to reach it. The agent gets reward for reaching the chosen goal. This focuses exploration on "reachable but not yet mastered" goals and can be much more efficient than undirected exploration in sparse-reward settings.
+{{< /collapse >}}
 
 **Extra practice**
 

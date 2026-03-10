@@ -4,6 +4,8 @@ description: "Chapters 41–50 — TRPO, PPO, GAE, PPO implementation, max entro
 date: 2026-03-10T00:00:00Z
 weight: 5
 draft: false
+tags: ["curriculum", "volume 5", "PPO", "TRPO", "SAC", "GAE", "max entropy"]
+keywords: ["PPO", "TRPO", "SAC", "generalized advantage estimation", "max entropy RL", "policy optimization", "hyperparameter tuning"]
 ---
 
 Problems with standard policy gradients, TRPO, PPO (intuition and implementation), GAE, maximum entropy RL, Soft Actor-Critic (SAC), SAC vs PPO, custom continuous environments, and advanced tuning. Chapters 41–50.

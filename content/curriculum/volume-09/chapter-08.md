@@ -4,6 +4,8 @@ description: "MAPPO with parameter sharing; centralized value; compare with IPPO
 date: 2026-03-10T00:00:00Z
 weight: 88
 draft: false
+tags: ["MAPPO", "multi-agent PPO", "parameter sharing", "curriculum"]
+keywords: ["MAPPO", "multi-agent PPO", "parameter sharing", "centralized value", "IPPO"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Observation format:** With parameter sharing, ensure each agent's observation has the same size/shape (e.g. pad or use relative coordinates). Include agent id or a one-hot if the role can differ.
 - **Advantage computation:** Use the same advantage for all agents in a step (team reward) when the task is fully cooperative; otherwise use per-agent reward for advantage.
 - **Central value at execution:** The centralized value is only for training; at test time we only need π(a_i | o_i) for each agent.
+
+{{< collapse summary="Worked solution (warm-up: COMA)" >}}
+**Key idea:** COMA uses a centralized critic \\(V(s)\\) or \\(Q(s, u)\\) and counterfactual advantage: for agent \\(i\\), \\(A_i = Q(s, u) - \\sum_{u_i'} \\pi_i(u_i'|o_i) Q(s, (u_{-i}, u_i'))\\). So we compare the joint action to the expected value if \\(i\\) had acted differently (marginalizing over \\(i\\)’s policy). This gives a credit assignment signal for \\(i\\) that accounts for others’ actions. Execution is decentralized (\\(\\pi_i\\) only).
+{{< /collapse >}}
 
 **Extra practice**
 

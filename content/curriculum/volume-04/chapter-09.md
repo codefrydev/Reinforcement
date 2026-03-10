@@ -4,6 +4,8 @@ description: "DDPG for Pendulum with OU noise and target networks."
 date: 2026-03-10T00:00:00Z
 weight: 39
 draft: false
+tags: ["DDPG", "Pendulum", "OU noise", "target networks", "curriculum"]
+keywords: ["DDPG", "Deep Deterministic Policy Gradient", "Pendulum", "OU noise"]
 ---
 
 **Learning objectives**
@@ -32,6 +34,10 @@ draft: false
 
 - **Forgetting to clamp actions:** Pendulum may expect actions in \\([-2, 2]\\); after adding noise, clip to the env’s action space.
 - **No gradient through target:** When computing \\(y\\), use \\(\mu_{target}(s')\\) and \\(Q_{target}(s', a')\\) with `.detach()` so the target is not updated by the current batch.
+
+{{< collapse summary="Worked solution (warm-up: why DDPG needs replay and target)" >}}
+**Warm-up:** Replay buffer: to decorrelate consecutive samples (i.i.d. batches) and reuse experience for sample efficiency, same as DQN. Target networks: to stabilize the TD target \\(y = r + \\gamma Q_{target}(s', \\mu_{target}(s'))\\); without a target, the label would change every update and learning would be unstable. DDPG uses soft updates (\\(\\tau\\)) to slowly track the online network.
+{{< /collapse >}}
 
 **Extra practice**
 

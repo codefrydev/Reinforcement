@@ -4,6 +4,8 @@ description: "RNN policy with (state, action, reward, done) input; POMDP tasks."
 date: 2026-03-10T00:00:00Z
 weight: 69
 draft: false
+tags: ["RNN", "POMDP", "recurrent policy", "partial observability", "curriculum"]
+keywords: ["RNN policy", "POMDP", "state action reward done", "recurrent"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Forgetting to pass previous (a, r, done):** The key of RL² is that the policy conditions on the full history via (s, a, r, done); if you only pass state, it reduces to a standard policy and won't adapt.
 - **Credit assignment:** Long episodes make BPTT difficult; use truncated BPTT or a policy gradient that doesn't require backprop through the whole episode (e.g. REINFORCE with baseline).
 - **Task distribution:** If all tasks are too similar, the RNN may not learn meaningful adaptation; ensure tasks differ (e.g. different goals, different transition dynamics) so that history is informative.
+
+{{< collapse summary="Worked solution (warm-up: RNN for meta-RL)" >}}
+**Key idea:** An RNN (e.g. LSTM) can implement an implicit inner loop: the hidden state is updated at each step and can encode "what I have learned so far in this episode." We train the RNN so that its policy (and hidden state dynamics) lead to high return across many different tasks. No explicit inner-loop update is needed; the recurrence is the adaptation. This is simpler than MAML-style meta-RL but less interpretable.
+{{< /collapse >}}
 
 **Extra practice**
 

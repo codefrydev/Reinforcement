@@ -4,6 +4,8 @@ description: "Policy iteration and comparison with value iteration."
 date: 2026-03-10T00:00:00Z
 weight: 8
 draft: false
+tags: ["dynamic programming", "policy iteration", "value iteration", "curriculum"]
+keywords: ["policy iteration", "value iteration", "dynamic programming", "optimal policy"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,12 @@ draft: false
 - **Improving before evaluation converges:** The theory assumes we evaluate until \\(V = V^\\pi\\) (or close). If you do only one evaluation sweep per iteration, you are doing "value iteration-like" updates; it still works but is not strict policy iteration.
 - **Ties in argmax:** If two actions have the same one-step value, pick one consistently (e.g. lowest index). The policy is still optimal; only the representation of the optimal policy may differ.
 - **Comparing policies:** Policy iteration and value iteration both yield the same optimal \\(V^*\\) and an optimal policy. Differences in the *reported* policy can occur only due to tie-breaking or implementation bugs.
+
+{{< collapse summary="Worked solution (warm-up: one round of policy iteration)" >}}
+**Warm-up:** After one round of policy iteration (evaluate once, improve once), is the new policy necessarily different from the initial random policy? Explain in one sentence.
+
+**Answer:** Not necessarily. The new policy is greedy with respect to \\(V^\pi\\) for the *current* policy \\(\pi\\). If the initial random policy happened to be already greedy with respect to its own value function (e.g. by chance every state’s best one-step action was chosen with positive probability), the improved policy could be the same. In practice, for a 4×4 gridworld with uniform random, the first improvement usually *does* change the policy (e.g. states near a terminal become greedy toward that terminal). So one round gives a *possibly* different policy; it is at least as good as the initial one.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -1,0 +1,37 @@
+{{- $id := printf "chart-%s-%d" .Page.File.UniqueID .Ordinal -}}
+{{- $type := default "line" (.Get "type") -}}
+{{- $title := default "Data" (.Get "title") -}}
+<div class="chart-container" style="position: relative; height: 220px; margin: 1rem 0;">
+  <canvas id="{{ $id }}"></canvas>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" crossorigin="anonymous"></script>
+<script>
+(function() {
+  var rawLabels = "{{ .Get "labels" }}";
+  var rawData = "{{ .Get "data" }}";
+  var labels = rawLabels ? rawLabels.split(",").map(function(s) { return s.trim(); }) : [];
+  var data = rawData ? rawData.split(",").map(function(s) { return parseFloat(s.trim()); }) : [];
+  var ctx = document.getElementById("{{ $id }}");
+  if (!ctx) return;
+  new Chart(ctx.getContext("2d"), {
+    type: "{{ $type }}",
+    data: {
+      labels: labels,
+      datasets: [{
+        label: "{{ $title }}",
+        data: data,
+        borderColor: "rgb(75, 192, 192)",
+        backgroundColor: "rgba(75, 192, 192, 0.1)",
+        tension: 0.3,
+        fill: true
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: true } },
+      scales: { x: { display: true }, y: { display: true } }
+    }
+  });
+})();
+</script>

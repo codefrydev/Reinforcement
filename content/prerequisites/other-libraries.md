@@ -4,6 +4,8 @@ description: "JAX, stable-baselines3, wandb, and other RL-related tools."
 date: 2026-03-10T00:00:00Z
 weight: 80
 draft: false
+tags: ["JAX", "stable-baselines3", "wandb", "libraries", "prerequisites"]
+keywords: ["JAX", "stable-baselines3", "wandb", "RL tools", "other libraries"]
 ---
 
 Optional tools you may encounter or use alongside the curriculum: JAX for fast autograd and JIT, Stable-Baselines3 for ready-made algorithms, and Weights & Biases for experiment tracking. No need to master these before starting; refer back when an exercise or chapter mentions them.

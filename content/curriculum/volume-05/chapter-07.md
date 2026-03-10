@@ -4,6 +4,8 @@ description: "SAC for HalfCheetah with automatic temperature tuning."
 date: 2026-03-10T00:00:00Z
 weight: 47
 draft: false
+tags: ["SAC", "HalfCheetah", "temperature tuning", "curriculum"]
+keywords: ["Soft Actor-Critic", "SAC", "HalfCheetah", "automatic temperature"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 
 - **Log_prob with squashing:** For \\(a = \\tanh(a_{raw})\\), \\(\\log \\pi(a) = \\log \\pi(a_{raw}) - \\sum \\log(1 - a^2)\\). Forgetting the correction gives wrong gradients.
 - **Target entropy sign:** \\(\\mathcal{H}_{target}\\) is negative (e.g. -6 for dim 6). The \\(\\alpha\\) update uses \\(\\log \\pi + \\mathcal{H}_{target}\\); when entropy is low, \\(\\log \\pi\\) is large negative, so \\(\\log \\pi + \\mathcal{H}_{target}\\) is negative, and we want to increase \\(\\alpha\\) (so the loss for \\(\\alpha\\) is negative and we do gradient descent on \\(-\\alpha (\\ldots)\\) to increase \\(\\alpha\\)).
+
+{{< collapse summary="Worked solution (warm-up: SAC alpha loss)" >}}
+**Key idea:** SAC minimizes \\(J(\\alpha) = \\mathbb{E}[ -\\alpha (\\log \\pi(a|s) + \\mathcal{H}_{target}) ]\\). When entropy is below target, \\(\\log \\pi + \\mathcal{H}_{target} < 0\\), so \\(-\\alpha (\\ldots) > 0\\) for \\(\\alpha > 0\\); we increase \\(\\alpha\\) to weight entropy more and encourage exploration. When entropy is above target we decrease \\(\\alpha\\). So \\(\\alpha\\) adapts to keep entropy near the target.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Compare Dreamer and PPO sample efficiency on Walker."
 date: 2026-03-10T00:00:00Z
 weight: 51
 draft: false
+tags: ["model-free", "model-based", "Dreamer", "PPO", "sample efficiency", "curriculum"]
+keywords: ["model-free vs model-based", "Dreamer", "PPO", "Walker", "sample efficiency"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Comparing by wall-clock time:** Model-based often does more compute per step; compare by env steps (or report both).
 - **Different hyperparameters:** Use reasonable defaults for each; document so the comparison is fair.
+
+{{< collapse summary="Worked solution (warm-up: why a learned model helps)" >}}
+**Warm-up:** A learned model lets us generate *simulated* transitions without touching the real environment. We can do many updates (planning) per real step, so we extract more learning signal from each sample. That improves sample efficiency: we need fewer real env steps to reach the same performance. The trade-off is model error (compounding over long rollouts) and extra compute per step.
+{{< /collapse >}}
 
 **Extra practice**
 

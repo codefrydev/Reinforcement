@@ -4,6 +4,8 @@ description: "Generalized Advantage Estimation (GAE) function."
 date: 2026-03-10T00:00:00Z
 weight: 44
 draft: false
+tags: ["PPO", "GAE", "generalized advantage estimation", "curriculum"]
+keywords: ["GAE", "Generalized Advantage Estimation", "PPO", "advantage"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Off-by-one in value indices:** Ensure \\(V(s_{t+1})\\) is used in \\(\\delta_t\\); for the last step, use \\(V(s_T)\\) if non-terminal or 0 if done.
 - **Done flag:** If the episode ends at step \\(T\\), set \\(V(s_T)=0\\) (or mask the bootstrap). Otherwise you will use the value of a state that starts the next episode.
+
+{{< collapse summary="Worked solution (warm-up: GAE)" >}}
+**Key idea:** GAE is \\(\\hat{A}_t = \\sum_{l=0}^{\\infty} (\\gamma \\lambda)^l \\delta_{t+l}\\) with \\(\\delta_t = r_t + \\gamma V(s_{t+1}) - V(s_t)\\). \\(\\lambda=0\\) gives TD(0); \\(\\lambda=1\\) gives the full return minus baseline. \\(\\lambda \\in (0,1)\\) balances bias and variance. We compute it backward in one pass: \\(\\hat{A}_t = \\delta_t + \\gamma \\lambda \\hat{A}_{t+1}\\), with \\(\\hat{A}_T = 0\\) at episode end.
+{{< /collapse >}}
 
 **Extra practice**
 

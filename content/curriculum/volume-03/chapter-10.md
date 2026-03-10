@@ -4,6 +4,8 @@ description: "Combine DDQN, Dueling, PER, NoisyNet, multi-step; train on Pong."
 date: 2026-03-10T00:00:00Z
 weight: 30
 draft: false
+tags: ["Rainbow", "DQN", "Pong", "DDQN", "Dueling", "PER", "curriculum"]
+keywords: ["Rainbow DQN", "DDQN Dueling PER NoisyNet", "Pong", "combined improvements"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Overfitting the baseline:** Use a strong baseline (e.g. DQN with replay + target + maybe DDQN). A very weak baseline makes Rainbow look good even if the gain is from one component.
 - **Hyperparameters:** Rainbow has more hyperparameters (PER \\(\\alpha\\), \\(\\beta\\), Noisy init, n-step). Tune or use published defaults; do not compare with a heavily tuned DQN vs. untuned Rainbow.
 - **Distributional (C51):** Optional and more complex (output a distribution over returns per action, then project and minimize cross-entropy). You can skip it and still have a "Rainbow-lite" that is very effective.
+
+{{< collapse summary="Worked solution (warm-up: six components of Rainbow)" >}}
+**Warm-up:** List the six (or seven) components of Rainbow. For each, state in one sentence what problem it addresses. **Answer:** (1) **DQN** — base: replay + target network for stability. (2) **Double DQN** — reduces max overestimation. (3) **Prioritized replay** — samples important transitions more. (4) **Dueling** — separates V and A for better learning when actions don’t matter much. (5) **Multi-step (n-step)** — uses n-step returns for less bias. (6) **Noisy nets** — parameter space exploration instead of \\(\\epsilon\\)-greedy. (7) **C51 (distributional)** — learns return distribution. Together they improve sample efficiency and stability.
+{{< /collapse >}}
 
 **Extra practice**
 

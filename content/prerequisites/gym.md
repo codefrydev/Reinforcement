@@ -4,6 +4,8 @@ description: "Standard RL environments: reset, step, spaces, wrappers, and seedi
 date: 2026-03-10T00:00:00Z
 weight: 70
 draft: false
+tags: ["Gym", "Gymnasium", "environments", "reset", "step", "prerequisites"]
+keywords: ["OpenAI Gym", "Gymnasium", "RL environments", "reset step", "spaces", "wrappers"]
 ---
 
 The curriculum uses Gym-style environments (e.g. Blackjack, Cliff Walking, CartPole, LunarLander). [Gymnasium](https://gymnasium.farama.org/) is the maintained fork of OpenAI Gym. The same API appears in many exercises: reset, step, observation and action spaces.

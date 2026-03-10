@@ -4,6 +4,8 @@ description: "Double DQN: online selects, target evaluates; compare with DQN."
 date: 2026-03-10T00:00:00Z
 weight: 26
 draft: false
+tags: ["Double DQN", "DDQN", "DQN", "overestimation", "curriculum"]
+keywords: ["Double DQN", "DDQN", "overestimation", "target network"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ Standard DQN uses \\(y = r + \\gamma \\max_{a'} Q_{target}(s',a')\\). The max ov
 - **Using target for both select and eval:** That would be standard DQN. DDQN must use *online* for argmax and *target* for the value.
 - **Gradient through a*:** When you compute \\(a^*\\) from the online network, do not backprop through that when computing the loss. The target \\(Q_{target}(s', a^*)\\) is a constant. Use `.detach()` on the target tensor.
 - **Batch dimension:** For a batch of (s, a, r, s', done), you need \\(a^*\\) and \\(Q_{target}(s', a^*)\\) per sample. Use `torch.gather` or index: `Q_target(s').gather(1, a_star.unsqueeze(1)).squeeze(1)`.
+
+{{< collapse summary="Worked solution (warm-up: why max Q overestimates)" >}}
+**Warm-up:** In one sentence, why does \\(\\max_a Q(s,a)\\) overestimate the true value when \\(Q\\) is noisy? **Answer:** The max of noisy unbiased estimates is biased upward: even if each \\(Q(s,a)\\) is unbiased, the one that happens to be largest in a batch is likely to have positive noise, so \\(\\max_a Q(s,a) \\geq \\) true \\(Q^*\\) on average. Double DQN reduces this by using the online network to select the action and the target network to evaluate it, decorrelating the selection from the evaluation.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Self-play in Tic-Tac-Toe; track ELO."
 date: 2026-03-10T00:00:00Z
 weight: 89
 draft: false
+tags: ["self-play", "league training", "Tic-Tac-Toe", "ELO", "curriculum"]
+keywords: ["self-play", "league training", "Tic-Tac-Toe", "ELO", "MARL"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **State representation:** For symmetry, the same player should see the same input (e.g. "my pieces = 1, opponent = -1" and swap for the other player). Otherwise the policy may learn asymmetric play.
 - **Draw handling:** Tic-Tac-Toe has many draws once both play well; reward draw as 0 and ensure the policy gets a gradient (e.g. small reward for draw so it learns to avoid loss).
 - **ELO implementation:** Standard ELO: expected score = 1/(1+10^((R_opp-R_self)/400)); update R_self += K * (actual_score - expected_score). For a single agent, you can track R vs a fixed random agent.
+
+{{< collapse summary="Worked solution (warm-up: ELO)" >}}
+**Key idea:** ELO rates agents by pairwise comparison: expected score of A vs B is \\(1/(1+10^{(R_B - R_A)/400})\\). After a game, update \\(R_A += K (\\text{actual} - \\text{expected})\\). So we get a single number per agent that reflects strength; we can rank many agents without a round-robin. Used in games and to track progress in self-play (e.g. AlphaStar). For MARL we can report ELO vs a baseline pool.
+{{< /collapse >}}
 
 **Extra practice**
 

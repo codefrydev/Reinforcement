@@ -4,6 +4,8 @@ description: "Expected SARSA vs Q-learning; variance and learning curves."
 date: 2026-03-10T00:00:00Z
 weight: 15
 draft: false
+tags: ["Expected SARSA", "Q-learning", "variance", "curriculum"]
+keywords: ["Expected SARSA", "Q-learning", "variance", "learning curves"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Wrong formula for expected value:** The expected value under \\(\epsilon\\)-greedy is *not* just \\(\\max_a Q(s',a)\\). It is a weighted average of the greedy value and the average of all Q-values.
 - **Using the same \\(\\pi\\) for behavior and target:** For Expected SARSA we usually use the same \\(\epsilon\\)-greedy policy for both (on-policy). So the target uses the *current* policy's expectation, and we collect data with that policy.
 - **Numerical precision:** For many actions, \\(\\frac{1}{n}\\sum_a Q(s',a)\\) can be computed once; avoid recomputing in a loop if \\(n\\) is large.
+
+{{< collapse summary="Worked solution (warm-up: Expected SARSA target for 2 actions)" >}}
+**Warm-up:** For 2 actions and \\(\\epsilon=0.1\\), write the Expected SARSA target in terms of \\(Q(s',0)\\) and \\(Q(s',1)\\) when the greedy action is 0. **Step 1:** Under \\(\\epsilon\\)-greedy, with probability \\(1-\\epsilon\\) we take action 0, with probability \\(\\epsilon\\) we take action 0 or 1 uniformly (so 0.5 each). So expected next value = \\((1-0.1) Q(s',0) + 0.1 \\cdot \\frac{1}{2}[Q(s',0)+Q(s',1)] = 0.9 Q(s',0) + 0.05 Q(s',0) + 0.05 Q(s',1) = 0.95 Q(s',0) + 0.05 Q(s',1)\\). **Step 2:** Target = \\(r + \\gamma (0.95 Q(s',0) + 0.05 Q(s',1))\\). This is the Expected SARSA update; it uses the expectation over the next action instead of a single sample (SARSA) or max (Q-learning).
+{{< /collapse >}}
 
 **Extra practice**
 

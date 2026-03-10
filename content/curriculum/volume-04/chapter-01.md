@@ -4,6 +4,8 @@ description: "When a stochastic policy is essential; why deterministic fails."
 date: 2026-03-10T00:00:00Z
 weight: 31
 draft: false
+tags: ["policy gradient", "stochastic policy", "REINFORCE", "curriculum"]
+keywords: ["policy-based methods", "stochastic policy", "deterministic policy", "exploration"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Assuming deterministic is always simpler:** In adversarial or partially observable settings, deterministic policies can be strictly worse; the "simplicity" of one action per state is a downside.
 - **Confusing exploration with stochastic policy:** Exploration (e.g. ε-greedy) is one way to get randomness; a stochastic policy *is* a distribution over actions at every step, which naturally explores.
+
+{{< collapse summary="Worked solution (warm-up: deterministic vs stochastic policy)" >}}
+**Warm-up:** One example where deterministic is fine: a fully observed, deterministic environment (e.g. simple gridworld with no noise). One where stochastic is essential: when the optimal policy is mixed (e.g. rock-paper-scissors, or exploration in bandits). In RL we often use stochastic policies for exploration and for problems with multiple good actions; policy gradient methods learn a parameterized distribution \\(\\pi(a|s;\\theta)\\).
+{{< /collapse >}}
 
 **Extra practice**
 

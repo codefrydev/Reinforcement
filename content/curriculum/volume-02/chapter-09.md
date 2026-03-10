@@ -4,6 +4,8 @@ description: "Grid search over α and ε for Q-learning on Cliff Walking."
 date: 2026-03-10T00:00:00Z
 weight: 19
 draft: false
+tags: ["hyperparameter tuning", "Q-learning", "grid search", "Cliff Walking", "curriculum"]
+keywords: ["hyperparameter tuning", "grid search", "alpha epsilon", "Q-learning"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Too few trials:** One trial per combination is noisy. Use at least 5–10 seeds and report mean (and optionally std) so you can see variance.
 - **Wrong metric:** Use a metric that reflects final performance (e.g. mean reward over last 100 episodes, or total reward in a fixed episode count). Do not use only the first 10 episodes.
 - **Same seed for all:** Use different seeds per trial (e.g. seed = trial_id or random). Otherwise "10 trials" are identical and you get no variance estimate.
+
+{{< collapse summary="Worked solution (warm-up: mean and std over 3 trials)" >}}
+**Warm-up:** For one (\\(\\alpha\\), \\(\\epsilon\\)) pair, run 3 trials and compute mean and standard deviation of mean reward per episode. Why is std useful? **Answer:** Mean = (R1 + R2 + R3)/3; std = sqrt of variance of those 3 numbers. Std is useful because RL is noisy—different seeds give different results. Reporting mean ± std (or std error) shows whether a hyperparameter choice is reliably good or just lucky in one run. In papers we often report mean ± std over 5–10 seeds.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Reward function for self-driving car and reward hacking."
 date: 2026-03-10T00:00:00Z
 weight: 4
 draft: false
+tags: ["reward hypothesis", "reward function", "reward hacking", "curriculum"]
+keywords: ["reward hypothesis", "reward design", "reward hacking", "self-driving car"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,14 @@ The **reward hypothesis** says that we can capture what we want the agent to do 
 - **Rewarding the wrong thing:** "Distance to goal" can be gamed (move toward goal then away repeatedly if reward is given every step). Prefer terminal success reward or progress that cannot be reversed.
 - **Ignoring the agent's perspective:** The agent only sees the reward you give. If you forget to penalize something (e.g. comfort, legality), the agent will ignore it.
 - **Over-shaping:** Too much reward shaping can make the problem trivial or change the optimal policy. Prefer sparse, clear rewards when possible and add shaping only to help learning.
+
+{{< collapse summary="Worked solution (warm-up: reward hacking in a game)" >}}
+**Warm-up:** Give one example of reward hacking in a video game (e.g. "kill enemies" leading to farming spawn points). How would you change the reward to reduce the exploit?
+
+**Example:** Reward = +1 per enemy killed. The agent discovers that standing near a spawn point yields a steady stream of respawning enemies and thus very high reward without completing the level or taking risk.
+
+**Fix:** (1) Reward only for *level completion* or *objectives* (e.g. reach exit, defeat boss), not per kill. (2) Or cap reward per time window / per spawn region so that farming one spot has diminishing returns. (3) Or add a time penalty so that delaying (farming) reduces total return. The key is to tie reward to the *intended* goal (finish the level) rather than to a proxy (raw kill count) that can be gamed. In RL we always optimize the reward we define—so the design must match the real goal.
+{{< /collapse >}}
 
 **Extra practice**
 

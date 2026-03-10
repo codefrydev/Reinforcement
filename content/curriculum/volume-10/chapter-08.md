@@ -4,6 +4,8 @@ description: "PPO on 10 seeds; mean, std; rliable confidence intervals."
 date: 2026-03-10T00:00:00Z
 weight: 98
 draft: false
+tags: ["evaluation", "PPO", "rliable", "confidence intervals", "curriculum"]
+keywords: ["evaluating RL agents", "multiple seeds", "mean std", "rliable", "confidence intervals"]
 ---
 
 **Learning objectives**
@@ -35,6 +37,10 @@ draft: false
 - **Too few seeds:** 10 is a minimum; for papers, 5–10 seeds are common but more is better. With 3 seeds, intervals are very wide.
 - **Evaluation episodes:** Use a fixed number of eval episodes per seed (e.g. 50) and no exploration (deterministic policy or ε=0) so returns are comparable.
 - **rliable API:** Check the library docs for the exact function (e.g. get_interval or aggregate_metrics); the input format may be a matrix (runs × episodes).
+
+{{< collapse summary="Worked solution (warm-up: evaluation and CIs)" >}}
+**Key idea:** We run \\(N\\) seeds and get returns per episode. We report mean and a confidence interval (e.g. 95% CI via bootstrap or standard error). The rliable library provides stratified bootstrap CIs that are more robust for RL (skewed, heavy-tailed returns). So we can say "algorithm A: 100 ± 10 (95% CI [82, 118])" and compare algorithms with statistical rigor. Always report multiple seeds; one run is not enough.
+{{< /collapse >}}
 
 **Extra practice**
 

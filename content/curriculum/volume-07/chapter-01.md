@@ -4,6 +4,8 @@ description: "DQN with ε-greedy on Montezuma's Revenge; sparse rewards."
 date: 2026-03-10T00:00:00Z
 weight: 61
 draft: false
+tags: ["exploration", "sparse rewards", "Montezuma's Revenge", "DQN", "curriculum"]
+keywords: ["hard exploration", "sparse rewards", "Montezuma's Revenge", "epsilon-greedy"]
 ---
 
 **Learning objectives**
@@ -32,6 +34,10 @@ The gradient only flows when the agent gets a non-zero reward; without that, Q-v
 
 - **Blaming the algorithm:** DQN is fine for dense rewards; the issue is the reward structure, not DQN per se. Same for other model-free methods.
 - **Short runs:** Run for at least 1M steps (or 10k episodes) to see that the agent rarely succeeds.
+
+{{< collapse summary="Worked solution (warm-up: sparse reward)" >}}
+**Key idea:** In sparse-reward settings (e.g. reward only at goal), random exploration rarely finds the goal, so the agent gets almost no learning signal. Count-based or curiosity bonuses add an intrinsic reward for visiting "novel" states, so the agent is encouraged to explore and eventually reaches the goal. Then the extrinsic return provides a signal to reinforce that behavior.
+{{< /collapse >}}
 
 **Extra practice**
 

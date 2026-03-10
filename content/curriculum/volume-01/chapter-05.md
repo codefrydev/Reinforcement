@@ -4,6 +4,8 @@ description: "State-value function V^π for random policy on Chapter 3 MDP."
 date: 2026-03-10T00:00:00Z
 weight: 5
 draft: false
+tags: ["value function", "state-value", "policy evaluation", "curriculum"]
+keywords: ["value function", "V pi", "state-value function", "random policy"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,16 @@ The **state-value function** \\(V^\\pi(s)\\) is the expected (discounted) return
 - **Wrong sign for rewards:** Rewards are part of the Bellman equation as \\(r + \\gamma V(s')\\). If your MDP defines "cost" as positive, use \\(-r\\) in the equation so that higher value means better.
 - **Using the wrong policy:** The exercise asks for the *random* policy (\\(\\pi(a|s)=0.5\\) for each action). Do not use the optimal policy.
 - **Forgetting discount:** \\(V(s)\\) includes \\(\\gamma\\) in front of the next-state value. If you write \\(V = r + V'\\) you are effectively using \\(\\gamma=1\\).
+
+{{< collapse summary="Worked solution (warm-up: one-state MDP)" >}}
+**Warm-up:** For a one-state MDP with one action that gives reward 1 and stays in the same state, write the Bellman equation and solve for \\(V\\).
+
+**Step 1 — Bellman equation:** From the only state, we get reward 1 and stay. So \\(V = r + \\gamma V = 1 + \\gamma V\\).
+
+**Step 2 — Solve:** \\(V - \\gamma V = 1\\), so \\(V(1 - \\gamma) = 1\\), hence \\(V = \\frac{1}{1-\\gamma}\\).
+
+**Check:** For \\(\\gamma = 0.9\\), \\(V = 10\\) (infinite-horizon return \\(1 + 0.9 + 0.81 + \\cdots\\)). The same matrix form \\((I - \\gamma P^\\pi)V = r^\\pi\\) is used for the Chapter 3 two-state MDP with random policy.
+{{< /collapse >}}
 
 **Extra practice**
 

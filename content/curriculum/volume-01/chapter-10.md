@@ -4,6 +4,8 @@ description: "State and transition count for 10×10 gridworld; function approxim
 date: 2026-03-10T00:00:00Z
 weight: 10
 draft: false
+tags: ["dynamic programming", "function approximation", "tabular limits", "curriculum"]
+keywords: ["limitations of DP", "function approximation", "state count", "tabular methods"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,14 @@ draft: false
 - **Underestimating growth:** Doubling grid side length quadruples the number of states. In high dimensions (e.g. 10 dimensions, 10 cells each), state count is \\(10^{10}\\)—no tabular method can handle that.
 - **Confusing transition count with value count:** We need both: transition model \\(P(s',r|s,a)\\) for DP, and we store \\(V(s)\\) or \\(Q(s,a)\\). The transition model is often the bigger storage (especially if we do not have a compact model).
 - **Assuming FA is always better:** Function approximation can generalize wrongly (e.g. bad values in unseen states) and can diverge if not carefully designed. Tabular methods are stable when the state space is small enough.
+
+{{< collapse summary="Worked solution (warm-up: tabular Q size)" >}}
+**Warm-up:** A 5×5 grid has 25 states. How many entries does a tabular \\(Q(s,a)\\) table have if there are 4 actions?
+
+**Step 1:** We need one \\(Q(s,a)\\) value for each state \\(s\\) and each action \\(a\\). So number of entries = \\(|S| \times |A| = 25 \times 4 = 100\\).
+
+**Explanation:** Tabular \\(Q\\) grows linearly with states and actions. For a 10×10 grid with 4 actions that is 400 entries; for huge or continuous state spaces we cannot store a table, so we use function approximation (e.g. \\(Q(s,a; \\theta)\\) with a fixed number of parameters \\(\\theta\\)) to generalize across states.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -3,6 +3,8 @@ title: "Phase 3: RL Foundations — Milestones & Mini-Project"
 description: "Checkpoints after Vol 1 and Vol 2; mini-project: tabular Q-learning on Gridworld."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["phase 3", "foundations", "Q-learning", "Gridworld", "milestones", "learning path"]
+keywords: ["RL foundations", "Volume 1 Volume 2", "tabular Q-learning", "Gridworld", "milestones", "mini-project"]
 ---
 
 Phase 3 is [Volume 1: Mathematical Foundations](../../curriculum/volume-01/) and [Volume 2: Tabular Methods](../../curriculum/volume-02/) (chapters 1–20). Use the milestones below to confirm you are on track, then do the mini-project and take the foundations quiz.

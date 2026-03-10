@@ -4,6 +4,8 @@ description: "Max-entropy objective; why entropy encourages exploration."
 date: 2026-03-10T00:00:00Z
 weight: 46
 draft: false
+tags: ["max entropy", "SAC", "exploration", "entropy", "curriculum"]
+keywords: ["maximum entropy RL", "entropy bonus", "exploration", "SAC"]
 ---
 
 **Learning objectives**
@@ -32,6 +34,10 @@ Start from the Bellman equation with entropy; the optimal policy has a closed fo
 
 - **Confusing entropy of policy with entropy of state distribution:** We add \\(\\mathcal{H}(\\pi(\\cdot|s))\\) (entropy of the action distribution given state), not the entropy of the state visitation distribution.
 - **Alpha too large:** If \\(\\alpha\\) is huge, the agent ignores reward and just maximizes entropy (random policy). Tune \\(\\alpha\\) or use automatic tuning (SAC).
+
+{{< collapse summary="Worked solution (warm-up: entropy coefficient)" >}}
+**Key idea:** In maximum entropy RL we maximize return plus \\(\\alpha \\mathcal{H}(\\pi)\\). \\(\\alpha\\) controls the trade-off: large \\(\\alpha\\) favors random policies (high entropy); small \\(\\alpha\\) favors greedy. SAC uses a target entropy (e.g. \\(-\\dim(\\text{action})\\)) and tunes \\(\\alpha\\) automatically so the policy’s entropy tracks the target. That keeps exploration without hand-tuning \\(\\alpha\\).
+{{< /collapse >}}
 
 **Extra practice**
 

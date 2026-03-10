@@ -4,6 +4,8 @@ description: "SARSA on Cliff Walking; plot sum of rewards per episode."
 date: 2026-03-10T00:00:00Z
 weight: 13
 draft: false
+tags: ["SARSA", "on-policy", "Cliff Walking", "curriculum"]
+keywords: ["SARSA", "on-policy TD control", "Cliff Walking", "temporal difference"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Using max instead of a':** SARSA uses \\(Q(s',a')\\) where \\(a'\\) is the action *actually taken* in \\(s'\\). If you use \\(\\max_{a'} Q(s',a')\\) you have Q-learning, not SARSA.
 - **When to choose a':** Choose \\(a'\\) *after* arriving in \\(s'\\), before the next env.step. So the loop is: step → get \\(s', r\\) → choose \\(a'\\) from \\(s'\\) → update \\(Q(s,a)\\) with \\(Q(s',a')\\) → set \\(s,a = s',a'\\) and repeat.
 - **Terminal state:** When \\(s'\\) is terminal, \\(Q(s',a') = 0\\) (no next step). So the target is just \\(r\\) for the last transition.
+
+{{< collapse summary="Worked solution (warm-up: SARSA update and TD error)" >}}
+**Warm-up:** For one transition \\((s,a,r,s',a')\\), write the SARSA update in one line. What is the TD error? **Answer:** \\(Q(s,a) \\leftarrow Q(s,a) + \\alpha [r + \\gamma Q(s',a') - Q(s,a)]\\). The TD error is \\(\\delta = r + \\gamma Q(s',a') - Q(s,a)\\). We use the *actual* next action \\(a'\\) (on-policy); Q-learning would use \\(\\max_{a'} Q(s',a')\\) instead.
+{{< /collapse >}}
 
 **Extra practice**
 

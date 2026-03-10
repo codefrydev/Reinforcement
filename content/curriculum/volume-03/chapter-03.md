@@ -4,6 +4,8 @@ description: "DQN for CartPole with replay and target network."
 date: 2026-03-10T00:00:00Z
 weight: 23
 draft: false
+tags: ["DQN", "CartPole", "experience replay", "target network", "curriculum"]
+keywords: ["Deep Q-Networks", "DQN", "replay buffer", "target network", "CartPole"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Backprop through target:** The target \\(y\\) must be detached. If you do `loss = mse_loss(Q(s,a), r + gamma * Q_target(s',a').max())`, the target part should not have gradients (use `.detach()` on the target tensor).
 - **Done flag:** When done is True, the target is just \\(r\\) (no next state). So \\(y = r + \\gamma (1 - \\text{done}) \\max_{a'} Q_{target}(s',a')\\). For done=1 this gives \\(y = r\\).
 - **Replay before learning:** Do not perform gradient updates until the buffer has enough samples (e.g. at least batch_size). Early on, just collect experience.
+
+{{< collapse summary="Worked solution (warm-up: DQN target y)" >}}
+**Warm-up:** For one transition (s, a, r, s', done=0), write the target \\(y\\) in terms of \\(Q_{target}\\) and \\(\\gamma\\). For done=1, what is \\(y\\)? **Answer:** For done=0: \\(y = r + \\gamma \\max_{a'} Q_{target}(s', a')\\). For done=1 (terminal): \\(y = r\\) (no bootstrap). So in code: `y = r + (1 - done) * gamma * Q_target(s').max(dim=1)[0]`. We use the target network so the label is stable during training.
+{{< /collapse >}}
 
 **Extra practice**
 

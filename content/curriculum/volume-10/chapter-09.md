@@ -4,6 +4,8 @@ description: "Broken SAC: unit tests, logging Q/reward/entropy; diagnose."
 date: 2026-03-10T00:00:00Z
 weight: 99
 draft: false
+tags: ["debugging", "RL", "curriculum"]
+keywords: ["debugging RL", "RL code", "troubleshooting"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Assuming the env is correct:** Often the bug is in the env (e.g. wrong reward, done flag, or state). Test the env in isolation.
 - **Not checking gradients:** If a loss term is not connected to the graph (e.g. constant), gradients will be zero and that part of the model will not learn.
 - **Overlooking scale:** Rewards or Q-values that are too large can cause instability; too small and learning is slow. Log and normalize if needed.
+
+{{< collapse summary="Worked solution (warm-up: LLM scale)" >}}
+**Key idea:** When applying RL to large language models, we have huge state/action spaces (vocabulary, long sequences). We need to scale rewards and gradients: e.g. normalize advantages, clip rewards, use a small KL penalty coefficient so the policy doesn’t collapse. Training is expensive so we reuse a pretrained model and do a few PPO (or DPO) updates. Monitor reward and KL; if reward spikes and KL explodes, we are reward hacking—tune the KL penalty.
+{{< /collapse >}}
 
 **Extra practice**
 

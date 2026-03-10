@@ -4,6 +4,8 @@ description: "Custom 2D maze Gym env with text render."
 date: 2026-03-10T00:00:00Z
 weight: 18
 draft: false
+tags: ["Gym", "custom environment", "maze", "curriculum"]
+keywords: ["custom Gym environment", "OpenAI Gym", "environment API", "maze"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ Real RL often requires **custom environments**: simulators for robotics, games, 
 - **Gymnasium vs Gym:** Gymnasium uses `terminated` and `truncated`; Gym (old) used a single `done`. Use both flags and set `done = terminated or truncated` in your training loop.
 - **Observation type:** Many algorithms expect a numpy array or a consistent type. Avoid returning a different shape in different states (e.g. terminal). Use a fixed obs space even for terminal (e.g. same shape, zero or last state).
 - **Action semantics:** Document whether 0=up, 1=down, etc., and be consistent. In a 2D grid, "up" often means decrease row index.
+
+{{< collapse summary="Worked solution (warm-up: maze Q-table size)" >}}
+**Warm-up:** In your maze, how many possible observations (states)? How many actions? Size of tabular Q-table? **Answer:** States = number of cells the agent can occupy (e.g. 5×5 minus walls ⇒ e.g. 23 if 2 walls). Actions = 4 (up, down, left, right). Q-table size = states × actions (e.g. 23 × 4 = 92 entries). So even a small maze has a small table; the same idea scales to larger grids or discrete state spaces.
+{{< /collapse >}}
 
 **Extra practice**
 

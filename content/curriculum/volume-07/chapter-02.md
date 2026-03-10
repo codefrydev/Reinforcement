@@ -4,6 +4,8 @@ description: "State visitation count bonus; exploration in gridworld."
 date: 2026-03-10T00:00:00Z
 weight: 62
 draft: false
+tags: ["intrinsic motivation", "state visitation", "exploration", "gridworld", "curriculum"]
+keywords: ["intrinsic motivation", "state visitation count", "exploration bonus", "gridworld"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Intrinsic reward too large:** If beta is huge, the agent ignores the goal and only seeks novelty. Scale intrinsic so it is on the same order as extrinsic (or tune).
 - **Counts in continuous state:** For continuous states, use hashing or a density model (pseudo-count); this exercise uses discrete grid.
+
+{{< collapse summary="Worked solution (warm-up: count-based exploration)" >}}
+**Key idea:** Count-based bonus: \\(r^+_t = 1/\\sqrt{N(s_t)}\\) (or \\(1/(1+N(s_t))\\)) so the agent is rewarded for visiting states it has rarely seen. In discrete tabular settings we store \\(N(s)\\); in continuous we use hashing or a density model to estimate "novelty." This encourages the agent to cover the state space and can help in sparse-reward tasks.
+{{< /collapse >}}
 
 **Extra practice**
 

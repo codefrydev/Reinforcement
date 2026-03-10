@@ -4,6 +4,8 @@ description: "A2C for CartPole with TD error as advantage; sync multi-env."
 date: 2026-03-10T00:00:00Z
 weight: 36
 draft: false
+tags: ["A2C", "advantage actor-critic", "CartPole", "TD error", "curriculum"]
+keywords: ["A2C", "advantage actor-critic", "CartPole", "multi-env"]
 ---
 
 **Learning objectives**
@@ -31,6 +33,10 @@ draft: false
 
 - **Not detaching V(s') in δ for actor:** If you backprop \\(\delta\\) through \\(V(s')\\), the actor gradient will try to change the critic’s prediction for \\(s'\\), which is not the intended objective.
 - **Batch dimension mismatch:** Ensure state batch has shape (batch_size, state_dim); action and \\(\delta\\) have shape (batch_size,) or (batch_size, 1) for gathering log-probs.
+
+{{< collapse summary="Worked solution (warm-up: A2C vs REINFORCE)" >}}
+**Warm-up:** REINFORCE uses the full return \\(G_t\\) to weight the policy gradient; A2C uses the TD error \\(\\delta_t = r_t + \\gamma V(s_{t+1}) - V(s_t)\\) (or n-step) as the advantage. \\(G_t\\) has higher variance (sum of many random rewards) but is unbiased; \\(\\delta_t\\) has lower variance but is biased because \\(V\\) is approximate. A2C typically learns faster and more stably because of the lower variance.
+{{< /collapse >}}
 
 **Extra practice**
 

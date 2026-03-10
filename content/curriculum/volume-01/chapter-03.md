@@ -4,6 +4,8 @@ description: "Two-state MDP transition probability matrices."
 date: 2026-03-10T00:00:00Z
 weight: 3
 draft: false
+tags: ["MDP", "Markov decision process", "transition probability", "curriculum"]
+keywords: ["Markov decision process", "MDP", "transition probability", "state action reward"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,18 @@ A **Markov Decision Process (MDP)** is the standard mathematical model for RL: a
 - **Mixing up rows and columns:** Convention: row = current state, column = next state, so \\(P[i,j] = P(s'=j \\mid s=i)\\). Some texts use the transpose; pick one and stick to it.
 - **Forgetting rewards:** The exercise asks for transition matrices, but in full MDPs you also have \\(r(s,a)\\) or \\(r(s,a,s')\\). When you move to value functions, you will need both.
 - **Non-Markov state:** If you compress the state so that history matters (e.g. only "current cell" without "how many steps"), the process may not be Markov. For this two-state MDP, the state is explicit and Markov.
+
+{{< collapse summary="Worked solution (transition matrices)" >}}
+**Exercise:** Write the transition probability matrices for each action. Use states A = 0, B = 1; row = current state, column = next state.
+
+**Step 1 — Action "stay":** From A: P(A→A)=0.8, P(A→B)=0.2. From B: P(B→A)=1, P(B→B)=0. So
+\\(P^{\text{stay}} = \begin{bmatrix} 0.8 & 0.2 \\\\ 1 & 0 \end{bmatrix}\\).
+
+**Step 2 — Action "go":** From A: P(A→B)=1, P(A→A)=0. From B: same as stay, P(B→A)=1, P(B→B)=0. So
+\\(P^{\text{go}} = \begin{bmatrix} 0 & 1 \\\\ 1 & 0 \end{bmatrix}\\).
+
+**Check:** Each row sums to 1. These matrices are the building blocks for the Bellman equation and value iteration in later chapters.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Iterative policy evaluation on 4×4 gridworld."
 date: 2026-03-10T00:00:00Z
 weight: 7
 draft: false
+tags: ["dynamic programming", "policy evaluation", "gridworld", "curriculum"]
+keywords: ["policy evaluation", "iterative policy evaluation", "dynamic programming", "gridworld"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,14 @@ draft: false
 - **Updating terminal states:** Terminal states should have value 0 (or by definition no update). Do not apply the Bellman update to (0,0) and (3,3); leave them at 0.
 - **Asynchronous vs synchronous:** Synchronous = use the same \\(V\\) for all updates in one sweep. If you update in place (state by state), later states in the same sweep see already-updated values—that is asynchronous and can change convergence; stick to synchronous for this exercise.
 - **Wrong transition model:** From a corner, two actions might hit the wall (stay, -1) and two might move. Count correctly; the probability of each next state depends on how many actions lead there.
+
+{{< collapse summary="Worked solution (warm-up: 1×3 line)" >}}
+**Warm-up:** For a 1×3 line (states 0, 1, 2), terminal at 0 and 2 with value 0, reward -1 per step, one action "move left" from 1 to 0, one action "move right" from 1 to 2. Compute \\(V(1)\\) by hand for \\(\gamma=1\\).
+
+**Step 1:** From state 1 we take one action and reach either state 0 or state 2 (each terminal with value 0). So we get one step of reward -1 and then 0. Thus \\(V(1) = -1 + \gamma \cdot 0 = -1\\) (for \\(\gamma=1\\) or any \\(\gamma\\): \\(V(1) = -1\\)).
+
+**Explanation:** One step to either terminal gives immediate reward -1 and then value 0. The same Bellman expectation structure is used in the 4×4 gridworld: each state’s value is immediate reward plus \\(\gamma\\) times the value of the next state, averaged over the policy.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "MBPO: ensemble dynamics, short rollouts, SAC buffer."
 date: 2026-03-10T00:00:00Z
 weight: 58
 draft: false
+tags: ["MBPO", "ensemble dynamics", "SAC", "short rollouts", "curriculum"]
+keywords: ["MBPO", "Model-Based Policy Optimization", "ensemble dynamics", "SAC"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Too long rollouts:** If you rollout 20 steps, the model's predictions drift; the data can be misleading. MBPO uses typically 1–5 steps.
 - **Policy used for rollout:** Use the current policy to sample actions for model rollout so the data distribution is on-policy-ish for the policy being trained.
+
+{{< collapse summary="Worked solution (warm-up: MBPO)" >}}
+**Key idea:** MBPO trains a model on real data, then generates short imagined rollouts (e.g. 4–10 steps) from states in the buffer. We train the policy (e.g. SAC) on a mix of real and model-generated transitions. Short rollouts limit compounding error. This gives more data per env step and often reaches higher return faster than model-free alone. Compare by env steps (not by number of updates).
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Custom 2D point mass with continuous action; test with SAC."
 date: 2026-03-10T00:00:00Z
 weight: 49
 draft: false
+tags: ["custom Gym", "continuous action", "point mass", "SAC", "curriculum"]
+keywords: ["custom Gym environment", "continuous action", "point mass", "SAC"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ Custom environments let you model **robot navigation**, **recommendation** (stat
 
 - **Reward shaping:** Too much shaping can make the agent exploit loopholes; too sparse can make learning slow. Start simple (-distance) and add obstacle penalty.
 - **Action scale:** Clip or scale actions to a reasonable force; otherwise the point mass can shoot off.
+
+{{< collapse summary="Worked solution (warm-up: continuous control)" >}}
+**Key idea:** In continuous control we output a distribution over actions (e.g. Gaussian with mean from the network and learned or fixed std). We sample \\(a \\sim \\pi(\\cdot|s)\\), compute \\(\\nabla \\log \\pi(a|s)\\), and use it with the advantage (e.g. TD error or GAE). For bounded action spaces we squash through tanh and add the log-Jacobian to the log-probability. SAC and PPO both support continuous actions this way.
+{{< /collapse >}}
 
 **Extra practice**
 

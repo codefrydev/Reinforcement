@@ -4,6 +4,8 @@ description: "CQL loss penalizing Q for OOD actions; compare with naive SAC."
 date: 2026-03-10T00:00:00Z
 weight: 72
 draft: false
+tags: ["CQL", "Conservative Q-Learning", "OOD", "offline RL", "curriculum"]
+keywords: ["CQL", "Conservative Q-Learning", "OOD actions", "offline RL", "SAC"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Wrong sign of the penalty:** CQL should **lower** Q for OOD actions; double-check that your added term increases the loss when Q(s, π(s)) is large, so that the gradient step reduces Q for those actions.
 - **Over-regularization:** If α is too large, Q becomes too small everywhere and the policy may become too conservative (e.g. only choose actions that appear very often in the data). Monitor both Q and evaluation return.
 - **Sampling OOD actions:** You need to sample actions from the current policy (or a uniform distribution over actions) for the penalty; use the actor to generate a for each s in the batch.
+
+{{< collapse summary="Worked solution (warm-up: CQL)" >}}
+**Key idea:** CQL (Conservative Q-Learning) adds a regularizer that *lower*s Q-values for actions not in the dataset (e.g. sample \\(a\\) from the current policy and minimize \\(Q(s,a)\\)). So the learned Q is conservative: it is high only for (s,a) pairs that appear in the data. The policy then prefers in-distribution actions and avoids overestimated OOD actions. This stabilizes offline RL.
+{{< /collapse >}}
 
 **Extra practice**
 

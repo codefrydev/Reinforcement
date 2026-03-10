@@ -3,6 +3,8 @@ title: "Tabular Methods"
 description: "Dynamic programming, Monte Carlo vs TD, on-policy vs off-policy, and Q-learning — with explanations and examples."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["tabular methods", "dynamic programming", "Monte Carlo", "TD", "Q-learning", "preliminary"]
+keywords: ["tabular methods", "dynamic programming", "Monte Carlo vs TD", "on-policy off-policy", "Q-learning"]
 ---
 
 This page covers the tabular methods you need for the preliminary assessment: policy iteration and value iteration, the difference between Monte Carlo and TD, on-policy vs off-policy learning, and the Q-learning update rule. [Back to Preliminary](../).

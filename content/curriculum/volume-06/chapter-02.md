@@ -4,6 +4,8 @@ description: "Train NN to predict next state from CartPole; compounding error."
 date: 2026-03-10T00:00:00Z
 weight: 52
 draft: false
+tags: ["world model", "dynamics model", "CartPole", "compounding error", "curriculum"]
+keywords: ["learning world models", "dynamics prediction", "compounding error", "CartPole"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ A **world model** (or dynamics model) predicts \\(s_{t+1}\\) from \\(s_t, a_t\\)
 
 - **Training on same distribution as evaluation:** When you rollout the model, you feed it *predicted* states, not real ones. So long-horizon error reflects distribution shift (model sees its own errors).
 - **Normalization:** Normalize state and action for training; denormalize for env comparison.
+
+{{< collapse summary="Worked solution (warm-up: world model)" >}}
+**Key idea:** Train a model \\(\\hat{s}_{t+1} = f(s_t, a_t)\\) (and optionally \\(\\hat{r}_t\\)) on collected transitions. Use it to generate imagined rollouts for planning or for training a policy in the latent space. Evaluate by 1-step and multi-step prediction error (MSE). The model improves sample efficiency when it is accurate; long-horizon rollout error typically grows (compounding).
+{{< /collapse >}}
 
 **Extra practice**
 

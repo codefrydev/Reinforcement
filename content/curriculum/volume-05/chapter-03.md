@@ -4,6 +4,8 @@ description: "Clipped surrogate objective; contrast with unclipped."
 date: 2026-03-10T00:00:00Z
 weight: 43
 draft: false
+tags: ["PPO", "clipped surrogate", "proximal policy", "curriculum"]
+keywords: ["PPO", "Proximal Policy Optimization", "clipped objective", "surrogate"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Taking the min of two objectives:** The full PPO loss often combines \\(L^{CLIP}\\) with a value loss and an entropy bonus. The "min" in \\(L^{CLIP}\\) is between the ratio and the clipped ratio, not between two separate losses.
 - **Clip range too small:** If \\(\epsilon = 0.05\\), updates are very small and learning can be slow. Typical \\(\epsilon\\) is 0.1–0.3.
+
+{{< collapse summary="Worked solution (warm-up: PPO clip)" >}}
+**Key idea:** PPO clips the probability ratio \\(r_t = \\pi(a_t|s_t)/\\pi_{old}(a_t|s_t)\\) to \\([1-\\epsilon, 1+\\epsilon]\\) so that the policy doesn’t change too much in one update. The objective is \\(\\min(r_t \\hat{A}_t, \\text{clip}(r_t, 1-\\epsilon, 1+\\epsilon) \\hat{A}_t)\\); we take the minimum so we are pessimistic when the advantage is positive. This keeps updates stable without a separate KL constraint like TRPO.
+{{< /collapse >}}
 
 **Extra practice**
 

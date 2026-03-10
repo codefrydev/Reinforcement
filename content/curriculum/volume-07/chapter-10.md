@@ -4,6 +4,8 @@ description: "Simple PAIRED: adversary designs maze, agent solves; train both."
 date: 2026-03-10T00:00:00Z
 weight: 70
 draft: false
+tags: ["UED", "PAIRED", "adversarial", "environment design", "curriculum"]
+keywords: ["unsupervised environment design", "PAIRED", "adversary", "maze", "agent"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Adversary collapses:** The adversary might find a trivial way to "minimize" return (e.g. all walls, or unreachable goal). Add constraints or reward shaping so mazes remain valid and solvable.
 - **Agent too weak early:** If the agent never solves any maze at the start, the adversary has no gradient. Consider starting with a pretrained agent or an initial phase where the adversary is weak (e.g. random mazes).
 - **Balance:** The relative learning rates of adversary and agent matter; if the adversary improves too fast, the agent may never learn. Tune or use a curriculum (e.g. limit adversary strength initially).
+
+{{< collapse summary="Worked solution (warm-up: adversarial RL)" >}}
+**Key idea:** In adversarial RL we have two agents (or an agent and an adversary). The agent tries to maximize return; the adversary tries to minimize it (or to make the task hard). We train both; the equilibrium (if it exists) can yield a robust or diverse policy. Balance is key: curriculum (e.g. weak adversary first) or separate learning rates so the agent can keep up. Used in robust RL and some multi-agent settings.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Sketch two-network actor-critic; pseudocode for TD error updates."
 date: 2026-03-10T00:00:00Z
 weight: 35
 draft: false
+tags: ["actor-critic", "TD error", "advantage", "curriculum"]
+keywords: ["actor-critic", "two-network", "TD error", "advantage"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Gradient through target:** When computing \\(\delta = r + \gamma V(s')\\), do not backprop through \\(V(s')\\) when updating the actor (use `.detach()`), otherwise the actor would try to change the critic’s target.
 - **Critic and actor learning rates:** If the critic learns too fast, V can be noisy and \\(\delta\\) becomes unreliable. Often the critic uses a separate optimizer or a smaller learning rate.
+
+{{< collapse summary="Worked solution (warm-up: TD error and bias)" >}}
+**Warm-up:** \\(\\delta_t = r_t + \\gamma V(s_{t+1}) - V(s_t)\\). It is a biased estimate of \\(A(s_t,a_t)\\) because \\(V(s_{t+1})\\) is an approximation; the true advantage uses the true value function. So \\(\\delta_t\\) has lower variance than \\(G_t\\) (one step of randomness) but is biased. Actor-critic trades off: we use \\(\\delta_t\\) (or n-step) as the advantage estimate to reduce variance while accepting some bias.
+{{< /collapse >}}
 
 **Extra practice**
 

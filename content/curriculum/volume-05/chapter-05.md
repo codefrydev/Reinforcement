@@ -4,6 +4,8 @@ description: "Full PPO for LunarLanderContinuous with GAE and rollout buffer."
 date: 2026-03-10T00:00:00Z
 weight: 45
 draft: false
+tags: ["PPO", "LunarLander", "GAE", "rollout buffer", "curriculum"]
+keywords: ["PPO implementation", "LunarLanderContinuous", "GAE", "rollout buffer"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Reusing old log_probs:** You must store \\(\\log \\pi_{old}(a|s)\\) during rollout and use it for the ratio \\(r_t = \\pi(a|s) / \\pi_{old}(a|s)\\). Do not recompute the old policy after updating.
 - **Advantage normalization:** Normalize advantages (zero mean, unit var) per rollout so the scale does not depend on return magnitude; helps with learning rate.
+
+{{< collapse summary="Worked solution (warm-up: PPO objective)" >}}
+**Key idea:** PPO maximizes \\(\\mathbb{E}[ \\min(r_t(\\theta) \\hat{A}_t, \\text{clip}(r_t(\\theta), 1-\\epsilon, 1+\\epsilon) \\hat{A}_t) ]\\) where \\(r_t = \\pi_\\theta(a_t|s_t)/\\pi_{old}(a_t|s_t)\\). We also add an entropy bonus so the policy stays exploratory. We run multiple epochs on the same batch (with clipping) instead of one pass like A2C; that improves sample efficiency while keeping updates safe.
+{{< /collapse >}}
 
 **Extra practice**
 

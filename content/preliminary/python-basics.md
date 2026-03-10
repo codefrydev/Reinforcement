@@ -3,6 +3,8 @@ title: "Python Basics"
 description: "Functions, lists, loops, and list comprehensions — with RL-relevant examples and explained solutions."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["Python", "functions", "loops", "list comprehensions", "preliminary"]
+keywords: ["Python basics", "functions lists loops", "list comprehensions", "RL-relevant examples"]
 ---
 
 This page covers the Python you need for the preliminary assessment: writing functions, working with lists, and using list comprehensions. [Back to Preliminary](../).
@@ -45,6 +47,10 @@ For `[1, 2, 3, 4, 5]`: windows are [1,2,3], [2,3,4], [3,4,5]; averages are 2.0, 
 
 We slide a window of length `window` along the list. For each starting index `i`, `arr[i:i+window]` is that slice; we take its mean. The number of such windows is `len(arr) - window + 1`. In RL, you might compute a moving average of episode returns to smooth learning curves or average rewards over a short horizon.
 {{< /collapse >}}
+
+The graph below shows the moving average output (2, 3, 4) for the three windows over [1, 2, 3, 4, 5].
+
+{{< chart type="line" title="Moving average (window 3) of [1,2,3,4,5]" labels="Avg(1-3), Avg(2-4), Avg(3-5)" data="2, 3, 4" >}}
 
 ---
 

@@ -4,6 +4,8 @@ description: "Simplified Dreamer: RSSM, imagination phase, actor-critic."
 date: 2026-03-10T00:00:00Z
 weight: 57
 draft: false
+tags: ["Dreamer", "RSSM", "imagination", "actor-critic", "curriculum"]
+keywords: ["Dreamer", "RSSM", "latent imagination", "world model", "actor-critic"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Distribution shift:** Imagined states may diverge from real latent distribution. Dreamer uses short rollouts and reconditions on real data periodically.
 - **Value in latent space:** The critic must be trained on imagined returns; use TD or GAE in the latent rollout.
+
+{{< collapse summary="Worked solution (warm-up: Dreamer)" >}}
+**Key idea:** Dreamer learns a latent dynamics model and a critic in latent space. The actor is trained on imagined rollouts (no real env): we start from a latent state from the buffer, roll out with the model, compute lambda-returns in latent space, and backprop through the model to the actor. So we learn from "dreamed" experience, which greatly improves sample efficiency. The world model is RSSM (recurrent state-space model).
+{{< /collapse >}}
 
 **Extra practice**
 

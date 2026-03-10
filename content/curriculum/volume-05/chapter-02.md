@@ -4,6 +4,8 @@ description: "TRPO constrained optimization and natural gradient; KL constraint.
 date: 2026-03-10T00:00:00Z
 weight: 42
 draft: false
+tags: ["TRPO", "trust region", "KL constraint", "natural gradient", "curriculum"]
+keywords: ["TRPO", "Trust Region Policy Optimization", "KL constraint", "natural gradient"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Conjugate gradient and line search:** Full TRPO uses conjugate gradient to compute \\(F^{-1} g\\) and a line search to satisfy the KL constraint. The "natural gradient" explanation is the intuition; the actual algorithm is more involved.
 - **KL vs reverse KL:** TRPO constrains \\(D_{KL}(\\pi_{old} \\| \\pi)\\) (old relative to new). The direction matters for the optimization geometry.
+
+{{< collapse summary="Worked solution (warm-up: TRPO constraint)" >}}
+**Key idea:** TRPO maximizes the surrogate objective \\(\\mathbb{E}[ \\frac{\\pi(a|s)}{\\pi_{old}(a|s)} A ]\\) subject to \\(\\mathbb{E}_s[ D_{KL}(\\pi_{old}(\\cdot|s) \\| \\pi(\\cdot|s)) ] \\leq \\delta\\). The KL constraint keeps the new policy close to the old so the surrogate remains a good approximation. We solve the constrained problem with a conjugate gradient step plus line search. This avoids the collapse that large policy gradient steps can cause.
+{{< /collapse >}}
 
 **Extra practice**
 

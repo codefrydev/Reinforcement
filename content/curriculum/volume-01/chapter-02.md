@@ -4,6 +4,8 @@ description: "10-armed testbed with epsilon-greedy vs greedy."
 date: 2026-03-10T00:00:00Z
 weight: 2
 draft: false
+tags: ["multi-armed bandits", "epsilon-greedy", "exploration", "curriculum"]
+keywords: ["multi-armed bandits", "epsilon-greedy", "10-armed testbed", "exploration exploitation"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,20 @@ A **multi-armed bandit** is an RL problem with a single state: the agent repeate
 - **Initializing Q too optimistically:** Greedy with Q=0 for all arms will try each arm once, then stick to one. If you initialize Q to large values, greedy explores more early (optimistic initial values). For a fair comparison, use the same initialization for both agents.
 - **Using the same random seed for both agents:** Use different runs or the same seed for the *environment* (arm means and rewards) so the comparison is fair; otherwise one agent might get "lucky" arms.
 - **Plotting one run only:** One run is very noisy. Average over at least 50–100 runs to see the difference between epsilon-greedy and greedy clearly.
+
+{{< collapse summary="Worked solution (warm-up: optimal arm and greedy choice)" >}}
+**Warm-up:** For 3 arms with known means [0.1, 0.5, -0.2], compute the expected reward of the optimal arm. If you pull each arm 10 times and get sample means [0.2, 0.4, -0.1], which arm would greedy choose? Would that be correct?
+
+**Step 1 — Optimal arm:** The expected reward of the optimal arm is the maximum of the true means: \\(\max(0.1, 0.5, -0.2) = 0.5\\) (arm 2).
+
+**Step 2 — Greedy choice:** Greedy chooses \\(\arg\max_a Q(a)\\) using the *sample* means. So greedy picks \\(\arg\max([0.2, 0.4, -0.1]) = \\) arm 2 (index 1). That *is* correct—the best arm in this run’s estimates is also the true best arm.
+
+**Step 3 — When greedy can be wrong:** If the sample means had been [0.6, 0.3, -0.1], greedy would choose arm 1, which has true mean 0.1 (worse than arm 2’s 0.5). So greedy can lock onto a suboptimal arm when early samples are misleading; epsilon-greedy keeps exploring and often finds the true best arm. This is the exploration–exploitation trade-off.
+{{< /collapse >}}
+
+The graph below shows the sample means [0.2, 0.4, -0.1] after 10 pulls per arm; greedy picks arm 2 (highest bar). True means were 0.1, 0.5, -0.2.
+
+{{< chart type="bar" title="Sample means Q(a) after 10 pulls (3 arms)" labels="Arm 1, Arm 2, Arm 3" data="0.2, 0.4, -0.1" >}}
 
 **Extra practice**
 

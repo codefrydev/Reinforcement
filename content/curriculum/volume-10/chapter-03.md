@@ -4,6 +4,8 @@ description: "Simple stock MDP: buy/sell/hold; profit reward; Sharpe ratio."
 date: 2026-03-10T00:00:00Z
 weight: 93
 draft: false
+tags: ["algorithmic trading", "MDP", "Sharpe ratio", "trading", "curriculum"]
+keywords: ["RL for trading", "algorithmic trading", "buy sell hold", "Sharpe ratio"]
 ---
 
 **Learning objectives**
@@ -35,6 +37,10 @@ draft: false
 - **Overfitting:** A simple market sim may be too easy or too noisy; the agent might overfit to the sim. Use different seeds or out-of-sample periods for evaluation.
 - **Transaction costs:** If ignored, the agent may trade too often; include costs in the reward.
 - **Sharpe on training data:** Report Sharpe on a **held-out** period or different random seeds to avoid overfitting.
+
+{{< collapse summary="Worked solution (warm-up: RL in finance)" >}}
+**Key idea:** RL can be used for trading: state = market features (or portfolio state), action = trade (buy/sell/hold or weights), reward = profit or risk-adjusted return (e.g. Sharpe). We must avoid overfitting: use held-out periods, multiple seeds, and simple policies. The environment is non-stationary and noisy; so sample efficiency and robustness matter. Common choices: PPO or DDPG with careful reward design (e.g. transaction costs, drawdown penalty).
+{{< /collapse >}}
 
 **Extra practice**
 

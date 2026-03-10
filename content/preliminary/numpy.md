@@ -3,6 +3,8 @@ title: "NumPy"
 description: "Arrays, indexing, slicing, and element-wise vs matrix operations — with RL-relevant examples and explanations."
 date: 2026-03-10T00:00:00Z
 draft: false
+tags: ["NumPy", "arrays", "indexing", "slicing", "preliminary"]
+keywords: ["NumPy for RL", "arrays", "indexing slicing", "element-wise matrix operations"]
 ---
 
 This page covers the NumPy you need for the preliminary assessment: creating arrays, indexing, slicing, and element-wise operations. [Back to Preliminary](../).

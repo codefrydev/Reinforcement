@@ -4,6 +4,8 @@ description: "TD3: clipped double Q, delayed policy, target smoothing."
 date: 2026-03-10T00:00:00Z
 weight: 40
 draft: false
+tags: ["TD3", "clipped double Q", "delayed policy", "curriculum"]
+keywords: ["TD3", "Twin Delayed DDPG", "clipped double Q", "target smoothing"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Using max instead of min for target:** TD3 uses \\(\min(Q_1', Q_2')\\) to reduce overestimation. Using max would revert to DDPG-style overestimation.
 - **Target smoothing too large:** If \\(\tilde{\\sigma}\\) is too big, the target becomes very noisy. Typical values are small (e.g. 0.2 * action scale).
+
+{{< collapse summary="Worked solution (warm-up: TD3 tricks)" >}}
+**Warm-up:** (a) **Clipped double Q:** Use the minimum of two Q-networks in the target to reduce overestimation (like Double DQN). (b) **Delayed policy updates:** Update the policy (and target) less often than the critic so the value function is more stable before we improve the policy. (c) **Target policy smoothing:** Add noise to the target action so the Q-target is smoother and less prone to overfitting to sharp peaks; typically \\(\\tilde{a} = \\mu_{target}(s') + \\epsilon\\) with small \\(\\epsilon\\).
+{{< /collapse >}}
 
 **Extra practice**
 

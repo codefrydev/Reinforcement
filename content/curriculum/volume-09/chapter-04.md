@@ -4,6 +4,8 @@ description: "Explain CTDE with example; why it helps non-stationarity."
 date: 2026-03-10T00:00:00Z
 weight: 84
 draft: false
+tags: ["CTDE", "centralized training", "decentralized execution", "MARL", "curriculum"]
+keywords: ["CTDE", "centralized training decentralized execution", "MARL", "non-stationarity"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Confusing training and execution:** Be explicit: "during training we use X; during execution we use Y." CTDE specifically means centralized only at train time.
 - **Assuming full observability at execution:** In CTDE, execution is decentralized—each agent may have only partial observation. The centralized part (e.g. Q_tot) is not used at execution.
 - **Overclaiming:** CTDE helps with non-stationarity and credit assignment but does not solve all MARL challenges (e.g. exploration, coordination).
+
+{{< collapse summary="Worked solution (warm-up: CTDE)" >}}
+**Key idea:** CTDE: during training we have access to global state (or all agents’ observations) so we can learn a centralized critic \\(Q(s, a_1, \\ldots, a_n)\\) or value \\(V(s)\\). This addresses non-stationarity (we condition on everyone’s action) and credit assignment (we see the joint effect). At execution we only need \\(\\pi_i(a_i | o_i)\\) for each agent (decentralized). QMIX, VDN, and COMA use this idea.
+{{< /collapse >}}
 
 **Extra practice**
 

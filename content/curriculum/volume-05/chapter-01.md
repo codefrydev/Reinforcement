@@ -4,6 +4,8 @@ description: "Large step size and policy collapse in bandit; visualize probabili
 date: 2026-03-10T00:00:00Z
 weight: 41
 draft: false
+tags: ["policy gradient", "policy collapse", "step size", "bandit", "curriculum"]
+keywords: ["policy gradient problems", "policy collapse", "step size", "bandit"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ Standard policy gradient \\(\theta \leftarrow \theta + \alpha \nabla_\theta J\\)
 
 - **Baseline:** Use a baseline (e.g. running average of rewards) so the update is not purely driven by raw reward magnitude; the collapse effect is still visible with large \\(\alpha\\).
 - **Initialization:** Start with uniform or near-uniform \\(\theta\\) so you can see the policy move; if you start already peaked, the effect is less clear.
+
+{{< collapse summary="Worked solution (warm-up: why large step size collapses policy)" >}}
+**Warm-up:** A very large step size can push the softmax probabilities so far toward one action that the policy becomes nearly deterministic; once one action dominates, its gradient gets most of the updates and the others get little signal, so the policy "collapses" to that action. Smaller \\(\\alpha\\) or a baseline/KL penalty keeps updates moderate and avoids this. This is why PPO and TRPO use constrained or clipped updates.
+{{< /collapse >}}
 
 **Extra practice**
 

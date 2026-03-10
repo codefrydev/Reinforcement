@@ -4,6 +4,8 @@ description: "PPO fine-tune small LM (e.g. GPT-2) for sentiment; KL penalty."
 date: 2026-03-10T00:00:00Z
 weight: 95
 draft: false
+tags: ["PPO", "LLM", "GPT-2", "sentiment", "KL penalty", "curriculum"]
+keywords: ["PPO for LLM", "training language models", "GPT-2", "sentiment", "KL penalty"]
 ---
 
 **Learning objectives**
@@ -35,6 +37,10 @@ draft: false
 - **Reward scale:** Normalize rewards (e.g. subtract mean, divide by std) so advantages are stable.
 - **Baseline:** Use a value model (train V(s) to predict reward) or simple mean reward as baseline to reduce variance.
 - **Sequence-level reward:** The reward is usually for the whole sequence; for PPO we need per-token or per-step credit. Use the same reward for all steps in the sequence (reward-to-go from that step), or use a value model for baseline.
+
+{{< collapse summary="Worked solution (warm-up: RL for LLMs)" >}}
+**Key idea:** We train an LLM policy to generate text; reward is given at the end of the sequence (e.g. quality, safety). We use PPO: sample a completion, get reward, compute per-token log-probs and advantages (e.g. reward-to-go or a value model as baseline). The policy gradient update increases the probability of tokens in high-reward sequences. We keep a reference policy and use a KL penalty so the policy does not drift too far (avoid mode collapse and reward hacking).
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "NumPy for RL: arrays, indexing, broadcasting, random, and batch op
 date: 2026-03-10T00:00:00Z
 weight: 20
 draft: false
+tags: ["NumPy", "arrays", "RL", "prerequisites"]
+keywords: ["NumPy for RL", "arrays", "indexing", "matrix operations", "RL examples"]
 ---
 
 Used in [Preliminary: NumPy](../preliminary/numpy/) and throughout the curriculum for state/observation arrays, reward vectors, and batch operations. RL environments return observations as arrays; neural networks consume batches of arrays—NumPy is the standard bridge.
@@ -99,6 +101,22 @@ arr.sum(axis=0)     # [9, 12]
 arr.mean(axis=1)    # [1.5, 3.5, 5.5]
 np.max(arr, axis=0) # [5, 6]
 ```
+
+---
+
+## Worked examples
+
+**Example 1 — Discounted return (Exercise 7).** Given `rewards = np.array([0.0, 0.0, 1.0])` and `gamma = 0.9`, compute \\(G_0 = r_0 + \\gamma r_1 + \\gamma^2 r_2\\) using NumPy.
+
+{{< collapse summary="Solution" >}}
+**Step 1:** Discount factors: `gamma ** np.arange(3)` gives `[1., 0.9, 0.81]`. **Step 2:** Element-wise product with rewards: `(gamma ** np.arange(3)) * rewards` → `[0., 0., 0.81]`. **Step 3:** Sum: `np.sum(...)` → **0.81**. One-liner: `G = np.sum((gamma ** np.arange(len(rewards))) * rewards)`. This is the same formula used for returns in every RL algorithm.
+{{< /collapse >}}
+
+**Example 2 — 3×3 array and element-wise product (Exercise 1).** Create a 3×3 array of zeros, set the first row to `[1, 2, 3]`, compute the element-wise product with itself, then the sum of all elements.
+
+{{< collapse summary="Solution" >}}
+**Step 1:** `arr = np.zeros((3, 3))` then `arr[0] = [1, 2, 3]` (first row is 1,2,3; rest zeros). **Step 2:** Element-wise product: `prod = arr * arr` → first row becomes [1, 4, 9]; others stay 0. **Step 3:** Sum: `prod.sum()` = 1+4+9 = **14**. In RL we use `arr * arr` for squared errors or masks; `arr @ arr` would be matrix multiplication.
+{{< /collapse >}}
 
 ---
 

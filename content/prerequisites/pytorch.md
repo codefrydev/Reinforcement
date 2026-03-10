@@ -4,6 +4,8 @@ description: "PyTorch for RL: tensors, autograd, nn.Module, optimizers, and GPU.
 date: 2026-03-10T00:00:00Z
 weight: 50
 draft: false
+tags: ["PyTorch", "tensors", "autograd", "RL", "prerequisites"]
+keywords: ["PyTorch for RL", "tensors", "autograd", "neural networks", "RL models"]
 ---
 
 Used in [Preliminary: PyTorch basics](../preliminary/pytorch-basics/) and in the curriculum for DQN, policy gradients, actor-critic, PPO, and SAC. PyTorch's define-by-run style and clear autograd make it a natural fit for custom RL loss functions.
@@ -85,6 +87,22 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 q = q.to(device)
 states = states.to(device)
 ```
+
+---
+
+## Worked examples
+
+**Example 1 — Autograd (Exercise 1).** Create \\(x = 3.0\\) with `requires_grad=True`, compute \\(y = x^3 + 2x\\), call `y.backward()`, and verify `x.grad`.
+
+{{< collapse summary="Solution" >}}
+**Step 1:** `x = torch.tensor(3.0, requires_grad=True)`. **Step 2:** `y = x**3 + 2*x` ⇒ y = 27 + 6 = 33. **Step 3:** `y.backward()`. **Step 4:** By hand, \\(dy/dx = 3x^2 + 2\\); at x=3 that is 27+2 = **29**. So `x.grad` should be `tensor(29.)`. PyTorch’s autograd applies the chain rule; we use the same mechanism for policy gradient and value loss in RL.
+{{< /collapse >}}
+
+**Example 2 — Training step.** Given a network, a batch of inputs, and targets, perform one optimizer step (zero_grad, forward, loss, backward, step).
+
+{{< collapse summary="Solution" >}}
+**Step 1:** `optimizer.zero_grad()` to clear old gradients. **Step 2:** `pred = model(batch)` then `loss = F.mse_loss(pred, targets)`. **Step 3:** `loss.backward()` to compute gradients. **Step 4:** `optimizer.step()` to update parameters. Order matters: zero_grad → forward → loss → backward → step. In RL we do this for the critic (MSE to TD target) and for the policy (gradient ascent on return).
+{{< /collapse >}}
 
 ---
 

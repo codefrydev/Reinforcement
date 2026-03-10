@@ -4,6 +4,8 @@ description: "DPO loss from Bradley-Terry and KL-optimal policy; compare with PP
 date: 2026-03-10T00:00:00Z
 weight: 97
 draft: false
+tags: ["DPO", "Direct Preference Optimization", "Bradley-Terry", "PPO", "curriculum"]
+keywords: ["DPO", "Direct Preference Optimization", "Bradley-Terry", "KL-optimal policy"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Numerical stability:** Log-ratios can be large; use log-sum-exp tricks or clamp. Ensure log π and log π_ref are computed in log space.
 - **β (beta):** β controls how much we deviate from π_ref; larger β = stronger preference signal but more deviation. Tune (e.g. 0.1–0.5).
 - **Tokenization:** Use the same tokenizer and context length for π and π_ref; τ^w and τ^l are token sequences.
+
+{{< collapse summary="Worked solution (warm-up: DPO)" >}}
+**Key idea:** DPO (Direct Preference Optimization) avoids training a separate reward model and then RL. We have (prompt, chosen response \\(\\tau^w\\), rejected response \\(\\tau^l\\)). We maximize the likelihood that \\(\\pi\\) assigns higher probability to \\(\\tau^w\\) than to \\(\\tau^l\\) (scaled by \\(\\pi/\\pi_{ref}\\) to stay close to reference). So we get a policy that reflects preferences without an explicit reward model or PPO loop. Simpler and often more stable than RLHF.
+{{< /collapse >}}
 
 **Extra practice**
 

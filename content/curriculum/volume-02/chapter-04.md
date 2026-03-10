@@ -4,6 +4,8 @@ description: "Q-learning on Cliff Walking; compare with SARSA."
 date: 2026-03-10T00:00:00Z
 weight: 14
 draft: false
+tags: ["Q-learning", "off-policy", "Cliff Walking", "curriculum"]
+keywords: ["Q-learning", "off-policy", "Cliff Walking", "TD control"]
 ---
 
 **Learning objectives**
@@ -31,6 +33,10 @@ Q-learning assumes the agent will act greedily in the future, so it values state
 - **Using a' in the target:** If you use \\(Q(s',a')\\) with the actual \\(a'\\) you are doing SARSA. Q-learning must use \\(\\max_{a'} Q(s',a')\\).
 - **Behavior policy:** You still need to explore (e.g. \\(\epsilon\\)-greedy) to visit all state-action pairs. The *target* policy is greedy; the *behavior* policy is \\(\epsilon\\)-greedy.
 - **Comparing with same epsilon:** Use the same \\(\epsilon\\) for both algorithms when comparing. When evaluating (plotting paths), use \\(\epsilon=0\\) so you see the learned greedy policy.
+
+{{< collapse summary="Worked solution (warm-up: Q-learning update vs SARSA)" >}}
+**Warm-up:** Write the Q-learning update in one line. What is the TD target? How does it differ from SARSA? **Answer:** \\(Q(s,a) \\leftarrow Q(s,a) + \\alpha [r + \\gamma \\max_{a'} Q(s',a') - Q(s,a)]\\). The TD target is \\(r + \\gamma \\max_{a'} Q(s',a')\\). SARSA uses \\(r + \\gamma Q(s',a')\\) with the *actual* next action \\(a'\\); Q-learning uses the *max* over next actions, so it learns the optimal Q while you can still behave with \\(\\epsilon\\)-greedy.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "MCTS for tic-tac-toe with UCT; play vs random."
 date: 2026-03-10T00:00:00Z
 weight: 54
 draft: false
+tags: ["MCTS", "planning", "tree search", "curriculum"]
+keywords: ["Monte Carlo Tree Search", "MCTS", "planning", "tree search"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Backpropagating the right value:** In two-player games, negate the result when backpropagating (opponent's win is our loss). For tic-tac-toe, use +1 win, -1 loss, 0 draw; alternate sign per level.
 - **Terminal state:** Do not expand a terminal node; backprop immediately with the game result.
+
+{{< collapse summary="Worked solution (warm-up: MCTS)" >}}
+**Key idea:** MCTS: (1) Select: traverse from root by UCB until a leaf. (2) Expand: add children of the leaf. (3) Rollout: play to termination (or use a value network). (4) Backprop: update visit counts and values along the path. The value at the root is the expected outcome; we choose the action with highest value. Used in AlphaZero for games.
+{{< /collapse >}}
 
 **Extra practice**
 

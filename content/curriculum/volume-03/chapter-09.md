@@ -4,6 +4,8 @@ description: "Noisy linear layers with factorized Gaussian; compare with ε-gree
 date: 2026-03-10T00:00:00Z
 weight: 29
 draft: false
+tags: ["NoisyNet", "exploration", "factorized Gaussian", "curriculum"]
+keywords: ["Noisy Networks", "NoisyNet", "exploration", "epsilon-greedy"]
 ---
 
 **Learning objectives**
@@ -29,6 +31,10 @@ draft: false
 - **Resampling every sample:** Noise should be resampled at least every environment step (or every forward for the policy), not once at init. Otherwise there is no exploration over time.
 - **Gradient through noise:** Usually we do *not* backprop through the noise (noise is not differentiable). So \\(\\sigma\\) gets gradients from the loss, but \\(\\epsilon\\) is detached. The reparameterization trick (sample \\(\\epsilon\\), then \\(W + \\sigma \\odot \\epsilon\\)) gives gradients to \\(\\sigma\\).
 - **Initialization of \\(\\sigma\\):** Start with small \\(\\sigma\\) (e.g. 0.5) so early training is not too noisy. The network can learn to reduce \\(\\sigma\\) later.
+
+{{< collapse summary="Worked solution (warm-up: learnable σ in noisy nets)" >}}
+**Warm-up:** In a noisy linear layer, why do we need *learnable* \\(\\sigma\\)? **Answer:** So the network can *reduce* exploration when it has learned. If \\(\\sigma\\) were fixed, we would always inject the same noise. With learnable \\(\\sigma\\), the network can drive \\(\\sigma \\to 0\\) in parts of the state space where it is confident, and keep larger \\(\\sigma\\) where it is uncertain. That gives state-dependent exploration without a separate \\(\\epsilon\\)-schedule.
+{{< /collapse >}}
 
 **Extra practice**
 

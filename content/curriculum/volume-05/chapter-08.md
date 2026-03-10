@@ -4,6 +4,8 @@ description: "Compare SAC and PPO on Hopper, Walker2d; when to choose which."
 date: 2026-03-10T00:00:00Z
 weight: 48
 draft: false
+tags: ["SAC", "PPO", "Hopper", "Walker2d", "comparison", "curriculum"]
+keywords: ["SAC vs PPO", "Hopper", "Walker2d", "when to use SAC or PPO"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ draft: false
 
 - **Different observation/action preprocessing:** Use the same env wrapper and normalization for both so the comparison is fair.
 - **Single run:** Run multiple seeds (e.g. 3–5) and report mean and std of final return.
+
+{{< collapse summary="Worked solution (warm-up: reporting results)" >}}
+**Key idea:** Always run multiple seeds (e.g. 3–5 or more) and report mean ± std (or standard error) of episode return or success rate. A single run can be lucky or unlucky; mean and std show whether an algorithm or hyperparameter is reliably good. Plot learning curves with a shaded band (mean ± std) so readers can see variance. This is standard in RL papers and benchmarks.
+{{< /collapse >}}
 
 **Extra practice**
 

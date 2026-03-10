@@ -4,6 +4,8 @@ description: "Policy network for Pendulum: Gaussian mean and log-std; log-prob."
 date: 2026-03-10T00:00:00Z
 weight: 38
 draft: false
+tags: ["continuous actions", "Pendulum", "Gaussian policy", "curriculum"]
+keywords: ["continuous action spaces", "Gaussian policy", "log-prob", "Pendulum"]
 ---
 
 **Learning objectives**
@@ -30,6 +32,10 @@ For **continuous actions** (e.g. torque, throttle), we cannot use a softmax over
 
 - **Sigma too small:** If \\(\sigma \to 0\\), the policy becomes almost deterministic and exploration stops. Use a lower bound on \\(\sigma\\) (e.g. 0.01) or a minimum log_std.
 - **Wrong log-prob for bounded actions:** If you squash with tanh, the density on \\(a\\) is not the same as the density on \\(a_{raw}\\); you must add the Jacobian correction \\(-\sum \log(1 - a^2)\\) for tanh.
+
+{{< collapse summary="Worked solution (warm-up: Gaussian log-prob)" >}}
+**Warm-up:** For \\(\\mathcal{N}(0,1)\\), \\(\\log p(a) = -\\frac{1}{2}\\log(2\\pi) - \\frac{a^2}{2}\\). At \\(a=0.5\\): \\(\\log p(0.5) = -\\frac{1}{2}\\log(2\\pi) - 0.125 \\approx -1.04\\). Check: `scipy.stats.norm(0,1).logpdf(0.5)` gives the same. In continuous policy gradient we use \\(\\nabla \\log \\pi(a|s)\\) which for a Gaussian is \\(\\frac{(a - \\mu)}{\\sigma^2} \\nabla \\mu\\) (and similar for \\(\\sigma\\) if learned).
+{{< /collapse >}}
 
 **Extra practice**
 

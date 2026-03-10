@@ -4,6 +4,8 @@ description: "ICM: forward model, prediction error as intrinsic reward; A2C on m
 date: 2026-03-10T00:00:00Z
 weight: 63
 draft: false
+tags: ["ICM", "curiosity", "intrinsic reward", "A2C", "maze", "curriculum"]
+keywords: ["ICM", "curiosity-driven exploration", "forward model", "intrinsic reward", "A2C"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Features that ignore the agent's action:** If the forward model does not take the action as input, prediction error may be high in stochastic regions rather than "controllable" novelty; include the action.
 - **Intrinsic reward too large:** If the curiosity bonus dominates, the agent may ignore the goal; scale or clip the intrinsic reward.
 - **Unstable training:** The feature encoder and forward model are trained jointly with the policy; use a stable learning rate and consider freezing the feature encoder for a few steps if needed.
+
+{{< collapse summary="Worked solution (warm-up: curiosity)" >}}
+**Key idea:** Curiosity (e.g. ICM): intrinsic reward = prediction error of a forward model (predict next feature from current feature and action). The agent is curious about states where the model is wrong (surprising transitions). The feature encoder is trained so that the forward model is *not* trivial to predict (inverse model); this avoids the "noisy TV" problem where random noise gives high curiosity.
+{{< /collapse >}}
 
 **Extra practice**
 

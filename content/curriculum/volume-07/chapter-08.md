@@ -4,6 +4,8 @@ description: "MAML for locomotion (e.g. different velocities); one-step adapt."
 date: 2026-03-10T00:00:00Z
 weight: 68
 draft: false
+tags: ["MAML", "meta-learning", "locomotion", "adaptation", "curriculum"]
+keywords: ["MAML", "Model-Agnostic Meta-Learning", "one-step adapt", "locomotion"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Second-order cost:** Full MAML needs Hessian-vector products or double backprop; use first-order MAML or a small number of inner steps to reduce compute.
 - **Inner learning rate:** If \\(\\alpha\\) is too large, the inner update may overshoot; if too small, adaptation is weak. Tune \\(\\alpha\\) and consider per-parameter or learned inner LR.
 - **Variance:** Meta-gradient can have high variance; use multiple tasks per meta-update and average the meta-gradient.
+
+{{< collapse summary="Worked solution (warm-up: meta-gradient RL)" >}}
+**Key idea:** Meta-gradient methods tune hyperparameters (e.g. \\(\\lambda\\) in TD(\\(\\lambda\\)), or step size) by gradient descent on a meta-objective (e.g. return or validation loss). We need to differentiate through the learning process; this can be first-order (treat inner update as fixed) or second-order (through the inner update). The meta-parameters are updated so that the agent learns better on future tasks or episodes.
+{{< /collapse >}}
 
 **Extra practice**
 

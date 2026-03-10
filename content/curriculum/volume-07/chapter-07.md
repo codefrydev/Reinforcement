@@ -4,6 +4,8 @@ description: "Task distribution (e.g. goal positions); meta-training loop, few-s
 date: 2026-03-10T00:00:00Z
 weight: 67
 draft: false
+tags: ["meta-learning", "task distribution", "few-shot", "curriculum"]
+keywords: ["meta-learning", "learning to learn", "task distribution", "few-step adapt"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Inner loop too long:** If each task gets many inner steps, the meta-learner may overfit to "easy" tasks; keep inner steps small to emphasize fast adaptation.
 - **Task distribution mismatch:** If test tasks are very different from training tasks, meta-learning may not transfer; keep the same distribution for train and test (e.g. same grid, different goals).
 - **Second-order gradients:** Some meta-RL methods need gradients through the inner update; for a first implementation, a first-order approximation (treat inner update as fixed) is simpler and often sufficient.
+
+{{< collapse summary="Worked solution (warm-up: meta-RL)" >}}
+**Key idea:** Meta-RL learns a policy (or inner loop) that can quickly adapt to new tasks. We sample tasks, run the inner loop (e.g. a few policy gradient steps or MAML update), then compute the outer loss (e.g. return on the task after adaptation). We meta-update the initial policy (or hyperparameters) to minimize this loss. So we learn "how to learn" from a distribution of tasks.
+{{< /collapse >}}
 
 **Extra practice**
 

@@ -4,6 +4,8 @@ description: "Bradley-Terry from pairwise comparisons; train policy with PPO."
 date: 2026-03-10T00:00:00Z
 weight: 80
 draft: false
+tags: ["RLHF", "Bradley-Terry", "preferences", "PPO", "curriculum"]
+keywords: ["RLHF", "human feedback", "Bradley-Terry", "pairwise comparisons", "PPO"]
 ---
 
 **Learning objectives**
@@ -34,6 +36,10 @@ draft: false
 - **Reward hacking:** The policy may find behaviors that get high learned reward but do not match human intent (e.g. short trajectories that get high per-step reward). Use a KL penalty or limit the number of PPO steps.
 - **Sparse comparisons:** If you have few comparisons, the reward model may be underdetermined; use regularization or a prior (e.g. small network, weight decay).
 - **Bias in preferences:** If the preference data is biased (e.g. always preferring longer responses), the reward will reflect that. For the exercise, simulated preferences are fine; for real RLHF, data quality matters.
+
+{{< collapse summary="Worked solution (warm-up: RLHF)" >}}
+**Key idea:** RLHF: (1) Collect preference data (A vs B; which is better?). (2) Train a reward model \\(r_\\psi\\) to predict the preference (e.g. Bradley-Terry: \\(P(A>B) = \\sigma(r(A)-r(B))\\)). (3) Use RL (e.g. PPO) to maximize \\(r_\\psi\\) while staying close to a reference policy (KL penalty) to avoid reward hacking. So we learn human preferences as a reward and optimize it with RL. Used for LLM alignment.
+{{< /collapse >}}
 
 **Extra practice**
 
