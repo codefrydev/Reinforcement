@@ -7,7 +7,7 @@ tags: ["learning path", "roadmap", "beginner", "zero to RL", "reinforcement lear
 keywords: ["learning path", "zero to reinforcement learning", "beginner roadmap", "RL from scratch", "step-by-step RL"]
 ---
 
-This learning path takes you from **zero programming experience** to understanding and building reinforcement learning systems. Follow the phases in order; each phase builds on the previous one.
+This learning path takes you from **zero programming experience** to understanding and building reinforcement learning systems. Follow the phases in order; each phase builds on the previous one. The order matches the [Course outline](../course-outline/) (basic to advanced).
 
 - **[Real-world scenarios](real-world-anchors/)** — Six anchor scenarios (robot navigation, game AI, recommendation, trading, healthcare, dialogue) used throughout the curriculum so every concept is tied to practice.
 

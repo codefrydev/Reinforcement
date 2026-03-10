@@ -120,6 +120,11 @@ menu:
       name: Learn
       url: /learning-path/
       weight: 4
+    - identifier: course-outline
+      name: Course outline
+      url: /course-outline/
+      parent: learn
+      weight: 0
     - identifier: learning-path
       name: Learning path
       url: /learning-path/
