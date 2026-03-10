@@ -14,7 +14,9 @@ draft: false
 
 **Concept and real-world RL**
 
-In reinforcement learning, an **agent** interacts with an **environment**: at each step the agent is in a **state**, chooses an **action**, and receives a **reward** and a new state. The **return** is the sum of (discounted) rewards along a trajectory; the agent’s goal is to maximize this return. A **gridworld** is a simple environment where states are cells and actions move the agent; it models navigation (e.g. a robot moving to a goal, or a game on a grid). Discounting (\\(\gamma < 1\\)) makes future rewards worth less than immediate ones and keeps the return finite in long or infinite horizons.
+In reinforcement learning, an **agent** interacts with an **environment**: at each step the agent is in a **state**, chooses an **action**, and receives a **reward** and a new state. The **return** is the sum of (discounted) rewards along a trajectory; the agent’s goal is to maximize this return. A **gridworld** is a simple environment where states are cells and actions move the agent; it models **robot navigation** (e.g. a robot moving to a goal in a warehouse) and **game AI** (e.g. a character moving on a map). In robot navigation, the state might be (row, col); the action is up/down/left/right; the reward is +1 at the goal and often 0 or a small penalty per step. Discounting (\\(\gamma < 1\\)) makes future rewards worth less than immediate ones and keeps the return finite in long or infinite horizons.
+
+**Where you see this in practice:** Gridworld-style MDPs appear in pathfinding, warehouse robots, and simple games. The same agent–environment–return framework is used in recommendation (state = user context, action = which item to show, return = long-term engagement).
 
 **Exercise:** In a 3×3 gridworld, the agent starts at (0,0) and aims to reach a goal at (2,2) with a reward of +1. Every other step gives 0 reward, and hitting a wall (outside grid) gives -1 and stays in place. Write a Python function that takes a sequence of actions (up, down, left, right) and returns the total discounted return (\\(\gamma = 0.9\\)).
 
@@ -34,4 +36,5 @@ In reinforcement learning, an **agent** interacts with an **environment**: at ea
 **Extra practice**
 
 1. **Warm-up:** For rewards \\([0, 0, 1]\\) and \\(\gamma = 0.9\\), compute \\(G_0\\) by hand. Then write a one-line loop that computes it in Python.
-2. **Challenge:** Extend your function to support a **list of (state, reward)** pairs (e.g. from a saved trajectory) and compute the return from the first state. No environment logic—just the math.
+2. **Coding:** Write a function `discounted_return(rewards, gamma)` that returns \\(G_0\\) for a list of rewards. Test with rewards = [0, 0, 1], gamma = 0.9 (expected 0.81).
+3. **Challenge:** Extend your function to support a **list of (state, reward)** pairs (e.g. from a saved trajectory) and compute the return from the first state. No environment logic—just the math.

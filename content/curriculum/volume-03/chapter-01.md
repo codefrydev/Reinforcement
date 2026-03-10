@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** For a 1D state in [0,1] with one tiling of 4 tiles, what is \\(\\phi(0.25)\\)? (One tile is "on"; the rest 0. So a 4-dim vector with one 1.)
-2. **Challenge:** Replace tile coding with **radial basis functions** (RBFs): \\(\\phi_i(s) = \\exp(-\\|s - c_i\\|^2 / (2\\sigma^2))\\) for a grid of centers \\(c_i\\). Compare learning speed with tile coding on MountainCar.
+2. **Coding:** Implement tile coding for a 2D state (e.g. position in [0,1]×[0,1]) with 4 tilings and 8 tiles per dimension. Return the feature vector for (0.5, 0.5). What is the total number of features?
+3. **Challenge:** Replace tile coding with **radial basis functions** (RBFs): \\(\\phi_i(s) = \\exp(-\\|s - c_i\\|^2 / (2\\sigma^2))\\) for a grid of centers \\(c_i\\). Compare learning speed with tile coding on MountainCar.

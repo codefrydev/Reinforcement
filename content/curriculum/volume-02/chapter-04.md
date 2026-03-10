@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** Write the Q-learning update in one line. What is the TD target? How does it differ from SARSA's target?
-2. **Challenge:** Run Q-learning with \\(\epsilon=0.1\\) for many episodes, then run 100 evaluation episodes with \\(\epsilon=0\\). Also run 100 evaluation episodes with \\(\epsilon=0.1\\) (so the agent sometimes steps off the cliff). Compare average reward: greedy evaluation vs behavioral evaluation. Why does the latter get worse?
+2. **Coding:** Implement Q-learning on the same 5×5 gridworld as in the SARSA coding exercise. Compare the learned Q with SARSA after 500 episodes (e.g. max difference in Q-values).
+3. **Challenge:** Run Q-learning with \\(\epsilon=0.1\\) for many episodes, then run 100 evaluation episodes with \\(\epsilon=0\\). Also run 100 evaluation episodes with \\(\epsilon=0.1\\) (so the agent sometimes steps off the cliff). Compare average reward: greedy evaluation vs behavioral evaluation. Why does the latter get worse?

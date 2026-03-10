@@ -6,4 +6,37 @@ weight: 83
 draft: false
 ---
 
+**Learning objectives**
+
+- **Implement** **independent Q-learning (IQL)** in a simple cooperative game (e.g. two agents must "meet" in the same cell or coordinate to achieve a joint goal).
+- **Observe** the **non-stationarity** problem: as one agent's policy changes, the transition and reward from the other agent's perspective change, so the environment appears non-stationary.
+- **Explain** why IQL can still work in some cooperative settings despite non-stationarity, and when it fails or converges slowly.
+- **Compare** IQL with a baseline (e.g. random or hand-coded coordination) on the meet-up or similar task.
+- **Relate** IQL and non-stationarity to **game AI** (teammates) and **dialogue** (multiple agents).
+
+**Concept and real-world RL**
+
+**Independent Q-learning (IQL)** means each agent runs its own Q-learning (or DQN) without observing the other agents' actions or policies. Each agent treats the others as part of the "environment," so from one agent's perspective, the environment is **non-stationary**: the transition and effective reward depend on the other agents' policies, which are changing over training. In **cooperative** settings (e.g. two agents must meet in the same cell), IQL can still learn if the task is simple or if exploration eventually finds good joint behavior, but convergence is not guaranteed and can be slow. In **game AI** and **dialogue**, IQL is a simple baseline for multi-agent coordination.
+
+**Where you see this in practice:** IQL as baseline in MARL; non-stationarity in multi-agent learning; cooperative MARL benchmarks.
+
 **Exercise:** Implement independent Q-learning in a simple cooperative game (e.g., two agents need to meet). Show the non-stationarity problem: as one agent's policy changes, the other's environment changes, causing instability.
+
+**Professor's hints**
+
+- **Meet-up game:** Small grid (e.g. 5×5). Two agents; state for each = (own position, other's position) or (own position only if partial obs). Actions: move N/S/E/W. Reward: +1 when both are in the same cell (or when they "meet" within a step), 0 otherwise. Episodes run until meet or timeout.
+- **IQL:** Each agent has its own Q(s_i, a_i) or Q(o_i, a_i). Update with standard Q-learning; the "environment" for agent i includes the other agent's action, but agent i does not condition on it (or does not see it). So from agent i's view, the transition is stochastic/non-stationary because the other agent's policy changes.
+- **Showing non-stationarity:** Log variance of returns or Q-values over training; or plot learning curves (return vs episodes) and note instability (oscillations, slow convergence). Compare with a setting where the other agent is fixed (stationary)—learning should be more stable.
+- Use **shared** or **separate** state representation; if each agent only sees its own position, the problem is harder (partial observability).
+
+**Common pitfalls**
+
+- **Credit assignment:** In cooperative tasks, both agents get the same reward; each might not know if the success was due to its action or the other's. IQL does not address this explicitly; the hope is that enough exploration finds coordinated behavior.
+- **Exploration:** With two agents exploring independently, they may rarely "meet" early on; use sufficient exploration (e.g. ε-greedy with high ε initially) or a simple reward shaping (e.g. reward for getting closer).
+- **Partial observability:** If agents do not see each other's position, the state is partially observable and the task is harder; you can start with full observability (each sees both positions) to isolate the non-stationarity effect.
+
+**Extra practice**
+
+1. **Warm-up:** Why does the transition probability P(s' | s, a_1, a_2) make the environment "non-stationary" for agent 1 when agent 2's policy is changing?
+2. **Coding:** Implement the meet-up game and IQL for two agents. Plot mean return (over 100 eval episodes) every 500 training episodes. Run for 10k episodes. Do you see oscillations or slow convergence? Compare with one agent fixed (e.g. random) and the other learning.
+3. **Challenge:** Add a **third agent** to the meet-up (all three must meet in one cell). Does IQL become more unstable? Plot return variance over training.

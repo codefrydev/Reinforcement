@@ -33,4 +33,5 @@ In many states, the *value* of being in that state is similar regardless of the 
 **Extra practice**
 
 1. **Warm-up:** For 2 actions, write \\(Q(s,0)\\) and \\(Q(s,1)\\) in terms of \\(V(s)\\), \\(A(s,0)\\), \\(A(s,1)\\). Show that \\(\\max_a Q(s,a) = V(s) + \\max_a A(s,a) - \\bar{A}\\).
-2. **Challenge:** Try the alternative: \\(Q(s,a) = V(s) + (A(s,a) - \\max_{a'} A(s,a'))\\). Train and compare with the mean version. Does it change learning?
+2. **Coding:** Implement a Dueling DQN head: one stream for V(s), one for A(s,a); output Q(s,a) = V(s) + (A(s,a) - mean_a A(s,a)). Train on CartPole and plot return vs DQN.
+3. **Challenge:** Try the alternative: \\(Q(s,a) = V(s) + (A(s,a) - \\max_{a'} A(s,a'))\\). Train and compare with the mean version. Does it change learning?

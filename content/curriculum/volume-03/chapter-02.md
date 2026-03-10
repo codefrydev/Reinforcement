@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** For state dim 4 and 3 actions, what are the shapes of the input tensor and the output tensor for a batch of 32?
-2. **Challenge:** Add a method to the network that, given a state, returns the greedy action (argmax over Q-values). Use it in a short loop to run one episode of CartPole with a random (untrained) network and report the total reward.
+2. **Coding:** Build a 2-layer MLP in PyTorch that takes state (4,) and outputs Q(s,a) for 2 actions. Forward pass with batch size 16. Print output shape.
+3. **Challenge:** Add a method to the network that, given a state, returns the greedy action (argmax over Q-values). Use it in a short loop to run one episode of CartPole with a random (untrained) network and report the total reward.

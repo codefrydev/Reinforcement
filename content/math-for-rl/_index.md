@@ -27,4 +27,4 @@ This track covers the **math you need to read and do reinforcement learning**: p
 | [Linear algebra](/math-for-rl/linear-algebra/) | Vectors, dot product, matrices, gradients | State vectors, value parameterization, gradient updates |
 | [Calculus](/math-for-rl/calculus/) | Derivatives, chain rule, partial derivatives | Policy gradient, loss gradients, backprop |
 
-After finishing this track, you should feel comfortable with the math in the [Preliminary assessment](/preliminary/) and in [Volume 1](/curriculum/volume-01/).
+After finishing this track, take the **[Phase 1 self-check](/assessment/phase-1-math/)** (10 questions). If you pass, you are ready for Phase 2 and [Volume 1](/curriculum/volume-01/).

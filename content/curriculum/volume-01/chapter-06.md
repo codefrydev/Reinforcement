@@ -33,4 +33,5 @@ The **optimal action-value function** \\(Q^*(s,a)\\) is the expected return from
 **Extra practice**
 
 1. **Warm-up:** Write the Bellman optimality equation for \\(V^*(s)\\) (state value). Express it using \\(\\max_a\\) and \\(Q^*(s,a)\\) or \\(P(s',r|s,a)\\).
-2. **Challenge:** For the 2-state MDP from Chapter 3, write the two equations for \\(Q^*(A,\\text{stay})\\) and \\(Q^*(A,\\text{go})\\) in terms of \\(Q^*(B,\\cdot)\\) and \\(V^*(B)\\). Do not solve—just write the system.
+2. **Coding:** Implement value iteration for the 2-state MDP: loop \\(V_{k+1}(s) = \\max_a \\sum_{s',r} P(s',r|s,a)[r + \\gamma V_k(s')]\\) until \\(\\|V_{k+1} - V_k\\| < \\epsilon\\). Return \\(V^*\\) and the greedy policy.
+3. **Challenge:** For the 2-state MDP from Chapter 3, write the two equations for \\(Q^*(A,\\text{stay})\\) and \\(Q^*(A,\\text{go})\\) in terms of \\(Q^*(B,\\cdot)\\) and \\(V^*(B)\\). Do not solve—just write the system.

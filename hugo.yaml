@@ -1,4 +1,4 @@
-baseURL: https://codefrydev.github.io/Reinforcement/
+baseURL: https://codefrydev.in/Reinforcement/
 languageCode: en-us
 title: Reinforcement
 theme: PaperMod
@@ -8,7 +8,7 @@ buildDrafts: false
 buildFuture: false
 buildExpired: false
 
-#googleAnalytics: UA-123-45
+googleAnalytics: G-VM01Q3R43D
 
 minify:
   disableXML: true
@@ -17,12 +17,11 @@ minify:
 params:
   math: true
   env: production # to enable google analytics, opengraph, twitter-cards and schema.
-  title: ExampleSite
-  description: "ExampleSite description"
-  keywords: [Blog, Portfolio, PaperMod]
-  author: Me
-  # author: ["Me", "You"] # multiple authors
-  images: ["<link or path of image for opengraph, twitter-cards>"]
+  title: Reinforcement Learning Curriculum
+  description: "Reinforcement learning curriculum by codefrydev — 100 chapters, prerequisites, and readiness assessments. Hosted at codefrydev.in."
+  keywords: [Reinforcement Learning, RL, curriculum, codefrydev, machine learning]
+  author: codefrydev
+  images: [] # optional: add og image path for opengraph, twitter-cards
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -31,7 +30,7 @@ params:
   ShowShareButtons: true
   ShowPostNavLinks: true
   ShowBreadCrumbs: true
-  ShowCodeCopyButtons: false
+  ShowCodeCopyButtons: true
   ShowWordCount: true
   ShowRssButtonInSectionTermList: true
   UseHugoToc: true
@@ -44,7 +43,7 @@ params:
   tocopen: false
 
   assets:
-    # disableHLJS: true # to disable highlight.js
+    disableHLJS: true  # use Hugo Chroma instead of highlight.js (PaperMod FAQ)
     # disableFingerprinting: true
     favicon: "<link / abs url>"
     favicon16x16: "<link / abs url>"
@@ -60,8 +59,8 @@ params:
   # profile-mode
   profileMode:
     enabled: false # needs to be explicitly set
-    title: ExampleSite
-    subtitle: "This is subtitle"
+    title: codefrydev
+    subtitle: "Reinforcement Learning Curriculum"
     imageUrl: "<img location>"
     imageWidth: 120
     imageHeight: 120
@@ -72,36 +71,30 @@ params:
       - name: Tags
         url: tags
 
-  # home-info mode
-  homeInfoParams:
-    Title: "Hi there \U0001F44B"
-    Content: Welcome to my blog
 
   socialIcons:
-    - name: x
-      url: "https://x.com/"
-    - name: stackoverflow
-      url: "https://stackoverflow.com"
+    - name: email
+      url: "mailto:codefrydev@gmail.com"
+    - name: linkedin
+      url: "https://www.linkedin.com/in/codefrydev"
     - name: github
-      url: "https://github.com/"
+      url: "https://github.com/codefrydev"
+    - name: youtube
+      url: "https://www.youtube.com/c/codefrydev"
 
   analytics:
     google:
-      SiteVerificationTag: "XYZabc"
-    bing:
-      SiteVerificationTag: "XYZabc"
-    yandex:
-      SiteVerificationTag: "XYZabc"
+      SiteVerificationTag: "G-VM01Q3R43D"
 
   cover:
     hidden: true # hide everywhere but not in structured data
-    hiddenInList: true # hide on list pages and home
-    hiddenInSingle: true # hide on single page
+    hiddenInList: false # show on list pages and home
+    hiddenInSingle: false # show on single page
 
   editPost:
-    URL: "https://github.com/<path_to_repo>/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
+    URL: "https://github.com/codefrydev/Reinforcement/blob/main/content"
+    Text: "Suggest Changes"
+    appendFilePath: true
 
   # for search
   # https://fusejs.io/api/options.html
@@ -120,37 +113,45 @@ menu:
       name: Learning path
       url: /learning-path/
       weight: 4
+    - identifier: math-for-rl
+      name: Math for RL
+      url: /math-for-rl/
+      weight: 5
     - identifier: preliminary
       name: Preliminary
       url: /preliminary/
-      weight: 5
+      weight: 6
     - identifier: prerequisites
       name: Prerequisites
       url: /prerequisites/
-      weight: 6
+      weight: 7
     - identifier: curriculum
       name: Curriculum
       url: /curriculum/
-      weight: 7
-    - identifier: categories
-      name: categories
-      url: /categories/
+      weight: 8
+    - identifier: Search
+      name: search
+      url: /search/
       weight: 10
     - identifier: tags
       name: tags
       url: /tags/
       weight: 20
+    - identifier: archives
+      name: Archives
+      url: /archives/
+      weight: 25
     - identifier: Home
-      name: Codefrydev
+      name: codefrydev
       url: https://codefrydev.in
       weight: 30
-# Read: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma
+
+# Chroma syntax highlighting (PaperMod FAQ: https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#using-hugos-syntax-highlighter-chroma)
 pygmentsUseClasses: true
 markup:
   highlight:
+    codeFences: true
+    guessSyntax: true
+    lineNos: true
     noClasses: false
-    # anchorLineNos: true
-    # codeFences: true
-    # guessSyntax: true
-    # lineNos: true
-    # style: monokai
+    style: monokai

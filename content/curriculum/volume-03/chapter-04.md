@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** After pushing 50 transitions with capacity 100, what is `len(buffer)`? After pushing 150 total, what is `len(buffer)`? (50, then 100 if circular.)
-2. **Challenge:** Add a method `sample_sequential(n)` that returns `n` consecutive transitions (e.g. for n-step learning or RNN). Ensure you do not cross an episode boundary (done=True) if you want full n-step returns.
+2. **Coding:** Implement a replay buffer class: push(transition), sample(batch_size) returning a batch of (s, a, r, s', done). Use a circular buffer (deque or list with index). Test with 100 pushes and 32 samples.
+3. **Challenge:** Add a method `sample_sequential(n)` that returns `n` consecutive transitions (e.g. for n-step learning or RNN). Ensure you do not cross an episode boundary (done=True) if you want full n-step returns.

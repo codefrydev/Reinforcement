@@ -33,4 +33,5 @@ The **state-value function** \\(V^\\pi(s)\\) is the expected (discounted) return
 **Extra practice**
 
 1. **Warm-up:** For a one-state MDP with one action that gives reward 1 and stays in the same state, write the Bellman equation and solve for \\(V\\). (Answer: \\(V = 1 + \\gamma V\\) ⇒ \\(V = 1/(1-\\gamma)\\).)
-2. **Challenge:** Write the Bellman equation for the *action-value* function \\(Q^\\pi(s,a)\\) for the Chapter 3 MDP and random policy. Express \\(Q^\\pi(A,\\text{stay})\\) and \\(Q^\\pi(A,\\text{go})\\) in terms of \\(V^\\pi(A)\\) and \\(V^\\pi(B)\\) (you can use your computed \\(V\\)).
+2. **Coding:** In Python, encode the 2-state MDP from Chapter 3 (P, R matrices). Write a function that computes \\(V^\\pi\\) for a given policy using the Bellman expectation equation in matrix form (solve the linear system \\(V = R^\\pi + \\gamma P^\\pi V\\)).
+3. **Challenge:** Write the Bellman equation for the *action-value* function \\(Q^\\pi(s,a)\\) for the Chapter 3 MDP and random policy. Express \\(Q^\\pi(A,\\text{stay})\\) and \\(Q^\\pi(A,\\text{go})\\) in terms of \\(V^\\pi(A)\\) and \\(V^\\pi(B)\\) (you can use your computed \\(V\\)).

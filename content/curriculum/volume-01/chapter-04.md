@@ -33,4 +33,5 @@ The **reward hypothesis** says that we can capture what we want the agent to do 
 **Extra practice**
 
 1. **Warm-up:** Give one example of reward hacking in a video game (e.g. "kill enemies" leading to farming spawn points). How would you change the reward to reduce the exploit?
-2. **Challenge:** Design a reward for a warehouse robot that must pick items and place them in bins. List at least two possible reward hacks and how you would modify the reward to address them.
+2. **Coding:** Write a Python function that takes a reward function (state, action → float) and a list of trajectories (each a list of (s, a, r) tuples) and returns the mean return per trajectory. Test with a small hand-made trajectory.
+3. **Challenge:** Design a reward for a warehouse robot that must pick items and place them in bins. List at least two possible reward hacks and how you would modify the reward to address them.

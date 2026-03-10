@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** For one (\\(\\alpha\\), \\(\\epsilon\\)) pair, run 3 trials and compute the mean and standard deviation of the mean reward per episode. Why is std useful?
-2. **Challenge:** Add \\(\\gamma\\) to the grid (e.g. 0.9, 0.99). You now have 3 parameters; use a small grid (e.g. 2×2×2) or fix one parameter and show 2D heatmaps for two values of \\(\\gamma\\).
+2. **Coding:** Run a small hyperparameter grid: α in [0.01, 0.1], ε in [0.05, 0.2] on Cliff Walking (or gridworld). For each of the 4 combinations, run 3 seeds and record mean return. Plot a bar chart or table of mean ± std.
+3. **Challenge:** Add \\(\\gamma\\) to the grid (e.g. 0.9, 0.99). You now have 3 parameters; use a small grid (e.g. 2×2×2) or fix one parameter and show 2D heatmaps for two values of \\(\\gamma\\).

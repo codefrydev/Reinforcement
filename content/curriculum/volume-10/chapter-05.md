@@ -6,4 +6,38 @@ weight: 95
 draft: false
 ---
 
+**Learning objectives**
+
+- **Implement** a **PPO loop** to fine-tune a **small language model** (e.g. GPT-2 small or DistilGPT-2) for text generation with a **simple reward** (e.g. positive sentiment, or length).
+- **Include** a **KL penalty** (or KL constraint) so that the updated policy does not deviate too far from the initial (reference) policy, preventing **mode collapse** and maintaining fluency.
+- **Generate** sequences with the current policy, compute reward for each sequence, and update the policy with PPO (clip + KL).
+- **Observe** that without KL penalty the policy may collapse (e.g. always output the same high-reward token); with KL it stays diverse.
+- **Relate** to **dialogue** and **RLHF**: same PPO+KL setup is used for aligning LMs with human preferences.
+
+**Concept and real-world RL**
+
+**Training LMs with PPO** uses reinforcement learning to optimize a **reward** over generated text (e.g. sentiment score, task success, or learned reward from human preferences). The **policy** is the LM (autoregressive); we sample sequences, score them with the reward, and update the LM with **PPO** to maximize expected reward. A **KL penalty** (or constraint) limits how much the policy can change from a **reference** LM, which prevents **mode collapse** (e.g. always outputting "positive positive positive") and keeps generations fluent. In **dialogue** and **RLHF**, this is the core of aligning large language models with human intent.
+
+**Where you see this in practice:** PPO for LM fine-tuning (InstructGPT, ChatGPT); KL-constrained RLHF; sentiment and style control.
+
 **Exercise:** Using a small language model (e.g., GPT-2), implement a PPO loop to fine-tune it for text generation with a simple reward (e.g., positive sentiment). Include a KL penalty to prevent mode collapse.
+
+**Professor's hints**
+
+- **LM:** Use Hugging Face (e.g. gpt2 or distilgpt2). The policy π(a|s) is the LM: s = prompt + generated so far, a = next token. Sample a batch of completions (e.g. 64 sequences, max length 32).
+- **Reward:** Use a sentiment classifier (e.g. from Hugging Face) to score each sequence; reward = probability of "positive" or score in [-1,1]. Or reward = length (to encourage longer generations) or a simple heuristic.
+- **PPO:** Compute log π(a|s) for the current policy and for the reference (initial) policy. Advantage = reward - baseline (e.g. mean reward, or a value model). PPO loss = clip(ratio, 1-ε, 1+ε) * advantage; ratio = π/π_ref. Add KL term: β * KL(π || π_ref) so we penalize deviation from π_ref.
+- **KL penalty:** KL ≈ (log π - log π_ref). Average over tokens in the batch. Tune β: too large and the policy barely moves; too small and mode collapse. Start with β=0.01–0.1.
+- **Mode collapse:** Without KL, the policy may output the same short high-reward sequence every time. With KL, it should stay close to the reference and remain diverse.
+
+**Common pitfalls**
+
+- **Reward scale:** Normalize rewards (e.g. subtract mean, divide by std) so advantages are stable.
+- **Baseline:** Use a value model (train V(s) to predict reward) or simple mean reward as baseline to reduce variance.
+- **Sequence-level reward:** The reward is usually for the whole sequence; for PPO we need per-token or per-step credit. Use the same reward for all steps in the sequence (reward-to-go from that step), or use a value model for baseline.
+
+**Extra practice**
+
+1. **Warm-up:** Why does a KL penalty between the current policy and the reference policy help prevent mode collapse?
+2. **Coding:** Fine-tune GPT-2 with PPO for 100 iterations. Reward = sentiment score (positive = 1, negative = -1). Plot mean reward and mean KL(π || π_ref) per iteration. Compare with no KL (β=0): does the policy collapse to a few tokens?
+3. **Challenge:** Use a **value model** V(prompt) trained to predict expected reward. Use it as the baseline in PPO. Does it speed up learning or reduce variance compared to using mean reward as baseline?

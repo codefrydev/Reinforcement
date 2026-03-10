@@ -34,4 +34,5 @@ Real RL often requires **custom environments**: simulators for robotics, games, 
 **Extra practice**
 
 1. **Warm-up:** In your maze, how many possible observations (states) are there? How many actions? What is the size of a tabular Q-table?
-2. **Challenge:** Add a "time limit" (e.g. 100 steps): set `truncated=True` when step count exceeds 100. Return this in `info` as well. Run a random agent for one episode and confirm truncation occurs.
+2. **Coding:** Implement a minimal Gym maze (e.g. 5×5, start (0,0), goal (4,4), walls optional). Implement reset() and step(action). Run a random policy for 10 episodes and log episode length and return.
+3. **Challenge:** Add a "time limit" (e.g. 100 steps): set `truncated=True` when step count exceeds 100. Return this in `info` as well. Run a random agent for one episode and confirm truncation occurs.

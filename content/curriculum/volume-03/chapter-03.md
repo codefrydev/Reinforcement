@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** For one transition (s, a, r, s', done=0), write the target \\(y\\) in terms of \\(Q_{target}\\) and \\(\\gamma\\). For done=1, what is \\(y\\)?
-2. **Challenge:** Add **double DQN**: use the online network to select the action \\(a^* = \\arg\\max_a Q(s',a)\\), but use \\(Q_{target}(s', a^*)\\) as the target value. Compare learning curve with standard DQN on CartPole.
+2. **Coding:** Implement the DQN loss (MSE between Q(s,a) and target y) for a batch. Use a target network for y; compute y with no_grad. Test with dummy tensors.
+3. **Challenge:** Add **double DQN**: use the online network to select the action \\(a^* = \\arg\\max_a Q(s',a)\\), but use \\(Q_{target}(s', a^*)\\) as the target value. Compare learning curve with standard DQN on CartPole.

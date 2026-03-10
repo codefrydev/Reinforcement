@@ -257,6 +257,17 @@ Keep functions small and focused. One function, one job. In RL, a function that 
 
 ---
 
+## Checkpoint (before you continue)
+
+Try these mini-exercises to confirm you can combine what you have learned:
+
+1. **Checkpoint 1:** Write a short script (about 10 lines) that: (a) sets a variable `steps = 5`, (b) uses a `for` loop to print `"Step 0"`, `"Step 1"`, … up to `"Step 4"`, and (c) uses an `if` to print `"Done"` only when the loop variable equals 4.
+2. **Checkpoint 2:** Write a function `total_reward(rewards)` that takes a list of numbers (e.g. `[0, 0, 1]`) and returns their sum. Call it from a loop that runs 2 times with different lists and prints the result each time.
+
+If you can do both without looking back, you are ready for the next section.
+
+---
+
 ## Reading and writing simple scripts
 
 A typical script: define some variables and functions at the top, then use them in a small “main” section. You can run the script from the terminal.
@@ -292,6 +303,20 @@ Save as `episodes.py` and run `python3 episodes.py`. You should see three lines 
 ### Professor's hint
 
 Test small first. Get one episode working, then put it in a loop. Get one function right, then combine them. This is how you will debug RL code later.
+
+---
+
+## Phase 0 done? Checklist
+
+Before moving on, confirm:
+
+- [ ] I can run a Python script from the terminal (`python3 script.py`).
+- [ ] I understand variables and types (int, float, str, bool).
+- [ ] I can write an `if`/`elif`/`else` and a `for` or `while` loop.
+- [ ] I can define a function with `def` and call it; I know what `return` does.
+- [ ] I completed at least one of the Checkpoint exercises above.
+
+If all are checked, you have finished Phase 0.
 
 ---
 

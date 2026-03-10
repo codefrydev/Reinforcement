@@ -1,9 +1,38 @@
 ---
 title: "Chapter 60: Visualizing Model-Based Rollouts"
-description: "Plot true vs predicted states for fixed action sequence."
+description: "Plot true vs predicted states; compounding error visualization."
 date: 2026-03-10T00:00:00Z
 weight: 60
 draft: false
 ---
 
+**Learning objectives**
+
+- For a **learned dynamics model** (e.g. from Chapter 52), **sample a starting state** and generate a **rollout** of predicted states for a **fixed action sequence**.
+- **Plot** the **true states** (from the environment) and the **predicted states** (from the model) on the same axes to **visualize compounding error**.
+- Interpret the plot: where does the model diverge from reality?
+
+**Concept and real-world RL**
+
+**Visualizing** model rollouts vs real rollouts makes compounding error concrete: small 1-step errors accumulate and the predicted trajectory drifts. In **robot navigation** and **model-based RL**, this motivates short rollouts, ensemble methods, and uncertainty-aware planning. The same idea applies to **trading** models (predictions diverge over time) and **dialogue** (conversation dynamics).
+
+**Where you see this in practice:** Debugging world models; papers show predicted vs actual trajectories.
+
 **Exercise:** For the learned model from Chapter 52, sample a starting state and generate a rollout of predicted states for a fixed action sequence. Plot the true states from the environment and the predicted states to visualize compounding error.
+
+**Professor's hints**
+
+- Fix a seed; get s0 from the env. Generate a fixed action sequence (e.g. random or sinusoidal). Run the env with these actions to get s1, s2, ... (true). Run the model: s0, a0 → ŝ1; ŝ1, a1 → ŝ2; ... (predicted).
+- Plot: e.g. state dimension 0 vs time, and state dimension 1 vs time (or position vs velocity). Two curves: true and predicted. They should match early and diverge later.
+- Compounding: note the time step at which the curves separate noticeably; relate to 1-step MSE.
+
+**Common pitfalls**
+
+- **Same actions:** Use the *same* action sequence for both env and model so the comparison is fair.
+- **Terminal state:** If the episode ends in the env, stop; the model may not have a terminal prediction, so just plot up to the min of (env steps, desired horizon).
+
+**Extra practice**
+
+1. **Warm-up:** What does it mean if the predicted and true curves diverge after 5 steps?
+2. **Coding:** Implement the visualization for CartPole (plot 4 state dims over 20 steps). Use a model trained in Chapter 52. Save the figure and describe where error grows.
+3. **Challenge:** Train the model with **more data** (50k steps) and repeat the visualization. Does the divergence delay (more steps before curves separate)?

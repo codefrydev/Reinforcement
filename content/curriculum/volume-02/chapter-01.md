@@ -14,7 +14,9 @@ draft: false
 
 **Concept and real-world RL**
 
-**Monte Carlo (MC) methods** estimate value functions from experience: run episodes under a policy, compute the return from each state (or state-action), and average those returns. **First-visit MC** uses only the first time each state appears in an episode; **every-visit MC** uses every visit. No model (transition probabilities) is needed—only sample trajectories. In RL, MC is used when we can get full episodes (e.g. games, episodic tasks) and want simple, unbiased estimates. Blackjack is a classic testbed: small state space, stochastic transitions, and a natural "stick or hit" policy to evaluate.
+**Monte Carlo (MC) methods** estimate value functions from experience: run episodes under a policy, compute the return from each state (or state-action), and average those returns. **First-visit MC** uses only the first time each state appears in an episode; **every-visit MC** uses every visit. No model (transition probabilities) is needed—only sample trajectories. In RL, MC is used when we can get full episodes (e.g. games, episodic tasks) and want simple, unbiased estimates. **Game AI** is a natural fit: blackjack has a small state space (player sum, dealer card, usable ace), stochastic transitions (card draws), and a clear "stick or hit" policy to evaluate. The same idea applies to evaluating a fixed strategy in any episodic game—we run many episodes and average the returns from each state.
+
+**Where you see this in practice:** MC prediction is used to evaluate policies in card games, board games, and simulators where we can run full episodes. It is a building block for MC control and appears in benchmarking and policy evaluation in industry.
 
 **Exercise:** Implement first-visit Monte Carlo prediction for the blackjack environment (OpenAI Gym). Estimate the state-value function for a policy that sticks on 20 or 21, otherwise hits. Run for 500,000 episodes and plot the value for a few key states.
 
@@ -34,4 +36,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** For one episode of blackjack with the given policy, list the states visited and the return from the first time each state is visited. Compute returns by hand for a 3-step episode.
-2. **Challenge:** Implement **every-visit** MC for the same policy. Compare first-visit and every-visit estimates for 2–3 states after 100k episodes. Are they similar?
+2. **Coding:** Write a function that, given a list of (state, reward) pairs for one episode and gamma, returns the partial return G_t from each first-visit state. Test on a 5-step episode.
+3. **Challenge:** Implement **every-visit** MC for the same policy. Compare first-visit and every-visit estimates for 2–3 states after 100k episodes. Are they similar?

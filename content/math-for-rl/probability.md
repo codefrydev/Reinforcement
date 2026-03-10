@@ -46,6 +46,8 @@ As the number of samples \\(n\\) grows, the **sample average** \\(\bar{x} = \fra
 3. **By hand:** For observations [0, 1, 2, 3, 4], compute the sample mean and the unbiased sample variance.
 4. **Python:** Write a function `sample_mean(x)` that takes a list of numbers and returns their average. Then write `sample_variance(x)` that returns the unbiased variance. Test with [1, 2, 3, 4, 5].
 5. **RL:** Why do we need many episodes in Monte Carlo prediction to get a good value estimate? Relate your answer to the law of large numbers.
+6. **By hand:** For a Bernoulli with \\(p = 0.3\\), what is \\(\mathbb{E}[X]\\) and \\(\mathrm{Var}(X)\\)? (E[X]=0.3, Var(X)=p(1-p)=0.21.)
+7. **RL:** In a bandit, we estimate \\(Q(a)\\) by the sample mean of rewards from arm \\(a\\). Why might we prefer this over using only the last reward from arm \\(a\\)?
 
 ---
 

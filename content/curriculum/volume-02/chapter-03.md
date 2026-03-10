@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** For one transition \\((s,a,r,s',a')\\), write the SARSA update in one line. What is the TD error \\(r + \\gamma Q(s',a') - Q(s,a)\\)?
-2. **Challenge:** Run SARSA with \\(\epsilon=0\\) (greedy) from the start. Does it learn a good policy? Compare with \\(\epsilon=0.1\\). Why does some exploration help?
+2. **Coding:** Implement SARSA for a 5×5 gridworld with a goal. Use a tabular Q-table, ε-greedy (ε=0.1). Run 500 episodes and plot episode return vs episode.
+3. **Challenge:** Run SARSA with \\(\epsilon=0\\) (greedy) from the start. Does it learn a good policy? Compare with \\(\epsilon=0.1\\). Why does some exploration help?

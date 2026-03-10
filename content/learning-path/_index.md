@@ -7,6 +7,8 @@ draft: false
 
 This learning path takes you from **zero programming experience** to understanding and building reinforcement learning systems. Follow the phases in order; each phase builds on the previous one.
 
+- **[Real-world scenarios](/learning-path/real-world-anchors/)** — Six anchor scenarios (robot navigation, game AI, recommendation, trading, healthcare, dialogue) used throughout the curriculum so every concept is tied to practice.
+
 **Not ready for the [Preliminary assessment](/preliminary/)?** If you have never programmed, start with Phase 0. If the assessment feels hard, follow this learning path in order and return to it when you are ready.
 
 ---
@@ -37,7 +39,13 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Duration:** About 2–4 weeks.
 
-**What you will do:** Study probability & statistics, linear algebra, and calculus with RL-motivated examples and practice.
+**What you will do:** Study probability & statistics, linear algebra, and calculus with RL-motivated examples and practice. Work through the sub-phases in order, then take the self-check.
+
+**Sub-phases:**
+
+- **1a — Probability:** [Probability & statistics](/math-for-rl/probability/). Expectations, variance, sample mean, law of large numbers. *In RL:* bandit rewards, Monte Carlo returns, value functions as expectations.
+- **1b — Linear algebra:** [Linear algebra](/math-for-rl/linear-algebra/). Vectors, dot product, matrices, gradients. *In RL:* state vectors, linear value approximation \\(V(s) = w^T \\phi(s)\\), gradient updates.
+- **1c — Calculus:** [Calculus](/math-for-rl/calculus/). Derivatives, chain rule, partial derivatives. *In RL:* policy gradients, loss minimization, backprop.
 
 **Outcomes:**
 
@@ -47,7 +55,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **In RL, this leads to:** Value functions are expectations; states and observations are vectors; policy gradients use calculus. Solid math makes every chapter easier.
 
-**Start here:** [Math for RL](/math-for-rl/)
+**Start here:** [Math for RL](/math-for-rl/) → then [Phase 1 self-check](/assessment/phase-1-math/)
 
 ---
 
@@ -57,7 +65,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Duration:** About 3–6 weeks, depending on how much you already know.
 
-**What you will do:** Work through Python (full), NumPy, Pandas, Matplotlib, PyTorch, TensorFlow, and Gym as needed.
+**What you will do:** Work through Python (full), NumPy, Pandas, Matplotlib, PyTorch, TensorFlow, and Gym as needed. Each prerequisite page explains **why RL needs it**; complete the **one small task** per topic listed on the [Prerequisites](/prerequisites/) index, then take the **Phase 2 readiness quiz**.
 
 **Outcomes:**
 
@@ -67,7 +75,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **In RL, this leads to:** The curriculum exercises assume this stack. Prerequisites include Professor's hints and common pitfalls to avoid mistakes.
 
-**Start here:** [Prerequisites](/prerequisites/)
+**Start here:** [Prerequisites](/prerequisites/) → [Phase 2 readiness quiz](/assessment/phase-2-readiness/)
 
 ---
 
@@ -77,7 +85,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Duration:** About 4–8 weeks.
 
-**What you will do:** Complete [Volume 1: Mathematical Foundations](/curriculum/volume-01/) and [Volume 2: Tabular Methods & Classic Algorithms](/curriculum/volume-02/) (chapters 1–20).
+**What you will do:** Complete [Volume 1: Mathematical Foundations](/curriculum/volume-01/) and [Volume 2: Tabular Methods & Classic Algorithms](/curriculum/volume-02/) (chapters 1–20). Use the **milestone checkpoints** and **mini-project** (tabular Q-learning on a 5×5 Gridworld) on the [Phase 3](/learning-path/phase-3/) page, then take the **Phase 3 foundations quiz**.
 
 **Outcomes:**
 
@@ -87,7 +95,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **In RL, this leads to:** Everything that follows (DQN, policy gradients, etc.) builds on these ideas. Do not skip this phase.
 
-**Start here:** [Volume 1: Mathematical Foundations](/curriculum/volume-01/)
+**Start here:** [Volume 1: Mathematical Foundations](/curriculum/volume-01/) → [Phase 3 milestones & mini-project](/learning-path/phase-3/) → [Phase 3 foundations quiz](/assessment/phase-3-foundations/)
 
 ---
 
@@ -106,7 +114,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **In RL, this leads to:** Most practical applications use deep RL. This phase is where you go from “understanding the theory” to “building agents that work in complex environments.”
 
-**Start here:** [Volume 3: Value Function Approximation & Deep Q-Learning](/curriculum/volume-03/)
+**Start here:** [Volume 3: Value Function Approximation & Deep Q-Learning](/curriculum/volume-03/) → [Phase 4 milestones & coding challenges](/learning-path/phase-4/) → [Phase 4 Deep RL quiz](/assessment/phase-4-deep-rl/)
 
 ---
 
@@ -116,7 +124,17 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Duration:** Ongoing (pick topics as needed).
 
-**What you will do:** Work through [Volumes 6–10](/curriculum/) (chapters 51–100): model-based RL, exploration, offline RL, multi-agent RL, real-world applications, safety, and RL with large language models.
+**What you will do:** Work through [Volumes 6–10](/curriculum/) (chapters 51–100): model-based RL, exploration, offline RL, multi-agent RL, real-world applications, safety, and RL with large language models. Each volume has a **topic roadmap** (what you will learn per chapter); use it to pick a path. An **optional Phase 5 project** (e.g. offline RL on a fixed dataset, or a simple multi-agent scenario) ties concepts together.
+
+**Topic roadmaps (after this you will…):**
+
+- **Vol 6 (Model-based):** Compare model-free vs model-based; learn world models and compounding error; implement planning (BFS, MCTS), Dreamer-style imagination, MBPO, PETS.
+- **Vol 7 (Exploration & meta):** Tackle hard exploration (sparse rewards); intrinsic motivation, curiosity (ICM), RND; Go-Explore; meta-learning (MAML, RL²).
+- **Vol 8 (Offline & imitation):** Understand offline RL (distribution shift, CQL); Decision Transformers; behavioral cloning, DAgger, IRL, GAIL; RLHF basics.
+- **Vol 9 (Multi-agent):** Game theory basics; IQL, CTDE, MADDPG; VDN, QMIX; MAPPO; self-play; communication.
+- **Vol 10 (Real-world, safety, LLMs):** Robotics and sim-to-real; safe RL; trading, recommenders; PPO/RLHF for LLMs; evaluation and debugging.
+
+**Optional project:** Implement offline RL on a fixed dataset (e.g. from a random or expert policy) using CQL or conservative Q-learning; or implement a simple two-agent cooperative task with parameter sharing (MAPPO or IQL).
 
 **Outcomes:**
 

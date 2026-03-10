@@ -40,6 +40,8 @@ The **gradient** of a scalar function \\(f(w)\\) with respect to a vector \\(w\\
 3. **Gradient:** If \\(f(w) = a^T w\\) with \\(a = [1, 2, 3]^T\\), what is \\(\nabla_w f\\)? If \\(y = A w\\) and \\(A\\) is constant, what is \\(\nabla_w (A w)\\) (as a column vector)?
 4. **NumPy:** Create vectors \\(x\\) and \\(y\\) as NumPy arrays and compute their dot product with `np.dot(x, y)`. Create a 2×2 matrix \\(A\\) and a 2-vector \\(w\\), then compute \\(A w\\).
 5. **RL:** In linear value approximation \\(V(s) = w^T x(s)\\), if the true return for a state is \\(G\\) and we use squared-error loss \\((G - w^T x(s))^2\\), write the gradient of this loss with respect to \\(w\\) in one line (using \\(x = x(s)\\)).
+6. **By hand:** For \\(f(w) = w_1^2 + w_2^2\\), compute \\(\nabla_w f\\) at \\(w = (1, 2)\\). In which direction does \\(f\\) increase fastest?
+7. **RL:** In **robot navigation**, the state might be a 4-vector (x, y, vx, vy). What is the dimension of \\(w\\) in \\(V(s) = w^T \\phi(s)\\) if \\(\phi(s)\\) is the identity (so \\(\phi(s) = s\\))?
 
 ---
 

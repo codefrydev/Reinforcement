@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** In a noisy linear layer, why do we need *learnable* \\(\\sigma\\)? (So the network can reduce exploration when it has learned; state-dependent exploration.)
-2. **Challenge:** Replace only the *last* layer with a noisy layer and keep the rest standard. Compare with full noisy DQN. Is most of the benefit from the last layer?
+2. **Coding:** Implement a noisy linear layer: weight = mu + sigma * epsilon, epsilon ~ N(0,1), with learnable mu and sigma. Use it as the last layer of a DQN. Run 5k steps on CartPole with no ε-greedy (noise only) and plot return.
+3. **Challenge:** Replace only the *last* layer with a noisy layer and keep the rest standard. Compare with full noisy DQN. Is most of the benefit from the last layer?

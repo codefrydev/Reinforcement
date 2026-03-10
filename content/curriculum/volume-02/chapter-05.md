@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** For 2 actions and \\(\epsilon=0.1\\), write the Expected SARSA target in terms of \\(Q(s',0)\\) and \\(Q(s',1)\\) when the greedy action is 0.
-2. **Challenge:** Implement Expected SARSA where the *target* policy is greedy (\\(\\pi(a'|s') = 1\\) for \\(a' = \\arg\\max\\)) but the *behavior* policy is \\(\epsilon\\)-greedy. How does this differ from Q-learning? (It should be identical in the limit; the update is the same when the target policy is greedy.)
+2. **Coding:** Implement Expected SARSA (target = expected Q under ε-greedy policy) for gridworld. Compare learning curve with Q-learning over 500 episodes.
+3. **Challenge:** Implement Expected SARSA where the *target* policy is greedy (\\(\\pi(a'|s') = 1\\) for \\(a' = \\arg\\max\\)) but the *behavior* policy is \\(\epsilon\\)-greedy. How does this differ from Q-learning? (It should be identical in the limit; the update is the same when the target policy is greedy.)

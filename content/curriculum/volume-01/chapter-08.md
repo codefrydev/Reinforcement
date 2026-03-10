@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** After one round of policy iteration (evaluate once, improve once), is the new policy necessarily different from the initial random policy? Explain in one sentence.
-2. **Challenge:** Count how many policy iteration iterations (evaluate + improve) you need until the policy stabilizes for the 4×4 gridworld. Compare with the number of value iteration sweeps needed to reach the same \\(V^*\\) (within 1e-4). Which converged faster in your implementation?
+2. **Coding:** Implement policy iteration (evaluate until convergence, then improve, repeat). On a 4×4 gridworld, start with a random policy and run until the policy does not change. Compare the final \\(V\\) with value iteration.
+3. **Challenge:** Count how many policy iteration iterations (evaluate + improve) you need until the policy stabilizes for the 4×4 gridworld. Compare with the number of value iteration sweeps needed to reach the same \\(V^*\\) (within 1e-4). Which converged faster in your implementation?

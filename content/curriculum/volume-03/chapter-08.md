@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** Why does sampling by TD error introduce bias? (We sample more often transitions we already think are "wrong"; the gradient is then biased toward those.)
-2. **Challenge:** Skip the sum tree and implement PER with a list of (transition, priority) and proportional sampling (normalize priorities to get probabilities). Compare sample efficiency with uniform replay on CartPole. Add IS weights and compare again.
+2. **Coding:** Implement uniform replay and priority replay (priority = |TD error| + epsilon). Sample a batch and update priorities after the update. Compare sampling distribution: do high-TD transitions get sampled more often?
+3. **Challenge:** Skip the sum tree and implement PER with a list of (transition, priority) and proportional sampling (normalize priorities to get probabilities). Compare sample efficiency with uniform replay on CartPole. Add IS weights and compare again.

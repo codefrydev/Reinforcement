@@ -6,4 +6,33 @@ weight: 38
 draft: false
 ---
 
+**Learning objectives**
+
+- Design a **policy network for continuous actions** that outputs the **mean** and **log-standard deviation** of a Gaussian (or similar) distribution.
+- **Sample** actions from the distribution and compute **log-probability** \\(\log \pi(a|s)\\) for use in policy gradient updates.
+- Apply this to an environment with continuous actions (e.g. **Pendulum-v1**).
+
+**Concept and real-world RL**
+
+For **continuous actions** (e.g. torque, throttle), we cannot use a softmax over a finite set. Instead we use a **continuous distribution**, often a **Gaussian**: \\(\pi(a|s) = \mathcal{N}(a; \mu(s), \sigma(s)^2)\\). The policy network outputs \\(\mu(s)\\) and \\(\log \sigma(s)\\) (log-std for stability); we sample \\(a = \mu + \sigma \cdot z\\) with \\(z \sim \mathcal{N}(0,1)\\). The log-probability is \\(\log \pi(a|s) = -\frac{1}{2}(\log(2\pi) + 2\log\sigma + \frac{(a-\mu)^2}{\sigma^2})\\). In **robot control** (e.g. Pendulum, MuJoCo), actions are continuous; the same Gaussian policy is used in REINFORCE, actor-critic, and PPO for continuous control.
+
+**Where you see this in practice:** Gaussian policies are standard in continuous control (Pendulum, HalfCheetah, robotics simulators). Bounded actions are often handled by squashing (e.g. tanh) with a correction in the log-prob.
+
 **Exercise:** Design a policy network for continuous actions (e.g., Pendulum-v1) that outputs mean and log-std of a Gaussian. Write code to sample actions and compute log-probability for training.
+
+**Professor's hints**
+
+- Pendulum-v1: action is 1D in \\([-2, 2]\\). Output \\(\mu\\) (1 dim) and \\(\log \sigma\\) (1 dim). Clamp \\(\sigma\\) to a minimum (e.g. 1e-2) to avoid collapse. Sample: `a = mu + sigma * torch.randn(...)`.
+- Log-prob: \\(\log \pi(a|s) = -0.5 (\\log(2\\pi) + 2\\log\\sigma + ((a-\\mu)/\\sigma)^2)\\). In PyTorch: use `torch.distributions.Normal(mu, sigma)` and `.log_prob(a)`.
+- If the env expects actions in a bounded range, clip or use tanh: \\(a = \tanh(a_{raw})\\) and add the log-determinant correction for the gradient: \\(\log \pi(a|s) = \log \pi(a_{raw}|s) - \log(1 - a^2)\\) (for tanh squashing).
+
+**Common pitfalls**
+
+- **Sigma too small:** If \\(\sigma \to 0\\), the policy becomes almost deterministic and exploration stops. Use a lower bound on \\(\sigma\\) (e.g. 0.01) or a minimum log_std.
+- **Wrong log-prob for bounded actions:** If you squash with tanh, the density on \\(a\\) is not the same as the density on \\(a_{raw}\\); you must add the Jacobian correction \\(-\sum \log(1 - a^2)\\) for tanh.
+
+**Extra practice**
+
+1. **Warm-up:** For a 1D Gaussian with \\(\mu=0, \sigma=1\\), write the log-probability of \\(a=0.5\\) in closed form. Check with `scipy.stats.norm(0,1).logpdf(0.5)`.
+2. **Coding:** Implement a Gaussian policy network for Pendulum: input 3-dim state, output \\(\mu\\) and \\(\log \\sigma\\). Sample 100 actions from the policy (with a fixed random state) and plot a histogram. Compute the mean log-prob of those samples.
+3. **Challenge:** Add **tanh squashing** so the action is in \\((-1, 1)\\): \\(a = \tanh(a_{raw})\\). Derive the log-probability of \\(a\\) given \\(a_{raw} \\sim \mathcal{N}(\\mu, \\sigma^2)\\) (include the derivative of tanh). Implement it and use it in a short REINFORCE loop for Pendulum.

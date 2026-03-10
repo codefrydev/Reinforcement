@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** For \\(n=2\\), write the n-step return \\(G_{t:t+2}\\) in terms of \\(r_{t+1}, r_{t+2}, Q(s_{t+2}, a_{t+2})\\) and \\(\\gamma\\).
-2. **Challenge:** Implement n-step *Q-learning*: use \\(G = r_1 + \\cdots + \\gamma^{n-1} r_n + \\gamma^n \\max_{a} Q(s_n, a)\\). Compare with n-step SARSA on Cliff Walking.
+2. **Coding:** Write a function that, given a trajectory (s_0, a_0, r_1, s_1, ..., s_T) and n, returns the n-step returns G_{t:t+n} for t=0..T-n. Use a fixed Q-table for bootstrap.
+3. **Challenge:** Implement n-step *Q-learning*: use \\(G = r_1 + \\cdots + \\gamma^{n-1} r_n + \\gamma^n \\max_{a} Q(s_n, a)\\). Compare with n-step SARSA on Cliff Walking.

@@ -6,4 +6,38 @@ weight: 81
 draft: false
 ---
 
+**Learning objectives**
+
+- **Model** a two-player zero-sum game (e.g. Rock-Paper-Scissors) as a **Dec-POMDP** (Decentralized Partially Observable MDP) or equivalent multi-agent framework.
+- **Define** states, observations, actions, and rewards for each agent in the game.
+- **Explain** the difference between centralized (one controller sees everything) and decentralized (each agent has its own observation and policy) formulations.
+- **Identify** how the same game can be viewed as a normal-form game (payoff matrix) and as a sequential Dec-POMDP (if we add structure).
+- **Relate** multi-agent modeling to **game AI** (opponents, teammates) and **trading** (multiple market participants).
+
+**Concept and real-world RL**
+
+**Multi-agent RL** studies settings where multiple **agents** act in a shared environment; each agent has its own observations and actions and typically its own policy. A **Dec-POMDP** extends the MDP with multiple agents: each agent has a local observation (possibly partial) and chooses an action; the state transitions and rewards can depend on all agents' actions. A **zero-sum game** (e.g. Rock-Paper-Scissors) has two agents whose rewards sum to zero. Modeling it as a Dec-POMDP makes the state (e.g. "no prior moves" or "last move of each"), observations (e.g. own action, or nothing until reveal), and rewards (e.g. +1 win, -1 lose, 0 draw) explicit. In **game AI** and **trading**, multiple agents (players, bots, traders) interact; Dec-POMDPs and game-theoretic models are the foundation.
+
+**Where you see this in practice:** Game theory and multi-agent systems; Dec-POMDPs in robotics and games; Nash equilibrium and learning in games.
+
 **Exercise:** Model a two-player zero-sum game (e.g., Rock-Paper-Scissors) as a Dec-POMDP. Define states, observations, actions, and rewards.
+
+**Professor's hints**
+
+- **States:** For RPS, the state can be "before move" (both choose simultaneously) or "after move" (outcome determined). In a one-shot game, state = (none) or (action_1, action_2) for outcome. For a repeated game, state could include history of plays.
+- **Observations:** Each agent may see only its own action (or nothing until the end). So agent i's observation could be o_i = (nothing) until reveal, then (a_1, a_2, r_i). Or in a sequential version, each agent observes the other's past action.
+- **Actions:** Each agent: {Rock, Paper, Scissors}. Joint action (a_1, a_2) determines reward: r_1 = -r_2; +1 win, -1 lose, 0 draw.
+- **Rewards:** Define r_1(s, a_1, a_2) and r_2 = -r_1. Write a small table or function.
+- You can present this as a short write-up with a state space, observation spaces, action spaces, and reward function; no code required, but code for the env is good practice.
+
+**Common pitfalls**
+
+- **Confusing state and observation:** In a Dec-POMDP, the state can be global (e.g. both actions); each agent's observation may be a function of the state (e.g. only own action). Be explicit.
+- **Simultaneous vs sequential:** RPS is simultaneous; the "state" before actions does not include the other's action. In sequential games, state would include whose turn and past actions.
+- **Zero-sum:** Ensure r_1 + r_2 = 0 for all outcomes.
+
+**Extra practice**
+
+1. **Warm-up:** In Rock-Paper-Scissors, what is a minimal state space? What can each agent observe at decision time?
+2. **Coding:** Implement a Rock-Paper-Scissors environment: two agents, actions in {0,1,2}, rewards from the payoff matrix. Step returns (s, o_1, o_2, a_1, a_2, r_1, r_2, done). Run 100 random plays and verify reward sums to zero.
+3. **Challenge:** Model a **repeated** RPS game with a fixed number of rounds. State = history of (a_1, a_2). Each agent observes only the history (or only own actions and outcomes). Define the horizon and total return (e.g. sum of rewards over rounds).

@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** After 100 real steps, how many (s,a) pairs might your model contain? How many total Q-updates does Dyna-Q do in those 100 steps (real + planning)?
-2. **Challenge:** Vary the number of planning steps \\(k \\in \\{0, 5, 20\\}\\). Plot learning curves. Does more planning always help? What if \\(k\\) is very large?
+2. **Coding:** Implement a simple deterministic model (dict (s,a) -> (s', r)) and Dyna-Q: after each real step, do k=5 planning steps (sample random (s,a) from model, update Q). Compare with Q-learning (k=0) on a small gridworld.
+3. **Challenge:** Vary the number of planning steps \\(k \\in \\{0, 5, 20\\}\\). Plot learning curves. Does more planning always help? What if \\(k\\) is very large?

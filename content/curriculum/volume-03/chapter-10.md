@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** List the six (or seven) components of Rainbow. For each, state in one sentence what problem it addresses.
-2. **Challenge:** Ablation study: train Rainbow, then train variants with each component removed (Rainbow - DDQN, Rainbow - Dueling, etc.). Rank the components by how much removing them hurts performance.
+2. **Coding:** Implement a minimal "Rainbow-lite": DQN + replay + target + Double DQN + Dueling. Train on CartPole for 20k steps. Log mean Q and episode return.
+3. **Challenge:** Ablation study: train Rainbow, then train variants with each component removed (Rainbow - DDQN, Rainbow - Dueling, etc.). Rank the components by how much removing them hurts performance.

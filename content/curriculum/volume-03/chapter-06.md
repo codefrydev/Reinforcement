@@ -33,4 +33,5 @@ Standard DQN uses \\(y = r + \\gamma \\max_{a'} Q_{target}(s',a')\\). The max ov
 **Extra practice**
 
 1. **Warm-up:** In one sentence, why does \\(\\max_a Q(s,a)\\) overestimate the true value when \\(Q\\) is noisy?
-2. **Challenge:** Log the *max* Q-value per batch (before and after training) for DQN vs DDQN. Does DDQN's max Q stay more moderate? Relate to overestimation.
+2. **Coding:** Modify your DQN to Double DQN: use online network for argmax action, target network for Q(s', a*). Compare Q-values (mean over batch) after 10k steps with standard DQN on CartPole.
+3. **Challenge:** Log the *max* Q-value per batch (before and after training) for DQN vs DDQN. Does DDQN's max Q stay more moderate? Relate to overestimation.

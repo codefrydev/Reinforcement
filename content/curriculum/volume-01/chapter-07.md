@@ -34,4 +34,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** For a 1×3 line (states 0, 1, 2), terminal at 0 and 2 with value 0, reward -1 per step, one action "move left" from 1 to 0, one action "move right" from 1 to 2. Compute \\(V(1)\\) by hand for \\(\\gamma=1\\) (one step to either terminal ⇒ -1).
-2. **Challenge:** After convergence, derive the **greedy policy** with respect to your \\(V\\): in each state, which action(s) maximize immediate reward + \\(V(s')\\)? Plot or print the greedy policy as arrows. Compare to the optimal policy (shortest path to nearest terminal).
+2. **Coding:** Run policy evaluation (iterative Bellman expectation) on a 4×4 gridworld until convergence. Plot \\(V(s)\\) as a heatmap for a random policy (e.g. uniform over actions).
+3. **Challenge:** After convergence, derive the **greedy policy** with respect to your \\(V\\): in each state, which action(s) maximize immediate reward + \\(V(s')\\)? Plot or print the greedy policy as arrows. Compare to the optimal policy (shortest path to nearest terminal).

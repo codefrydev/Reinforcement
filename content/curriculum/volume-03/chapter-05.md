@@ -33,4 +33,5 @@ The **target network** in DQN provides a stable TD target: we use \\(Q_{target}(
 **Extra practice**
 
 1. **Warm-up:** After 1000 steps with soft update \\(\\tau=0.001\\), roughly how much of the target parameters come from the initial target vs. the current online? (The target is an exponential moving average; after many steps it is close to the online.)
-2. **Challenge:** Try \\(\\tau \\in \\{0.001, 0.01, 0.1\\}\\) for soft updates. Plot learning curves. Which \\(\\tau\\) is most stable? Which learns fastest?
+2. **Coding:** Implement soft target update: for two PyTorch modules (online, target), do target = τ*target + (1-τ)*online (param by param). Run 100 updates with τ=0.01 and print the L2 distance between online and target params.
+3. **Challenge:** Try \\(\\tau \\in \\{0.001, 0.01, 0.1\\}\\) for soft updates. Plot learning curves. Which \\(\\tau\\) is most stable? Which learns fastest?

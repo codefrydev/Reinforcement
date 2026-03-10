@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** A 10×10 grid has 100 states and 4 actions. How many floats for a Q-table with 4 bytes each? (100 × 4 × 4 = 1600 bytes.)
-2. **Challenge:** Estimate the number of parameters in a small neural network that takes a Backgammon state (encoded as a vector of size 100) and outputs Q-values for 50 actions (one hidden layer of 256 units). Compare that number to the tabular size. (E.g. 100×256 + 256×50 ≈ 38k parameters; 38k × 4 bytes ≈ 150 KB.)
+2. **Coding:** Implement a linear function approximator for Q: state s (e.g. 4-dim) → feature vector φ(s) (e.g. identity or tile coding), Q(s,a) = w^T φ(s,a). Train with Q-learning (semi-gradient) on CartPole or a small env. Plot episode return.
+3. **Challenge:** Estimate the number of parameters in a small neural network that takes a Backgammon state (encoded as a vector of size 100) and outputs Q-values for 50 actions (one hidden layer of 256 units). Compare that number to the tabular size. (E.g. 100×256 + 256×50 ≈ 38k parameters; 38k × 4 bytes ≈ 150 KB.)

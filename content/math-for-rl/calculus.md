@@ -45,6 +45,8 @@ For a function \\(f(x_1, x_2, \ldots, x_n)\\), the **partial derivative** \\(\fr
 3. **Partial:** For \\(f(w_1, w_2) = w_1^2 + w_1 w_2 + w_2^2\\), compute \\(\frac{\partial f}{\partial w_1}\\) and \\(\frac{\partial f}{\partial w_2}\\). Write the gradient \\(\nabla f\\).
 4. **RL:** In supervised learning we minimize \\(L(\theta)\\) with \\(\theta \leftarrow \theta - \alpha \nabla_\theta L\\). In policy gradient we *maximize* expected return \\(J(\theta)\\). Write the analogous parameter update for policy gradient.
 5. **Python/PyTorch:** Create a scalar tensor \\(x = 2.0\\) with `requires_grad=True`, compute \\(y = x^2\\), call `y.backward()`, and print `x.grad`. Confirm it equals \\(\frac{dy}{dx} = 2x\\) at \\(x=2\\).
+6. **By hand:** For \\(f(x) = x^2 e^x\\), compute \\(f'(x)\\) using the product rule. Evaluate at \\(x = 0\\).
+7. **RL:** In **policy gradients**, we often compute \\(\nabla_\\theta \\log \\pi(a|s;\\theta)\\). Why is the *log* used instead of \\(\nabla_\\theta \\pi(a|s)\\)? (Hint: log-derivative trick; \\(\nabla \\pi = \\pi \\nabla \\log \\pi\\), which keeps the gradient scaled by the probability.)
 
 ---
 

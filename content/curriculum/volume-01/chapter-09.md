@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** Run value iteration with \\(\\gamma=0.5\\) and then \\(\\gamma=0.99\\) on the same gridworld. How does the optimal \\(V\\) near the center change? (Higher \\(\\gamma\\) ⇒ future rewards matter more ⇒ values reflect longer horizons.)
-2. **Challenge:** Add a single "obstacle" cell in the middle that the agent cannot enter (e.g. (1,1)). Update the transition model so actions into the obstacle leave the agent in place with reward -1. Re-run value iteration and show the optimal policy avoids the obstacle.
+2. **Coding:** Implement value iteration for a 4×4 gridworld with goal and terminal states. Plot the optimal \\(V^*\\) as a heatmap and the optimal policy as arrows. Verify that the policy points toward the goal.
+3. **Challenge:** Add a single "obstacle" cell in the middle that the agent cannot enter (e.g. (1,1)). Update the transition model so actions into the obstacle leave the agent in place with reward -1. Re-run value iteration and show the optimal policy avoids the obstacle.

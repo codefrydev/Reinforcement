@@ -34,4 +34,5 @@ A **multi-armed bandit** is an RL problem with a single state: the agent repeate
 **Extra practice**
 
 1. **Warm-up:** For 3 arms with known means [0.1, 0.5, -0.2], compute the expected reward of the optimal arm. If you pull each arm 10 times and get sample means [0.2, 0.4, -0.1], which arm would greedy choose? Would that be correct?
-2. **Challenge:** Add a **UCB** (upper-confidence-bound) agent: choose \\(a = \\arg\\max_a \\bigl[ Q(a) + c \\sqrt{\\frac{\\ln t}{N(a)}} \\bigr]\\). Plot UCB alongside epsilon-greedy and greedy for \\(c=2\\).
+2. **Coding:** Implement epsilon-greedy for a 5-armed bandit with Gaussian rewards (mean 0, variance 1 per arm, with different true means). Run for 1000 steps with ε=0.1 and plot the cumulative regret vs t.
+3. **Challenge:** Add a **UCB** (upper-confidence-bound) agent: choose \\(a = \\arg\\max_a \\bigl[ Q(a) + c \\sqrt{\\frac{\\ln t}{N(a)}} \\bigr]\\). Plot UCB alongside epsilon-greedy and greedy for \\(c=2\\).

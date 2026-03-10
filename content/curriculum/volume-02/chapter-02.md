@@ -33,4 +33,5 @@ draft: false
 **Extra practice**
 
 1. **Warm-up:** Write the TD(0) update in one line of Python (pseudo-code): given \\(s, r, s', V, \\alpha, \\gamma\\), what is the new \\(V(s)\\)?
-2. **Challenge:** Run TD(0) with \\(\alpha \\in \\{0.001, 0.01, 0.1\\}\\) for 10k episodes. Plot the learning curve (e.g. mean absolute error from a reference \\(V\\) if you have one, or \\(V\\) for one state over time). Which \\(\\alpha\\) converges fastest? Which is most stable?
+2. **Coding:** Implement TD(0) prediction for a fixed policy on a small tabular MDP (e.g. 4 states). Run for 1000 episodes and plot V(s) for one state over time.
+3. **Challenge:** Run TD(0) with \\(\alpha \\in \\{0.001, 0.01, 0.1\\}\\) for 10k episodes. Plot the learning curve (e.g. mean absolute error from a reference \\(V\\) if you have one, or \\(V\\) for one state over time). Which \\(\\alpha\\) converges fastest? Which is most stable?
