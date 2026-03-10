@@ -8,14 +8,14 @@ on:
       - "layouts/**"
       - ".markdownlint.yaml"
     branches:
-      - main
+      - master
   pull_request:
     paths:
       - "content/**"
       - "layouts/**"
       - ".markdownlint.yaml"
     branches:
-      - main
+      - master
 
 jobs:
   markdownlint:
