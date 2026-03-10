@@ -160,7 +160,7 @@ At \\(x=2\\), \\(y=4\\) and \\(dy/dx=4\\). The chart below shows \\(y = x^2\\) a
 
 \\(f'(x) = e^x(2x + x^2)\\); at \\(x=0\\) we get \\(f'(0)=0\\). The chart below shows \\(f'(x)\\) at a few points.
 
-{{< chart type="line" palette="math" title="f'(x) = eˣ(2x + x²)" labels="-1, 0, 1, 2" data="0.37, 0, 2.72, 8.15" xLabel="x" yLabel="f'(x)" >}}
+{{< chart type="line" palette="math" title="f'(x) = eˣ(2x + x²)" labels="-1, 0, 1, 2" data="-0.37, 0, 2.72, 8.15" xLabel="x" yLabel="f'(x)" >}}
 
 ---
 

@@ -22,7 +22,7 @@ In reinforcement learning, an **agent** interacts with an **environment**: at ea
 
 **Illustration (discounted return):** For rewards \\([0, 0, 1]\\) and \\(\gamma = 0.9\\), the return from step 0 is \\(0.81\\). The chart below shows how the return from step 0 changes as we add more future rewards (e.g. for a longer sequence). With only the first three rewards we get 0.81; if the episode continued with more zeros and a final 1, the pattern would extend similarly.
 
-{{< chart type="line" palette="return" title="Cumulative discounted return (γ=0.9)" labels="1 step, 2 steps, 3 steps" data="0, 0.9, 0.81" xLabel="Step" yLabel="Return" >}}
+{{< chart type="line" palette="return" title="Cumulative discounted return (γ=0.9)" labels="1 step, 2 steps, 3 steps" data="0, 0, 0.81" xLabel="Step" yLabel="Return" >}}
 
 **Exercise:** In a 3×3 gridworld, the agent starts at (0,0) and aims to reach a goal at (2,2) with a reward of +1. Every other step gives 0 reward, and hitting a wall (outside grid) gives -1 and stays in place. Write a Python function that takes a sequence of actions (up, down, left, right) and returns the total discounted return (\\(\gamma = 0.9\\)).
 
