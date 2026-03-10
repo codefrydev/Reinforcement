@@ -20,6 +20,10 @@ keywords: ["SAC vs PPO", "Hopper", "Walker2d", "when to use SAC or PPO"]
 
 **Where you see this in practice:** Benchmarks (e.g. MuJoCo) report both; industry often standardizes on PPO for simplicity or SAC for sample efficiency.
 
+**Illustration (SAC vs PPO sample efficiency):** For the same task, SAC often reaches a given return in fewer env steps. The chart below compares mean return vs env steps (conceptual).
+
+{{< chart type="line" title="Mean return vs env steps (Hopper)" labels="0, 200k, 400k, 600k, 800k" data="0, 800, 1800, 2500, 3000" >}}
+
 **Exercise:** Run both SAC and PPO on the same set of continuous control tasks (e.g., Hopper, Walker2d). Compare final performance, sample efficiency, and wall-clock time. Discuss when you might choose one over the other.
 
 **Professor's hints**

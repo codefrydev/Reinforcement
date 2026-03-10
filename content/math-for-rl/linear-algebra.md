@@ -45,9 +45,11 @@ The **gradient** of a scalar function \\(f(w)\\) with respect to a vector \\(w\\
 **Geometric interpretation:** The dot product equals \\(\|x\| \|y\| \cos\theta\\), where \\(\theta\\) is the angle between the vectors. So it measures how much the vectors point in the same direction, scaled by their lengths. If perpendicular, dot product is 0; if parallel, it’s the product of their magnitudes.
 
 **Explanation:** In RL, \\(V(s) = w^T x(s)\\) is a dot product between the weight vector and the feature vector—the value is high when \\(w\\) and \\(x(s)\\) align.
+
+**Python:** `np.dot([1,2,3], [4,5,6])` or `(np.array([1,2,3]) * np.array([4,5,6])).sum()` gives 32.
 {{< /collapse >}}
 
-The graph below shows the contribution of each term \\(x_i y_i\\) to the dot product; the sum is 32.
+The chart below shows the contribution of each term \\(x_i y_i\\) to the dot product; the sum is 32.
 
 {{< chart type="bar" title="Dot product xᵀy: contribution per dimension (sum = 32)" labels="x₁y₁, x₂y₂, x₃y₃" data="4, 10, 18" >}}
 
@@ -65,7 +67,13 @@ The graph below shows the contribution of each term \\(x_i y_i\\) to the dot pro
 **Answer:** \\(A w = [1, 1, -1]^T\\).
 
 **Explanation:** Matrix-vector multiplication is “one dot product per row of \\(A\\)”. In linear function approximation, each row might be one state’s feature vector, and \\(Aw\\) is the vector of predicted values.
+
+**Python:** `A = np.array([[1,0],[2,1],[0,1]]); w = np.array([1,-1]); A @ w` gives `array([1, 1, -1])`.
 {{< /collapse >}}
+
+The chart below shows the result \\(A w = [1, 1, -1]^T\\) (one value per row of \\(A\\)).
+
+{{< chart type="bar" title="Aw (matrix-vector product)" labels="Row 1, Row 2, Row 3" data="1, 1, -1" >}}
 
 ---
 
@@ -77,7 +85,13 @@ The graph below shows the contribution of each term \\(x_i y_i\\) to the dot pro
 **Part 2:** \\(\nabla_w (A w) = A^T\\) (when the gradient is defined as a column vector). So the gradient of \\(Aw\\) with respect to \\(w\\) is the transpose of \\(A\\). For a scalar loss \\(L = g(Aw)\\), the chain rule gives \\(\nabla_w L = A^T \nabla_y g\\) where \\(y = Aw\\).
 
 **Explanation:** In RL, when we backpropagate through a linear layer \\(y = Aw\\), the gradient with respect to \\(w\\) is \\(A^T\\) times the gradient with respect to \\(y\\).
+
+**Python (gradient of \\(a^T w\\)):** `a = np.array([1.,2.,3.]); f = lambda w: np.dot(a,w);` numerical gradient at `w=np.zeros(3)` is `a`. For \\(Aw\\): `A.T` is the gradient of \\(Aw\\) w.r.t. \\(w\\) (as a column).
 {{< /collapse >}}
+
+For \\(f(w) = a^T w\\) with \\(a = [1,2,3]^T\\), the gradient is constant \\(a\\). The chart below shows \\(\nabla_w f = a\\) (one component per dimension).
+
+{{< chart type="bar" title="∇f = a (gradient of aᵀw)" labels="w₁, w₂, w₃" data="1, 2, 3" >}}
 
 ---
 
@@ -98,6 +112,10 @@ Aw = A @ w          # or np.dot(A, w)  -> array([ 1.,  1., -1.])
 **Explanation:** `np.dot(x, y)` gives the dot product for 1D arrays. `A @ w` (or `np.dot(A, w)`) does matrix-vector multiplication. In RL, states are often NumPy arrays and linear layers compute such products.
 {{< /collapse >}}
 
+Running the code gives dot product 32 and \\(Aw = [1, 1, -1]^T\\). The chart below shows the entries of \\(Aw\\) (same as question 2).
+
+{{< chart type="bar" title="Result of A @ w (NumPy)" labels="Index 0, Index 1, Index 2" data="1, 1, -1" >}}
+
 ---
 
 5. **RL:** In linear value approximation \\(V(s) = w^T x(s)\\), if the true return for a state is \\(G\\) and we use squared-error loss \\((G - w^T x(s))^2\\), write the gradient of this loss with respect to \\(w\\) in one line (using \\(x = x(s)\\)).
@@ -108,7 +126,13 @@ Let \\(L = (G - w^T x)^2\\). The scalar \\(w^T x\\) has gradient \\(\nabla_w (w^
 \\(\nabla_w L = -2(G - w^T x)\, x\\).
 
 **Explanation:** This is the gradient used in linear TD and Monte Carlo value prediction: we update \\(w\\) in the direction that reduces the squared error between the predicted value \\(w^T x\\) and the target \\(G\\).
+
+**Python (conceptual):** With `x`, `G`, and predicted `v = np.dot(w,x)`, the gradient is `-2*(G - v)*x`. We then do `w -= alpha * grad` (gradient descent).
 {{< /collapse >}}
+
+The gradient \\(\nabla_w L = -2(G - w^T x)x\\) points along the feature vector \\(x\\); its magnitude scales with the TD error \\(|G - w^T x|\\). The chart below shows the two components of \\(\nabla_w L\\) for a 2D example (\\(x=[1,0.5]\\), \\(G - w^T x = 0.5\\)).
+
+{{< chart type="bar" title="∇L components (2D example)" labels="w₁, w₂" data="-1, -0.5" >}}
 
 ---
 
@@ -122,7 +146,12 @@ Let \\(L = (G - w^T x)^2\\). The scalar \\(w^T x\\) has gradient \\(\nabla_w (w^
 **Direction of steepest increase:** The gradient \\(\nabla f\\) points in the direction of steepest *increase*. So \\(f\\) increases fastest in the direction \\([2, 4]^T\\) (or any positive scalar multiple of it).
 
 **Explanation:** Gradient descent *minimizes* by moving in the direction \\(-\nabla f\\). Here we’re just identifying the gradient and its geometric meaning.
+**Python:** `w = np.array([1., 2.]); grad = 2*w` gives `[2. 4.]`.
 {{< /collapse >}}
+
+At \\(w = (1, 2)\\) the gradient is \\([2, 4]^T\\). The chart below shows these two components.
+
+{{< chart type="bar" title="∇f at w=(1,2): [2, 4]ᵀ" labels="∂f/∂w₁, ∂f/∂w₂" data="2, 4" >}}
 
 ---
 
@@ -132,7 +161,13 @@ Let \\(L = (G - w^T x)^2\\). The scalar \\(w^T x\\) has gradient \\(\nabla_w (w^
 If \\(\phi(s) = s\\) and \\(s\\) is a 4-vector, then \\(\phi(s)\\) has dimension 4. For the dot product \\(w^T \phi(s)\\) to be defined, \\(w\\) must have the same length as \\(\phi(s)\\). So \\(w\\) has dimension **4**.
 
 **Explanation:** In linear value approximation, the weight vector has the same dimension as the feature vector. With identity features, the state itself is the feature vector, so \\(w\\) is 4-dimensional.
+
+**Python:** `s = np.array([x, y, vx, vy])  # shape (4,)`; `w = np.zeros(4)` or `np.random.randn(4)`; `V = np.dot(w, s)`. So `w.shape == (4,)`.
 {{< /collapse >}}
+
+With \\(\phi(s) = s\\) and state dimension 4, \\(w\\) has 4 components. The chart below shows that state dimension and weight dimension match (both 4).
+
+{{< chart type="bar" title="Dimension of s and w (both 4)" labels="State dim, Weight dim" data="4, 4" >}}
 
 ---
 

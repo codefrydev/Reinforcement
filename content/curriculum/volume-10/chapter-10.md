@@ -22,6 +22,10 @@ keywords: ["future of reinforcement learning", "foundation models", "AGI", "RL a
 
 **Where you see this in practice:** LLMs for decision-making; RLHF and alignment; world models and embodied AI; speculation and roadmaps (e.g. OpenAI, DeepMind blogs).
 
+**Illustration (RL and foundation models):** Future RL may combine large-scale pretraining with decision-making. The chart below is a conceptual sketch: capability (e.g. return or task coverage) over model scale and RL fine-tuning.
+
+{{< chart type="line" title="Conceptual: capability vs scale + RL" labels="Pretrain, +RL 1M, +RL 10M, +RL 100M" data="0.2, 0.5, 0.75, 0.95" >}}
+
 **Exercise:** Write a short essay (1–2 pages) on how foundation models might impact RL. Discuss potential architectures for decision-making that leverage large-scale pretraining, and speculate on the path toward AGI.
 
 **Professor's hints**

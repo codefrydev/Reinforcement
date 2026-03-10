@@ -22,6 +22,10 @@ keywords: ["RLHF implementation", "preference data", "Bradley-Terry", "reward mo
 
 **Where you see this in practice:** InstructGPT, ChatGPT, Claude; Bradley-Terry reward models; PPO for LM alignment.
 
+**Illustration (reward model accuracy):** A reward model trained on Bradley-Terry preference data predicts which response humans prefer. The chart below shows accuracy on a held-out set over training.
+
+{{< chart type="line" title="Reward model accuracy (preference data)" labels="0, 100, 200, 300, 400" data="0.55, 0.7, 0.82, 0.88, 0.92" >}}
+
 **Exercise:** Collect human preference data (simulated) for two responses from a language model. Train a reward model using the Bradley-Terry loss. Then fine-tune the LM with PPO using that reward model.
 
 **Professor's hints**

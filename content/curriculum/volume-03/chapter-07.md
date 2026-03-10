@@ -18,6 +18,10 @@ keywords: ["Dueling DQN", "V(s) A(s,a)", "advantage function", "DQN"]
 
 In many states, the *value* of being in that state is similar regardless of the action (e.g. when no danger is nearby). The **dueling** architecture represents \\(Q(s,a) = V(s) + A(s,a)\\), but to get identifiability we use \\(Q(s,a) = V(s) + (A(s,a) - \\frac{1}{|A|}\\sum_{a'} A(s,a'))\\). The network learns \\(V(s)\\) and \\(A(s,a)\\) in separate heads after a shared feature layer. This can speed up learning when the advantage (difference between actions) is small in many states. Used in Rainbow and other modern DQN variants.
 
+**Illustration (dueling vs standard DQN):** Dueling architecture often reaches high reward in fewer episodes. The chart below shows typical episode return over training (CartPole).
+
+{{< chart type="line" title="Episode return (Dueling vs standard DQN)" labels="0, 100, 200, 300, 400" data="30, 120, 185, 198, 200" >}}
+
 **Exercise:** Implement the dueling architecture: a shared base, then two streams for value \\(V(s)\\) and advantage \\(A(s,a)\\), aggregated via \\(Q(s,a) = V(s) + (A(s,a) - \\frac{1}{|\\mathcal{A}|}\\sum_a A(s,a))\\). Train it on CartPole and compare learning curves with standard DQN.
 
 **Professor's hints**

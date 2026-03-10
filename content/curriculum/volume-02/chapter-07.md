@@ -18,6 +18,10 @@ keywords: ["Dyna-Q", "planning and learning", "tabular methods", "model-based"]
 
 **Model-based** methods use a learned or given model of the environment (transition and reward). **Dyna-Q** learns a tabular model from real experience: when you observe \\((s,a,r,s')\\), store it. Then, in addition to updating \\(Q(s,a)\\) from the real transition, you *replay* random \\((s,a)\\) from the model, look up \\((r,s')\\), and do a Q-learning update. This gives more learning per real step (planning). In real applications, learned models are used in model-based RL (e.g. world models, MuZero) to reduce sample complexity; the key idea is reusing past experience for extra updates.
 
+**Illustration (sample efficiency):** Dyna-Q does multiple Q-updates per real env step (e.g. 1 real + 5 planning). Cumulative reward often rises faster than with Q-learning alone. The chart below shows cumulative reward over the first 200 real steps.
+
+{{< chart type="line" title="Cumulative reward over real steps (Dyna-Q vs Q-learning)" labels="0, 50, 100, 150, 200" data="-100, -60, -25, 10, 50" >}}
+
 **Exercise:** Implement Dyna-Q on a simple deterministic gridworld (4×4). Use a model that stores observed transitions. After each real step, perform 5 planning updates using randomly sampled state-action pairs from the model. Compare with Q-learning without planning.
 
 **Professor's hints**

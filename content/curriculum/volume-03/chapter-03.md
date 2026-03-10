@@ -18,6 +18,10 @@ keywords: ["Deep Q-Networks", "DQN", "replay buffer", "target network", "CartPol
 
 **DQN** combines a neural network for Q-values with **experience replay** (store transitions, sample random minibatches to break correlation) and a **target network** (separate copy of the network used in the TD target, updated periodically, to stabilize learning). The agent acts \\(\epsilon\\)-greedy, stores \\((s,a,r,s',\\text{done})\\) in the buffer, and repeatedly samples a batch, computes targets using the target network, and updates the online network by minimizing MSE. DQN was the first major deep RL success (Atari) and is still a standard baseline for discrete-action tasks.
 
+**Illustration (DQN learning curve):** On CartPole, reward per episode typically rises as the agent learns, then stabilizes near the maximum. The chart below shows a typical episode return over training.
+
+{{< chart type="line" title="Episode return (DQN on CartPole)" labels="0, 100, 200, 300, 400, 500" data="25, 80, 150, 180, 195, 200" >}}
+
 **Exercise:** Implement DQN for the CartPole-v1 environment. Use a replay buffer of size 10,000, target network update every 100 steps, and \\(\epsilon\\)-greedy exploration. Train for 500 episodes and plot the rewards.
 
 **Professor's hints**

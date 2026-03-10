@@ -18,6 +18,10 @@ keywords: ["Noisy Networks", "NoisyNet", "exploration", "epsilon-greedy"]
 
 **Noisy networks** add learnable noise to the weights (or activations) of the network. The noise is resampled every forward pass (or every step), so the policy is stochastic and explores without an explicit \\(\\epsilon\\)-greedy schedule. The scale of the noise can be learned (the network can reduce noise when it is confident). **Factorized Gaussian** generates a matrix of noise from two vectors (e.g. \\(\\epsilon_{out} \\otimes \\epsilon_{in}\\)) so we only need \\(O(n+m)\\) random numbers instead of \\(O(nm)\\). Noisy DQN is used in Rainbow and provides state-dependent exploration.
 
+**Illustration (exploration):** Noisy networks explore without a fixed ε schedule. The chart below compares the number of unique states visited in the first 5k steps: NoisyNet vs ε-greedy DQN (typical trend).
+
+{{< chart type="bar" title="Unique states visited (first 5k steps)" labels="ε-greedy DQN, NoisyNet DQN" data="180, 320" >}}
+
 **Exercise:** Replace the linear layers in your DQN with noisy linear layers that have learnable noise. Implement the factorized Gaussian noise. Compare exploration behavior (e.g., number of unique states visited) with \\(\epsilon\\)-greedy.
 
 **Professor's hints**

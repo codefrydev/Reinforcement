@@ -20,6 +20,10 @@ keywords: ["Dreamer", "RSSM", "latent imagination", "world model", "actor-critic
 
 **Where you see this in practice:** Dreamer v1/v2/v3; used in benchmarks and robotics research.
 
+**Illustration (Dreamer imagination):** In the latent space, the model rolls out imagined trajectories to train the actor-critic. The chart below shows episode return (real env) over training with imagination updates.
+
+{{< chart type="line" title="Episode return (Dreamer-style)" labels="0, 20k, 40k, 60k, 80k" data="0, 200, 500, 800, 1200" >}}
+
 **Exercise:** Implement a simplified version of the Dreamer algorithm's "imagination" phase: train an RSSM-like model on collected trajectories, then roll out trajectories in the latent space to train an actor-critic.
 
 **Professor's hints**

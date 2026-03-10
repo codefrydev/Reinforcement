@@ -20,6 +20,10 @@ Custom environments let you model **robot navigation**, **recommendation** (stat
 
 **Where you see this in practice:** Research and industry often use custom Gym envs for domain-specific problems (warehouse robots, driving, dialogue).
 
+**Illustration (2D point mass state):** A simple continuous control env might have state (x, y, vx, vy) and action (fx, fy). The chart below shows a trajectory in (x,y) over 20 steps (conceptual scatter).
+
+{{< chart type="scatter" title="(x,y) trajectory (point mass to goal)" data="0,0 0.5,0.2 1,0.5 1.2,0.8 1.5,1 1.8,1.2 2,1.5" >}}
+
 **Exercise:** Create a custom continuous control environment: a 2D point mass that must navigate to a goal while avoiding an obstacle. Define a continuous action (force) and a reward function. Test your environment with a SAC agent.
 
 **Professor's hints**

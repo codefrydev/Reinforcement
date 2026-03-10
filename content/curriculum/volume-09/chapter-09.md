@@ -22,6 +22,10 @@ keywords: ["self-play", "league training", "Tic-Tac-Toe", "ELO", "MARL"]
 
 **Where you see this in practice:** AlphaGo self-play; OpenAI Five; league training in multi-agent games.
 
+**Illustration (ELO over self-play):** As training progresses, the agent's ELO (or win rate vs random) typically increases. The chart below shows ELO (or win rate × 100) over self-play games.
+
+{{< chart type="line" title="Win rate vs random (self-play training)" labels="0, 1k, 2k, 3k, 4k, 5k" data="50, 65, 78, 88, 94, 98" >}}
+
 **Exercise:** Implement self-play in a simple game like Tic-Tac-Toe. Let two copies of an agent play against each other, and update both. Track the ELO rating as training progresses.
 
 **Professor's hints**

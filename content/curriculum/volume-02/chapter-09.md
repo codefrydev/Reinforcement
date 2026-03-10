@@ -18,6 +18,10 @@ keywords: ["hyperparameter tuning", "grid search", "alpha epsilon", "Q-learning"
 
 **Hyperparameters** (e.g. \\(\alpha\\), \\(\epsilon\\), \\(\gamma\\)) strongly affect learning speed and final performance. **Grid search** tries every combination in a predefined set; it is simple but costly when there are many parameters. In practice, RL tuning often uses grid search for 2–3 key parameters, or Bayesian optimization / bandit-based tuning for larger spaces. Reporting mean and std over multiple seeds is essential because RL is noisy. Heatmaps (e.g. \\(\alpha\\) vs \\(\epsilon\\) with color = mean reward) make good and bad regions visible at a glance.
 
+**Illustration (grid search results):** For different \\(\alpha\\) values (with \\(\epsilon\\) fixed), mean episode return after training can vary. The chart below shows typical mean return for \\(\alpha \in \\{0.1, 0.5, 0.9\\}\\) on Cliff Walking (mean over last 100 episodes, 10 seeds).
+
+{{< chart type="bar" title="Mean return vs α (ε=0.1, 10 seeds)" labels="α=0.1, α=0.5, α=0.9" data="-14, -12, -18" >}}
+
 **Exercise:** For Q-learning on the Cliff Walking, perform a grid search over \\(\alpha \in \\{0.1, 0.5, 0.9\\}\\) and \\(\epsilon \in \\{0.01, 0.1, 0.3\\}\\). For each combination, run 10 independent trials and report mean cumulative reward per episode. Visualize the results as a heatmap.
 
 **Professor's hints**

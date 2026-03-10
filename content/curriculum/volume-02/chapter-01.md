@@ -20,6 +20,10 @@ keywords: ["Monte Carlo methods", "first-visit MC", "blackjack", "prediction"]
 
 **Where you see this in practice:** MC prediction is used to evaluate policies in card games, board games, and simulators where we can run full episodes. It is a building block for MC control and appears in benchmarking and policy evaluation in industry.
 
+**Illustration (first-visit returns):** For one episode, the return from the first time each state is visited is averaged over many episodes to get \\(V^\\pi(s)\\). The chart below shows example value estimates for three blackjack states (player sum 18, 19, 20; dealer 6; no usable ace) after many episodes.
+
+{{< chart type="bar" title="V^π(s) for three blackjack states (dealer 6, no ace)" labels="(18,6,F), (19,6,F), (20,6,F)" data="0.81, 0.9, 1" >}}
+
 **Exercise:** Implement first-visit Monte Carlo prediction for the blackjack environment (OpenAI Gym). Estimate the state-value function for a policy that sticks on 20 or 21, otherwise hits. Run for 500,000 episodes and plot the value for a few key states.
 
 **Professor's hints**

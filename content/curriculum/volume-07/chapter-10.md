@@ -22,6 +22,10 @@ keywords: ["unsupervised environment design", "PAIRED", "adversary", "maze", "ag
 
 **Where you see this in practice:** PAIRED and similar UED methods; procedural content generation for RL; robust policy learning.
 
+**Illustration (PAIRED):** The adversary designs mazes to minimize agent return; the agent learns to solve harder mazes. The chart below shows agent return on a fixed test maze over training iterations.
+
+{{< chart type="line" title="Agent return on fixed test maze (PAIRED)" labels="0, 100, 200, 300, 400" data="20, 50, 80, 120, 150" >}}
+
 **Exercise:** Implement a simple version of PAIRED: an adversary designs a maze to minimize the agent's performance, and the agent learns to solve any maze. Train both adversary and agent in a loop.
 
 **Professor's hints**

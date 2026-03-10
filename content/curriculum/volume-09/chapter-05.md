@@ -22,6 +22,10 @@ keywords: ["MADDPG", "multi-agent DDPG", "centralized critics", "decentralized a
 
 **Where you see this in practice:** MADDPG in multi-agent particle envs; CTDE for continuous MARL.
 
+**Illustration (MADDPG):** Centralized critics use all agents' states and actions; actors use only local observations. The chart below shows mean return on "simple spread" over training.
+
+{{< chart type="line" title="Mean return (MADDPG simple spread)" labels="0, 50k, 100k, 150k, 200k" data="-150, -80, -20, 20, 50" >}}
+
 **Exercise:** Implement MADDPG for the Multi-Agent Particle Environment (e.g., "simple spread"). Use centralized critics that have access to all agents' states and actions, but decentralized actors.
 
 **Professor's hints**

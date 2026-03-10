@@ -22,6 +22,10 @@ keywords: ["MAML", "Model-Agnostic Meta-Learning", "one-step adapt", "locomotion
 
 **Where you see this in practice:** MAML and Reptile for few-shot RL; meta-learning for robotics and control.
 
+**Illustration (MAML adaptation):** After one gradient step on the new task, the adapted policy often achieves much higher return than the initial policy. The chart below shows return before and after 1 inner step.
+
+{{< chart type="bar" title="Return: before vs after 1 adaptation step" labels="Before, After 1 step" data="30, 85" >}}
+
 **Exercise:** Implement MAML for a simple locomotion task (e.g., different velocities). Train a policy that can adapt in one gradient step. Compute the meta-gradient using second-order derivatives (or first-order approximation).
 
 **Professor's hints**

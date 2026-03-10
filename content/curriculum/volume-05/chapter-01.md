@@ -20,6 +20,10 @@ Standard policy gradient \\(\theta \leftarrow \theta + \alpha \nabla_\theta J\\)
 
 **Where you see this in practice:** PPO and TRPO are widely used in robotics and RL benchmarks precisely because they avoid the instability of vanilla policy gradients.
 
+**Illustration (policy collapse):** With too large a step size, policy probabilities can collapse (e.g. one action gets probability 1). The chart below shows a healthy policy vs a collapsed one over 3 actions.
+
+{{< chart type="bar" title="π(a|s) — healthy vs collapsed" labels="Action 1, Action 2, Action 3" data="0.4, 0.35, 0.25" >}}
+
 **Exercise:** In a simple bandit problem, implement a policy gradient update with too large a step size. Show how it can lead to a collapse in performance. Visualize the policy probabilities over time.
 
 **Professor's hints**

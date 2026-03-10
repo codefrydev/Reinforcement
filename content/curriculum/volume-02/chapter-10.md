@@ -16,7 +16,13 @@ keywords: ["limits of tabular methods", "function approximation", "curse of dime
 
 **Concept and real-world RL**
 
-**Tabular methods** store one value per state (or state-action). When the state space is huge or continuous, this is impossible: Backgammon has on the order of \\(10^{20}\\) states; a robot with 10 continuous state variables discretized to 100 bins each has \\(100^{10}\\) cells. **Function approximation** uses a parameterized function \\(Q(s,a; \\theta)\\) with a fixed number of parameters, so we can represent values for infinitely many states. This is the bridge to deep RL (Volumes 3–5): neural networks are function approximators that generalize from visited states to unseen ones.
+**Tabular methods** store one value per state (or state-action). When the state space is huge or continuous, this is impossible: Backgammon has on the order of \\(10^{20}\\) states; a robot with 10 continuous state variables discretized to 100 bins each has \\(100^{10}\\) cells.
+
+**Illustration (Q-table size growth):** The number of Q-table entries grows with states × actions. A 10×10 grid has 400 entries; a 100×100 grid has 40,000; Backgammon-scale problems are astronomically larger. The chart below shows Q-table entries (log scale conceptually) for small vs large problems.
+
+{{< chart type="bar" title="Q-table entries (states × actions)" labels="10×10 grid, 100×100 grid, Backgammon (≈10²⁰)" data="400, 40000, 100000" >}}
+
+**Function approximation** uses a parameterized function \\(Q(s,a; \\theta)\\) with a fixed number of parameters, so we can represent values for infinitely many states. This is the bridge to deep RL (Volumes 3–5): neural networks are function approximators that generalize from visited states to unseen ones.
 
 **Exercise:** Estimate the memory required to store a Q-table for the game of Backgammon (approx. \\(10^{20}\\) states) with 4-byte floats. Compare this with the memory of a modern computer. Discuss the necessity of function approximation.
 

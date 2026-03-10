@@ -18,6 +18,10 @@ keywords: ["Q-learning", "off-policy", "Cliff Walking", "TD control"]
 
 **Q-learning** is off-policy: it updates \\(Q(s,a)\\) using the *greedy* next action (\\(\\max_{a'} Q(s',a')\\)), so it learns the value of the optimal policy while you can behave with \\(\epsilon\\)-greedy (or any exploration). The update is \\(Q(s,a) \\leftarrow Q(s,a) + \\alpha [r + \\gamma \\max_{a'} Q(s',a') - Q(s,a)]\\). On Cliff Walking, Q-learning often converges to the *shortest* path along the cliff (high reward when no exploration, but dangerous if you occasionally take a random step). SARSA learns the *actual* policy including exploration and tends to stay away from the cliff. In practice, Q-learning is simple and widely used (e.g. DQN); when safety matters, on-policy or conservative methods may be preferred.
 
+**Illustration (Q-learning vs SARSA):** When evaluated greedily, Q-learning often achieves higher mean reward (short path) while SARSA is more conservative. The chart below compares typical average episode return after training (greedy evaluation).
+
+{{< chart type="bar" title="Mean episode return (greedy eval, Cliff Walking)" labels="Q-learning, SARSA" data="-13, -17" >}}
+
 **Exercise:** Implement Q-learning for the same Cliff Walking environment. Compare the learned paths and total rewards with SARSA. Explain why Q-learning might prefer the cliff edge while SARSA takes a safer path.
 
 **Professor's hints**

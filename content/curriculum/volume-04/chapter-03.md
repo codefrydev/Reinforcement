@@ -20,6 +20,10 @@ keywords: ["REINFORCE algorithm", "policy gradient", "CartPole", "variance"]
 
 **Where you see this in practice:** REINFORCE appears in early deep RL (e.g. policy gradient for Atari); modern practice usually replaces it with actor-critic or PPO. It is still used in bandits and simple episodic tasks for teaching.
 
+**Illustration (REINFORCE learning curve):** Episode returns often have high variance early on. The chart below shows a typical trend: noisy at first, then improving and eventually stabilizing.
+
+{{< chart type="line" title="Episode return (REINFORCE on CartPole)" labels="0, 100, 200, 300, 400, 500" data="25, 80, 120, 150, 180, 195" >}}
+
 **Exercise:** Implement REINFORCE for CartPole. Use a neural network policy that outputs action probabilities via softmax. Train with baseline (optional) and plot the episode returns. Note the high variance.
 
 **Professor's hints**

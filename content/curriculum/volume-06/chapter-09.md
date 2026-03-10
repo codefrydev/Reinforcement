@@ -20,6 +20,10 @@ keywords: ["PETS", "Probabilistic Ensembles", "MPC", "trajectory sampling"]
 
 **Where you see this in practice:** PETS (Chua et al.); robotics MPC with learned models.
 
+**Illustration (PETS return):** PETS uses an ensemble of dynamics models and trajectory sampling for MPC. The chart below shows typical return vs env steps on a continuous task.
+
+{{< chart type="line" title="Return vs steps (PETS Pendulum)" labels="0, 5k, 10k, 15k, 20k" data="-500, -200, -80, -50, -40" >}}
+
 **Exercise:** Implement PETS for a continuous control task. Use an ensemble of probabilistic neural networks, and use trajectory sampling (e.g., random shooting) with the model to select actions via MPC.
 
 **Professor's hints**

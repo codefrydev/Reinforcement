@@ -58,7 +58,13 @@ For a function \\(f(x_1, x_2, \ldots, x_n)\\), the **partial derivative** \\(\fr
 **Answer:** \\(\frac{d}{dx}\ln(1+e^x) = \frac{e^x}{1+e^x} = \sigma(x)\\) (the sigmoid).
 
 **Explanation:** The sigmoid is the derivative of the softplus \\(\ln(1+e^x)\\). In logistic regression and policy parameterizations, the gradient of the log-likelihood involves this derivative.
+
+**Python:** `import numpy as np; x = np.linspace(-3,3,50); softplus = np.log1p(np.exp(x)); sigmoid = np.exp(x)/(1+np.exp(x)); (np.gradient(softplus, x) - sigmoid).max()` ≈ 0 (numerically).
 {{< /collapse >}}
+
+The derivative \\(\frac{d}{dx}\ln(1+e^x) = \sigma(x)\\). The chart below shows the sigmoid (same as in Core concepts).
+
+{{< chart type="line" title="σ(x) = derivative of softplus" labels="-3, -2, -1, 0, 1, 2, 3" data="0.05, 0.12, 0.27, 0.5, 0.73, 0.88, 0.95" >}}
 
 ---
 
@@ -70,7 +76,13 @@ For a function \\(f(x_1, x_2, \ldots, x_n)\\), the **partial derivative** \\(\fr
 **Application:** \\(y = (1+x^2)^{1/2}\\). Let \\(u = 1 + x^2\\), so \\(y = u^{1/2}\\). Then \\(\frac{dy}{du} = \frac{1}{2}u^{-1/2} = \frac{1}{2}(1+x^2)^{-1/2}\\) and \\(\frac{du}{dx} = 2x\\). So \\(\frac{dy}{dx} = \frac{1}{2}(1+x^2)^{-1/2} \cdot 2x = \frac{x}{(1+x^2)^{1/2}} = \frac{x}{\sqrt{1+x^2}}\\).
 
 **Explanation:** The chain rule multiplies derivatives along the path. In neural networks, backprop does this layer by layer; autograd libraries compute it automatically.
+
+**Python:** `import numpy as np; x = 0.5; u = 1+x**2; dy_du = 0.5*u**(-0.5); du_dx = 2*x; print(dy_du * du_dx)` → slope at x=0.5. Or `from scipy.misc import derivative; derivative(lambda x: np.sqrt(1+x**2), 0.5)`.
 {{< /collapse >}}
+
+For \\(y = \sqrt{1+x^2}\\), the slope \\(dy/dx = x/\sqrt{1+x^2}\\) varies with \\(x\\). The chart below shows \\(y\\) at a few points.
+
+{{< chart type="line" title="y = √(1+x²) at sample points" labels="-2, -1, 0, 1, 2" data="2.24, 1.41, 1, 1.41, 2.24" >}}
 
 ---
 
@@ -84,7 +96,13 @@ For a function \\(f(x_1, x_2, \ldots, x_n)\\), the **partial derivative** \\(\fr
 **Gradient:** \\(\nabla f = \bigl[2w_1 + w_2,\; w_1 + 2w_2\bigr]^T\\).
 
 **Explanation:** The gradient is the vector of partial derivatives. In RL we need all partials to update each parameter (e.g. in policy or value networks).
+
+**Python:** `import numpy as np; f = lambda w1,w2: w1**2 + w1*w2 + w2**2; w1,w2 = 1.,2.; grad = np.array([2*w1+w2, w1+2*w2]); print(grad)` → `[4. 5.]`.
 {{< /collapse >}}
+
+At \\(w_1=1, w_2=2\\) the gradient is \\([4, 5]^T\\). The chart below shows the two partial derivatives.
+
+{{< chart type="bar" title="∇f at (1,2): [4, 5]ᵀ" labels="∂f/∂w₁, ∂f/∂w₂" data="4, 5" >}}
 
 ---
 
@@ -96,7 +114,13 @@ We *maximize* \\(J(\theta)\\), so we move in the direction of the gradient (grad
 \\(\theta \leftarrow \theta + \alpha \nabla_\theta J(\theta)\\).
 
 **Explanation:** Minimization uses minus (gradient descent); maximization uses plus. Policy gradient increases return by taking a step in the direction that increases \\(J\\).
+
+**Python:** `theta = theta + alpha * grad_J` (gradient ascent). Contrast with `theta = theta - alpha * grad_L` for loss minimization.
 {{< /collapse >}}
+
+Policy gradient uses gradient *ascent*: \\(J\\) increases in the direction of \\(\nabla J\\). The chart below shows a conceptual learning curve (return \\(J\\) over updates).
+
+{{< chart type="line" title="J(θ) over policy gradient updates (conceptual)" labels="0, 20, 40, 60, 80" data="10, 35, 60, 82, 95" >}}
 
 ---
 
@@ -116,6 +140,10 @@ print(x.grad)  # tensor(4.)
 **Explanation:** This is how we get gradients for policy and value parameters in RL—PyTorch builds the computation graph and computes derivatives automatically.
 {{< /collapse >}}
 
+At \\(x=2\\), \\(y=4\\) and \\(dy/dx=4\\). The chart below shows \\(y = x^2\\) at a few points (parabola).
+
+{{< chart type="line" title="y = x² (and slope 2x at x=2 is 4)" labels="0, 1, 2, 3, 4" data="0, 1, 4, 9, 16" >}}
+
 ---
 
 6. **By hand:** For \\(f(x) = x^2 e^x\\), compute \\(f'(x)\\) using the product rule. Evaluate at \\(x = 0\\).
@@ -126,7 +154,13 @@ print(x.grad)  # tensor(4.)
 **At \\(x = 0\\):** \\(f'(0) = e^0(0 + 0) = 0\\).
 
 **Explanation:** The product rule is used whenever the loss or objective is a product of terms (e.g. policy probability times advantage). At \\(x=0\\) the slope is 0.
+
+**Python:** `import numpy as np; x = 0; f = x**2 * np.exp(x); df = np.exp(x)*(2*x + x**2); print(df)` → 0. Or with PyTorch: `x = torch.tensor(0., requires_grad=True); (x**2 * torch.exp(x)).backward(); x.grad` → 0.
 {{< /collapse >}}
+
+\\(f'(x) = e^x(2x + x^2)\\); at \\(x=0\\) we get \\(f'(0)=0\\). The chart below shows \\(f'(x)\\) at a few points.
+
+{{< chart type="line" title="f'(x) = eˣ(2x + x²)" labels="-1, 0, 1, 2" data="0.37, 0, 2.72, 8.15" >}}
 
 ---
 
@@ -138,7 +172,12 @@ print(x.grad)  # tensor(4.)
 **Why use log:** (1) The policy gradient theorem involves \\(\nabla_\theta \log \pi\\) weighted by the advantage; the log form keeps the gradient scaled by the probability and leads to a simple unbiased estimator. (2) In practice, \\(\log \pi\\) is numerically stable (we often work with log-probabilities to avoid underflow). (3) The resulting gradient update has a clean form (e.g. REINFORCE: increase log-probability of actions that got high return).
 
 **Explanation:** So we use \\(\nabla_\theta \log \pi\\) in the update; the “trick” shows this is equivalent to a probability-weighted gradient of \\(\pi\\), which is what the policy gradient theorem requires.
+**Python:** In PyTorch we compute `log_prob = policy.log_prob(action)` and then `loss = -log_prob * advantage`; `loss.backward()` gives the gradient of log π scaled by the advantage.
 {{< /collapse >}}
+
+The log-derivative trick: \\(\nabla \pi = \pi \nabla \log \pi\\). The chart below shows a conceptual comparison (gradient magnitude with vs without log).
+
+{{< chart type="bar" title="Gradient scale: π ∇log π vs ∇π (conceptual)" labels="∇log π (used), ∇π" data="1, 0.3" >}}
 
 ---
 

@@ -22,6 +22,10 @@ In **offline RL**, the agent learns from a **fixed dataset** of transitions (e.g
 
 **Where you see this in practice:** Offline RL from logged data; batch RL; overestimation in DQN/SAC when used offline.
 
+**Illustration (offline overestimation):** When training SAC on a fixed dataset without env interaction, Q-values can be overestimated for out-of-distribution actions. The chart below shows mean Q vs training steps (naive offline).
+
+{{< chart type="line" title="Mean Q(s,a) (offline SAC, no correction)" labels="0, 10k, 20k, 30k, 40k" data="2, 8, 25, 60, 120" >}}
+
 **Exercise:** Collect a dataset from a random policy in the Hopper environment. Try to train a standard SAC agent offline (without environment interaction). Observe the overestimation issue and distributional shift.
 
 **Professor's hints**

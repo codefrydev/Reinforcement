@@ -22,6 +22,10 @@ keywords: ["MAPPO", "multi-agent PPO", "parameter sharing", "centralized value",
 
 **Where you see this in practice:** MAPPO in SMAC and other MARL benchmarks; parameter sharing and central value in cooperative MARL.
 
+**Illustration (parameter sharing):** With parameter sharing, all agents use the same policy; the centralized critic has access to all observations. The chart below shows mean return (cooperative task) vs independent PPO.
+
+{{< chart type="bar" title="Final return (parameter sharing vs independent)" labels="Independent PPO, Shared PPO + central critic" data="80, 140" >}}
+
 **Exercise:** Adapt your PPO implementation to the multi-agent setting with parameter sharing among agents. Use a centralized value function (critic). Train on a collaborative task and compare with independent PPO.
 
 **Professor's hints**

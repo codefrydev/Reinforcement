@@ -22,6 +22,10 @@ keywords: ["imitation learning", "behavioral cloning", "expert demos", "LunarLan
 
 **Where you see this in practice:** Behavioral cloning for robotics and self-driving; learning from demonstrations (LfD); DAgger and inverse RL build on this.
 
+**Illustration (BC vs expert):** Behavioral cloning mimics the expert from demonstrations. The chart below shows expert return vs BC agent return (same env) for different dataset sizes.
+
+{{< chart type="bar" title="Mean return (expert vs BC)" labels="Expert, BC (100 demos), BC (1000 demos)" data="250, 120, 220" >}}
+
 **Exercise:** Collect expert demonstrations from a trained PPO agent on LunarLander. Train a behavioral cloning agent on this data. Evaluate how well it mimics the expert.
 
 **Professor's hints**

@@ -18,6 +18,10 @@ keywords: ["temporal difference learning", "TD(0)", "blackjack", "bootstrap"]
 
 **Temporal Difference (TD) learning** updates value estimates using the **TD target** \\(r + \\gamma V(s')\\): \\(V(s) \\leftarrow V(s) + \\alpha [r + \\gamma V(s') - V(s)]\\). Unlike Monte Carlo, TD does not need to wait for the episode to end; it **bootstraps** on the current estimate of \\(V(s')\\). TD(0) often converges faster per sample and works in continuing tasks. In practice, TD is the basis for SARSA, Q-learning, and many deep RL algorithms (e.g. DQN uses a TD-like target). Blackjack lets you compare TD(0) and MC on the same policy and state space.
 
+**Illustration (TD convergence):** TD(0) updates \\(V(s)\\) after every transition. The estimate for a given state often stabilizes faster than in MC because TD bootstraps. The chart below shows a typical trend: \\(V(s)\\) for one state over the first 20 episodes.
+
+{{< chart type="line" title="V(s) over episodes (TD(0), α=0.01)" labels="0, 5, 10, 15, 20" data="0, 0.3, 0.55, 0.72, 0.85" >}}
+
 **Exercise:** Implement TD(0) prediction for the same blackjack policy. Compare the convergence speed and final value estimates with Monte Carlo. Use a step size \\(\alpha=0.01\\) and run for 10,000 episodes.
 
 **Professor's hints**

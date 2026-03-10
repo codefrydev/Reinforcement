@@ -18,6 +18,10 @@ keywords: ["Bellman equation", "value function", "Bellman expectation", "MDP"]
 
 The **optimal action-value function** \\(Q^*(s,a)\\) is the expected return from state \\(s\\), taking action \\(a\\), then acting optimally. The **Bellman optimality equation** for \\(Q^*\\) states that \\(Q^*(s,a)\\) equals the expected immediate reward plus \\(\\gamma\\) times the *maximum* over next-state action values (not an average under a policy). This "max" makes the system nonlinear: the optimal policy is greedy with respect to \\(Q^*\\), and \\(Q^*\\) is the fixed point of this equation. Value iteration and Q-learning are built on this; in practice, we approximate \\(Q^*\\) with tables or function approximators.
 
+**Illustration (optimal action values):** In the two-state MDP from Chapter 3, state A has two actions (stay, go). The optimal action-value function \\(Q^*(A,\\text{stay})\\) and \\(Q^*(A,\\text{go})\\) differ; the chart below shows example values—the optimal policy chooses the action with the higher \\(Q^*\\).
+
+{{< chart type="bar" title="Q*(A,a) for state A" labels="stay, go" data="4.5, 3.2" >}}
+
 **Exercise:** Derive the Bellman optimality equation for action values, \\(Q^*(s,a)\\). Explain why it forms a system of nonlinear equations.
 
 **Professor's hints**

@@ -22,6 +22,10 @@ keywords: ["RND", "random network distillation", "prediction error", "intrinsic 
 
 **Where you see this in practice:** RND in Atari (e.g. OpenAI); bonus-based exploration in DQN and policy-gradient methods.
 
+**Illustration (RND exploration):** RND intrinsic reward is high in novel states (high prediction error). The chart below shows extrinsic vs intrinsic return over episodes (intrinsic decreases as states become familiar).
+
+{{< chart type="line" title="Intrinsic return over episodes (RND)" labels="0, 50, 100, 150, 200" data="80, 50, 30, 18, 10" >}}
+
 **Exercise:** Implement RND: a fixed random target network and a predictor network trained on visited states. Use the prediction error as intrinsic reward. Apply it to a hard exploration problem like a Pitfall-style environment.
 
 **Professor's hints**

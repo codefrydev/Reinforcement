@@ -22,6 +22,10 @@ keywords: ["DPO", "Direct Preference Optimization", "Bradley-Terry", "KL-optimal
 
 **Where you see this in practice:** DPO and variants (IPO, KTO); alignment without reward model; preference-based fine-tuning.
 
+**Illustration (DPO vs PPO):** DPO trains directly on preferences without a separate reward model. The chart below shows preference accuracy (or reward) over training for DPO vs PPO-style RLHF.
+
+{{< chart type="line" title="Preference accuracy (DPO)" labels="0, 200, 400, 600, 800" data="0.5, 0.72, 0.85, 0.91, 0.95" >}}
+
 **Exercise:** Implement DPO: derive the loss from the Bradley-Terry model and the optimal policy under a KL constraint. Train a language model directly on preference data without a separate reward model. Compare with PPO.
 
 **Professor's hints**

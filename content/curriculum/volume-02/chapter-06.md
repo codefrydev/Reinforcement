@@ -18,6 +18,10 @@ keywords: ["n-step SARSA", "n-step bootstrapping", "Cliff Walking", "TD"]
 
 **N-step bootstrapping** uses a return over \\(n\\) steps: \\(G_{t:t+n} = r_{t+1} + \\gamma r_{t+2} + \\cdots + \\gamma^{n-1} r_{t+n} + \\gamma^n V(s_{t+n})\\) (or \\(Q(s_{t+n},a_{t+n})\\) for SARSA). \\(n=1\\) is TD(0); \\(n=\\infty\\) (until terminal) is Monte Carlo. Intermediate \\(n\\) balances bias and variance. In practice, n-step methods (e.g. n-step SARSA, A3C's n-step returns) can learn faster than one-step when \\(n\\) is chosen well; too large \\(n\\) delays updates and can hurt in non-stationary or long episodes.
 
+**Illustration (n-step vs one-step):** For the same number of env steps, n-step SARSA often improves average reward faster early on because each update uses more reward signal. The chart below shows a typical comparison on Cliff Walking.
+
+{{< chart type="line" title="Mean reward per episode (same number of steps)" labels="0, 100, 200, 300, 400, 500" data="-60, -35, -22, -15, -13, -12" >}}
+
 **Exercise:** Implement n-step SARSA (with \\(n=4\\)) for the Cliff Walking environment. Write a function that accumulates n steps before updating. Compare the learning speed with one-step SARSA.
 
 **Professor's hints**

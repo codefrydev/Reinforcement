@@ -18,6 +18,10 @@ keywords: ["SARSA", "on-policy TD control", "Cliff Walking", "temporal differenc
 
 **SARSA** is an on-policy TD control method: it updates \\(Q(s,a)\\) using the actual next action \\(a'\\) chosen by the current policy, so it learns the value of the *behavior* policy (the one you are following). The update is \\(Q(s,a) \\leftarrow Q(s,a) + \\alpha [r + \\gamma Q(s',a') - Q(s,a)]\\). Because \\(a'\\) can be exploratory, SARSA accounts for the risk of exploration (e.g. stepping off the cliff by accident) and often learns a safer policy than Q-learning on Cliff Walking. In real applications, on-policy methods are used when you want to optimize the same policy you use for data collection (e.g. safe robotics).
 
+**Illustration (SARSA learning curve):** On Cliff Walking, the sum of rewards per episode typically improves as \\(Q\\) is learned, then stabilizes. The chart below shows a typical episode-reward curve over training.
+
+{{< chart type="line" title="Sum of rewards per episode (SARSA on Cliff Walking)" labels="0, 100, 200, 300, 400, 500" data="-80, -45, -25, -15, -13, -12" >}}
+
 **Exercise:** Implement SARSA to learn an optimal policy for the Cliff Walking environment (from Sutton & Barto). Use \\(\epsilon\\)-greedy exploration with \\(\epsilon=0.1\\), \\(\alpha=0.5\\), \\(\gamma=0.9\\). Plot the sum of rewards per episode.
 
 **Professor's hints**

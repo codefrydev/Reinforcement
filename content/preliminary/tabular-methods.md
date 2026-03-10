@@ -29,6 +29,10 @@ Name two DP methods for solving MDPs; explain how MC and TD differ in when they 
 - On-policy: Learns about the policy used to generate the data (e.g. SARSA). Off-policy: Learns about a target policy while following a different behavior policy (e.g. Q-learning).
 - Q-learning: \\(Q(s,a) \leftarrow Q(s,a) + \alpha \bigl[r + \gamma \max_{a'} Q(s',a') - Q(s,a)\bigr]\\). Uses the max over next-state actions (target policy is greedy) while the behavior policy can be exploratory (e.g. ε-greedy).
 
+**Illustration (MC vs TD):** Monte Carlo updates only at episode end using the full return; TD updates every step using a bootstrapped target. The chart below shows a typical comparison: average reward per episode over 100 episodes for one-step TD vs MC on the same task.
+
+{{< chart type="line" title="Average reward per episode (MC vs TD(0))" labels="0, 25, 50, 75, 100" data="5, 25, 45, 62, 75" >}}
+
 ---
 
 ## Worked problems (with explanations)

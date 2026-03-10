@@ -22,6 +22,10 @@ keywords: ["evaluating RL agents", "multiple seeds", "mean std", "rliable", "con
 
 **Where you see this in practice:** rliable library; evaluation in RL papers (multiple seeds, confidence intervals); reporting standards for RL benchmarks.
 
+**Illustration (confidence intervals):** Over 10 seeds, mean return has variance; reporting mean ± std or stratified CIs is standard. The chart below shows mean and std of final return over seeds.
+
+{{< chart type="bar" title="Final return (10 seeds) mean ± std" labels="Seed 1-5, Seed 6-10, Mean" data="195, 198, 196" >}}
+
 **Exercise:** Train a PPO agent on 10 different random seeds. Compute the mean and standard deviation of final returns. Then compute stratified confidence intervals using the rliable library. Interpret the results.
 
 **Professor's hints**

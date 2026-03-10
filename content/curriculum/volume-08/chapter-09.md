@@ -22,6 +22,10 @@ keywords: ["offline-to-online", "finetune", "SAC", "Q-filter", "pretrain offline
 
 **Where you see this in practice:** Offline pretraining + online finetuning; Q-filter and similar safeguards; safe deployment from batch data.
 
+**Illustration (offline pretrain + online):** Pretraining on offline data then fine-tuning online often reaches good return faster than training from scratch. The chart below compares learning curves.
+
+{{< chart type="line" title="Return: from scratch vs pretrain+online" labels="0, 50k, 100k, 150k, 200k" data="0, 500, 1500, 3000, 4500" >}}
+
 **Exercise:** Pretrain an SAC agent offline using a large dataset. Then continue training online in the environment. Compare the learning curve with training from scratch. Use Q-filter to avoid updating with bad actions.
 
 **Professor's hints**

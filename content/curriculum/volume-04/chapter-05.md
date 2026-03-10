@@ -20,6 +20,10 @@ keywords: ["actor-critic", "two-network", "TD error", "advantage"]
 
 **Where you see this in practice:** A2C, A3C, and many continuous control algorithms (DDPG, TD3, SAC) are actor-critic style. The pattern (policy + value/advantage) is central to PPO as well.
 
+**Illustration (actor and critic outputs):** The critic estimates \\(V(s)\\); the actor outputs action probabilities. The chart below shows example \\(V(s)\\) for a few states and the policy entropy over training.
+
+{{< chart type="line" title="V(s) and entropy over episodes" labels="Ep 0, Ep 50, Ep 100, Ep 150" data="0, 15, 35, 50" >}}
+
 **Exercise:** Sketch the architecture of a two-network actor-critic: the actor outputs a distribution over actions, the critic outputs a value. Write pseudocode for the update steps using TD error.
 
 **Professor's hints**

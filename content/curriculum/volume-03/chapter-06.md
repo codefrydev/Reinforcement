@@ -18,6 +18,10 @@ keywords: ["Double DQN", "DDQN", "overestimation", "target network"]
 
 Standard DQN uses \\(y = r + \\gamma \\max_{a'} Q_{target}(s',a')\\). The max over noisy estimates is biased upward (overestimation), which can hurt learning. **Double DQN** decouples action selection from evaluation: the *online* network selects \\(a^*\\), the *target* network evaluates \\(Q_{target}(s', a^*)\\). This reduces overestimation and often improves stability and final performance. It is a small code change and is commonly used in modern DQN variants (e.g. Rainbow).
 
+**Illustration (overestimation):** Standard DQN's max over Q-values tends to overestimate; Double DQN often yields lower, more accurate Q-values. The chart below compares mean Q(s,a) after training (CartPole).
+
+{{< chart type="bar" title="Mean Q(s,a) after training (CartPole)" labels="DQN, Double DQN" data="28, 22" >}}
+
 **Exercise:** Modify your DQN to use Double DQN: use the online network to select actions and the target network to evaluate them. Compare the average Q-values and performance with standard DQN on CartPole.
 
 **Professor's hints**

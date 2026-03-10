@@ -22,6 +22,10 @@ keywords: ["VDN", "value decomposition", "multi-agent", "cooperative MARL"]
 
 **Where you see this in practice:** VDN and QMIX (which generalizes VDN); value decomposition in StarCraft and similar benchmarks.
 
+**Illustration (VDN vs IQL):** VDN sums individual Q-values for the joint Q; with joint reward it often converges faster than IQL. The chart below compares mean return over episodes.
+
+{{< chart type="line" title="Mean return (VDN vs IQL, cooperative)" labels="0, 1k, 2k, 3k, 4k, 5k" data="10, 40, 75, 110, 140, 165" >}}
+
 **Exercise:** Implement VDN for a cooperative game: sum individual Q-values to form a joint Q-value. Train with a joint reward. Compare with IQL.
 
 **Professor's hints**

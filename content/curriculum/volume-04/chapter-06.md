@@ -20,6 +20,10 @@ keywords: ["A2C", "advantage actor-critic", "CartPole", "multi-env"]
 
 **Where you see this in practice:** A2C is used in OpenAI Baselines and many tutorials. The same pattern (multi-env, shared backbone, TD advantage) appears in PPO implementations.
 
+**Illustration (A2C learning curve):** With 4 parallel envs, mean return over the batch typically improves over updates. The chart below shows mean episode return every 10 updates.
+
+{{< chart type="line" title="Mean return (4 envs, every 10 updates)" labels="0, 50, 100, 150, 200" data="50, 120, 170, 195, 200" >}}
+
 **Exercise:** Implement A2C for CartPole. Use the TD error \\(r + \\gamma V(s') - V(s)\\) as the advantage. Use a shared feature extractor or separate networks. Synchronously run multiple environments to collect data.
 
 **Professor's hints**

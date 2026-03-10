@@ -16,7 +16,13 @@ keywords: ["limitations of DP", "function approximation", "state count", "tabula
 
 **Concept and real-world RL**
 
-**Dynamic programming** (policy iteration, value iteration) assumes we can store a value for every state (or state-action) and iterate over all of them. In a 10×10 grid that is 100 states—manageable. In real problems (continuous state spaces, or discrete but huge spaces like board games or high-dimensional sensors), the number of states is enormous or infinite, so we cannot store a table. **Function approximation** uses a parameterized function (e.g. \\(V(s; \\theta)\\) or \\(Q(s,a; \\theta)\\)) so that a fixed number of parameters \\(\\theta\\) represent values for *all* states; we learn \\(\\theta\\) from data. This is the bridge to deep RL (DQN, policy gradients) in Volumes 3–5.
+**Dynamic programming** (policy iteration, value iteration) assumes we can store a value for every state (or state-action) and iterate over all of them. In a 10×10 grid that is 100 states—manageable. In real problems (continuous state spaces, or discrete but huge spaces like board games or high-dimensional sensors), the number of states is enormous or infinite, so we cannot store a table.
+
+**Illustration (state count growth):** The number of states grows quickly with grid size. Doubling the side length quadruples the state count. The chart below shows state count for 4×4, 10×10, and 100×100 grids.
+
+{{< chart type="bar" title="Number of states |S| by grid size" labels="4×4, 10×10, 100×100" data="16, 100, 10000" >}}
+
+**Function approximation** uses a parameterized function (e.g. \\(V(s; \\theta)\\) or \\(Q(s,a; \\theta)\\)) so that a fixed number of parameters \\(\\theta\\) represent values for *all* states; we learn \\(\\theta\\) from data. This is the bridge to deep RL (DQN, policy gradients) in Volumes 3–5.
 
 **Exercise:** Consider a 10×10 gridworld with 4 actions. How many states and how many transition probabilities would you need to store explicitly? Discuss why this becomes infeasible for larger grids and how function approximation addresses it.
 

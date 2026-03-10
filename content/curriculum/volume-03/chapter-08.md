@@ -18,6 +18,10 @@ keywords: ["prioritized replay", "PER", "TD error", "importance sampling", "DQN"
 
 **Prioritized Experience Replay (PER)** samples transitions with probability proportional to their "priority"—often the TD error—so that surprising or informative transitions are replayed more often. This can speed up learning but introduces bias (the update distribution is not the same as the uniform replay distribution). **Importance-sampling weights** correct for this by weighting the gradient update so that in expectation we recover the uniform case. A **sum tree** allows O(log N) sampling and priority update. PER is used in Rainbow and other sample-efficient DQN variants.
 
+**Illustration (replay priority):** With PER, high-TD-error transitions are sampled more often. The chart below shows a typical distribution of replay frequency: a few transitions get replayed often (high priority), many get replayed less.
+
+{{< chart type="bar" title="Relative replay count (high vs low TD error)" labels="High |δ|, Medium, Low |δ|" data="2.5, 1.2, 0.5" >}}
+
 **Exercise:** Implement a prioritized replay buffer using a sum tree. Use TD error as priority. Sample according to \\(P(i) = p_i^\\alpha / \\sum p_j^\\alpha\\) and apply importance-sampling weights to correct bias. Integrate with DQN and test on a simple environment.
 
 **Professor's hints**

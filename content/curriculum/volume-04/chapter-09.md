@@ -20,6 +20,10 @@ keywords: ["DDPG", "Deep Deterministic Policy Gradient", "Pendulum", "OU noise"]
 
 **Where you see this in practice:** DDPG is used in robotics, simulated control, and trading. TD3 and SAC are often preferred for better stability and sample efficiency.
 
+**Illustration (DDPG learning curve):** On Pendulum, episode return typically improves as the actor and critic learn. The chart below shows a typical curve (return every 10 episodes).
+
+{{< chart type="line" title="Episode return (DDPG on Pendulum)" labels="0, 50, 100, 150, 200" data="-1200, -600, -350, -220, -180" >}}
+
 **Exercise:** Implement DDPG for the Pendulum-v1 environment. Use actor and critic networks with target networks and a replay buffer. Add Ornstein-Uhlenbeck noise for exploration. Plot the learning curve.
 
 **Professor's hints**

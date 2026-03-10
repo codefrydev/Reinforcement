@@ -18,6 +18,10 @@ keywords: ["Expected SARSA", "Q-learning", "variance", "learning curves"]
 
 **Expected SARSA** uses the *expected* next action value under a policy \\(\\pi\\): target = \\(r + \\gamma \\sum_{a'} \\pi(a'|s') Q(s',a')\\). For \\(\epsilon\\)-greedy \\(\\pi\\), this is \\(r + \\gamma [(1-\\epsilon) \\max_{a'} Q(s',a') + \\epsilon \\cdot \\text{(uniform over actions)}]\\). It reduces the variance of the update (compared to SARSA, which uses a single sample \\(Q(s',a')\\)) and can be more stable. When \\(\\pi\\) is greedy, Expected SARSA becomes Q-learning. In practice, it is a middle ground between SARSA and Q-learning and is used in some deep RL variants.
 
+**Illustration (update variance):** Expected SARSA uses the expectation over the next action instead of a single sample, so the TD target has lower variance. The chart below compares typical squared TD error (averaged over many steps) for Expected SARSA vs Q-learning.
+
+{{< chart type="bar" title="Mean squared TD error (lower is more stable)" labels="Expected SARSA, Q-learning" data="0.08, 0.15" >}}
+
 **Exercise:** Modify your Q-learning code to implement Expected SARSA. Instead of using the max over next actions, use the expected value under the current \\(\epsilon\\)-greedy policy. Compare the variance of the updates and the learning curves.
 
 **Professor's hints**

@@ -20,6 +20,10 @@ keywords: ["intrinsic motivation", "state visitation count", "exploration bonus"
 
 **Where you see this in practice:** Count-based exploration in MDPs; pseudo-counts in Atari (e.g. Bellemare et al.); curiosity modules.
 
+**Illustration (intrinsic bonus):** The bonus \\(1/\\sqrt{\\text{count}}\\) is high for rarely visited states. The chart below shows intrinsic reward for states with different visit counts.
+
+{{< chart type="bar" title="Intrinsic reward vs visit count" labels="1, 4, 9, 16, 25" data="1, 0.5, 0.33, 0.25, 0.2" >}}
+
 **Exercise:** Design an intrinsic reward based on state visitation count. For a simple gridworld, count how many times each state is visited and give a bonus = \\(1/\\sqrt{\\text{count}}\\). Implement an agent that uses total reward = extrinsic + intrinsic. Compare exploration behavior.
 
 **Professor's hints**

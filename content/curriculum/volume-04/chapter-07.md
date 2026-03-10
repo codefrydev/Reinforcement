@@ -20,6 +20,10 @@ keywords: ["A3C", "asynchronous advantage actor-critic", "multiprocessing", "A2C
 
 **Where you see this in practice:** A3C appears in classic papers and older codebases; modern implementations often prefer A2C or PPO with vectorized envs (e.g. 8 envs, sync updates).
 
+**Illustration (async vs sync):** A3C workers update a global network asynchronously. The chart below shows a typical reward curve with 4 workers (reward per episode, mixed from all workers).
+
+{{< chart type="line" title="Episode return (A3C, 4 workers)" labels="0, 200, 400, 600, 800" data="30, 100, 160, 190, 198" >}}
+
 **Exercise:** Implement A3C using Python's multiprocessing. Create several worker processes that each interact with its own environment and update a global network asynchronously. Test on CartPole and compare training speed with A2C.
 
 **Professor's hints**

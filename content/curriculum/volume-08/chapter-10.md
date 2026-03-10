@@ -22,6 +22,10 @@ keywords: ["RLHF", "human feedback", "Bradley-Terry", "pairwise comparisons", "P
 
 **Where you see this in practice:** RLHF for language models (ChatGPT, Claude); preference-based RL; learning reward from comparisons.
 
+**Illustration (Bradley-Terry reward):** From pairwise preferences we learn a reward model; PPO with that reward improves. The chart below shows PPO return and correlation between learned reward and true return over training.
+
+{{< chart type="line" title="PPO return (reward from preferences)" labels="0, 50, 100, 150, 200" data="100, 180, 220, 245, 255" >}}
+
 **Exercise:** Given a set of pairwise comparisons of two trajectories, implement a Bradley-Terry model to learn a reward function. Then use that reward to train a policy with PPO.
 
 **Professor's hints**

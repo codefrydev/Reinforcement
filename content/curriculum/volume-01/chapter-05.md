@@ -18,6 +18,10 @@ keywords: ["value function", "V pi", "state-value function", "random policy"]
 
 The **state-value function** \\(V^\\pi(s)\\) is the expected (discounted) return starting from state \\(s\\) and following policy \\(\\pi\\). It answers: "How good is it to be in this state if I follow this policy?" In games, \\(V(s)\\) is like the expected outcome from a board position; in navigation, it is the expected cumulative reward from a location. The **Bellman expectation equation** expresses \\(V^\\pi\\) in terms of immediate reward and the value of the next state; for finite MDPs it becomes a linear system \\(V = r + \\gamma P V\\) that we can solve by matrix inversion or iteration.
 
+**Illustration (state values):** For the Chapter 3 two-state MDP under a random policy, solving the Bellman equation yields \\(V^\\pi(A)\\) and \\(V^\\pi(B)\\). The chart below shows example values for the two states.
+
+{{< chart type="bar" title="V^π(s) for the two-state MDP (random policy)" labels="State A, State B" data="9, 10" >}}
+
 **Exercise:** For the MDP in Chapter 3, compute the state-value function \\(V^\pi\\) for a random policy (\\(\pi(a|s)=0.5\\)) by solving the Bellman equation system manually (or via matrix inversion). Assume \\(\gamma = 0.9\\).
 
 **Professor's hints**

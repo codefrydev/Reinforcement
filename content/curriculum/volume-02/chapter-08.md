@@ -18,6 +18,10 @@ keywords: ["custom Gym environment", "OpenAI Gym", "environment API", "maze"]
 
 Real RL often requires **custom environments**: simulators for robotics, games, or domain-specific tasks. The Gym API (`reset`, `step`, `observation_space`, `action_space`) is the standard. Implementing a small maze teaches you how to encode state (e.g. agent position), handle boundaries and obstacles, and return (obs, reward, terminated, truncated, info). In practice, you will wrap or write envs for your problem and reuse the same agents (e.g. Q-learning, DQN) trained on standard envs.
 
+**Illustration (tabular Q size):** For a 5×5 maze with 4 actions, the Q-table has states × actions entries. With 23 free cells (e.g. 2 walls), that is 23 × 4 = 92 entries. The chart below shows how Q-table size grows with maze size (states × 4 actions).
+
+{{< chart type="bar" title="Q-table entries (states × 4 actions)" labels="3×3, 5×5, 7×7" data="36, 100, 196" >}}
+
 **Exercise:** Create a custom Gym environment for a 2D maze with obstacles. Define observation (agent position) and discrete actions (up, down, left, right). Implement a render function that prints a text-based map.
 
 **Professor's hints**

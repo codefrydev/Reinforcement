@@ -22,6 +22,10 @@ keywords: ["count-based exploration", "hash table", "pseudo-counts", "density mo
 
 **Where you see this in practice:** Count-based exploration in MDPs; pseudo-counts in Atari (e.g. Bellemare et al.); diversity bonuses in bandits and recommenders.
 
+**Illustration (pseudo-count bonus):** Count-based exploration gives higher bonus to less-visited states. The chart below shows exploration bonus (e.g. \\(1/\\sqrt{N}\\)) for different visit counts.
+
+{{< chart type="bar" title="Exploration bonus vs count" labels="N=1, N=5, N=10, N=20" data="1, 0.45, 0.32, 0.22" >}}
+
 **Exercise:** For a discrete state space, implement count-based exploration using a hash table. Use pseudo-counts derived from a density model (e.g., a PixelCNN) for image-based states. Test on a simple Atari game.
 
 **Professor's hints**

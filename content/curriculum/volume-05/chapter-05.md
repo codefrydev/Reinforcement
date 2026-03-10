@@ -20,6 +20,10 @@ keywords: ["PPO implementation", "LunarLanderContinuous", "GAE", "rollout buffer
 
 **Where you see this in practice:** LunarLander and similar envs are used in tutorials and benchmarks; the same PPO structure scales to MuJoCo and Atari.
 
+**Illustration (PPO on LunarLander):** Episode return typically improves over training, with some variance. The chart below shows a typical learning curve (mean return per 10 episodes).
+
+{{< chart type="line" title="Episode return (PPO LunarLander)" labels="0, 100, 200, 300, 400" data="-200, 50, 150, 220, 250" >}}
+
 **Exercise:** Implement a full PPO agent for the LunarLanderContinuous-v2 environment. Use a rollout buffer, compute advantages via GAE, and perform multiple epochs of minibatch updates. Tune hyperparameters to achieve successful landing.
 
 **Professor's hints**

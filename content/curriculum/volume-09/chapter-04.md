@@ -22,6 +22,10 @@ keywords: ["CTDE", "centralized training decentralized execution", "MARL", "non-
 
 **Where you see this in practice:** QMIX, MADDPG, COMA; CTDE in StarCraft and multi-robot control.
 
+**Illustration (CTDE):** Centralized training uses global state for the critic; decentralized execution uses only local observations. The chart below compares return (centralized critic vs independent) on a cooperative task.
+
+{{< chart type="bar" title="Final return (cooperative task)" labels="Independent, CTDE" data="70, 120" >}}
+
 **Exercise:** Explain the CTDE paradigm with an example. Why does it help with non-stationarity during training while keeping execution scalable?
 
 **Professor's hints**

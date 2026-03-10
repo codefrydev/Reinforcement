@@ -21,6 +21,10 @@ keywords: ["AMP", "Adversarial Motion Priors", "task reward", "adversarial style
 
 **Where you see this in practice:** AMP and related methods for locomotion; motion capture–driven RL; style + task reward in animation.
 
+**Illustration (AMP style reward):** AMP combines task reward with an adversarial style reward for natural motion. The chart below shows task return and style score over training.
+
+{{< chart type="line" title="Task return and style score (AMP)" labels="0, 500, 1000, 1500, 2000" data="0, 200, 500, 800, 1200" >}}
+
 **Exercise:** Read the AMP paper and explain how it combines a task reward with an adversarial style reward to produce natural locomotion. Write the combined reward function.
 
 **Professor's hints**

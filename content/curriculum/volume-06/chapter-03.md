@@ -20,6 +20,10 @@ When the **model is known** and deterministic, we can **plan** without learning:
 
 **Where you see this in practice:** Game AI pathfinding (A*, BFS); industrial control with known dynamics.
 
+**Illustration (BFS vs DP):** Planning with BFS finds the shortest path; DP (value iteration) yields the same optimal policy. The chart below shows the number of steps to converge for a small grid (BFS: one run; DP: sweeps).
+
+{{< chart type="bar" title="Steps to solution (4×4 grid)" labels="BFS, Value iteration" data="16, 12" >}}
+
 **Exercise:** For a simple gridworld with known deterministic dynamics, implement a planner using breadth-first search to find the optimal policy. Compare with dynamic programming.
 
 **Professor's hints**

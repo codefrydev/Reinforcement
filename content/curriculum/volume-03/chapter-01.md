@@ -18,6 +18,10 @@ keywords: ["linear function approximation", "tile coding", "semi-gradient SARSA"
 
 **Linear function approximation** approximates \\(Q(s,a) \\approx w^T \\phi(s,a)\\). The weights \\(w\\) are learned from data; \\(\\phi(s,a)\\) is a fixed or hand-designed feature. **Tile coding** partitions the state space into overlapping tilings; each tiling is a grid, and the feature vector has a 1 for each tile that contains the state (and the action), so we get a sparse binary vector. This allows generalization across similar states. **Semi-gradient** methods use the TD target but treat the next-state value as a constant when taking the gradient (no backprop through the target). Linear FA is the simplest form of value approximation and appears in legacy RL and as a baseline.
 
+**Illustration (learning curve):** With tile coding and semi-gradient SARSA on MountainCar, total reward per episode typically improves over many episodes. The chart below shows a typical trend (reward per episode, smoothed).
+
+{{< chart type="line" title="Episode return (MountainCar, semi-gradient SARSA)" labels="0, 200, 400, 600, 800, 1000" data="-500, -350, -200, -120, -80, -65" >}}
+
 **Exercise:** Implement linear function approximation for the MountainCar environment. Use tile coding (e.g., from Sutton's code) to create binary features. Train a semi-gradient SARSA to learn a policy. Plot the learning curve.
 
 **Professor's hints**

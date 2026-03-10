@@ -18,6 +18,10 @@ keywords: ["experience replay", "replay buffer", "push and sample", "DQN"]
 
 **Experience replay** stores past transitions and samples random minibatches for training. It breaks the correlation between consecutive samples (which would cause unstable updates if we trained only on the last transition) and reuses data for sample efficiency. DQN and many off-policy algorithms rely on it. The buffer is usually a circular buffer: when full, new transitions overwrite the oldest. Sampling uniformly at random (or with prioritization in advanced variants) gives unbiased minibatches. In practice, buffer size is a hyperparameter (e.g. 10k–1M); too small limits diversity, too large uses more memory and can slow learning if the policy has changed a lot.
 
+**Illustration (buffer fill):** As the agent interacts with the env, the replay buffer fills until it reaches capacity, then the oldest transitions are overwritten. The chart below shows how buffer size grows over the first 15k steps (capacity 10k).
+
+{{< chart type="line" title="Replay buffer size over env steps" labels="0, 5k, 10k, 12k, 15k" data="0, 5000, 10000, 10000, 10000" >}}
+
 **Exercise:** Code a replay buffer class with methods `push(state, action, reward, next_state, done)` and `sample(batch_size)`. Ensure it uses a circular buffer and random sampling. Test it with random data.
 
 **Professor's hints**

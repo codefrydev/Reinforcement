@@ -19,6 +19,10 @@ keywords: ["Soft Actor-Critic", "SAC", "HalfCheetah", "automatic temperature"]
 
 **Where you see this in practice:** SAC is in OpenAI Spinning Up, Stable-Baselines3, and CleanRL; commonly used for MuJoCo benchmarks.
 
+**Illustration (SAC learning curve):** On HalfCheetah, SAC typically reaches high return over 1M steps. The chart below shows mean return over last 10 episodes every 50k steps.
+
+{{< chart type="line" title="Mean return (SAC HalfCheetah)" labels="0, 250k, 500k, 750k, 1M" data="0, 1500, 3500, 4500, 5000" >}}
+
 **Exercise:** Implement SAC for the HalfCheetah environment. Include automatic temperature tuning. Train and compare its sample efficiency with PPO (use existing implementations or your own).
 
 **Professor's hints**

@@ -18,6 +18,10 @@ keywords: ["value iteration", "optimal V", "optimal policy", "dynamic programmin
 
 **Value iteration** updates the state-value function using the Bellman *optimality* equation: \\(V(s) \\leftarrow \\max_a \\sum_{s',r} P(s',r|s,a)[r + \\gamma V(s')]\\). It does not maintain an explicit policy; after convergence, the optimal policy is greedy with respect to \\(V\\). Value iteration is simpler than full policy iteration (no inner evaluation loop) and converges to \\(V^*\\). It is used in planning when the model is known; in large or continuous spaces we approximate \\(V\\) or \\(Q\\) with function approximators and use approximate dynamic programming or model-free methods.
 
+**Illustration (value iteration convergence):** The optimal value at a non-terminal state (e.g. center of the grid) updates each sweep and converges to \\(V^*\\). The chart below shows the value at one such state over the first few sweeps (γ=0.9, -1 per step).
+
+{{< chart type="line" title="V(s) at center cell over value iteration sweeps" labels="1, 2, 3, 4, 5, 6, 7, 8" data="-4, -3.5, -3.1, -2.8, -2.6, -2.4, -2.3, -2.2" >}}
+
 **Exercise:** Implement value iteration for the same gridworld. Use \\(\gamma=0.9\\) and stop when the value function changes by less than 1e-4. Output the optimal value and policy.
 
 **Professor's hints**

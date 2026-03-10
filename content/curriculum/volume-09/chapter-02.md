@@ -22,6 +22,10 @@ keywords: ["multi-agent game theory", "MARL", "game theory fundamentals"]
 
 **Where you see this in practice:** Nash equilibrium in games and economics; independent learning and self-play; convergence issues in MARL.
 
+**Illustration (2×2 payoff):** In Prisoner's Dilemma, the Nash equilibrium is (Defect, Defect) even though (Cooperate, Cooperate) gives higher payoff to both. The chart below shows row player payoffs for the four outcomes.
+
+{{< chart type="bar" title="Row player payoff (Prisoner's Dilemma)" labels="C,C, C,D, D,C, D,D" data="3, 0, 5, 1" >}}
+
 **Exercise:** Compute the Nash equilibrium of a simple 2×2 payoff matrix (e.g., Prisoner's Dilemma). Explain why independent learning might converge to a different outcome.
 
 **Professor's hints**

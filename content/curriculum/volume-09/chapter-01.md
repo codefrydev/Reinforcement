@@ -22,6 +22,10 @@ keywords: ["multi-agent RL", "Dec-POMDP", "Rock-Paper-Scissors", "game theory"]
 
 **Where you see this in practice:** Game theory and multi-agent systems; Dec-POMDPs in robotics and games; Nash equilibrium and learning in games.
 
+**Illustration (zero-sum payoffs):** In Rock-Paper-Scissors, one player's gain is the other's loss. The chart below shows payoff to row player for each outcome (R-R draw, R-P loss, R-S win, etc.).
+
+{{< chart type="bar" title="Payoff to row player (RPS outcomes)" labels="R-R, R-P, R-S, P-R, P-P, P-S" data="0, -1, 1, 1, 0, -1" >}}
+
 **Exercise:** Model a two-player zero-sum game (e.g., Rock-Paper-Scissors) as a Dec-POMDP. Define states, observations, actions, and rewards.
 
 **Professor's hints**

@@ -20,6 +20,10 @@ keywords: ["policy-based methods", "stochastic policy", "deterministic policy", 
 
 **Where you see this in practice:** Stochastic policies are used in poker AI, multi-agent games, recommendation diversity, and any setting with hidden information or adversarial play. Deterministic policies (e.g. DDPG) are used when the environment is smooth and exploration is handled separately (e.g. noise).
 
+**Illustration (policy distribution):** A stochastic policy outputs a probability over actions. The chart below shows an example distribution over 3 actions (e.g. left, stay, right) in one state.
+
+{{< chart type="bar" title="π(a|s) for 3 actions" labels="Left, Stay, Right" data="0.2, 0.5, 0.3" >}}
+
 **Exercise:** Discuss a scenario where a stochastic policy is essential (e.g., in games with hidden information). Explain why a deterministic policy would fail.
 
 **Professor's hints**

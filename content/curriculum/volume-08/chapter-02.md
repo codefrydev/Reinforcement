@@ -22,6 +22,10 @@ keywords: ["CQL", "Conservative Q-Learning", "OOD actions", "offline RL", "SAC"]
 
 **Where you see this in practice:** CQL and related offline RL algorithms (e.g. BRAC, TD3+BC); safe policy learning from logs.
 
+**Illustration (CQL vs naive):** CQL penalizes Q-values for OOD actions, reducing overestimation. The chart below compares mean Q after training (CQL vs naive SAC on same offline data).
+
+{{< chart type="bar" title="Mean Q after training (offline)" labels="Naive SAC, CQL" data="85, 25" >}}
+
 **Exercise:** Implement the CQL loss by adding a term that penalizes Q-values for out-of-distribution actions. Apply it to the offline dataset from Chapter 71 and compare with naive SAC.
 
 **Professor's hints**

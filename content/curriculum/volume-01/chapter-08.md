@@ -18,6 +18,10 @@ keywords: ["policy iteration", "value iteration", "dynamic programming", "optima
 
 **Policy iteration** alternates two steps: (1) **policy evaluation**—compute \\(V^\\pi\\) for the current policy \\(\\pi\\); (2) **policy improvement**—update \\(\\pi\\) to be greedy with respect to \\(V^\\pi\\). The new policy is at least as good as the old (and strictly better unless already optimal). Repeating this process converges to the optimal policy in a finite number of iterations (for finite MDPs). It is a cornerstone of dynamic programming for RL; in practice, we often do only a few evaluation steps (generalized policy iteration) or use value iteration, which interleaves evaluation and improvement in one update.
 
+**Illustration (policy improvement):** In each improvement step, we count how many states change their action. Typically this number drops over iterations until no state changes. The chart below shows an example: states changed per improvement step.
+
+{{< chart type="bar" title="States with changed action per improvement step" labels="Step 1, Step 2, Step 3, Step 4" data="14, 6, 2, 0" >}}
+
 **Exercise:** Extend your code from Chapter 7 to perform policy iteration. After evaluating the policy, improve it greedily with respect to the current value function. Repeat until the policy stabilizes. Compare the final policy with value iteration results.
 
 **Professor's hints**

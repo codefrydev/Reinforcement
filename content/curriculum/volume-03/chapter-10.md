@@ -18,6 +18,10 @@ keywords: ["Rainbow DQN", "DDQN Dueling PER NoisyNet", "Pong", "combined improve
 
 **Rainbow** (Hessel et al.) combines several DQN improvements: Double DQN (reduce overestimation), Dueling (value + advantage), PER (replay important transitions), Noisy nets (state-dependent exploration), multi-step returns (n-step learning), and optionally C51 (distributional RL). Together they improve sample efficiency and final performance on Atari. In practice, you do not need all components for every task; CartPole may be solved with vanilla DQN, while harder games benefit from the full stack. Implementing Rainbow is a capstone for the value-approximation volume.
 
+**Illustration (Rainbow vs DQN):** With the same number of env steps, Rainbow often reaches higher reward sooner. The chart below shows mean reward per 100 episodes over 1M steps (e.g. Pong or LunarLander).
+
+{{< chart type="line" title="Mean reward per 100 episodes (Rainbow vs DQN)" labels="0, 200k, 400k, 600k, 800k, 1M" data="-20, 0, 5, 12, 18, 20" >}}
+
 **Exercise:** Combine all improvements (DDQN, Dueling, PER, NoisyNet, multi-step returns, distributional RL optional) into a single Rainbow agent. Train it on a challenging environment like Pong and compare with a baseline DQN.
 
 **Professor's hints**

@@ -18,6 +18,10 @@ keywords: ["target networks", "DQN", "hard update", "soft update"]
 
 The **target network** in DQN provides a stable TD target: we use \\(Q_{target}(s',a')\\) instead of \\(Q(s',a')\\) so that the target does not change every time we update the online network, which would cause moving targets and instability. **Hard update**: copy full parameters every \\(N\\) steps (classic DQN). **Soft update**: slowly track the online network: \\(\\theta_{target} \\leftarrow \\tau \\theta_{target} + (1-\\tau) \\theta_{online}\\) with small \\(\\tau\\) (e.g. 0.001). Soft updates change the target every step but by a small amount, often yielding smoother learning. Both are used in practice (e.g. DDPG uses soft updates).
 
+**Illustration (Q-value stability):** With soft updates, the target network changes gradually, so mean Q over a batch often evolves more smoothly than with hard updates. The chart below shows typical mean Q(s,a) over training steps (soft update).
+
+{{< chart type="line" title="Mean Q(s,a) over training (soft target update)" labels="0, 2k, 4k, 6k, 8k, 10k" data="0.5, 2, 5, 12, 18, 22" >}}
+
 **Exercise:** In your DQN implementation, compare the effect of hard updates (copy every N steps) vs. soft updates (\\(\tau=0.001\\) update at each step). Plot the Q-value estimates over time to see stability differences.
 
 **Professor's hints**

@@ -18,6 +18,10 @@ keywords: ["neural networks for RL", "PyTorch", "Q-values", "MSE loss"]
 
 **Neural networks** as function approximators let us represent \\(Q(s,a)\\) (or \\(Q(s)\\) with one output per action) for high-dimensional or continuous state spaces. The network takes the state (and optionally the action) as input and outputs values; we train it by minimizing TD error (e.g. MSE between predicted Q and target \\(r + \\gamma \\max_{a'} Q(s',a')\\)). This is the core of **Deep Q-Networks (DQN)** and many other deep RL algorithms. In practice, we use MLPs for low-dim state (e.g. CartPole) and CNNs for images (e.g. Atari).
 
+**Illustration (Q-network output):** For a state, the network outputs one value per action. The chart below shows example Q-values for 2 actions (e.g. left, right) from a small network before training.
+
+{{< chart type="bar" title="Q(s,a) for two actions (untrained network)" labels="Left, Right" data="0.1, -0.05" >}}
+
 **Exercise:** Build a simple neural network in PyTorch with two hidden layers (64 units each, ReLU) that takes a state vector and outputs Q-values for 2 actions. Write the forward pass and a loss function using MSE.
 
 **Professor's hints**

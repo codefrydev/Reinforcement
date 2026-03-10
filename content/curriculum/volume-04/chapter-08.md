@@ -20,6 +20,10 @@ For **continuous actions** (e.g. torque, throttle), we cannot use a softmax over
 
 **Where you see this in practice:** Gaussian policies are standard in continuous control (Pendulum, HalfCheetah, robotics simulators). Bounded actions are often handled by squashing (e.g. tanh) with a correction in the log-prob.
 
+**Illustration (action distribution):** A Gaussian policy samples actions from \\(\\mathcal{N}(\\mu(s), \\sigma^2)\\). The chart below shows the distribution of 100 sampled actions (histogram bins) for a fixed state.
+
+{{< chart type="bar" title="Action samples from π(·|s) (5 bins)" labels="Bin 1, Bin 2, Bin 3, Bin 4, Bin 5" data="8, 22, 40, 22, 8" >}}
+
 **Exercise:** Design a policy network for continuous actions (e.g., Pendulum-v1) that outputs mean and log-std of a Gaussian. Write code to sample actions and compute log-probability for training.
 
 **Professor's hints**

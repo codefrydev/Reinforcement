@@ -18,6 +18,10 @@ keywords: ["reward hypothesis", "reward design", "reward hacking", "self-driving
 
 The **reward hypothesis** says that we can capture what we want the agent to do by defining a scalar reward at each step; the agent's goal is to maximize cumulative reward. In practice, **reward design** is hard: the agent will optimize exactly what you reward, so oversimplified or buggy rewards lead to **reward hacking** (e.g. the agent finds a loophole that yields high reward without achieving the real goal). Examples: a robot rewarded for "distance to goal" might push the goal; a game agent rewarded for "score" might find a way to increment score without playing. Self-driving, robotics, and game AI all require careful reward shaping and testing for exploits.
 
+**Illustration (reward components):** A typical self-driving reward might combine a large positive for reaching the goal, a large negative for collision, and a small negative per step to encourage speed. The chart below shows example magnitudes for each component.
+
+{{< chart type="bar" title="Example reward components (self-driving)" labels="Reach goal, Collision, Per step" data="10, -5, -0.1" >}}
+
 **Exercise:** Design a reward function for a self-driving car that must reach a destination quickly without collisions. Then identify a potential "reward hacking" scenario where the agent might exploit your function (e.g., spinning in circles). Propose a modification to fix it.
 
 **Professor's hints**

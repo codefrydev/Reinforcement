@@ -1,37 +1,84 @@
 {{- $id := printf "chart-%s-%d" .Page.File.UniqueID .Ordinal -}}
 {{- $type := default "line" (.Get "type") -}}
 {{- $title := default "Data" (.Get "title") -}}
+{{- $rawLabels := .Get "labels" -}}
+{{- $rawData := .Get "data" -}}
+{{- $rawXData := .Get "xData" -}}
+{{- $rawYData := .Get "yData" -}}
 <div class="chart-container" style="position: relative; height: 220px; margin: 1rem 0;">
   <canvas id="{{ $id }}"></canvas>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" crossorigin="anonymous"></script>
 <script>
 (function() {
-  var rawLabels = "{{ .Get "labels" }}";
-  var rawData = "{{ .Get "data" }}";
+  var type = "{{ $type }}";
+  var title = "{{ $title }}";
+  var rawLabels = "{{ $rawLabels }}";
+  var rawData = "{{ $rawData }}";
+  var rawXData = "{{ $rawXData }}";
+  var rawYData = "{{ $rawYData }}";
   var labels = rawLabels ? rawLabels.split(",").map(function(s) { return s.trim(); }) : [];
-  var data = rawData ? rawData.split(",").map(function(s) { return parseFloat(s.trim()); }) : [];
+  var data;
+  var datasetOpts = { label: title, borderColor: "rgb(75, 192, 192)", backgroundColor: "rgba(75, 192, 192, 0.1)" };
+
+  if (type === "scatter") {
+    if (rawXData && rawYData) {
+      var xArr = rawXData.split(",").map(function(s) { return parseFloat(s.trim()); });
+      var yArr = rawYData.split(",").map(function(s) { return parseFloat(s.trim()); });
+      data = xArr.map(function(x, i) { return { x: x, y: yArr[i] || 0 }; });
+    } else if (rawData) {
+      var pairs = rawData.split(/\s+/).filter(Boolean);
+      data = pairs.map(function(p) {
+        var parts = p.split(",").map(function(s) { return parseFloat(s.trim()); });
+        return { x: parts[0] || 0, y: parts[1] || 0 };
+      });
+    } else {
+      data = [];
+    }
+    datasetOpts.data = data;
+    datasetOpts.showLine = false;
+    datasetOpts.fill = false;
+  } else if (type === "bubble") {
+    if (rawData) {
+      var triples = rawData.split(/\s+/).filter(Boolean);
+      data = triples.map(function(t) {
+        var parts = t.split(",").map(function(s) { return parseFloat(s.trim()); });
+        return { x: parts[0] || 0, y: parts[1] || 0, r: parts[2] || 5 };
+      });
+    } else {
+      data = [];
+    }
+    datasetOpts.data = data;
+  } else {
+    data = rawData ? rawData.split(",").map(function(s) { return parseFloat(s.trim()); }) : [];
+    datasetOpts.data = data;
+    if (type === "line") {
+      datasetOpts.tension = 0.3;
+      datasetOpts.fill = true;
+    }
+  }
+
+  var chartData = type === "scatter" || type === "bubble"
+    ? { datasets: [datasetOpts] }
+    : { labels: labels, datasets: [datasetOpts] };
+
+  var scalesOpt = (type === "line" || type === "bar" || type === "scatter" || type === "bubble")
+    ? { x: { display: true }, y: { display: true } }
+    : {};
+
+  var options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: { legend: { display: true } },
+    scales: scalesOpt
+  };
+
   var ctx = document.getElementById("{{ $id }}");
   if (!ctx) return;
   new Chart(ctx.getContext("2d"), {
-    type: "{{ $type }}",
-    data: {
-      labels: labels,
-      datasets: [{
-        label: "{{ $title }}",
-        data: data,
-        borderColor: "rgb(75, 192, 192)",
-        backgroundColor: "rgba(75, 192, 192, 0.1)",
-        tension: 0.3,
-        fill: true
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: true } },
-      scales: { x: { display: true }, y: { display: true } }
-    }
+    type: type,
+    data: chartData,
+    options: options
   });
 })();
 </script>

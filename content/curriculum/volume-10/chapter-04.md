@@ -22,6 +22,10 @@ keywords: ["RL in recommender systems", "recommendation", "engagement", "changin
 
 **Where you see this in practice:** RL for recommendation (YouTube, etc.); bandits and MDPs for sequential recommendation; long-term engagement optimization.
 
+**Illustration (recommender engagement):** An RL agent maximizes long-term clicks; cumulative reward per episode (e.g. 20 steps) improves as the policy learns user preferences. The chart below shows reward per episode.
+
+{{< chart type="line" title="Cumulative reward per episode (recommender)" labels="0, 200, 400, 600, 800" data="2, 5, 8, 11, 14" >}}
+
 **Exercise:** Build a toy recommender with 100 items and a user model that has changing preferences. Train an agent to maximize long-term user engagement (e.g., cumulative clicks). Use a policy gradient method.
 
 **Professor's hints**

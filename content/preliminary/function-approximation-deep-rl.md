@@ -29,6 +29,10 @@ Explain why function approximation is needed; write the policy gradient paramete
 - Experience replay: Store transitions \\((s,a,r,s')\\) in a buffer and sample random minibatches to train the Q-network. Breaks correlation between consecutive updates and reuses data.
 - Actor-critic: The actor is the policy; the critic is a value function (e.g. \\(V(s)\\) or \\(A(s,a)\\)). The critic reduces the variance of policy gradient estimates (e.g. by using a baseline or advantage), leading to faster and more stable learning than plain REINFORCE.
 
+**Illustration (learning with FA):** With function approximation (e.g. a neural network), episode return typically improves over training. The chart below shows a typical learning curve (e.g. DQN or policy gradient on a simple env).
+
+{{< chart type="line" title="Episode return (FA, e.g. DQN or actor-critic)" labels="0, 100, 200, 300, 400" data="20, 80, 150, 190, 200" >}}
+
 ---
 
 ## Worked problems (with explanations)
