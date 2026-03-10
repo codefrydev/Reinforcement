@@ -34,7 +34,7 @@ If \\(y = f(u)\\) and \\(u = g(x)\\), then \\(\frac{dy}{dx} = \frac{dy}{du} \cdo
 
 **Example:** \\(y = \sin(x^2)\\) → \\(u = x^2\\), \\(y = \sin(u)\\) → \\(\frac{dy}{dx} = \cos(u) \cdot 2x = \cos(x^2) \cdot 2x\\). The graph below shows \\(y = \sin(x^2)\\) over a few points so you can see the curve whose slope (derivative) we computed.
 
-{{< chart type="line" palette="math" title="y = sin(x²)" labels="0, 0.5, 1, 1.5, 2, 2.5" data="0, 0.25, 0.84, 0.78, -0.76, 0.07" xLabel="x" yLabel="y" >}}
+{{< chart type="line" palette="math" title="y = sin(x²)" labels="0, 0.5, 1, 1.5, 2, 2.5" data="0, 0.25, 0.84, 0.78, -0.76, -0.03" xLabel="x" yLabel="y" >}}
 
 **In reinforcement learning:** Neural networks are compositions of many functions. Backpropagation is the chain rule applied layer by layer. When you call `loss.backward()` in PyTorch, it is computing gradients via the chain rule.
 
@@ -77,7 +77,7 @@ The derivative \\(\frac{d}{dx}\ln(1+e^x) = \sigma(x)\\). The chart below shows t
 
 **Explanation:** The chain rule multiplies derivatives along the path. In neural networks, backprop does this layer by layer; autograd libraries compute it automatically.
 
-**Python:** `import numpy as np; x = 0.5; u = 1+x**2; dy_du = 0.5*u**(-0.5); du_dx = 2*x; print(dy_du * du_dx)` → slope at x=0.5. Or `from scipy.misc import derivative; derivative(lambda x: np.sqrt(1+x**2), 0.5)`.
+**Python:** `import numpy as np; x = 0.5; u = 1+x**2; dy_du = 0.5*u**(-0.5); du_dx = 2*x; print(dy_du * du_dx)` → slope at x=0.5. Or use a numerical derivative: `h = 1e-5; (np.sqrt(1+(x+h)**2) - np.sqrt(1+(x-h)**2)) / (2*h)`.
 {{< /collapse >}}
 
 For \\(y = \sqrt{1+x^2}\\), the slope \\(dy/dx = x/\sqrt{1+x^2}\\) varies with \\(x\\). The chart below shows \\(y\\) at a few points.

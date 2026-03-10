@@ -1,0 +1,50 @@
+# Markdown lint for content and docs (relaxed for curriculum)
+default: true
+
+# Allow long lines in content (formulas, code, tables)
+MD013:
+  line_length: 999
+  code_blocks: false
+  tables: false
+  headings: false
+
+# First line in file may be top-level heading (front matter follows)
+MD041: false
+
+# Allow multiple consecutive blank lines where structure needs it
+MD012:
+  maximum: 2
+
+# Trailing spaces
+MD009: false
+
+# Curriculum uses ### for assessment questions (no h2); allow
+MD001: false
+
+# LaTeX and math contain [...] that look like reversed links; allow
+MD011: false
+
+# Curriculum uses **Learning objectives** etc. as section labels, not headings
+MD036: false
+
+# Fenced code inside shortcodes/collapse may not have blank lines
+MD031: false
+
+# Emphasis style and spacing (curriculum uses mixed * and _ for math/emphasis)
+MD037: false
+MD049: false
+
+# Duplicate heading text (e.g. "Explanation") and setext/atx mix allowed in content
+MD024: false
+MD003: false
+MD026: false
+
+# Blank lines around lists/headings (content style varies)
+MD032: false
+MD022: false
+
+# Table pipe spacing (tables may use compact style)
+MD060: false
+
+# Ordered list prefix (content uses 2., 3., etc. for practice questions)
+MD029: false

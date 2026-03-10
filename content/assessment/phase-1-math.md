@@ -56,7 +56,7 @@ As the number of samples grows, the sample average converges to the expected val
 **Q:** Given \\(x = [1, 0, 2]^T\\) and \\(y = [3, 1, 1]^T\\), compute the dot product \\(x^T y\\).
 
 {{< collapse summary="Answer" >}}
-**Step 1:** \\(x^T y = x_1 y_1 + x_2 y_2 + x_3 y_3 = 1\cdot 3 + 0\cdot 1 + 2\cdot 1 = 3 + 0 + 2 = **5**\\).
+**Step 1:** \\(x^T y = x_1 y_1 + x_2 y_2 + x_3 y_3 = 1\cdot 3 + 0\cdot 1 + 2\cdot 1 = 3 + 0 + 2 =\\) **5**.
 
 The dot product is the sum of products of corresponding components. In RL, \\(V(s) = w^T \phi(s)\\) is a dot product between weights and features.
 {{< /collapse >}}
