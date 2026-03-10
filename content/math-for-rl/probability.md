@@ -5,7 +5,7 @@ date: 2026-03-10T00:00:00Z
 draft: false
 ---
 
-This page covers the probability and statistics you need for RL: expectations, variance, sample means, and the idea that sample averages converge to expectations. [Back to Math for RL](/math-for-rl/).
+This page covers the probability and statistics you need for RL: expectations, variance, sample means, and the idea that sample averages converge to expectations. [Back to Math for RL](../).
 
 ---
 

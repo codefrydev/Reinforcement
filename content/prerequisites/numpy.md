@@ -6,7 +6,7 @@ weight: 20
 draft: false
 ---
 
-Used in [Preliminary Q8](/preliminary/#8-numpy) and throughout the curriculum for state/observation arrays, reward vectors, and batch operations. RL environments return observations as arrays; neural networks consume batches of arrays—NumPy is the standard bridge.
+Used in [Preliminary: NumPy](../preliminary/numpy/) and throughout the curriculum for state/observation arrays, reward vectors, and batch operations. RL environments return observations as arrays; neural networks consume batches of arrays—NumPy is the standard bridge.
 
 ---
 

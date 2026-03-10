@@ -5,7 +5,7 @@ date: 2026-03-10T00:00:00Z
 draft: false
 ---
 
-Use this quiz after working through [Python](/prerequisites/python/), [NumPy](/prerequisites/numpy/), and [PyTorch](/prerequisites/pytorch/) (and optionally [Gym](/prerequisites/gym/)). If you can answer at least 6 correctly, you are ready for [Phase 3](/learning-path/#phase-3--rl-foundations) and [Volume 1](/curriculum/volume-01/).
+Use this quiz after working through [Python](../prerequisites/python/), [NumPy](../prerequisites/numpy/), and [PyTorch](../prerequisites/pytorch/) (and optionally [Gym](../prerequisites/gym/)). If you can answer at least 6 correctly, you are ready for [Phase 3](../learning-path/#phase-3--rl-foundations) and [Volume 1](../curriculum/volume-01/).
 
 ---
 
@@ -89,4 +89,4 @@ It returns `(obs, reward, terminated, truncated, info)`. The episode is over whe
 
 ---
 
-**Next step:** If you passed, go to [Phase 3 — RL foundations](/learning-path/#phase-3--rl-foundations) and start [Volume 1](/curriculum/volume-01/).
+**Next step:** If you passed, go to [Phase 3 — RL foundations](../learning-path/#phase-3--rl-foundations) and start [Volume 1](../curriculum/volume-01/).

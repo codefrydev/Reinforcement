@@ -5,9 +5,9 @@ date: 2026-03-10T00:00:00Z
 draft: false
 ---
 
-This track covers the **math you need to read and do reinforcement learning**: probability & statistics, linear algebra, and calculus. Each topic is tied to how it appears in RL (bandits, value functions, gradients). Work through the pages in order, or use them to fill gaps after the [Preliminary assessment](/preliminary/).
+This track covers the **math you need to read and do reinforcement learning**: probability & statistics, linear algebra, and calculus. Each topic is tied to how it appears in RL (bandits, value functions, gradients). Work through the pages in order, or use them to fill gaps after the [Preliminary assessment](../preliminary/).
 
-**Recommended order:** [Probability & statistics](/math-for-rl/probability/) → [Linear algebra](/math-for-rl/linear-algebra/) → [Calculus](/math-for-rl/calculus/).
+**Recommended order:** [Probability & statistics](probability/) → [Linear algebra](linear-algebra/) → [Calculus](calculus/).
 
 ---
 
@@ -23,8 +23,8 @@ This track covers the **math you need to read and do reinforcement learning**: p
 
 | Topic | Content | RL use |
 |-------|---------|--------|
-| [Probability & statistics](/math-for-rl/probability/) | Expectations, variance, sample mean, distributions, law of large numbers | Bandit rewards, MC returns, policy evaluation |
-| [Linear algebra](/math-for-rl/linear-algebra/) | Vectors, dot product, matrices, gradients | State vectors, value parameterization, gradient updates |
-| [Calculus](/math-for-rl/calculus/) | Derivatives, chain rule, partial derivatives | Policy gradient, loss gradients, backprop |
+| [Probability & statistics](probability/) | Expectations, variance, sample mean, distributions, law of large numbers | Bandit rewards, MC returns, policy evaluation |
+| [Linear algebra](linear-algebra/) | Vectors, dot product, matrices, gradients | State vectors, value parameterization, gradient updates |
+| [Calculus](calculus/) | Derivatives, chain rule, partial derivatives | Policy gradient, loss gradients, backprop |
 
-After finishing this track, take the **[Phase 1 self-check](/assessment/phase-1-math/)** (10 questions). If you pass, you are ready for Phase 2 and [Volume 1](/curriculum/volume-01/).
+After finishing this track, take the **[Phase 1 self-check](../assessment/phase-1-math/)** (10 questions). If you pass, you are ready for Phase 2 and [Volume 1](../curriculum/volume-01/).

@@ -22,7 +22,9 @@ draft: false
 
 - Same setup as SARSA (Cliff Walking, \\(\epsilon\\)-greedy for behavior). The only change: when updating \\(Q(s,a)\\), use target \\(r + \\gamma \\max_{a'} Q(s',a')\\), not \\(r + \\gamma Q(s',a')\\). You still *choose* the next action with \\(\epsilon\\)-greedy for the next step; you just use *max* in the update.
 - To compare paths: after training, run a few episodes with \\(\epsilon=0\\) (greedy) and record the states visited. Visualize or print the path. Q-learning's greedy path often walks along the cliff; SARSA's often one row up.
-- Explanation: Q-learning assumes the agent will act greedily in the future, so it values states by the best possible outcome. SARSA values states by what *will* happen when the agent sometimes explores, so it penalizes being near the cliff (where a random step is costly).
+### Explanation
+
+Q-learning assumes the agent will act greedily in the future, so it values states by the best possible outcome. SARSA values states by what *will* happen when the agent sometimes explores, so it penalizes being near the cliff (where a random step is costly).
 
 **Common pitfalls**
 

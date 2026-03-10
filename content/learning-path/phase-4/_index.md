@@ -5,7 +5,7 @@ date: 2026-03-10T00:00:00Z
 draft: false
 ---
 
-Phase 4 is [Volume 3: Value Function Approximation & Deep Q-Learning](/curriculum/volume-03/), [Volume 4: Policy Gradients](/curriculum/volume-04/), and [Volume 5: Advanced Policy Optimization](/curriculum/volume-05/) (chapters 21–50). Use the milestones below, then try the coding challenges and take the Deep RL quiz.
+Phase 4 is [Volume 3: Value Function Approximation & Deep Q-Learning](../../curriculum/volume-03/), [Volume 4: Policy Gradients](../../curriculum/volume-04/), and [Volume 5: Advanced Policy Optimization](../../curriculum/volume-05/) (chapters 21–50). Use the milestones below, then try the coding challenges and take the Deep RL quiz.
 
 ---
 
@@ -25,4 +25,4 @@ Phase 4 is [Volume 3: Value Function Approximation & Deep Q-Learning](/curriculu
 
 3. **REINFORCE vs PPO:** Implement REINFORCE (with or without baseline) and PPO on CartPole. Compare **sample efficiency**: how many env steps does each need to reach 195 average return? Plot learning curves. Discuss why PPO is often more sample-efficient and stable.
 
-When you are done, take the **[Phase 4 Deep RL quiz](/assessment/phase-4-deep-rl/)**.
+When you are done, take the **[Phase 4 Deep RL quiz](../../assessment/phase-4-deep-rl/)**.

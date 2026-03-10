@@ -5,7 +5,7 @@ date: 2026-03-10T00:00:00Z
 draft: false
 ---
 
-Phase 3 is [Volume 1: Mathematical Foundations](/curriculum/volume-01/) and [Volume 2: Tabular Methods](/curriculum/volume-02/) (chapters 1–20). Use the milestones below to confirm you are on track, then do the mini-project and take the foundations quiz.
+Phase 3 is [Volume 1: Mathematical Foundations](../../curriculum/volume-01/) and [Volume 2: Tabular Methods](../../curriculum/volume-02/) (chapters 1–20). Use the milestones below to confirm you are on track, then do the mini-project and take the foundations quiz.
 
 ---
 
@@ -36,4 +36,4 @@ Phase 3 is [Volume 1: Mathematical Foundations](/curriculum/volume-01/) and [Vol
 
 **Rubric:** You have succeeded if (a) the greedy policy from (0,0) reaches (4,4) without obvious loops, and (b) the value at (0,0) is negative and increases as you get closer to the goal.
 
-When you are done, take the **[Phase 3 foundations quiz](/assessment/phase-3-foundations/)**.
+When you are done, take the **[Phase 3 foundations quiz](../../assessment/phase-3-foundations/)**.

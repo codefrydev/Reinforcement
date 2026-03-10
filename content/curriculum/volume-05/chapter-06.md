@@ -24,7 +24,9 @@ draft: false
 
 - Standard: max \\(J = \\mathbb{E}[ \\sum_t \\gamma^t r_t ]\\). Max-ent: max \\(J + \\alpha \\mathbb{E}[ \\sum_t \\mathcal{H}(\\pi(\\cdot|s_t)) ]\\), where \\(\\mathcal{H}(\\pi) = -\\sum_a \\pi(a) \\log \\pi(a)\\) (discrete) or the continuous analogue.
 - Exploration: \\(\\mathcal{H}\\) is maximized when \\(\\pi\\) is uniform; so the bonus pushes the policy toward trying all actions. In continuous space, a Gaussian with large std has high entropy.
-- Derivation: start from the Bellman equation with entropy; the optimal policy has a closed form in the linear case (softmax of Q/α). See Haarnoja et al., "Soft Actor-Critic."
+### Derivation
+
+Start from the Bellman equation with entropy; the optimal policy has a closed form in the linear case (softmax of Q/α). See Haarnoja et al., "Soft Actor-Critic."
 
 **Common pitfalls**
 

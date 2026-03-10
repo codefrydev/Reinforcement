@@ -7,9 +7,9 @@ draft: false
 
 This learning path takes you from **zero programming experience** to understanding and building reinforcement learning systems. Follow the phases in order; each phase builds on the previous one.
 
-- **[Real-world scenarios](/learning-path/real-world-anchors/)** — Six anchor scenarios (robot navigation, game AI, recommendation, trading, healthcare, dialogue) used throughout the curriculum so every concept is tied to practice.
+- **[Real-world scenarios](real-world-anchors/)** — Six anchor scenarios (robot navigation, game AI, recommendation, trading, healthcare, dialogue) used throughout the curriculum so every concept is tied to practice.
 
-**Not ready for the [Preliminary assessment](/preliminary/)?** If you have never programmed, start with Phase 0. If the assessment feels hard, follow this learning path in order and return to it when you are ready.
+**Not ready for the [Preliminary assessment](../preliminary/)?** If you have never programmed, start with Phase 0. If the assessment feels hard, follow this learning path in order and return to it when you are ready.
 
 ---
 
@@ -25,11 +25,11 @@ This learning path takes you from **zero programming experience** to understandi
 
 - You can run a Python script and write a small program.
 - You understand variables, conditionals, loops, and functions well enough to read simple code.
-- You are ready for the full [Python prerequisite](/prerequisites/python/).
+- You are ready for the full [Python prerequisite](../prerequisites/python/).
 
 **In RL, this leads to:** Every RL implementation is code. You will write loops over episodes, conditionals for exploration vs. exploitation, and functions for environments and agents.
 
-**Start here:** [Phase 0: Programming from zero](/learning-path/phase-0/)
+**Start here:** [Phase 0: Programming from zero](phase-0/)
 
 ---
 
@@ -43,19 +43,19 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Sub-phases:**
 
-- **1a — Probability:** [Probability & statistics](/math-for-rl/probability/). Expectations, variance, sample mean, law of large numbers. *In RL:* bandit rewards, Monte Carlo returns, value functions as expectations.
-- **1b — Linear algebra:** [Linear algebra](/math-for-rl/linear-algebra/). Vectors, dot product, matrices, gradients. *In RL:* state vectors, linear value approximation \\(V(s) = w^T \\phi(s)\\), gradient updates.
-- **1c — Calculus:** [Calculus](/math-for-rl/calculus/). Derivatives, chain rule, partial derivatives. *In RL:* policy gradients, loss minimization, backprop.
+- **1a — Probability:** [Probability & statistics](../math-for-rl/probability/). Expectations, variance, sample mean, law of large numbers. *In RL:* bandit rewards, Monte Carlo returns, value functions as expectations.
+- **1b — Linear algebra:** [Linear algebra](../math-for-rl/linear-algebra/). Vectors, dot product, matrices, gradients. *In RL:* state vectors, linear value approximation \\(V(s) = w^T \\phi(s)\\), gradient updates.
+- **1c — Calculus:** [Calculus](../math-for-rl/calculus/). Derivatives, chain rule, partial derivatives. *In RL:* policy gradients, loss minimization, backprop.
 
 **Outcomes:**
 
 - You can read RL notation (expectations, distributions, vectors, gradients).
 - You can compute sample means, variances, dot products, and simple derivatives.
-- You feel comfortable with the math that appears in the [Preliminary assessment](/preliminary/) and in Volume 1.
+- You feel comfortable with the math that appears in the [Preliminary assessment](../preliminary/) and in Volume 1.
 
 **In RL, this leads to:** Value functions are expectations; states and observations are vectors; policy gradients use calculus. Solid math makes every chapter easier.
 
-**Start here:** [Math for RL](/math-for-rl/) → then [Phase 1 self-check](/assessment/phase-1-math/)
+**Start here:** [Math for RL](../math-for-rl/) → then [Phase 1 self-check](../assessment/phase-1-math/)
 
 ---
 
@@ -65,7 +65,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Duration:** About 3–6 weeks, depending on how much you already know.
 
-**What you will do:** Work through Python (full), NumPy, Pandas, Matplotlib, PyTorch, TensorFlow, and Gym as needed. Each prerequisite page explains **why RL needs it**; complete the **one small task** per topic listed on the [Prerequisites](/prerequisites/) index, then take the **Phase 2 readiness quiz**.
+**What you will do:** Work through Python (full), NumPy, Pandas, Matplotlib, PyTorch, TensorFlow, and Gym as needed. Each prerequisite page explains **why RL needs it**; complete the **one small task** per topic listed on the [Prerequisites](../prerequisites/) index, then take the **Phase 2 readiness quiz**.
 
 **Outcomes:**
 
@@ -75,7 +75,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **In RL, this leads to:** The curriculum exercises assume this stack. Prerequisites include Professor's hints and common pitfalls to avoid mistakes.
 
-**Start here:** [Prerequisites](/prerequisites/) → [Phase 2 readiness quiz](/assessment/phase-2-readiness/)
+**Start here:** [Prerequisites](../prerequisites/) → [Phase 2 readiness quiz](../assessment/phase-2-readiness/)
 
 ---
 
@@ -85,7 +85,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Duration:** About 4–8 weeks.
 
-**What you will do:** Complete [Volume 1: Mathematical Foundations](/curriculum/volume-01/) and [Volume 2: Tabular Methods & Classic Algorithms](/curriculum/volume-02/) (chapters 1–20). Use the **milestone checkpoints** and **mini-project** (tabular Q-learning on a 5×5 Gridworld) on the [Phase 3](/learning-path/phase-3/) page, then take the **Phase 3 foundations quiz**.
+**What you will do:** Complete [Volume 1: Mathematical Foundations](../curriculum/volume-01/) and [Volume 2: Tabular Methods & Classic Algorithms](../curriculum/volume-02/) (chapters 1–20). Use the **milestone checkpoints** and **mini-project** (tabular Q-learning on a 5×5 Gridworld) on the [Phase 3](phase-3/) page, then take the **Phase 3 foundations quiz**.
 
 **Outcomes:**
 
@@ -95,7 +95,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **In RL, this leads to:** Everything that follows (DQN, policy gradients, etc.) builds on these ideas. Do not skip this phase.
 
-**Start here:** [Volume 1: Mathematical Foundations](/curriculum/volume-01/) → [Phase 3 milestones & mini-project](/learning-path/phase-3/) → [Phase 3 foundations quiz](/assessment/phase-3-foundations/)
+**Start here:** [Volume 1: Mathematical Foundations](../curriculum/volume-01/) → [Phase 3 milestones & mini-project](phase-3/) → [Phase 3 foundations quiz](../assessment/phase-3-foundations/)
 
 ---
 
@@ -105,7 +105,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Duration:** About 6–12 weeks.
 
-**What you will do:** Complete [Volume 3: Value Function Approximation & Deep Q-Learning](/curriculum/volume-03/), [Volume 4: Policy Gradients](/curriculum/volume-04/), and [Volume 5: Advanced Policy Optimization](/curriculum/volume-05/) (chapters 21–50).
+**What you will do:** Complete [Volume 3: Value Function Approximation & Deep Q-Learning](../curriculum/volume-03/), [Volume 4: Policy Gradients](../curriculum/volume-04/), and [Volume 5: Advanced Policy Optimization](../curriculum/volume-05/) (chapters 21–50).
 
 **Outcomes:**
 
@@ -114,7 +114,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **In RL, this leads to:** Most practical applications use deep RL. This phase is where you go from “understanding the theory” to “building agents that work in complex environments.”
 
-**Start here:** [Volume 3: Value Function Approximation & Deep Q-Learning](/curriculum/volume-03/) → [Phase 4 milestones & coding challenges](/learning-path/phase-4/) → [Phase 4 Deep RL quiz](/assessment/phase-4-deep-rl/)
+**Start here:** [Volume 3: Value Function Approximation & Deep Q-Learning](../curriculum/volume-03/) → [Phase 4 milestones & coding challenges](phase-4/) → [Phase 4 Deep RL quiz](../assessment/phase-4-deep-rl/)
 
 ---
 
@@ -124,7 +124,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Duration:** Ongoing (pick topics as needed).
 
-**What you will do:** Work through [Volumes 6–10](/curriculum/) (chapters 51–100): model-based RL, exploration, offline RL, multi-agent RL, real-world applications, safety, and RL with large language models. Each volume has a **topic roadmap** (what you will learn per chapter); use it to pick a path. An **optional Phase 5 project** (e.g. offline RL on a fixed dataset, or a simple multi-agent scenario) ties concepts together.
+**What you will do:** Work through [Volumes 6–10](../curriculum/) (chapters 51–100): model-based RL, exploration, offline RL, multi-agent RL, real-world applications, safety, and RL with large language models. Each volume has a **topic roadmap** (what you will learn per chapter); use it to pick a path. An **optional Phase 5 project** (e.g. offline RL on a fixed dataset, or a simple multi-agent scenario) ties concepts together.
 
 **Topic roadmaps (after this you will…):**
 
@@ -143,7 +143,7 @@ This learning path takes you from **zero programming experience** to understandi
 
 **In RL, this leads to:** Research and industry applications. Use the curriculum as a map and dive into the areas that interest you most.
 
-**Start here:** [Volume 6: Model-Based RL & Planning](/curriculum/volume-06/)
+**Start here:** [Volume 6: Model-Based RL & Planning](../curriculum/volume-06/)
 
 ---
 
@@ -151,11 +151,11 @@ This learning path takes you from **zero programming experience** to understandi
 
 | Phase | Content | Duration (approx.) |
 |-------|---------|---------------------|
-| 0 | [Programming from zero](/learning-path/phase-0/) | 2–4 weeks |
-| 1 | [Math for RL](/math-for-rl/) | 2–4 weeks |
-| 2 | [Prerequisites](/prerequisites/) | 3–6 weeks |
-| 3 | [Volume 1](/curriculum/volume-01/) + [Volume 2](/curriculum/volume-02/) | 4–8 weeks |
-| 4 | [Volumes 3–5](/curriculum/) | 6–12 weeks |
-| 5 | [Volumes 6–10](/curriculum/) | Ongoing |
+| 0 | [Programming from zero](phase-0/) | 2–4 weeks |
+| 1 | [Math for RL](../math-for-rl/) | 2–4 weeks |
+| 2 | [Prerequisites](../prerequisites/) | 3–6 weeks |
+| 3 | [Volume 1](../curriculum/volume-01/) + [Volume 2](../curriculum/volume-02/) | 4–8 weeks |
+| 4 | [Volumes 3–5](../curriculum/) | 6–12 weeks |
+| 5 | [Volumes 6–10](../curriculum/) | Ongoing |
 
 Good luck on your journey from zero to mastery.

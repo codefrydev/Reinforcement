@@ -6,7 +6,7 @@ weight: 50
 draft: false
 ---
 
-Used in [Preliminary Q9](/preliminary/#9-pytorch-basics) and in the curriculum for DQN, policy gradients, actor-critic, PPO, and SAC. PyTorch's define-by-run style and clear autograd make it a natural fit for custom RL loss functions.
+Used in [Preliminary: PyTorch basics](../preliminary/pytorch-basics/) and in the curriculum for DQN, policy gradients, actor-critic, PPO, and SAC. PyTorch's define-by-run style and clear autograd make it a natural fit for custom RL loss functions.
 
 ---
 

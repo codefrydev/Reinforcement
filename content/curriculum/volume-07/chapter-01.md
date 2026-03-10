@@ -24,7 +24,9 @@ draft: false
 
 - If Montezuma's Revenge is not available, use a **simple maze** (e.g. 10×10 grid, goal in corner, reward +1 only at goal, 0 elsewhere). DQN with ε-greedy will struggle to ever reach the goal in reasonable time.
 - Log "episodes until first goal" or "max distance to goal"; you will see little progress for many episodes.
-- Explanation: the gradient only flows when the agent gets a non-zero reward; without that, Q-values do not propagate. Random exploration in a large state space has exponentially small probability of hitting the goal.
+### Explanation
+
+The gradient only flows when the agent gets a non-zero reward; without that, Q-values do not propagate. Random exploration in a large state space has exponentially small probability of hitting the goal.
 
 **Common pitfalls**
 

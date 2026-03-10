@@ -6,7 +6,7 @@ weight: 10
 draft: false
 ---
 
-Concepts used in the curriculum and in [Preliminary Q7](/preliminary/#7-python-basics): **data structures** (list, tuple, dict, set), **classes and objects**, functions, list comprehensions, loops, and conditionals. RL code is full of trajectories, configs, and custom types (agents, buffers)—all built from these basics.
+Concepts used in the curriculum and in [Preliminary: Python basics](../preliminary/python-basics/): **data structures** (list, tuple, dict, set), **classes and objects**, functions, list comprehensions, loops, and conditionals. RL code is full of trajectories, configs, and custom types (agents, buffers)—all built from these basics.
 
 ---
 

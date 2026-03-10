@@ -5,7 +5,7 @@ date: 2026-03-10T00:00:00Z
 draft: false
 ---
 
-Use this quiz after completing [Volumes 3–5](/curriculum/) (or the [Phase 4 coding challenges](/learning-path/phase-4/)). If you can answer at least 9 of 12 correctly, you are ready for [Phase 5](/learning-path/#phase-5--advanced-topics) and [Volume 6](/curriculum/volume-06/).
+Use this quiz after completing [Volumes 3–5](../curriculum/) (or the [Phase 4 coding challenges](../learning-path/phase-4/)). If you can answer at least 9 of 12 correctly, you are ready for [Phase 5](../learning-path/#phase-5--advanced-topics) and [Volume 6](../curriculum/volume-06/).
 
 ---
 
@@ -129,4 +129,4 @@ We use a **Gaussian** policy: network outputs mean \\(\\mu(s)\\) and log-std \\(
 
 ---
 
-**Next step:** If you passed, go to [Phase 5 — Advanced topics](/learning-path/#phase-5--advanced-topics) and [Volume 6](/curriculum/volume-06/).
+**Next step:** If you passed, go to [Phase 5 — Advanced topics](../learning-path/#phase-5--advanced-topics) and [Volume 6](../curriculum/volume-06/).

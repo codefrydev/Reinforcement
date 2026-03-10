@@ -5,7 +5,7 @@ date: 2026-03-10T00:00:00Z
 draft: false
 ---
 
-Use this self-check after completing [Probability](/math-for-rl/probability/), [Linear algebra](/math-for-rl/linear-algebra/), and [Calculus](/math-for-rl/calculus/). If you can answer at least 8 correctly and feel comfortable with the concepts, you are ready for Phase 2 and the curriculum.
+Use this self-check after completing [Probability](../math-for-rl/probability/), [Linear algebra](../math-for-rl/linear-algebra/), and [Calculus](../math-for-rl/calculus/). If you can answer at least 8 correctly and feel comfortable with the concepts, you are ready for Phase 2 and the curriculum.
 
 ---
 
@@ -110,4 +110,4 @@ As the number of samples grows, the sample average converges to the expected val
 
 ---
 
-**Next step:** If you passed the self-check, go to [Phase 2 — Prerequisites](/learning-path/#phase-2--prerequisites-tools-and-libraries) and the [Python prerequisite](/prerequisites/python/). Then continue with the [Learning path](/learning-path/) and [Volume 1](/curriculum/volume-01/).
+**Next step:** If you passed the self-check, go to [Phase 2 — Prerequisites](../learning-path/#phase-2--prerequisites-tools-and-libraries) and the [Python prerequisite](../prerequisites/python/). Then continue with the [Learning path](../learning-path/) and [Volume 1](../curriculum/volume-01/).

@@ -5,7 +5,7 @@ date: 2026-03-10T00:00:00Z
 draft: false
 ---
 
-This page covers the calculus you need for RL: derivatives, the chain rule, and partial derivatives. [Back to Math for RL](/math-for-rl/).
+This page covers the calculus you need for RL: derivatives, the chain rule, and partial derivatives. [Back to Math for RL](../).
 
 ---
 

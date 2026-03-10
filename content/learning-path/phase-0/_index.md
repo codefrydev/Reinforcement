@@ -7,7 +7,7 @@ draft: false
 
 This phase is for anyone who has **never programmed before**. You will install Python, run your first script, and learn the core ideas (variables, conditionals, loops, functions) that every RL codebase uses. Work through the sections in order.
 
-When you are done, you will be ready for the full [Python prerequisite](/prerequisites/python/).
+When you are done, you will be ready for the full [Python prerequisite](../../prerequisites/python/).
 
 ---
 
@@ -272,7 +272,9 @@ If you can do both without looking back, you are ready for the next section.
 
 A typical script: define some variables and functions at the top, then use them in a small “main” section. You can run the script from the terminal.
 
-Example: a script that “runs” 3 episodes and prints a dummy return for each:
+### Example
+
+A script that “runs” 3 episodes and prints a dummy return for each:
 
 ```python
 def run_episode(episode_id):
@@ -330,8 +332,8 @@ You now know:
 - Loops (`for`, `while`).
 - Defining and calling functions and returning values.
 
-Next step: go to **[Prerequisites — Python](/prerequisites/python/)**. There you will learn data structures (lists, tuples, dicts, sets), classes and objects, list comprehensions, and more patterns used in every RL codebase. The exercises there assume you can already write the kind of small programs you practiced in this phase.
+Next step: go to **[Prerequisites — Python](../../prerequisites/python/)**. There you will learn data structures (lists, tuples, dicts, sets), classes and objects, list comprehensions, and more patterns used in every RL codebase. The exercises there assume you can already write the kind of small programs you practiced in this phase.
 
-After that, continue with the [Learning path](/learning-path/): Phase 1 (Math for RL) and Phase 2 (rest of prerequisites), then the curriculum.
+After that, continue with the [Learning path](../): Phase 1 (Math for RL) and Phase 2 (rest of prerequisites), then the curriculum.
 
 Good luck.
