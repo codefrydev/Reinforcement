@@ -24,7 +24,7 @@ keywords: ["communication in MARL", "coordination", "message and action", "multi
 
 **Illustration (communication):** Agents that can send messages often achieve higher return on coordination tasks. The chart below compares return with vs without communication (e.g. swap-colors task).
 
-{{< chart type="bar" title="Return (coordination task)" labels="No comm, With comm" data="40, 95" >}}
+{{< chart type="bar" palette="comparison" title="Return (coordination task)" labels="No comm, With comm" data="40, 95" yLabel="Return" >}}
 
 **Exercise:** Implement a simple communication protocol where agents output a message alongside their action. The message is fed into other agents' policies. Train them to solve a task that requires coordination (e.g., "two agents need to swap colors").
 

@@ -22,7 +22,7 @@ A **world model** (or dynamics model) predicts \\(s_{t+1}\\) from \\(s_t, a_t\\)
 
 **Illustration (prediction error):** A learned dynamics model's prediction error typically grows with the number of steps (compounding). The chart below shows MSE between predicted and true next state over rollout length.
 
-{{< chart type="line" title="State prediction MSE vs rollout step" labels="1, 2, 3, 4, 5, 6" data="0.01, 0.03, 0.08, 0.18, 0.35, 0.6" >}}
+{{< chart type="line" palette="return" title="State prediction MSE vs rollout step" labels="1, 2, 3, 4, 5, 6" data="0.01, 0.03, 0.08, 0.18, 0.35, 0.6" xLabel="Rollout step" yLabel="MSE" >}}
 
 **Exercise:** Collect random trajectories from the CartPole environment. Train a neural network to predict the next state given current state and action. Evaluate its prediction accuracy over multiple steps and note the compounding error.
 

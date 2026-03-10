@@ -24,7 +24,7 @@ keywords: ["DAgger", "covariate shift", "expert and BC", "behavioral cloning lim
 
 **Illustration (DAgger iteration):** DAgger collects states from the current policy and retrains with expert labels; performance typically improves over iterations. The chart below shows BC vs DAgger return.
 
-{{< chart type="line" title="Return over DAgger iterations" labels="BC only, Iter 1, Iter 2, Iter 3" data="120, 180, 220, 245" >}}
+{{< chart type="line" palette="return" title="Return over DAgger iterations" labels="BC only, Iter 1, Iter 2, Iter 3" data="120, 180, 220, 245" xLabel="Iteration" yLabel="Return" >}}
 
 **Exercise:** In the same setting, show the covariate shift problem by letting the BC agent run and recording states it visits but never saw in the expert data. Implement DAgger: collect new data by mixing expert and BC actions, then retrain.
 

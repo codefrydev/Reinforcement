@@ -24,7 +24,7 @@ keywords: ["RLHF", "human feedback", "Bradley-Terry", "pairwise comparisons", "P
 
 **Illustration (Bradley-Terry reward):** From pairwise preferences we learn a reward model; PPO with that reward improves. The chart below shows PPO return and correlation between learned reward and true return over training.
 
-{{< chart type="line" title="PPO return (reward from preferences)" labels="0, 50, 100, 150, 200" data="100, 180, 220, 245, 255" >}}
+{{< chart type="line" palette="return" title="PPO return (reward from preferences)" labels="0, 50, 100, 150, 200" data="100, 180, 220, 245, 255" xLabel="Iteration" yLabel="Return" >}}
 
 **Exercise:** Given a set of pairwise comparisons of two trajectories, implement a Bradley-Terry model to learn a reward function. Then use that reward to train a policy with PPO.
 

@@ -20,7 +20,7 @@ keywords: ["Expected SARSA", "Q-learning", "variance", "learning curves"]
 
 **Illustration (update variance):** Expected SARSA uses the expectation over the next action instead of a single sample, so the TD target has lower variance. The chart below compares typical squared TD error (averaged over many steps) for Expected SARSA vs Q-learning.
 
-{{< chart type="bar" title="Mean squared TD error (lower is more stable)" labels="Expected SARSA, Q-learning" data="0.08, 0.15" >}}
+{{< chart type="bar" palette="comparison" title="Mean squared TD error (lower is more stable)" labels="Expected SARSA, Q-learning" data="0.08, 0.15" yLabel="TD error" >}}
 
 **Exercise:** Modify your Q-learning code to implement Expected SARSA. Instead of using the max over next actions, use the expected value under the current \\(\epsilon\\)-greedy policy. Compare the variance of the updates and the learning curves.
 

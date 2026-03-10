@@ -50,7 +50,7 @@ We slide a window of length `window` along the list. For each starting index `i`
 
 The graph below shows the moving average output (2, 3, 4) for the three windows over [1, 2, 3, 4, 5].
 
-{{< chart type="line" title="Moving average (window 3) of [1,2,3,4,5]" labels="Avg(1-3), Avg(2-4), Avg(3-5)" data="2, 3, 4" >}}
+{{< chart type="line" palette="return" title="Moving average (window 3) of [1,2,3,4,5]" labels="Avg(1-3), Avg(2-4), Avg(3-5)" data="2, 3, 4" xLabel="Window" yLabel="Average" >}}
 
 ---
 

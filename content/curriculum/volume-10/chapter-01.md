@@ -24,7 +24,7 @@ keywords: ["RL in robotics", "sim-to-real", "domain randomization", "arm reachin
 
 **Illustration (sim-to-real gap):** With domain randomization, policies trained in sim can transfer to real. The chart below shows sim return vs real return (before and after randomization).
 
-{{< chart type="bar" title="Return: sim vs real (with domain rand)" labels="Sim, Real (no rand), Real (with rand)" data="95, 40, 85" >}}
+{{< chart type="bar" palette="comparison" title="Return: sim vs real (with domain rand)" labels="Sim, Real (no rand), Real (with rand)" data="95, 40, 85" yLabel="Return" >}}
 
 **Exercise:** Train a policy in simulation (e.g., a robotic arm reaching) and then attempt to deploy it in a real-world setting by adding domain randomization (vary physics parameters). Evaluate the sim-to-real gap.
 

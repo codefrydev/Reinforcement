@@ -22,7 +22,7 @@ keywords: ["AlphaZero", "MCTS", "neural network", "self-play", "tic-tac-toe"]
 
 **Illustration (self-play improvement):** AlphaZero-style training improves win rate over iterations as the policy and value network get better. The chart below shows win rate vs self-play iteration (vs previous checkpoint).
 
-{{< chart type="line" title="Win rate vs self-play iteration" labels="0, 50, 100, 150, 200" data="0.5, 0.65, 0.78, 0.88, 0.94" >}}
+{{< chart type="line" palette="return" title="Win rate vs self-play iteration" labels="0, 50, 100, 150, 200" data="0.5, 0.65, 0.78, 0.88, 0.94" xLabel="Iteration" yLabel="Win rate" >}}
 
 **Exercise:** (Simplified) Implement a mini AlphaZero for tic-tac-toe: combine a neural network that outputs policy probabilities and a value, with MCTS. Train via self-play. Visualize the improvement over training.
 

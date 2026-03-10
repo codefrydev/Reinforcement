@@ -36,7 +36,7 @@ As the number of samples \\(n\\) grows, the **sample average** \\(\bar{x} = \fra
 
 **Illustration (sample mean → expectation):** As the number of samples grows, the sample average tends to get closer to the expected value. The chart below shows a typical trend: sample mean (e.g. from a bandit arm with true mean 0.4) over different sample sizes. With more pulls, the estimate stabilizes near the true mean.
 
-{{< chart type="line" title="Sample mean vs number of samples" labels="5, 10, 20, 50, 100, 200" data="0.32, 0.36, 0.38, 0.39, 0.40, 0.40" >}}
+{{< chart type="line" palette="math" title="Sample mean vs number of samples" labels="5, 10, 20, 50, 100, 200" data="0.32, 0.36, 0.38, 0.39, 0.40, 0.40" xLabel="n (samples)" yLabel="Sample mean" >}}
 
 ### Distributions you will see
 
@@ -65,7 +65,7 @@ As the number of samples \\(n\\) grows, the **sample average** \\(\bar{x} = \fra
 
 The chart below shows these four sample values; the mean 1.1 is the average of the bar heights.
 
-{{< chart type="bar" title="Sample values (mean = 1.1)" labels="Sample 1, Sample 2, Sample 3, Sample 4" data="1.2, 0.8, 1.0, 1.4" >}}
+{{< chart type="bar" palette="math" title="Sample values (mean = 1.1)" labels="Sample 1, Sample 2, Sample 3, Sample 4" data="1.2, 0.8, 1.0, 1.4" yLabel="Value" >}}
 
 ---
 
@@ -81,7 +81,7 @@ The chart below shows these four sample values; the mean 1.1 is the average of t
 
 The chart below illustrates convergence: sample mean approaches the true expectation as \\(n\\) increases (same idea as in Core concepts).
 
-{{< chart type="line" title="Sample mean → E[X] as n grows" labels="n=10, n=50, n=100, n=200" data="0.1, 0.05, 0.02, 0.01" >}}
+{{< chart type="line" palette="math" title="Sample mean → E[X] as n grows" labels="n=10, n=50, n=100, n=200" data="0.1, 0.05, 0.02, 0.01" xLabel="n" yLabel="|error|" >}}
 
 ---
 
@@ -103,7 +103,7 @@ The chart below illustrates convergence: sample mean approaches the true expecta
 
 The chart below shows the five observations and their mean (2); the spread is captured by the sample variance 2.5.
 
-{{< chart type="bar" title="Observations [0,1,2,3,4] and mean 2" labels="0, 1, 2, 3, 4" data="0, 1, 2, 3, 4" >}}
+{{< chart type="bar" palette="math" title="Observations [0,1,2,3,4] and mean 2" labels="0, 1, 2, 3, 4" data="0, 1, 2, 3, 4" yLabel="Value" >}}
 
 ---
 
@@ -133,7 +133,7 @@ print(sample_variance(data))  # 2.5
 
 Running the code on [1,2,3,4,5] gives mean 3 and variance 2.5. The chart below shows the five values and their mean.
 
-{{< chart type="bar" title="Data [1,2,3,4,5], mean = 3" labels="1, 2, 3, 4, 5" data="1, 2, 3, 4, 5" >}}
+{{< chart type="bar" palette="math" title="Data [1,2,3,4,5], mean = 3" labels="1, 2, 3, 4, 5" data="1, 2, 3, 4, 5" yLabel="Value" >}}
 
 ---
 
@@ -149,7 +149,7 @@ Running the code on [1,2,3,4,5] gives mean 3 and variance 2.5. The chart below s
 
 The chart below shows a typical trend: value estimate (e.g. \\(V(s)\\)) stabilizes as the number of episodes increases.
 
-{{< chart type="line" title="V(s) estimate vs number of episodes" labels="100, 500, 1k, 5k, 10k" data="0.5, 0.35, 0.22, 0.08, 0.03" >}}
+{{< chart type="line" palette="math" title="V(s) estimate vs number of episodes" labels="100, 500, 1k, 5k, 10k" data="0.5, 0.35, 0.22, 0.08, 0.03" xLabel="Episodes" yLabel="|error|" >}}
 
 ---
 
@@ -169,7 +169,7 @@ The chart below shows a typical trend: value estimate (e.g. \\(V(s)\\)) stabiliz
 
 For Bernoulli(\\(p=0.3\\)), \\(\mathbb{E}[X]=0.3\\) and \\(\mathrm{Var}(X)=0.21\\). The chart below shows the two outcomes and their probabilities.
 
-{{< chart type="bar" title="Bernoulli(0.3): P(X=0) and P(X=1)" labels="P(0), P(1)" data="0.7, 0.3" >}}
+{{< chart type="bar" palette="math" title="Bernoulli(0.3): P(X=0) and P(X=1)" labels="P(0), P(1)" data="0.7, 0.3" yLabel="P(X)" >}}
 
 ---
 
@@ -185,7 +185,7 @@ The sample mean uses *all* rewards observed from arm \\(a\\), so it has lower va
 
 The chart below shows that the standard deviation of the estimate (of \\(Q(a)\\)) decreases as the number of pulls increases.
 
-{{< chart type="line" title="Std of Q(a) estimate vs number of pulls" labels="1, 5, 10, 20, 50" data="1, 0.45, 0.32, 0.22, 0.14" >}}
+{{< chart type="line" palette="math" title="Std of Q(a) estimate vs number of pulls" labels="1, 5, 10, 20, 50" data="1, 0.45, 0.32, 0.22, 0.14" xLabel="Pulls" yLabel="Std" >}}
 
 ---
 

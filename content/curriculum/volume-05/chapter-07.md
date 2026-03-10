@@ -21,7 +21,7 @@ keywords: ["Soft Actor-Critic", "SAC", "HalfCheetah", "automatic temperature"]
 
 **Illustration (SAC learning curve):** On HalfCheetah, SAC typically reaches high return over 1M steps. The chart below shows mean return over last 10 episodes every 50k steps.
 
-{{< chart type="line" title="Mean return (SAC HalfCheetah)" labels="0, 250k, 500k, 750k, 1M" data="0, 1500, 3500, 4500, 5000" >}}
+{{< chart type="line" palette="return" title="Mean return (SAC HalfCheetah)" labels="0, 250k, 500k, 750k, 1M" data="0, 1500, 3500, 4500, 5000" xLabel="Step" yLabel="Mean return" >}}
 
 **Exercise:** Implement SAC for the HalfCheetah environment. Include automatic temperature tuning. Train and compare its sample efficiency with PPO (use existing implementations or your own).
 

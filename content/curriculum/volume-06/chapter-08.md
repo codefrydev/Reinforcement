@@ -22,7 +22,7 @@ keywords: ["MBPO", "Model-Based Policy Optimization", "ensemble dynamics", "SAC"
 
 **Illustration (MBPO vs SAC):** MBPO uses model-generated rollouts to augment the replay buffer; sample efficiency often improves. The chart below compares mean return vs env steps.
 
-{{< chart type="line" title="Mean return (MBPO vs SAC)" labels="0, 50k, 100k, 150k, 200k" data="0, 800, 2000, 3200, 4000" >}}
+{{< chart type="line" palette="return" title="Mean return (MBPO vs SAC)" labels="0, 50k, 100k, 150k, 200k" data="0, 800, 2000, 3200, 4000" xLabel="Step" yLabel="Mean return" >}}
 
 **Exercise:** Implement MBPO for a continuous task: learn an ensemble of dynamics models, use them to generate short rollouts from real states, and add these to the replay buffer for SAC training. Compare with SAC alone.
 

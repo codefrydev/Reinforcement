@@ -22,7 +22,7 @@ The policy gradient with a baseline is \\(\mathbb{E}[ \nabla \log \pi(a|s) \, (G
 
 **Illustration (variance reduction):** With a baseline, the variance of the gradient estimate typically decreases as \\(V(s)\\) improves. The chart below compares the magnitude of updates (with vs without baseline) over training.
 
-{{< chart type="bar" title="Gradient estimate magnitude (last 100 steps)" labels="Without baseline, With baseline" data="2.5, 0.8" >}}
+{{< chart type="bar" palette="comparison" title="Gradient estimate magnitude (last 100 steps)" labels="Without baseline, With baseline" data="2.5, 0.8" yLabel="Magnitude" >}}
 
 **Exercise:** Add a state-value baseline to your REINFORCE implementation. Train the baseline network alongside the policy. Compare the variance of gradient estimates (e.g., by tracking the magnitude of updates) with and without baseline.
 

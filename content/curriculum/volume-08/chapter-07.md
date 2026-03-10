@@ -24,7 +24,7 @@ keywords: ["GAIL", "Generative Adversarial Imitation Learning", "discriminator",
 
 **Illustration (GAIL discriminator):** The discriminator distinguishes expert from policy data; its accuracy often stays between 0.6–0.8 when both are learning. The chart below shows policy return and discriminator accuracy.
 
-{{< chart type="line" title="GAIL: policy return and disc accuracy" labels="0, 100, 200, 300, 400" data="50, 120, 180, 220, 250" >}}
+{{< chart type="line" palette="return" title="GAIL: policy return and disc accuracy" labels="0, 100, 200, 300, 400" data="50, 120, 180, 220, 250" xLabel="Iteration" yLabel="Return" >}}
 
 **Exercise:** Implement GAIL: train a discriminator to distinguish between state-action pairs from the expert and from the agent. Use the discriminator output as reward for a policy gradient method. Test on a simple task.
 

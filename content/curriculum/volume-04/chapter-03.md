@@ -22,7 +22,7 @@ keywords: ["REINFORCE algorithm", "policy gradient", "CartPole", "variance"]
 
 **Illustration (REINFORCE learning curve):** Episode returns often have high variance early on. The chart below shows a typical trend: noisy at first, then improving and eventually stabilizing.
 
-{{< chart type="line" title="Episode return (REINFORCE on CartPole)" labels="0, 100, 200, 300, 400, 500" data="25, 80, 120, 150, 180, 195" >}}
+{{< chart type="line" palette="return" title="Episode return (REINFORCE on CartPole)" labels="0, 100, 200, 300, 400, 500" data="25, 80, 120, 150, 180, 195" xLabel="Episode" yLabel="Return" >}}
 
 **Exercise:** Implement REINFORCE for CartPole. Use a neural network policy that outputs action probabilities via softmax. Train with baseline (optional) and plot the episode returns. Note the high variance.
 

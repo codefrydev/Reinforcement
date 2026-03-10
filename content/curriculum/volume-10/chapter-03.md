@@ -24,7 +24,7 @@ keywords: ["RL for trading", "algorithmic trading", "buy sell hold", "Sharpe rat
 
 **Illustration (trading reward):** In a simple MDP, the agent's profit (reward) over episodes can be volatile. The chart below shows cumulative profit over 20 episodes (example).
 
-{{< chart type="line" title="Cumulative profit over episodes" labels="0, 5, 10, 15, 20" data="0, 50, 120, 80, 150" >}}
+{{< chart type="line" palette="return" title="Cumulative profit over episodes" labels="0, 5, 10, 15, 20" data="0, 50, 120, 80, 150" xLabel="Episode" yLabel="Profit" >}}
 
 **Exercise:** Simulate a simple stock market with one asset. Design an MDP where actions are buy/sell/hold, reward is profit. Train an agent and evaluate its Sharpe ratio. Discuss risk management.
 

@@ -24,7 +24,7 @@ keywords: ["inverse reinforcement learning", "IRL", "max entropy", "reward from 
 
 **Illustration (learned reward):** MaxEnt IRL recovers a reward function that makes the expert optimal. The chart below shows expert return vs agent trained with learned reward (forward RL) over IRL iterations.
 
-{{< chart type="line" title="Agent return (trained on learned reward)" labels="IRL iter 1, Iter 2, Iter 3, Iter 4" data="50, 120, 200, 240" >}}
+{{< chart type="line" palette="return" title="Agent return (trained on learned reward)" labels="IRL iter 1, Iter 2, Iter 3, Iter 4" data="50, 120, 200, 240" xLabel="IRL iteration" yLabel="Return" >}}
 
 **Exercise:** Implement maximum entropy IRL: given expert trajectories, learn a reward function such that the expert's policy maximizes it. Use a linear reward model and solve the forward RL problem repeatedly.
 

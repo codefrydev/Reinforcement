@@ -22,7 +22,7 @@ keywords: ["maximum entropy RL", "entropy bonus", "exploration", "SAC"]
 
 **Illustration (entropy over training):** Maximum entropy RL encourages exploration; policy entropy often starts high and may decrease as the policy becomes more deterministic. The chart below shows typical entropy over steps.
 
-{{< chart type="line" title="Policy entropy over training steps" labels="0, 20k, 40k, 60k, 80k" data="1.4, 1.0, 0.6, 0.4, 0.3" >}}
+{{< chart type="line" palette="return" title="Policy entropy over training steps" labels="0, 20k, 40k, 60k, 80k" data="1.4, 1.0, 0.6, 0.4, 0.3" xLabel="Step" yLabel="Entropy" >}}
 
 **Exercise:** Derive the maximum entropy objective and explain how it differs from standard expected return maximization. Why does entropy encourage exploration?
 

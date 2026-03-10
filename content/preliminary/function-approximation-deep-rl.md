@@ -31,7 +31,7 @@ Explain why function approximation is needed; write the policy gradient paramete
 
 **Illustration (learning with FA):** With function approximation (e.g. a neural network), episode return typically improves over training. The chart below shows a typical learning curve (e.g. DQN or policy gradient on a simple env).
 
-{{< chart type="line" title="Episode return (FA, e.g. DQN or actor-critic)" labels="0, 100, 200, 300, 400" data="20, 80, 150, 190, 200" >}}
+{{< chart type="line" palette="return" title="Episode return (FA, e.g. DQN or actor-critic)" labels="0, 100, 200, 300, 400" data="20, 80, 150, 190, 200" xLabel="Episode" yLabel="Return" >}}
 
 ---
 

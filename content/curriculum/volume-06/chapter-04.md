@@ -22,7 +22,7 @@ keywords: ["Monte Carlo Tree Search", "MCTS", "planning", "tree search"]
 
 **Illustration (MCTS win rate):** As the number of simulations per move increases, MCTS win rate against a random player typically improves. The chart below shows win rate vs simulations per move.
 
-{{< chart type="line" title="Win rate vs simulations per move (tic-tac-toe)" labels="100, 500, 1000, 2000, 5000" data="0.7, 0.85, 0.92, 0.97, 0.99" >}}
+{{< chart type="line" palette="return" title="Win rate vs simulations per move (tic-tac-toe)" labels="100, 500, 1000, 2000, 5000" data="0.7, 0.85, 0.92, 0.97, 0.99" xLabel="Simulations" yLabel="Win rate" >}}
 
 **Exercise:** Implement MCTS for a tic-tac-toe environment. Use UCT for node selection. Let the algorithm play against a random opponent. Evaluate its win rate.
 

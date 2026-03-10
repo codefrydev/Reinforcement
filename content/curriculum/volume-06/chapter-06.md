@@ -22,7 +22,7 @@ keywords: ["MuZero", "latent model", "reward prediction", "model-based RL"]
 
 **Illustration (latent model):** MuZero learns a model in latent space; the chart below shows conceptual reward prediction accuracy (train vs test) over training.
 
-{{< chart type="line" title="Reward prediction accuracy (MuZero-style)" labels="0, 10k, 20k, 30k, 40k" data="0.3, 0.6, 0.78, 0.88, 0.92" >}}
+{{< chart type="line" palette="return" title="Reward prediction accuracy (MuZero-style)" labels="0, 10k, 20k, 30k, 40k" data="0.3, 0.6, 0.78, 0.88, 0.92" xLabel="Step" yLabel="Accuracy" >}}
 
 **Exercise:** Read the MuZero paper summary. Explain how MuZero learns a model in latent space without access to the true dynamics. How does it handle the reward prediction?
 

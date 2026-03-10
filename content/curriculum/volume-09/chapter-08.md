@@ -24,7 +24,7 @@ keywords: ["MAPPO", "multi-agent PPO", "parameter sharing", "centralized value",
 
 **Illustration (parameter sharing):** With parameter sharing, all agents use the same policy; the centralized critic has access to all observations. The chart below shows mean return (cooperative task) vs independent PPO.
 
-{{< chart type="bar" title="Final return (parameter sharing vs independent)" labels="Independent PPO, Shared PPO + central critic" data="80, 140" >}}
+{{< chart type="bar" palette="comparison" title="Final return (parameter sharing vs independent)" labels="Independent PPO, Shared PPO + central critic" data="80, 140" yLabel="Return" >}}
 
 **Exercise:** Adapt your PPO implementation to the multi-agent setting with parameter sharing among agents. Use a centralized value function (critic). Train on a collaborative task and compare with independent PPO.
 

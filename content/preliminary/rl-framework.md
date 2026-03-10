@@ -30,7 +30,7 @@ Define agent, environment, action, reward, and state; state the Markov property 
 
 **Illustration (discount factor):** For a sequence of rewards \\([0, 0, 1]\\), the return from step 0 is \\(0 + 0.9\\cdot 0 + 0.81\\cdot 1 = 0.81\\) when \\(\gamma=0.9\\). The chart below shows how the return from step 0 changes as we include more steps (1, 2, 3 steps).
 
-{{< chart type="line" title="Cumulative discounted return (γ=0.9)" labels="1 step, 2 steps, 3 steps" data="0, 0.9, 0.81" >}}
+{{< chart type="line" palette="return" title="Cumulative discounted return (γ=0.9)" labels="1 step, 2 steps, 3 steps" data="0, 0.9, 0.81" xLabel="Step" yLabel="Return" >}}
 
 ---
 

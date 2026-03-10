@@ -20,7 +20,7 @@ In many states, the *value* of being in that state is similar regardless of the 
 
 **Illustration (dueling vs standard DQN):** Dueling architecture often reaches high reward in fewer episodes. The chart below shows typical episode return over training (CartPole).
 
-{{< chart type="line" title="Episode return (Dueling vs standard DQN)" labels="0, 100, 200, 300, 400" data="30, 120, 185, 198, 200" >}}
+{{< chart type="line" palette="return" title="Episode return (Dueling vs standard DQN)" labels="0, 100, 200, 300, 400" data="30, 120, 185, 198, 200" xLabel="Episode" yLabel="Return" >}}
 
 **Exercise:** Implement the dueling architecture: a shared base, then two streams for value \\(V(s)\\) and advantage \\(A(s,a)\\), aggregated via \\(Q(s,a) = V(s) + (A(s,a) - \\frac{1}{|\\mathcal{A}|}\\sum_a A(s,a))\\). Train it on CartPole and compare learning curves with standard DQN.
 

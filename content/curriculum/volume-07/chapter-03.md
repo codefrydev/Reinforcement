@@ -24,7 +24,7 @@ keywords: ["ICM", "curiosity-driven exploration", "forward model", "intrinsic re
 
 **Illustration (prediction error as reward):** ICM uses forward model prediction error as intrinsic reward; the agent seeks states where the model is wrong. The chart below shows mean intrinsic reward over training.
 
-{{< chart type="line" title="Mean intrinsic reward (ICM)" labels="0, 100, 200, 300, 400" data="0.5, 0.4, 0.3, 0.25, 0.2" >}}
+{{< chart type="line" palette="return" title="Mean intrinsic reward (ICM)" labels="0, 100, 200, 300, 400" data="0.5, 0.4, 0.3, 0.25, 0.2" xLabel="Episode" yLabel="Intrinsic reward" >}}
 
 **Exercise:** Implement the Intrinsic Curiosity Module: train a forward model to predict next state features given current state and action, and use prediction error as intrinsic reward. Combine with A2C on a sparse-reward environment (e.g., a maze).
 

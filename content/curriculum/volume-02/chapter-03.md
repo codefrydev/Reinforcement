@@ -20,7 +20,7 @@ keywords: ["SARSA", "on-policy TD control", "Cliff Walking", "temporal differenc
 
 **Illustration (SARSA learning curve):** On Cliff Walking, the sum of rewards per episode typically improves as \\(Q\\) is learned, then stabilizes. The chart below shows a typical episode-reward curve over training.
 
-{{< chart type="line" title="Sum of rewards per episode (SARSA on Cliff Walking)" labels="0, 100, 200, 300, 400, 500" data="-80, -45, -25, -15, -13, -12" >}}
+{{< chart type="line" palette="return" title="Sum of rewards per episode (SARSA on Cliff Walking)" labels="0, 100, 200, 300, 400, 500" data="-80, -45, -25, -15, -13, -12" xLabel="Episode" yLabel="Return" >}}
 
 **Exercise:** Implement SARSA to learn an optimal policy for the Cliff Walking environment (from Sutton & Barto). Use \\(\epsilon\\)-greedy exploration with \\(\epsilon=0.1\\), \\(\alpha=0.5\\), \\(\gamma=0.9\\). Plot the sum of rewards per episode.
 

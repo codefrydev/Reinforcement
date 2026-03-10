@@ -20,7 +20,7 @@ keywords: ["Deep Q-Networks", "DQN", "replay buffer", "target network", "CartPol
 
 **Illustration (DQN learning curve):** On CartPole, reward per episode typically rises as the agent learns, then stabilizes near the maximum. The chart below shows a typical episode return over training.
 
-{{< chart type="line" title="Episode return (DQN on CartPole)" labels="0, 100, 200, 300, 400, 500" data="25, 80, 150, 180, 195, 200" >}}
+{{< chart type="line" palette="return" title="Episode return (DQN on CartPole)" labels="0, 100, 200, 300, 400, 500" data="25, 80, 150, 180, 195, 200" xLabel="Episode" yLabel="Return" >}}
 
 **Exercise:** Implement DQN for the CartPole-v1 environment. Use a replay buffer of size 10,000, target network update every 100 steps, and \\(\epsilon\\)-greedy exploration. Train for 500 episodes and plot the rewards.
 

@@ -20,7 +20,7 @@ keywords: ["temporal difference learning", "TD(0)", "blackjack", "bootstrap"]
 
 **Illustration (TD convergence):** TD(0) updates \\(V(s)\\) after every transition. The estimate for a given state often stabilizes faster than in MC because TD bootstraps. The chart below shows a typical trend: \\(V(s)\\) for one state over the first 20 episodes.
 
-{{< chart type="line" title="V(s) over episodes (TD(0), α=0.01)" labels="0, 5, 10, 15, 20" data="0, 0.3, 0.55, 0.72, 0.85" >}}
+{{< chart type="line" palette="return" title="V(s) over episodes (TD(0), α=0.01)" labels="0, 5, 10, 15, 20" data="0, 0.3, 0.55, 0.72, 0.85" xLabel="Episode" yLabel="V(s)" >}}
 
 **Exercise:** Implement TD(0) prediction for the same blackjack policy. Compare the convergence speed and final value estimates with Monte Carlo. Use a step size \\(\alpha=0.01\\) and run for 10,000 episodes.
 

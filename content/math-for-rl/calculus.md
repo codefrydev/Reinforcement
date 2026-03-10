@@ -24,7 +24,7 @@ The **derivative** of \\(f(x)\\) with respect to \\(x\\) is \\(f'(x)\\) or \\(\f
 
 The chart below shows the sigmoid \\(\sigma(x) = \frac{e^x}{1+e^x}\\): the S-shaped function whose derivative we use in policy parameterizations and softplus.
 
-{{< chart type="line" title="Sigmoid σ(x)" labels="-3, -2, -1, 0, 1, 2, 3" data="0.05, 0.12, 0.27, 0.5, 0.73, 0.88, 0.95" >}}
+{{< chart type="line" palette="math" title="Sigmoid σ(x)" labels="-3, -2, -1, 0, 1, 2, 3" data="0.05, 0.12, 0.27, 0.5, 0.73, 0.88, 0.95" xLabel="x" yLabel="σ(x)" >}}
 
 **In reinforcement learning:** Loss functions and objective functions are differentiated with respect to parameters. Gradient descent uses \\(\theta \leftarrow \theta - \alpha \frac{\partial L}{\partial \theta}\\); policy gradient uses \\(\theta \leftarrow \theta + \alpha \nabla_\theta J\\). The sigmoid appears in logistic policy parameterizations and in softmax-related derivatives.
 
@@ -34,7 +34,7 @@ If \\(y = f(u)\\) and \\(u = g(x)\\), then \\(\frac{dy}{dx} = \frac{dy}{du} \cdo
 
 **Example:** \\(y = \sin(x^2)\\) → \\(u = x^2\\), \\(y = \sin(u)\\) → \\(\frac{dy}{dx} = \cos(u) \cdot 2x = \cos(x^2) \cdot 2x\\). The graph below shows \\(y = \sin(x^2)\\) over a few points so you can see the curve whose slope (derivative) we computed.
 
-{{< chart type="line" title="y = sin(x²)" labels="0, 0.5, 1, 1.5, 2, 2.5" data="0, 0.25, 0.84, 0.78, -0.76, 0.07" >}}
+{{< chart type="line" palette="math" title="y = sin(x²)" labels="0, 0.5, 1, 1.5, 2, 2.5" data="0, 0.25, 0.84, 0.78, -0.76, 0.07" xLabel="x" yLabel="y" >}}
 
 **In reinforcement learning:** Neural networks are compositions of many functions. Backpropagation is the chain rule applied layer by layer. When you call `loss.backward()` in PyTorch, it is computing gradients via the chain rule.
 
@@ -64,7 +64,7 @@ For a function \\(f(x_1, x_2, \ldots, x_n)\\), the **partial derivative** \\(\fr
 
 The derivative \\(\frac{d}{dx}\ln(1+e^x) = \sigma(x)\\). The chart below shows the sigmoid (same as in Core concepts).
 
-{{< chart type="line" title="σ(x) = derivative of softplus" labels="-3, -2, -1, 0, 1, 2, 3" data="0.05, 0.12, 0.27, 0.5, 0.73, 0.88, 0.95" >}}
+{{< chart type="line" palette="math" title="σ(x) = derivative of softplus" labels="-3, -2, -1, 0, 1, 2, 3" data="0.05, 0.12, 0.27, 0.5, 0.73, 0.88, 0.95" xLabel="x" yLabel="σ(x)" >}}
 
 ---
 
@@ -82,7 +82,7 @@ The derivative \\(\frac{d}{dx}\ln(1+e^x) = \sigma(x)\\). The chart below shows t
 
 For \\(y = \sqrt{1+x^2}\\), the slope \\(dy/dx = x/\sqrt{1+x^2}\\) varies with \\(x\\). The chart below shows \\(y\\) at a few points.
 
-{{< chart type="line" title="y = √(1+x²) at sample points" labels="-2, -1, 0, 1, 2" data="2.24, 1.41, 1, 1.41, 2.24" >}}
+{{< chart type="line" palette="math" title="y = √(1+x²) at sample points" labels="-2, -1, 0, 1, 2" data="2.24, 1.41, 1, 1.41, 2.24" xLabel="x" yLabel="y" >}}
 
 ---
 
@@ -102,7 +102,7 @@ For \\(y = \sqrt{1+x^2}\\), the slope \\(dy/dx = x/\sqrt{1+x^2}\\) varies with \
 
 At \\(w_1=1, w_2=2\\) the gradient is \\([4, 5]^T\\). The chart below shows the two partial derivatives.
 
-{{< chart type="bar" title="∇f at (1,2): [4, 5]ᵀ" labels="∂f/∂w₁, ∂f/∂w₂" data="4, 5" >}}
+{{< chart type="bar" palette="math" title="∇f at (1,2): [4, 5]ᵀ" labels="∂f/∂w₁, ∂f/∂w₂" data="4, 5" yLabel="∂f/∂wᵢ" >}}
 
 ---
 
@@ -120,7 +120,7 @@ We *maximize* \\(J(\theta)\\), so we move in the direction of the gradient (grad
 
 Policy gradient uses gradient *ascent*: \\(J\\) increases in the direction of \\(\nabla J\\). The chart below shows a conceptual learning curve (return \\(J\\) over updates).
 
-{{< chart type="line" title="J(θ) over policy gradient updates (conceptual)" labels="0, 20, 40, 60, 80" data="10, 35, 60, 82, 95" >}}
+{{< chart type="line" palette="math" title="J(θ) over policy gradient updates (conceptual)" labels="0, 20, 40, 60, 80" data="10, 35, 60, 82, 95" xLabel="Update" yLabel="J(θ)" >}}
 
 ---
 
@@ -142,7 +142,7 @@ print(x.grad)  # tensor(4.)
 
 At \\(x=2\\), \\(y=4\\) and \\(dy/dx=4\\). The chart below shows \\(y = x^2\\) at a few points (parabola).
 
-{{< chart type="line" title="y = x² (and slope 2x at x=2 is 4)" labels="0, 1, 2, 3, 4" data="0, 1, 4, 9, 16" >}}
+{{< chart type="line" palette="math" title="y = x² (and slope 2x at x=2 is 4)" labels="0, 1, 2, 3, 4" data="0, 1, 4, 9, 16" xLabel="x" yLabel="y" >}}
 
 ---
 
@@ -160,7 +160,7 @@ At \\(x=2\\), \\(y=4\\) and \\(dy/dx=4\\). The chart below shows \\(y = x^2\\) a
 
 \\(f'(x) = e^x(2x + x^2)\\); at \\(x=0\\) we get \\(f'(0)=0\\). The chart below shows \\(f'(x)\\) at a few points.
 
-{{< chart type="line" title="f'(x) = eˣ(2x + x²)" labels="-1, 0, 1, 2" data="0.37, 0, 2.72, 8.15" >}}
+{{< chart type="line" palette="math" title="f'(x) = eˣ(2x + x²)" labels="-1, 0, 1, 2" data="0.37, 0, 2.72, 8.15" xLabel="x" yLabel="f'(x)" >}}
 
 ---
 
@@ -177,7 +177,7 @@ At \\(x=2\\), \\(y=4\\) and \\(dy/dx=4\\). The chart below shows \\(y = x^2\\) a
 
 The log-derivative trick: \\(\nabla \pi = \pi \nabla \log \pi\\). The chart below shows a conceptual comparison (gradient magnitude with vs without log).
 
-{{< chart type="bar" title="Gradient scale: π ∇log π vs ∇π (conceptual)" labels="∇log π (used), ∇π" data="1, 0.3" >}}
+{{< chart type="bar" palette="math" title="Gradient scale: π ∇log π vs ∇π (conceptual)" labels="∇log π (used), ∇π" data="1, 0.3" yLabel="Magnitude" >}}
 
 ---
 

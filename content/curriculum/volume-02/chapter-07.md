@@ -20,7 +20,7 @@ keywords: ["Dyna-Q", "planning and learning", "tabular methods", "model-based"]
 
 **Illustration (sample efficiency):** Dyna-Q does multiple Q-updates per real env step (e.g. 1 real + 5 planning). Cumulative reward often rises faster than with Q-learning alone. The chart below shows cumulative reward over the first 200 real steps.
 
-{{< chart type="line" title="Cumulative reward over real steps (Dyna-Q vs Q-learning)" labels="0, 50, 100, 150, 200" data="-100, -60, -25, 10, 50" >}}
+{{< chart type="line" palette="return" title="Cumulative reward over real steps (Dyna-Q vs Q-learning)" labels="0, 50, 100, 150, 200" data="-100, -60, -25, 10, 50" xLabel="Step" yLabel="Cumulative reward" >}}
 
 **Exercise:** Implement Dyna-Q on a simple deterministic gridworld (4×4). Use a model that stores observed transitions. After each real step, perform 5 planning updates using randomly sampled state-action pairs from the model. Compare with Q-learning without planning.
 

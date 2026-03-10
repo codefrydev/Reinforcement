@@ -24,7 +24,7 @@ keywords: ["meta-learning", "learning to learn", "task distribution", "few-step 
 
 **Illustration (meta-learning):** A meta-trained policy adapts quickly to new tasks. The chart below shows return on a new task after 0, 1, and 5 gradient steps of adaptation.
 
-{{< chart type="bar" title="Return on new task after adaptation steps" labels="0 steps, 1 step, 5 steps" data="20, 60, 95" >}}
+{{< chart type="bar" palette="comparison" title="Return on new task after adaptation steps" labels="0 steps, 1 step, 5 steps" data="20, 60, 95" yLabel="Return" >}}
 
 **Exercise:** Define a distribution of tasks (e.g., different goal positions in a gridworld). Write the meta-training loop for a model that can adapt quickly to a new task with a few gradient steps.
 

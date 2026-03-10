@@ -20,7 +20,7 @@ keywords: ["Rainbow DQN", "DDQN Dueling PER NoisyNet", "Pong", "combined improve
 
 **Illustration (Rainbow vs DQN):** With the same number of env steps, Rainbow often reaches higher reward sooner. The chart below shows mean reward per 100 episodes over 1M steps (e.g. Pong or LunarLander).
 
-{{< chart type="line" title="Mean reward per 100 episodes (Rainbow vs DQN)" labels="0, 200k, 400k, 600k, 800k, 1M" data="-20, 0, 5, 12, 18, 20" >}}
+{{< chart type="line" palette="return" title="Mean reward per 100 episodes (Rainbow vs DQN)" labels="0, 200k, 400k, 600k, 800k, 1M" data="-20, 0, 5, 12, 18, 20" xLabel="Step" yLabel="Mean reward" >}}
 
 **Exercise:** Combine all improvements (DDQN, Dueling, PER, NoisyNet, multi-step returns, distributional RL optional) into a single Rainbow agent. Train it on a challenging environment like Pong and compare with a baseline DQN.
 

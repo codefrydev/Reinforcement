@@ -90,7 +90,7 @@ This produces a single line: return vs episode. In a real dashboard you would re
 
 **Inline example (same idea, using the site shortcode):** Below is a small learning-curve-style chart (episode vs return) generated with the same kind of data. It shows a typical “improving then flattening” trend.
 
-{{< chart type="line" title="Episode return (smoothed)" labels="0, 20, 40, 60, 80, 100" data="20, 45, 80, 120, 160, 195" >}}
+{{< chart type="line" palette="return" title="Episode return (smoothed)" labels="0, 20, 40, 60, 80, 100" data="20, 45, 80, 120, 160, 195" xLabel="Episode" yLabel="Return" >}}
 
 ---
 

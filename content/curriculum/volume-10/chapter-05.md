@@ -24,7 +24,7 @@ keywords: ["PPO for LLM", "training language models", "GPT-2", "sentiment", "KL 
 
 **Illustration (PPO for LM):** When fine-tuning an LM with PPO, reward (e.g. sentiment) and KL to the reference model are tracked. The chart below shows reward and KL over PPO steps.
 
-{{< chart type="line" title="Reward and KL (PPO-LM)" labels="0, 100, 200, 300, 400" data="0.5, 0.7, 0.82, 0.88, 0.92" >}}
+{{< chart type="line" palette="return" title="Reward and KL (PPO-LM)" labels="0, 100, 200, 300, 400" data="0.5, 0.7, 0.82, 0.88, 0.92" xLabel="Step" yLabel="Reward" >}}
 
 **Exercise:** Using a small language model (e.g., GPT-2), implement a PPO loop to fine-tune it for text generation with a simple reward (e.g., positive sentiment). Include a KL penalty to prevent mode collapse.
 

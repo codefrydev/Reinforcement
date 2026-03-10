@@ -20,7 +20,7 @@ keywords: ["value iteration", "optimal V", "optimal policy", "dynamic programmin
 
 **Illustration (value iteration convergence):** The optimal value at a non-terminal state (e.g. center of the grid) updates each sweep and converges to \\(V^*\\). The chart below shows the value at one such state over the first few sweeps (γ=0.9, -1 per step).
 
-{{< chart type="line" title="V(s) at center cell over value iteration sweeps" labels="1, 2, 3, 4, 5, 6, 7, 8" data="-4, -3.5, -3.1, -2.8, -2.6, -2.4, -2.3, -2.2" >}}
+{{< chart type="line" palette="return" title="V(s) at center cell over value iteration sweeps" labels="1, 2, 3, 4, 5, 6, 7, 8" data="-4, -3.5, -3.1, -2.8, -2.6, -2.4, -2.3, -2.2" xLabel="Sweep" yLabel="V(s)" >}}
 
 **Exercise:** Implement value iteration for the same gridworld. Use \\(\gamma=0.9\\) and stop when the value function changes by less than 1e-4. Output the optimal value and policy.
 

@@ -20,7 +20,7 @@ Standard DQN uses \\(y = r + \\gamma \\max_{a'} Q_{target}(s',a')\\). The max ov
 
 **Illustration (overestimation):** Standard DQN's max over Q-values tends to overestimate; Double DQN often yields lower, more accurate Q-values. The chart below compares mean Q(s,a) after training (CartPole).
 
-{{< chart type="bar" title="Mean Q(s,a) after training (CartPole)" labels="DQN, Double DQN" data="28, 22" >}}
+{{< chart type="bar" palette="comparison" title="Mean Q(s,a) after training (CartPole)" labels="DQN, Double DQN" data="28, 22" yLabel="Mean Q(s,a)" >}}
 
 **Exercise:** Modify your DQN to use Double DQN: use the online network to select actions and the target network to evaluate them. Compare the average Q-values and performance with standard DQN on CartPole.
 

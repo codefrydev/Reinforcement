@@ -24,7 +24,7 @@ keywords: ["Decision Transformer", "returns-to-go", "GPT", "action prediction"]
 
 **Illustration (return-to-go conditioning):** The Decision Transformer conditions on desired return-to-go; higher R leads to better behavior. The chart below shows actual return vs conditioned R_1 (e.g. 100, 200, 400).
 
-{{< chart type="line" title="Actual return vs conditioned R_1" labels="100, 200, 300, 400" data="80, 180, 280, 380" >}}
+{{< chart type="line" palette="return" title="Actual return vs conditioned R_1" labels="100, 200, 300, 400" data="80, 180, 280, 380" xLabel="Conditioned R₁" yLabel="Actual return" >}}
 
 **Exercise:** Implement a Decision Transformer: treat trajectories as sequences of (returns-to-go, states, actions). Train a GPT-like model to predict actions conditioned on desired returns. Test on a simple environment.
 

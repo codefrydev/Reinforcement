@@ -22,7 +22,7 @@ keywords: ["TRPO", "Trust Region Policy Optimization", "KL constraint", "natural
 
 **Illustration (KL constraint):** TRPO limits the KL divergence between old and new policy per update. The chart below shows typical KL(π_old || π_new) over TRPO iterations (stays below threshold).
 
-{{< chart type="line" title="KL(π_old || π_new) per update" labels="Iter 1, Iter 2, Iter 3, Iter 4, Iter 5" data="0.02, 0.015, 0.012, 0.01, 0.008" >}}
+{{< chart type="line" palette="return" title="KL(π_old || π_new) per update" labels="Iter 1, Iter 2, Iter 3, Iter 4, Iter 5" data="0.02, 0.015, 0.012, 0.01, 0.008" xLabel="Iteration" yLabel="KL" >}}
 
 **Exercise:** (Theoretical) Read the TRPO paper. Derive the constrained optimization problem and explain why the natural gradient step (using the Fisher information matrix) enforces the KL constraint.
 

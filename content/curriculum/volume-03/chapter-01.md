@@ -20,7 +20,7 @@ keywords: ["linear function approximation", "tile coding", "semi-gradient SARSA"
 
 **Illustration (learning curve):** With tile coding and semi-gradient SARSA on MountainCar, total reward per episode typically improves over many episodes. The chart below shows a typical trend (reward per episode, smoothed).
 
-{{< chart type="line" title="Episode return (MountainCar, semi-gradient SARSA)" labels="0, 200, 400, 600, 800, 1000" data="-500, -350, -200, -120, -80, -65" >}}
+{{< chart type="line" palette="return" title="Episode return (MountainCar, semi-gradient SARSA)" labels="0, 200, 400, 600, 800, 1000" data="-500, -350, -200, -120, -80, -65" xLabel="Episode" yLabel="Return" >}}
 
 **Exercise:** Implement linear function approximation for the MountainCar environment. Use tile coding (e.g., from Sutton's code) to create binary features. Train a semi-gradient SARSA to learn a policy. Plot the learning curve.
 

@@ -51,7 +51,7 @@ The **gradient** of a scalar function \\(f(w)\\) with respect to a vector \\(w\\
 
 The chart below shows the contribution of each term \\(x_i y_i\\) to the dot product; the sum is 32.
 
-{{< chart type="bar" title="Dot product xᵀy: contribution per dimension (sum = 32)" labels="x₁y₁, x₂y₂, x₃y₃" data="4, 10, 18" >}}
+{{< chart type="bar" palette="math" title="Dot product xᵀy: contribution per dimension (sum = 32)" labels="x₁y₁, x₂y₂, x₃y₃" data="4, 10, 18" yLabel="xᵢyᵢ" >}}
 
 ---
 
@@ -73,7 +73,7 @@ The chart below shows the contribution of each term \\(x_i y_i\\) to the dot pro
 
 The chart below shows the result \\(A w = [1, 1, -1]^T\\) (one value per row of \\(A\\)).
 
-{{< chart type="bar" title="Aw (matrix-vector product)" labels="Row 1, Row 2, Row 3" data="1, 1, -1" >}}
+{{< chart type="bar" palette="math" title="Aw (matrix-vector product)" labels="Row 1, Row 2, Row 3" data="1, 1, -1" yLabel="(Aw)ᵢ" >}}
 
 ---
 
@@ -91,7 +91,7 @@ The chart below shows the result \\(A w = [1, 1, -1]^T\\) (one value per row of 
 
 For \\(f(w) = a^T w\\) with \\(a = [1,2,3]^T\\), the gradient is constant \\(a\\). The chart below shows \\(\nabla_w f = a\\) (one component per dimension).
 
-{{< chart type="bar" title="∇f = a (gradient of aᵀw)" labels="w₁, w₂, w₃" data="1, 2, 3" >}}
+{{< chart type="bar" palette="math" title="∇f = a (gradient of aᵀw)" labels="w₁, w₂, w₃" data="1, 2, 3" yLabel="∂f/∂wᵢ" >}}
 
 ---
 
@@ -114,7 +114,7 @@ Aw = A @ w          # or np.dot(A, w)  -> array([ 1.,  1., -1.])
 
 Running the code gives dot product 32 and \\(Aw = [1, 1, -1]^T\\). The chart below shows the entries of \\(Aw\\) (same as question 2).
 
-{{< chart type="bar" title="Result of A @ w (NumPy)" labels="Index 0, Index 1, Index 2" data="1, 1, -1" >}}
+{{< chart type="bar" palette="math" title="Result of A @ w (NumPy)" labels="Index 0, Index 1, Index 2" data="1, 1, -1" yLabel="(Aw)ᵢ" >}}
 
 ---
 
@@ -132,7 +132,7 @@ Let \\(L = (G - w^T x)^2\\). The scalar \\(w^T x\\) has gradient \\(\nabla_w (w^
 
 The gradient \\(\nabla_w L = -2(G - w^T x)x\\) points along the feature vector \\(x\\); its magnitude scales with the TD error \\(|G - w^T x|\\). The chart below shows the two components of \\(\nabla_w L\\) for a 2D example (\\(x=[1,0.5]\\), \\(G - w^T x = 0.5\\)).
 
-{{< chart type="bar" title="∇L components (2D example)" labels="w₁, w₂" data="-1, -0.5" >}}
+{{< chart type="bar" palette="math" title="∇L components (2D example)" labels="w₁, w₂" data="-1, -0.5" yLabel="∂L/∂wᵢ" >}}
 
 ---
 
@@ -151,7 +151,7 @@ The gradient \\(\nabla_w L = -2(G - w^T x)x\\) points along the feature vector \
 
 At \\(w = (1, 2)\\) the gradient is \\([2, 4]^T\\). The chart below shows these two components.
 
-{{< chart type="bar" title="∇f at w=(1,2): [2, 4]ᵀ" labels="∂f/∂w₁, ∂f/∂w₂" data="2, 4" >}}
+{{< chart type="bar" palette="math" title="∇f at w=(1,2): [2, 4]ᵀ" labels="∂f/∂w₁, ∂f/∂w₂" data="2, 4" yLabel="∂f/∂wᵢ" >}}
 
 ---
 
@@ -167,7 +167,7 @@ If \\(\phi(s) = s\\) and \\(s\\) is a 4-vector, then \\(\phi(s)\\) has dimension
 
 With \\(\phi(s) = s\\) and state dimension 4, \\(w\\) has 4 components. The chart below shows that state dimension and weight dimension match (both 4).
 
-{{< chart type="bar" title="Dimension of s and w (both 4)" labels="State dim, Weight dim" data="4, 4" >}}
+{{< chart type="bar" palette="math" title="Dimension of s and w (both 4)" labels="State dim, Weight dim" data="4, 4" yLabel="Dimension" >}}
 
 ---
 

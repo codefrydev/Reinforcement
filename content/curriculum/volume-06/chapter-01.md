@@ -22,7 +22,7 @@ keywords: ["model-free vs model-based", "Dreamer", "PPO", "Walker", "sample effi
 
 **Illustration (sample efficiency):** Model-based methods (e.g. Dreamer) often reach a given return in fewer env steps than model-free PPO. The chart below shows typical mean return vs env steps.
 
-{{< chart type="line" title="Mean return vs env steps (Walker)" labels="0, 100k, 200k, 300k, 400k" data="0, 500, 1500, 2500, 3500" >}}
+{{< chart type="line" palette="return" title="Mean return vs env steps (Walker)" labels="0, 100k, 200k, 300k, 400k" data="0, 500, 1500, 2500, 3500" xLabel="Env step" yLabel="Mean return" >}}
 
 **Exercise:** Compare the sample efficiency of a model-based method (e.g., Dreamer) and a model-free method (e.g., PPO) on a task like Walker. Explain why model-based methods can be more sample-efficient.
 

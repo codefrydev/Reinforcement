@@ -22,7 +22,7 @@ keywords: ["hard exploration", "sparse rewards", "Montezuma's Revenge", "epsilon
 
 **Illustration (sparse rewards):** With sparse rewards, episode return stays near zero until the agent discovers the first key. The chart below shows typical return over many episodes (flat then rare spike).
 
-{{< chart type="line" title="Episode return (sparse-reward env)" labels="0, 500, 1000, 1500, 2000" data="0, 0, 0, 0.5, 2" >}}
+{{< chart type="line" palette="return" title="Episode return (sparse-reward env)" labels="0, 500, 1000, 1500, 2000" data="0, 0, 0, 0.5, 2" xLabel="Episode" yLabel="Return" >}}
 
 **Exercise:** In the environment "Montezuma's Revenge" (if available), try a standard DQN with \\(\epsilon\\)-greedy. Observe that it rarely gets the first key. Explain why sparse rewards cause failure.
 

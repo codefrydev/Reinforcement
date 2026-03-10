@@ -22,7 +22,7 @@ In **policy gradient** methods we maximize the expected return \\(J(\theta) = \m
 
 **Illustration (gradient magnitude):** Policy gradient updates scale with the return; higher return trajectories get larger updates. The chart below shows the magnitude of \\(\\nabla \\log \\pi(a|s)\\) weighted by return over a few steps (conceptual).
 
-{{< chart type="line" title="|∇ log π · G| over trajectory steps" labels="Step 1, Step 2, Step 3, Step 4" data="0.5, 1.2, 2.1, 3.0" >}}
+{{< chart type="line" palette="return" title="|∇ log π · G| over trajectory steps" labels="Step 1, Step 2, Step 3, Step 4" data="0.5, 1.2, 2.1, 3.0" xLabel="Step" yLabel="|∇ log π · G|" >}}
 
 **Exercise:** Derive the policy gradient theorem for a simple one-step MDP. Show that the gradient of the expected reward is \\(\mathbb{E}[\\nabla \\log \\pi(a|s) Q^\\pi(s,a)]\\).
 

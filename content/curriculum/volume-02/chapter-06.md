@@ -20,7 +20,7 @@ keywords: ["n-step SARSA", "n-step bootstrapping", "Cliff Walking", "TD"]
 
 **Illustration (n-step vs one-step):** For the same number of env steps, n-step SARSA often improves average reward faster early on because each update uses more reward signal. The chart below shows a typical comparison on Cliff Walking.
 
-{{< chart type="line" title="Mean reward per episode (same number of steps)" labels="0, 100, 200, 300, 400, 500" data="-60, -35, -22, -15, -13, -12" >}}
+{{< chart type="line" palette="return" title="Mean reward per episode (same number of steps)" labels="0, 100, 200, 300, 400, 500" data="-60, -35, -22, -15, -13, -12" xLabel="Episode" yLabel="Mean return" >}}
 
 **Exercise:** Implement n-step SARSA (with \\(n=4\\)) for the Cliff Walking environment. Write a function that accumulates n steps before updating. Compare the learning speed with one-step SARSA.
 

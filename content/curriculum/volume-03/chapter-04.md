@@ -20,7 +20,7 @@ keywords: ["experience replay", "replay buffer", "push and sample", "DQN"]
 
 **Illustration (buffer fill):** As the agent interacts with the env, the replay buffer fills until it reaches capacity, then the oldest transitions are overwritten. The chart below shows how buffer size grows over the first 15k steps (capacity 10k).
 
-{{< chart type="line" title="Replay buffer size over env steps" labels="0, 5k, 10k, 12k, 15k" data="0, 5000, 10000, 10000, 10000" >}}
+{{< chart type="line" palette="return" title="Replay buffer size over env steps" labels="0, 5k, 10k, 12k, 15k" data="0, 5000, 10000, 10000, 10000" xLabel="Env step" yLabel="Buffer size" >}}
 
 **Exercise:** Code a replay buffer class with methods `push(state, action, reward, next_state, done)` and `sample(batch_size)`. Ensure it uses a circular buffer and random sampling. Test it with random data.
 

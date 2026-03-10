@@ -22,7 +22,7 @@ keywords: ["GAE", "Generalized Advantage Estimation", "PPO", "advantage"]
 
 **Illustration (GAE advantages):** GAE(\\(\\lambda\\)) blends TD errors across time. The chart below shows advantage estimates along a 5-step trajectory (\\(\\lambda=0.95\\)).
 
-{{< chart type="line" title="GAE advantage along trajectory" labels="t=0, t=1, t=2, t=3, t=4" data="0.5, 0.8, 0.3, -0.2, 0.6" >}}
+{{< chart type="line" palette="return" title="GAE advantage along trajectory" labels="t=0, t=1, t=2, t=3, t=4" data="0.5, 0.8, 0.3, -0.2, 0.6" xLabel="Step" yLabel="Advantage" >}}
 
 **Exercise:** Implement Generalized Advantage Estimation (GAE) for a trajectory. Write a function that takes rewards and value estimates and returns GAE advantages for each timestep using \\(\lambda\\) and \\(\gamma\\).
 

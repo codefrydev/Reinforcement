@@ -20,7 +20,7 @@ keywords: ["Noisy Networks", "NoisyNet", "exploration", "epsilon-greedy"]
 
 **Illustration (exploration):** Noisy networks explore without a fixed ε schedule. The chart below compares the number of unique states visited in the first 5k steps: NoisyNet vs ε-greedy DQN (typical trend).
 
-{{< chart type="bar" title="Unique states visited (first 5k steps)" labels="ε-greedy DQN, NoisyNet DQN" data="180, 320" >}}
+{{< chart type="bar" palette="comparison" title="Unique states visited (first 5k steps)" labels="ε-greedy DQN, NoisyNet DQN" data="180, 320" yLabel="States visited" >}}
 
 **Exercise:** Replace the linear layers in your DQN with noisy linear layers that have learnable noise. Implement the factorized Gaussian noise. Compare exploration behavior (e.g., number of unique states visited) with \\(\epsilon\\)-greedy.
 

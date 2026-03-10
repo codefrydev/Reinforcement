@@ -24,7 +24,7 @@ keywords: ["QMIX", "mixing network", "monotonicity", "hypernetworks", "MARL"]
 
 **Illustration (QMIX monotonicity):** QMIX mixes agent Q-values with a monotonic mixing network so global argmax equals per-agent argmax. The chart below shows joint return on a cooperative task over training.
 
-{{< chart type="line" title="Joint return (QMIX)" labels="0, 200, 400, 600, 800" data="5, 35, 70, 100, 125" >}}
+{{< chart type="line" palette="return" title="Joint return (QMIX)" labels="0, 200, 400, 600, 800" data="5, 35, 70, 100, 125" xLabel="Step" yLabel="Joint return" >}}
 
 **Exercise:** Implement QMIX: use a mixing network that takes agent Q-values and the global state to produce a joint Q-value, with monotonicity constraints enforced by positive weights (via hypernetworks). Test on a cooperative task.
 

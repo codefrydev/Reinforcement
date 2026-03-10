@@ -24,7 +24,7 @@ keywords: ["RNN policy", "POMDP", "state action reward done", "recurrent"]
 
 **Illustration (RL² hidden state):** The RNN's hidden state encodes the current "learning algorithm." The chart below shows return on a new POMDP task over the first 10 episodes (no meta-training).
 
-{{< chart type="line" title="Return on new task (RL², first 10 ep)" labels="1, 2, 3, 4, 5, 6, 7, 8, 9, 10" data="5, 15, 28, 45, 60, 72, 82, 88, 92, 95" >}}
+{{< chart type="line" palette="return" title="Return on new task (RL², first 10 ep)" labels="1, 2, 3, 4, 5, 6, 7, 8, 9, 10" data="5, 15, 28, 45, 60, 72, 82, 88, 92, 95" xLabel="Episode" yLabel="Return" >}}
 
 **Exercise:** Implement RL²: train an RNN policy that takes as input (state, action, reward, done) and outputs actions. The RNN's hidden state should encode the learning algorithm. Train on multiple POMDP tasks.
 

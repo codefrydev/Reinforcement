@@ -22,7 +22,7 @@ keywords: ["model rollouts", "compounding error", "predicted vs true states", "v
 
 **Illustration (compounding error):** Predicted states diverge from true states as the rollout length increases. The chart below shows MSE between predicted and true state over 10 steps.
 
-{{< chart type="line" title="Prediction MSE vs rollout step" labels="1, 2, 4, 6, 8, 10" data="0.02, 0.05, 0.15, 0.35, 0.6, 1.0" >}}
+{{< chart type="line" palette="return" title="Prediction MSE vs rollout step" labels="1, 2, 4, 6, 8, 10" data="0.02, 0.05, 0.15, 0.35, 0.6, 1.0" xLabel="Rollout step" yLabel="MSE" >}}
 
 **Exercise:** For the learned model from Chapter 52, sample a starting state and generate a rollout of predicted states for a fixed action sequence. Plot the true states from the environment and the predicted states to visualize compounding error.
 

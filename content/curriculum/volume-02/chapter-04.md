@@ -20,7 +20,7 @@ keywords: ["Q-learning", "off-policy", "Cliff Walking", "TD control"]
 
 **Illustration (Q-learning vs SARSA):** When evaluated greedily, Q-learning often achieves higher mean reward (short path) while SARSA is more conservative. The chart below compares typical average episode return after training (greedy evaluation).
 
-{{< chart type="bar" title="Mean episode return (greedy eval, Cliff Walking)" labels="Q-learning, SARSA" data="-13, -17" >}}
+{{< chart type="bar" palette="comparison" title="Mean episode return (greedy eval, Cliff Walking)" labels="Q-learning, SARSA" data="-13, -17" yLabel="Mean return" >}}
 
 **Exercise:** Implement Q-learning for the same Cliff Walking environment. Compare the learned paths and total rewards with SARSA. Explain why Q-learning might prefer the cliff edge while SARSA takes a safer path.
 

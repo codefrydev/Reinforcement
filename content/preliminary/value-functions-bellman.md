@@ -80,7 +80,7 @@ In \\(s_2\\) we get reward 1 and stay in \\(s_2\\), so the return from \\(s_2\\)
 
 The graph below shows the two state values we computed: \\(V^\pi(s_1) = 9\\) and \\(V^\pi(s_2) = 10\\).
 
-{{< chart type="bar" title="V^π(s) for the two-state MDP" labels="s₁, s₂" data="9, 10" >}}
+{{< chart type="bar" palette="math" title="V^π(s) for the two-state MDP" labels="s₁, s₂" data="9, 10" yLabel="V^π(s)" >}}
 
 ---
 

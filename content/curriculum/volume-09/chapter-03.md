@@ -24,7 +24,7 @@ keywords: ["IQL", "independent Q-learning", "cooperative", "non-stationarity"]
 
 **Illustration (non-stationarity):** When both agents learn, the environment each sees is non-stationary. Return can oscillate. The chart below shows mean return over training (two agents, IQL, meet-up game).
 
-{{< chart type="line" title="Mean return (IQL, two agents)" labels="0, 2k, 4k, 6k, 8k, 10k" data="20, 60, 40, 80, 55, 95" >}}
+{{< chart type="line" palette="return" title="Mean return (IQL, two agents)" labels="0, 2k, 4k, 6k, 8k, 10k" data="20, 60, 40, 80, 55, 95" xLabel="Step" yLabel="Mean return" >}}
 
 **Exercise:** Implement independent Q-learning in a simple cooperative game (e.g., two agents need to meet). Show the non-stationarity problem: as one agent's policy changes, the other's environment changes, causing instability.
 

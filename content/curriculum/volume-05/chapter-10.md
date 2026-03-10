@@ -22,7 +22,7 @@ Hyperparameter tuning is essential for getting the best from RL algorithms; **sw
 
 **Illustration (hyperparameter sweep):** Different learning rates yield different final returns. The chart below shows mean final return (over 3 seeds) for 4 learning rate values.
 
-{{< chart type="bar" title="Final return vs learning rate (3 seeds)" labels="1e-4, 3e-4, 1e-3, 3e-3" data="4200, 4800, 4500, 3200" >}}
+{{< chart type="bar" palette="comparison" title="Final return vs learning rate (3 seeds)" labels="1e-4, 3e-4, 1e-3, 3e-3" data="4200, 4800, 4500, 3200" yLabel="Return" >}}
 
 **Exercise:** Use Weights & Biases to sweep over learning rates, entropy coefficient, and network sizes for SAC on your custom environment. Visualize the effect on final return and learning speed.
 

@@ -24,7 +24,7 @@ keywords: ["safe reinforcement learning", "constrained MDP", "Lagrangian", "self
 
 **Illustration (Lagrangian constraint):** The penalty coefficient λ is updated to keep cost below threshold. The chart below shows return, cost, and λ over training (constrained RL).
 
-{{< chart type="line" title="Return and cost (Lagrangian method)" labels="0, 50, 100, 150, 200" data="20, 80, 150, 200, 240" >}}
+{{< chart type="line" palette="return" title="Return and cost (Lagrangian method)" labels="0, 50, 100, 150, 200" data="20, 80, 150, 200, 240" xLabel="Iteration" yLabel="Return" >}}
 
 **Exercise:** Formulate a constrained MDP for a self-driving car: maximize progress while keeping collisions below a threshold. Implement a Lagrangian method that updates a penalty coefficient to enforce the constraint.
 

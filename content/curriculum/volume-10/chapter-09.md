@@ -24,7 +24,7 @@ keywords: ["debugging RL", "RL code", "troubleshooting"]
 
 **Illustration (diagnostics):** When SAC doesn't learn, logging Q-values, reward, and entropy helps. The chart below shows healthy vs broken: Q can go to 0 or explode; entropy can collapse to 0.
 
-{{< chart type="line" title="Mean Q and entropy (healthy run)" labels="0, 20k, 40k, 60k, 80k" data="2, 8, 15, 22, 25" >}}
+{{< chart type="line" palette="return" title="Mean Q and entropy (healthy run)" labels="0, 20k, 40k, 60k, 80k" data="2, 8, 15, 22, 25" xLabel="Step" yLabel="Mean Q" >}}
 
 **Exercise:** Take a broken RL implementation (e.g., SAC that doesn't learn). Write unit tests for the environment, replay buffer, and gradient shapes. Add logging for Q-values, rewards, and entropy. Diagnose the issue.
 

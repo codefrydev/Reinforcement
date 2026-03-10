@@ -22,7 +22,7 @@ keywords: ["PPO", "Proximal Policy Optimization", "clipped objective", "surrogat
 
 **Illustration (clipped objective):** The PPO clip prevents the probability ratio from moving too far from 1. The chart below shows the ratio \\(\\pi(a|s)/\\pi_{old}(a|s)\\) before and after clipping (conceptual).
 
-{{< chart type="line" title="Probability ratio (before/after clip)" labels="Step 1, Step 2, Step 3, Step 4" data="1, 1.1, 1.15, 1.2" >}}
+{{< chart type="line" palette="return" title="Probability ratio (before/after clip)" labels="Step 1, Step 2, Step 3, Step 4" data="1, 1.1, 1.15, 1.2" xLabel="Step" yLabel="Ratio" >}}
 
 **Exercise:** Explain in your own words how the clipped surrogate objective in PPO prevents too large policy updates. Write the clipped loss function and contrast it with the unclipped version.
 

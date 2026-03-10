@@ -21,7 +21,7 @@ keywords: ["TD3", "Twin Delayed DDPG", "clipped double Q", "target smoothing"]
 
 **Illustration (TD3 vs DDPG):** TD3's clipped double Q and target smoothing often yield more stable learning. The chart below compares mean return over 10 eval episodes every 1k steps.
 
-{{< chart type="line" title="Mean return (TD3 vs DDPG on Pendulum)" labels="0, 20k, 40k, 60k, 80k" data="-200, -150, -120, -100, -95" >}}
+{{< chart type="line" palette="return" title="Mean return (TD3 vs DDPG on Pendulum)" labels="0, 20k, 40k, 60k, 80k" data="-200, -150, -120, -100, -95" xLabel="Step" yLabel="Mean return" >}}
 
 **Exercise:** Enhance your DDPG with TD3 improvements: two critics (clipped double Q-learning), delayed policy updates, and target policy smoothing. Compare performance on a continuous control task like HalfCheetah (if feasible) or a simpler environment.
 

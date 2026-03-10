@@ -20,7 +20,7 @@ keywords: ["policy evaluation", "iterative policy evaluation", "dynamic programm
 
 **Illustration (convergence):** As we apply the Bellman expectation update sweep after sweep, the maximum change in \\(V\\) typically decreases. The chart below shows a typical trend: max \\(|\\Delta V|\\) over the first few sweeps until convergence.
 
-{{< chart type="line" title="Max |ΔV| per sweep (policy evaluation)" labels="Sweep 1, Sweep 2, Sweep 3, Sweep 4, Sweep 5, Sweep 6" data="2.5, 1.2, 0.5, 0.15, 0.04, 0.01" >}}
+{{< chart type="line" palette="return" title="Max |ΔV| per sweep (policy evaluation)" labels="Sweep 1, Sweep 2, Sweep 3, Sweep 4, Sweep 5, Sweep 6" data="2.5, 1.2, 0.5, 0.15, 0.04, 0.01" xLabel="Sweep" yLabel="Max |ΔV|" >}}
 
 **Exercise:** Implement iterative policy evaluation for the gridworld (4×4, no obstacles, terminal states at top-left and bottom-right, rewards -1 per step). Use a uniform random policy and \\(\gamma=1\\). Stop when the maximum change is less than 1e-4.
 

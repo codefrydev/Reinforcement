@@ -24,7 +24,7 @@ keywords: ["Go-Explore", "archive", "deterministic maze", "exploration"]
 
 **Illustration (Go-Explore archive):** The archive stores promising states; the agent returns to them to explore further. The chart below shows the number of archive states and max return over iterations.
 
-{{< chart type="line" title="Archive size and max return" labels="0, 20, 40, 60, 80" data="5, 25, 60, 120, 200" >}}
+{{< chart type="line" palette="return" title="Archive size and max return" labels="0, 20, 40, 60, 80" data="5, 25, 60, 120, 200" xLabel="Iteration" yLabel="Archive size / Max return" >}}
 
 **Exercise:** Implement a simplified Go-Explore on a deterministic maze: archive states that lead to high rewards, then return to them and explore further. Compare with random exploration.
 
