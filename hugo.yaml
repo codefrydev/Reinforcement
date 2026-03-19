@@ -1,6 +1,6 @@
 baseURL: https://codefrydev.in/Reinforcement/
 languageCode: en-us
-title: Reinforcement
+title: Reinforcement Learning Curriculum
 theme: PaperMod
 
 enableRobotsTXT: true
@@ -14,9 +14,21 @@ minify:
   disableXML: true
   minifyOutput: true
 
-# Generate index.json for search (PaperMod Fuse.js search)
+# llms.txt — PaperMod ships layouts/_default/llms.txt; this wires the home output.
+mediaTypes:
+  text/llms:
+    suffixes:
+      - txt
+
+outputFormats:
+  LLMS:
+    mediaType: text/llms
+    basename: llms
+    isPlainText: true
+
+# Generate index.json for search (PaperMod Fuse.js search) + llms.txt for LLM discovery
 outputs:
-  home: ["HTML", "RSS", "JSON"]
+  home: ["HTML", "RSS", "JSON", "LLMS"]
 
 params:
   math: true
@@ -25,7 +37,8 @@ params:
   description: "Reinforcement learning curriculum by codefrydev — 100 chapters, prerequisites, and readiness assessments. Hosted at codefrydev.in."
   keywords: [Reinforcement Learning, RL, curriculum, codefrydev, machine learning]
   author: codefrydev
-  images: [] # optional: add og image path for opengraph, twitter-cards
+  images:
+    - og-default.png
   DateFormat: "January 2, 2006"
   defaultTheme: auto # dark, light
   disableThemeToggle: false
@@ -51,15 +64,10 @@ params:
   assets:
     disableHLJS: true  # use Hugo Chroma instead of highlight.js (PaperMod FAQ)
     # disableFingerprinting: true
-    favicon: "<link / abs url>"
-    favicon16x16: "<link / abs url>"
-    favicon32x32: "<link / abs url>"
-    apple_touch_icon: "<link / abs url>"
-    safari_pinned_tab: "<link / abs url>"
 
   label:
     text: "Home"
-    icon: /apple-touch-icon.png
+    icon: apple-touch-icon.png
     iconHeight: 35
 
   # profile-mode
@@ -87,10 +95,6 @@ params:
       url: "https://github.com/codefrydev"
     - name: youtube
       url: "https://www.youtube.com/c/codefrydev"
-
-  analytics:
-    google:
-      SiteVerificationTag: "G-VM01Q3R43D"
 
   cover:
     hidden: true # hide everywhere but not in structured data

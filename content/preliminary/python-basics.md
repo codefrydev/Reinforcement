@@ -1,5 +1,5 @@
 ---
-title: "Python Basics"
+title: "Python basics for RL and the preliminary assessment"
 description: "Functions, lists, loops, and list comprehensions — with RL-relevant examples and explained solutions."
 date: 2026-03-10T00:00:00Z
 draft: false

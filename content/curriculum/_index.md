@@ -1,5 +1,5 @@
 ---
-title: "Curriculum"
+title: "Reinforcement learning curriculum — volumes and 100 chapters"
 description: "100 chapters from mathematical foundations to advanced RL, with one exercise per chapter."
 date: 2026-03-10T00:00:00Z
 draft: false

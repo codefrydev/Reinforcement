@@ -1,0 +1,9 @@
+# Merged with theme strings; these add a11y copy for project layouts.
+- id: skip_to_main
+  translation: "Skip to main content"
+
+- id: search
+  translation: "Search"
+
+- id: search_results
+  translation: "Search results"

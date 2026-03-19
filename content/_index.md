@@ -23,17 +23,15 @@ ShowPostNavLinks: true
 ShowWordCount: true
 ShowRssButtonInSectionTermList: true
 UseHugoToc: true
-cover:
-    image: "<image path/url>" # image path/url
-    alt: "<alt text>" # alt text
-    caption: "<text>" # display caption under cover
-    relative: false # when using page bundles set this to true
-    hidden: true # only hide on current single page
 editPost:
-    URL: "https://github.com/<path_to_repo>/content"
+    URL: "https://github.com/codefrydev/Reinforcement/blob/main/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 ---
+
+<!-- markdownlint-disable MD025 --><!-- PaperMod home list view does not render .Title as an h1; this heading is the page's single visible h1. -->
+
+# Reinforcement Learning Curriculum
 
 Welcome to the **Reinforcement Learning Curriculum**: 100 chapters from mathematical foundations to advanced topics, with exercises, prerequisites, and a readiness check.
 

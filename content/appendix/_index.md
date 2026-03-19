@@ -1,5 +1,5 @@
 ---
-title: "Appendix"
+title: "Appendix — practical guides for reinforcement learning"
 description: "Practical guides for RL practitioners: debugging code, reading papers, and reference material."
 date: 2026-03-19T00:00:00Z
 draft: false

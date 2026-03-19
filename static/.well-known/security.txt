@@ -1,0 +1,3 @@
+Contact: mailto:codefrydev@gmail.com
+Preferred-Languages: en
+Canonical: https://codefrydev.in/Reinforcement/.well-known/security.txt

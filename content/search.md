@@ -1,5 +1,5 @@
 ---
-title: "Search"
+title: "Search the reinforcement learning curriculum"
 layout: "search"
 url: "/search"
 placeholder: "Search by keyword"

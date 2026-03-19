@@ -1,0 +1,9 @@
+/* TEAM */
+Author: codefrydev
+Site: https://codefrydev.in/Reinforcement/
+Repository: https://github.com/codefrydev/Reinforcement
+
+/* SITE */
+Last update: 2026
+Standards: HTML5, Hugo, Markdown
+Components: Hugo PaperMod theme (see repository)

@@ -1,5 +1,5 @@
 ---
-title: "RL Glossary"
+title: "Reinforcement learning glossary — terms, definitions, and chapter links"
 description: "Alphabetical glossary of all reinforcement learning terms used in this curriculum. Each entry includes a definition, the chapter where it is introduced, and an example."
 date: 2026-03-19T00:00:00Z
 draft: false

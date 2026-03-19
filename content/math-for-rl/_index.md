@@ -1,5 +1,5 @@
 ---
-title: "Math for RL"
+title: "Math for reinforcement learning — probability, linear algebra, calculus"
 description: "Probability, linear algebra, and calculus with reinforcement learning motivation. Practice questions and Professor's hints included."
 date: 2026-03-10T00:00:00Z
 draft: false
