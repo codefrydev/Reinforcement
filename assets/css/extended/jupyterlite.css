@@ -1,3 +1,40 @@
+/* ── Collapse / details shortcode ── */
+
+.collapse-block {
+  margin: 0.75rem 0;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.collapse-summary {
+  padding: 0.5em 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  background: var(--code-bg);
+  list-style: none;
+  user-select: none;
+}
+
+.collapse-summary::-webkit-details-marker { display: none; }
+
+.collapse-summary::before {
+  content: "▶ ";
+  font-size: 0.75em;
+  opacity: 0.6;
+  transition: transform 0.15s;
+  display: inline-block;
+}
+
+details[open] > .collapse-summary::before {
+  transform: rotate(90deg);
+}
+
+.collapse-body {
+  padding: 0.6em 1em 0.8em;
+  border-top: 1px solid var(--border);
+}
+
 /* ── JupyterLite embedded REPL and notebook link styles ── */
 
 /* Container */

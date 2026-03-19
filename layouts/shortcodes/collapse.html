@@ -1,0 +1,6 @@
+<details class="collapse-block">
+  <summary class="collapse-summary">{{ .Get "summary" | default "Show answer" }}</summary>
+  <div class="collapse-body">
+    {{ .Inner | markdownify }}
+  </div>
+</details>
