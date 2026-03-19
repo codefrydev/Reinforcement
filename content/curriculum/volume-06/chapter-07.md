@@ -46,3 +46,6 @@ keywords: ["Dreamer", "RSSM", "latent imagination", "world model", "actor-critic
 1. **Warm-up:** Why is training the actor on imagined rollouts sample-efficient?
 2. **Coding:** Train a simple latent model (encoder + next-latent predictor) on CartPole. Roll out 10 steps in latent space from real encodings. Compare imagined rewards with actual rewards from the env for the same actions.
 3. **Challenge:** Implement a full imagination phase: 50 latent steps, actor-critic update. Compare sample efficiency (return vs env steps) with PPO on CartPole.
+4. **Variant:** Vary the imagination horizon from 5 to 20 to 50 steps. Plot actor performance (real env return) vs imagination horizon. Is there a sweet spot, and does it shift with world-model quality?
+5. **Debug:** The Dreamer-style actor improves in imagination but real-world return stays flat. The world model is frozen after 10k steps and never updated further. Explain why a stale world model breaks the actor and what the correct training loop looks like.
+6. **Conceptual:** Why can imagination-based training fail in environments with multimodal or chaotic dynamics (e.g. contact-rich robotics)? What property must the latent world model have for imagined trajectories to be useful for policy improvement?

@@ -45,3 +45,10 @@ In many states, the *value* of being in that state is similar regardless of the 
 1. **Warm-up:** For 2 actions, write \\(Q(s,0)\\) and \\(Q(s,1)\\) in terms of \\(V(s)\\), \\(A(s,0)\\), \\(A(s,1)\\). Show that \\(\\max_a Q(s,a) = V(s) + \\max_a A(s,a) - \\bar{A}\\).
 2. **Coding:** Implement a Dueling DQN head: one stream for V(s), one for A(s,a); output Q(s,a) = V(s) + (A(s,a) - mean_a A(s,a)). Train on CartPole and plot return vs DQN.
 3. **Challenge:** Try the alternative: \\(Q(s,a) = V(s) + (A(s,a) - \\max_{a'} A(s,a'))\\). Train and compare with the mean version. Does it change learning?
+4. **Variant:** Change the backbone to 3 hidden layers (128 units each) instead of 2. Does a deeper shared base improve or hurt performance on CartPole? Why might more expressive features help the advantage stream?
+5. **Debug:** The code below uses the wrong aggregation — it subtracts the max advantage instead of the mean. Fix it.
+
+{{< pyrepl code="import torch\n\ndef dueling_q(V, A):\n    # V: (batch, 1), A: (batch, n_actions)\n    # BUG: subtracts max instead of mean\n    return V + (A - A.max(dim=1, keepdim=True).values)\n\n# Fix: subtract A.mean(dim=1, keepdim=True)\nV = torch.tensor([[1.0], [2.0]])\nA = torch.tensor([[0.5, -0.5], [0.3, 0.7]])\nprint('Buggy Q:', dueling_q(V, A))\nQ_correct = V + (A - A.mean(dim=1, keepdim=True))\nprint('Correct Q:', Q_correct)" height="220" >}}
+
+6. **Conceptual:** In what kinds of states is the dueling architecture expected to help most? (Hint: think about states where most actions lead to similar outcomes.)
+7. **Recall:** Write the dueling aggregation formula \\(Q(s,a) = \\ldots\\) from memory, explaining why we subtract the mean of \\(A\\).

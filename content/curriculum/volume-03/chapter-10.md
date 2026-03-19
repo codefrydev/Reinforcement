@@ -45,3 +45,10 @@ keywords: ["Rainbow DQN", "DDQN Dueling PER NoisyNet", "Pong", "combined improve
 1. **Warm-up:** List the six (or seven) components of Rainbow. For each, state in one sentence what problem it addresses.
 2. **Coding:** Implement a minimal "Rainbow-lite": DQN + replay + target + Double DQN + Dueling. Train on CartPole for 20k steps. Log mean Q and episode return.
 3. **Challenge:** Ablation study: train Rainbow, then train variants with each component removed (Rainbow - DDQN, Rainbow - Dueling, etc.). Rank the components by how much removing them hurts performance.
+4. **Variant:** Add n-step returns (n=3) to your Rainbow-lite. Does multi-step help or hurt on CartPole? Try n=1 vs n=3 and compare learning speed.
+5. **Debug:** The target computation below uses \\(\\max\\) of two Q-networks instead of \\(\\min\\), reintroducing DDPG-style overestimation. Fix it.
+
+{{< pyrepl code="import torch\n\ndef compute_target(Q1_target, Q2_target, actions, rewards, dones, gamma=0.99):\n    with torch.no_grad():\n        # BUG: should use min(Q1, Q2), not max\n        next_q = torch.max(Q1_target, Q2_target)  # wrong\n        target = rewards + gamma * (1 - dones) * next_q.max(dim=1).values\n    return target\n\n# Fix: next_q = torch.min(Q1_target, Q2_target)\nQ1 = torch.tensor([[0.5, 0.9]])\nQ2 = torch.tensor([[0.8, 0.6]])\nprint('Buggy next_q:', torch.max(Q1, Q2))\nprint('Correct next_q:', torch.min(Q1, Q2))" height="220" >}}
+
+6. **Conceptual:** Which single Rainbow component typically provides the largest single improvement over vanilla DQN on Atari, and why? (Consider PER, Double DQN, and Dueling separately.)
+7. **Recall:** State in 2–3 sentences what Rainbow is: which paper introduced it, what components it combines, and what benchmark it was evaluated on.

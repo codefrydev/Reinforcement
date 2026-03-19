@@ -46,3 +46,10 @@ Custom environments let you model **robot navigation**, **recommendation** (stat
 1. **Warm-up:** What should the observation space and action space be for a 2D point mass? (State: position and velocity; action: force.)
 2. **Coding:** Implement the env and run random actions for 100 steps. Check that (x,y) moves and that reward is computed. Then run SAC for 20k steps and plot the trajectory of (x,y) for one episode.
 3. **Challenge:** Add a **moving obstacle** (e.g. oscillating circle). Does SAC still learn to reach the goal while avoiding it?
+4. **Variant:** Replace the dense reward (−distance to goal) with a **sparse reward** (+1 only when the agent reaches the goal). How does learning speed change? Does SAC still learn within 50k steps?
+5. **Debug:** The env below returns a single `done` boolean (old Gym API) instead of `terminated, truncated` (Gymnasium API), which breaks SAC's TD target computation. Fix it.
+
+{{< pyrepl code="class PointMassBuggy:\n    def step(self, action):\n        # update position and velocity\n        self.vel += action\n        self.pos += self.vel * 0.1\n        reward = -float(((self.pos - self.goal)**2).sum()**0.5)\n        done = reward > -0.1  # BUG: single done flag (old API)\n        return self.pos.tolist() + self.vel.tolist(), reward, done, {}\n\n    # Fix: return (obs, reward, terminated, truncated, info)\n    def step_fixed(self, action):\n        self.vel += action\n        self.pos += self.vel * 0.1\n        reward = -float(((self.pos - self.goal)**2).sum()**0.5)\n        terminated = reward > -0.1\n        truncated = self.steps >= self.max_steps\n        return self.pos.tolist() + self.vel.tolist(), reward, terminated, truncated, {}\n\nprint('Fix: split done into terminated and truncated')" height="260" >}}
+
+6. **Conceptual:** Dense reward (e.g. −distance to goal) is faster to learn from than sparse reward, but can introduce reward hacking. Give one example of how a point-mass agent might exploit a dense distance reward.
+7. **Recall:** List the five return values of `env.step(action)` in the Gymnasium API from memory.

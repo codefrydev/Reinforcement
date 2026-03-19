@@ -8,6 +8,8 @@ tags: ["Q-learning", "off-policy", "Cliff Walking", "curriculum"]
 keywords: ["Q-learning", "off-policy", "Cliff Walking", "TD control"]
 ---
 
+{{< notebook path="volume-02/ch14_q_learning.ipynb" title="Open Q-learning notebook" >}}
+
 **Learning objectives**
 
 - Implement Q-learning: update \\(Q(s,a)\\) using target \\(r + \\gamma \\max_{a'} Q(s',a')\\) (off-policy).
@@ -23,6 +25,8 @@ keywords: ["Q-learning", "off-policy", "Cliff Walking", "TD control"]
 {{< chart type="bar" palette="comparison" title="Mean episode return (greedy eval, Cliff Walking)" labels="Q-learning, SARSA" data="-13, -17" yLabel="Mean return" >}}
 
 **Exercise:** Implement Q-learning for the same Cliff Walking environment. Compare the learned paths and total rewards with SARSA. Explain why Q-learning might prefer the cliff edge while SARSA takes a safer path.
+
+{{< pyrepl code="# Q-learning update step\nQ_sa = 0.3   # current Q(s,a)\nr = 1        # reward\ngamma = 0.9\nalpha = 0.1\n# max Q(s', a') for next state\nmax_q_next = 0.5\n\n# TODO: target = r + gamma * max_q_next\n# Q_sa_new = Q_sa + alpha * (target - Q_sa)\ntarget = None\nQ_sa_new = None\nprint(f'target = {target}')\nprint(f'Q new = {Q_sa_new}')  # expected: 0.327" height="240" >}}
 
 **Professor's hints**
 
@@ -47,3 +51,10 @@ Q-learning assumes the agent will act greedily in the future, so it values state
 1. **Warm-up:** Write the Q-learning update in one line. What is the TD target? How does it differ from SARSA's target?
 2. **Coding:** Implement Q-learning on the same 5×5 gridworld as in the SARSA coding exercise. Compare the learned Q with SARSA after 500 episodes (e.g. max difference in Q-values).
 3. **Challenge:** Run Q-learning with \\(\epsilon=0.1\\) for many episodes, then run 100 evaluation episodes with \\(\epsilon=0\\). Also run 100 evaluation episodes with \\(\epsilon=0.1\\) (so the agent sometimes steps off the cliff). Compare average reward: greedy evaluation vs behavioral evaluation. Why does the latter get worse?
+4. **Variant:** Run Q-learning with \\(\alpha=0.1\\) and \\(\alpha=0.9\\) on Cliff Walking. Which converges faster? Does high \\(\alpha\\) cause instability?
+5. **Debug:** The update below uses \\(Q(s',a')\\) where \\(a'\\) is the action actually selected—making it SARSA, not Q-learning. Fix it to use \\(\\max_{a'} Q(s',a')\\).
+
+{{< pyrepl code="Q = {}\nactions = [0,1,2,3]\nalpha, gamma, eps = 0.1, 0.9, 0.1\n\ndef get_q(s, a): return Q.get((s,a), 0.0)\n\ndef q_learning_update(s, a, r, s_next, a_next):\n    # BUG: uses a_next (SARSA) instead of max over actions\n    td_target = r + gamma * get_q(s_next, a_next)\n    Q[(s,a)] = get_q(s,a) + alpha * (td_target - get_q(s,a))\n\n# Fix: replace get_q(s_next, a_next) with max Q(s_next, a') over all a'\nq_learning_update('S0', 0, -1, 'S1', 1)\nprint('Q[(S0,0)]:', Q.get(('S0',0), 0))" height="220" >}}
+
+6. **Conceptual:** Q-learning is off-policy. What does "off-policy" mean, and why does it allow Q-learning to learn the optimal policy while using ε-greedy behavior?
+7. **Recall:** Write the Q-learning update rule from memory.

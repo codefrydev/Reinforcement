@@ -46,3 +46,10 @@ keywords: ["TD3", "Twin Delayed DDPG", "clipped double Q", "target smoothing"]
 1. **Warm-up:** In one sentence each, what is the purpose of (a) clipped double Q, (b) delayed policy updates, (c) target policy smoothing?
 2. **Coding:** Implement TD3 for Pendulum. Compare with your DDPG: plot both learning curves on the same figure. Does TD3 reach a higher return or converge faster?
 3. **Challenge:** Run TD3 on **HalfCheetah-v4** (or v3). Tune learning rate and policy delay \\(d\\). Report the average return over the last 10 episodes after 1M steps (or your compute limit).
+4. **Variant:** Try policy update delay \\(d = 1\\) (update every step), \\(d = 2\\) (default), and \\(d = 5\\) on Pendulum. Does a larger delay cause instability or smoother learning?
+5. **Debug:** The code below uses \\(\\max(Q_1', Q_2')\\) instead of \\(\\min(Q_1', Q_2')\\) for the target, reintroducing Q-value overestimation. Fix it.
+
+{{< pyrepl code="import torch\n\ndef td3_target(Q1_target, Q2_target, s_next, a_next, r, done, gamma=0.99):\n    with torch.no_grad():\n        q1_next = Q1_target(s_next, a_next)\n        q2_next = Q2_target(s_next, a_next)\n        # BUG: should use min, not max\n        q_min = torch.max(q1_next, q2_next)\n        target = r + gamma * (1 - done) * q_min\n    return target\n\n# Fix: q_min = torch.min(q1_next, q2_next)\nq1 = torch.tensor([[0.5]])\nq2 = torch.tensor([[0.8]])\nprint('Buggy (max):', torch.max(q1, q2).item())\nprint('Correct (min):', torch.min(q1, q2).item())" height="220" >}}
+
+6. **Conceptual:** Why does delaying the policy update (updating the actor less often than the critic) improve stability? What happens if the actor is updated more frequently than the critic?
+7. **Recall:** List the three TD3 improvements over DDPG from memory and the specific problem each one addresses.

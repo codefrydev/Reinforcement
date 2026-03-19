@@ -50,3 +50,10 @@ keywords: ["policy evaluation", "iterative policy evaluation", "dynamic programm
 1. **Warm-up:** For a 1×3 line (states 0, 1, 2), terminal at 0 and 2 with value 0, reward -1 per step, one action "move left" from 1 to 0, one action "move right" from 1 to 2. Compute \\(V(1)\\) by hand for \\(\\gamma=1\\) (one step to either terminal ⇒ -1).
 2. **Coding:** Run policy evaluation (iterative Bellman expectation) on a 4×4 gridworld until convergence. Plot \\(V(s)\\) as a heatmap for a random policy (e.g. uniform over actions).
 3. **Challenge:** After convergence, derive the **greedy policy** with respect to your \\(V\\): in each state, which action(s) maximize immediate reward + \\(V(s')\\)? Plot or print the greedy policy as arrows. Compare to the optimal policy (shortest path to nearest terminal).
+4. **Variant:** Run policy evaluation with \\(\gamma=0.5\\) and \\(\gamma=1.0\\) on the same 4×4 gridworld. How does the value at the center cell differ between the two? Why is \\(\gamma=1\\) acceptable here (finite episode)?
+5. **Debug:** The update below applies the Bellman update to terminal states (a common mistake), causing incorrect values. Find and fix it.
+
+{{< pyrepl code="# 1x3 gridworld: states 0,1,2 — terminals at 0 and 2\nV = [0.0, 0.0, 0.0]\nfor sweep in range(20):\n    new_V = V[:]\n    for s in range(3):  # BUG: should skip terminals 0 and 2\n        if s == 1:\n            # state 1: left goes to 0, right goes to 2, reward -1 each\n            new_V[s] = 0.5*(-1 + V[0]) + 0.5*(-1 + V[2])\n        else:\n            new_V[s] = -1 + V[s]  # BUG: terminal updated\n    V = new_V\nprint('V:', V)  # should be [0, -1, 0]" height="240" >}}
+
+6. **Conceptual:** Why must we use synchronous (not in-place) updates when running one full sweep of policy evaluation? What can go wrong with in-place updates?
+7. **Recall:** State the iterative policy evaluation update rule \\(V(s) \\leftarrow \\ldots\\) from memory.

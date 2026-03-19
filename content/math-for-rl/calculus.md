@@ -189,6 +189,125 @@ The log-derivative trick: \\(\nabla \pi = \pi \nabla \log \pi\\). The chart belo
 
 ---
 
+---
+
+*(Additional exercises — graded from drill to applied)*
+
+8. **Drill — Power rule:** Differentiate f(x) = x³ + 2x - 5 with respect to x. Evaluate f'(2).
+
+{{< collapse summary="Answer" >}}
+f'(x) = 3x² + 2. At x=2: f'(2) = 3×4 + 2 = **14**.
+
+**Python:** Numerical check: `h=1e-5; f=lambda x: x**3+2*x-5; print((f(2+h)-f(2-h))/(2*h))` → ≈14.
+{{< /collapse >}}
+
+---
+
+9. **Apply — TD gradient:** The TD loss for a linear V is L(w) = ½(δ)² where δ = r + γ w·φ(s') - w·φ(s). Compute ∂L/∂w (ignoring the gradient through the target — semi-gradient).
+
+{{< collapse summary="Answer" >}}
+Semi-gradient: treat the target r + γ w·φ(s') as constant.
+
+∂L/∂w = ∂/∂w [½(r + γ w·φ(s') - w·φ(s))²]  ← target treated as constant
+= δ × (-φ(s))   (chain rule, derivative of w·φ(s) w.r.t. w is φ(s))
+
+**Update:** w ← w - α × ∂L/∂w = w + α × δ × φ(s). This is the semi-gradient TD update.
+
+**Why semi-gradient?** The true gradient would also differentiate through the target w.r.t. w. Semi-gradient ignores that term — it's a simplification that still converges for linear function approximation.
+{{< /collapse >}}
+
+---
+
+10. **Drill — Chain rule:** f(x) = (2x + 1)³. Compute f'(x) using the chain rule. Evaluate at x=0.
+
+{{< collapse summary="Answer" >}}
+Let u = 2x + 1. f = u³. f'(x) = 3u² × u' = 3(2x+1)² × 2 = 6(2x+1)².
+
+At x=0: f'(0) = 6(1)² = **6**.
+
+**Python:** `h=1e-5; f=lambda x:(2*x+1)**3; print((f(h)-f(-h))/(2*h))` → ≈6.
+{{< /collapse >}}
+
+---
+
+11. **Apply — Policy gradient sign:** The REINFORCE gradient is ∇J(θ) ∝ G_t × ∇log π(a_t|s_t;θ).
+
+For a softmax policy over 2 actions, log π(a=0|s;θ) = θ_0 - log(exp(θ_0)+exp(θ_1)).
+
+Compute ∂log π(a=0)/∂θ_0 and ∂log π(a=0)/∂θ_1 (in terms of π_0, π_1).
+
+{{< collapse summary="Answer" >}}
+log π(a=0) = θ_0 - log(exp(θ_0)+exp(θ_1)).
+
+∂/∂θ_0: 1 - exp(θ_0)/(exp(θ_0)+exp(θ_1)) = 1 - π_0 = **π_1** (or equivalently 1 - π_0).
+
+∂/∂θ_1: 0 - exp(θ_1)/(exp(θ_0)+exp(θ_1)) = **-π_1**.
+
+So ∇log π(a=0) = [1-π_0, -π_1] = [π_1, -π_1].
+
+**Interpretation:** A positive gradient step on action 0 increases θ_0 and decreases θ_1, increasing π_0 and decreasing π_1 — exactly what you want when action 0 gets a positive reward signal.
+{{< /collapse >}}
+
+---
+
+12. **Drill — Partial derivatives:** f(x, y) = 3x²y + xy³. Compute ∂f/∂x and ∂f/∂y. Evaluate at (1, 2).
+
+{{< collapse summary="Answer" >}}
+∂f/∂x = 6xy + y³. At (1,2): 6×2 + 8 = **20**.
+
+∂f/∂y = 3x² + 3xy². At (1,2): 3 + 6 = **9**.
+
+**Why this matters:** Loss functions in deep RL depend on many parameters (weights). Backprop computes partial derivatives of the loss with respect to each weight, exactly this operation across thousands of parameters.
+{{< /collapse >}}
+
+---
+
+13. **Apply — Clipped PPO gradient:** PPO clips the ratio r(θ) = π_θ(a)/π_old(a) at [1-ε, 1+ε]. The objective is J = min(r·A, clip(r,1-ε,1+ε)·A).
+
+If A > 0 and r = 1.3 with ε = 0.2 (clip at 1.2): what is the clipped objective? What is ∂J/∂r at r=1.3?
+
+{{< collapse summary="Answer" >}}
+clip(1.3, 0.8, 1.2) = 1.2. J = min(1.3×A, 1.2×A) = **1.2×A** (clipped value is smaller).
+
+∂J/∂r at r=1.3: since the clip is active (r > 1+ε), the minimum is the clipped term 1.2A, which has **zero gradient with respect to r**. The clip prevents further policy updates that would push r even higher.
+
+**Insight:** PPO's clipping creates a "flat region" in the objective where the gradient is zero — exactly when the new policy deviates too much from the old one. This prevents large, destabilizing updates.
+{{< /collapse >}}
+
+---
+
+14. **Think — Why minimize the squared TD error?** The TD update minimizes ½(δ)² where δ = r + γV(s') - V(s). Why square the TD error rather than minimize |δ|?
+
+{{< collapse summary="Answer" >}}
+Squaring the error: (1) makes it differentiable everywhere (|δ| has a non-differentiable kink at δ=0); (2) penalizes large errors more than small ones (squared grows faster); (3) the gradient is simply δ × (-1) = -δ, which is clean and easy to implement.
+
+MSE loss is standard in regression; minimizing ½δ² leads to the TD update rule through one gradient step.
+
+**Alternative:** Huber loss (L1 for large |δ|, L2 for small |δ|) is more robust to outliers and used in some DQN implementations.
+{{< /collapse >}}
+
+---
+
+15. **Apply — Entropy gradient:** The entropy of a discrete distribution is H(π) = -Σ_a π(a) log π(a). Compute ∂H/∂π(a) for a fixed action a.
+
+{{< collapse summary="Answer" >}}
+∂H/∂π(a) = -log π(a) - π(a) × (1/π(a)) = **-(log π(a) + 1)**.
+
+**In SAC:** The maximum entropy objective adds αH(π) to the reward. Its gradient -(log π(a) + 1) encourages the policy to keep action probabilities from collapsing to 0 (high entropy = more uniform = more exploration).
+
+**Python (numerical check):**
+```python
+import math, numpy as np
+pi = np.array([0.2, 0.5, 0.3])
+# Gradient of entropy at action 0
+print(-(math.log(pi[0]) + 1))   # ≈ 2.609
+```
+{{< /collapse >}}
+
+{{< pyrepl code="import math\nimport numpy as np\n\npi = np.array([0.2, 0.5, 0.3])\nH = -sum(p * math.log(p) for p in pi)\nprint(f'Entropy H(pi) = {H:.4f}')\n\n# Gradient at each action\ngrads = [-(math.log(p) + 1) for p in pi]\nprint('dH/d_pi:', [round(g, 3) for g in grads])" height="220" >}}
+
+---
+
 ## Common pitfalls
 
 - **Maximize vs minimize:** Policy gradient *maximizes* return, so the update is \\(\theta \leftarrow \theta + \alpha \nabla_\theta J\\) (plus, not minus). Loss minimization uses minus. Mixing them up flips the direction of learning.

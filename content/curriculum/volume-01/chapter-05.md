@@ -51,3 +51,10 @@ The **state-value function** \\(V^\\pi(s)\\) is the expected (discounted) return
 1. **Warm-up:** For a one-state MDP with one action that gives reward 1 and stays in the same state, write the Bellman equation and solve for \\(V\\). (Answer: \\(V = 1 + \\gamma V\\) ⇒ \\(V = 1/(1-\\gamma)\\).)
 2. **Coding:** In Python, encode the 2-state MDP from Chapter 3 (P, R matrices). Write a function that computes \\(V^\\pi\\) for a given policy using the Bellman expectation equation in matrix form (solve the linear system \\(V = R^\\pi + \\gamma P^\\pi V\\)).
 3. **Challenge:** Write the Bellman equation for the *action-value* function \\(Q^\\pi(s,a)\\) for the Chapter 3 MDP and random policy. Express \\(Q^\\pi(A,\\text{stay})\\) and \\(Q^\\pi(A,\\text{go})\\) in terms of \\(V^\\pi(A)\\) and \\(V^\\pi(B)\\) (you can use your computed \\(V\\)).
+4. **Variant:** Re-compute \\(V^\\pi\\) for the 2-state MDP with \\(\gamma=0.5\\) and \\(\gamma=0.99\\). How much do \\(V^\\pi(A)\\) and \\(V^\\pi(B)\\) change? Why does higher \\(\gamma\\) increase the magnitude of values?
+5. **Debug:** The linear system below has a sign error (a common mistake). Find and fix it: \\((I + \\gamma P^\\pi) V = R^\\pi\\) — why is this wrong?
+
+{{< pyrepl code="import numpy as np\n# 2-state MDP, random policy (0.5 each), gamma=0.9\n# States: 0=A, 1=B\nP_pi = np.array([[0.5*0.8 + 0.5*0,   0.5*0.2 + 0.5*1],\n                  [1.0,               0.0]])\nR_pi = np.array([0.5*1 + 0.5*0,   # state A: avg reward\n                  0.5*(-1) + 0.5*(-1)])  # state B\ngamma = 0.9\nI = np.eye(2)\n# Correct: (I - gamma*P_pi) V = R_pi\n# BUG below uses + instead of -\nV_buggy = np.linalg.solve(I + gamma * P_pi, R_pi)\nV_correct = np.linalg.solve(I - gamma * P_pi, R_pi)\nprint('Buggy V:', V_buggy)\nprint('Correct V:', V_correct)" height="260" >}}
+
+6. **Conceptual:** Why is \\(V^\\pi\\) useful even when we do not have access to the transition model \\(P\\) (i.e. in model-free RL)?
+7. **Recall:** State the Bellman expectation equation for \\(V^\\pi(s)\\) from memory.

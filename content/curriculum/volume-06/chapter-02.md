@@ -46,3 +46,6 @@ A **world model** (or dynamics model) predicts \\(s_{t+1}\\) from \\(s_t, a_t\\)
 1. **Warm-up:** Why does 10-step prediction error usually exceed 1-step error?
 2. **Coding:** Train the model; plot 1-step, 5-step, 10-step MSE on a validation set. Fit a curve (e.g. exponential) to error vs step.
 3. **Challenge:** Use an **ensemble** of 5 models and take the mean prediction. Does ensemble reduce compounding error over 10 steps?
+4. **Variant:** Change the ensemble size from 5 to 2 and to 10. Plot multi-step MSE for each ensemble size. Is there diminishing return beyond a certain size?
+5. **Debug:** The following forward model is trained but multi-step error explodes after 3 steps even though 1-step error is low. The model predicts `next_state = f(state, action)` but the training loop feeds `next_state_predicted` back as input during training. What is wrong, and how do you fix it?
+6. **Conceptual:** Explain why compounding model error is analogous to floating-point rounding error accumulating over repeated multiplication. What structural property of the model would slow this accumulation?

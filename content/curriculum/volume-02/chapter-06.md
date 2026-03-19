@@ -45,3 +45,10 @@ keywords: ["n-step SARSA", "n-step bootstrapping", "Cliff Walking", "TD"]
 1. **Warm-up:** For \\(n=2\\), write the n-step return \\(G_{t:t+2}\\) in terms of \\(r_{t+1}, r_{t+2}, Q(s_{t+2}, a_{t+2})\\) and \\(\\gamma\\).
 2. **Coding:** Write a function that, given a trajectory (s_0, a_0, r_1, s_1, ..., s_T) and n, returns the n-step returns G_{t:t+n} for t=0..T-n. Use a fixed Q-table for bootstrap.
 3. **Challenge:** Implement n-step *Q-learning*: use \\(G = r_1 + \\cdots + \\gamma^{n-1} r_n + \\gamma^n \\max_{a} Q(s_n, a)\\). Compare with n-step SARSA on Cliff Walking.
+4. **Variant:** Try \\(n = 1, 4, 10\\) on Cliff Walking. Plot learning curves. Which \\(n\\) gives the best performance? Is there a point where larger \\(n\\) hurts?
+5. **Debug:** The n-step return below does not handle episode termination correctly — it bootstraps with \\(Q(s_n,a_n)\\) even when \\(s_n\\) is terminal. Fix it.
+
+{{< pyrepl code="def nstep_return(rewards, q_next, gamma, n, done=False):\n    \"\"\"Compute n-step return from rewards list.\"\"\"\n    G = sum(gamma**i * r for i, r in enumerate(rewards[:n]))\n    # BUG: adds bootstrap even when episode is done\n    G += gamma**n * q_next\n    return G\n\n# Fix: only add bootstrap term if not done\n# G += (0 if done else gamma**n * q_next)\nprint(nstep_return([0,0,1], q_next=0.5, gamma=0.9, n=3, done=True))\n# When done=True, should NOT add q_next term" height="220" >}}
+
+6. **Conceptual:** How does n-step bootstrapping unify MC (\\(n=\\infty\\)) and TD(0) (\\(n=1\\))? What is the bias-variance trade-off as \\(n\\) increases?
+7. **Recall:** Write the n-step return \\(G_{t:t+n}\\) formula from memory.

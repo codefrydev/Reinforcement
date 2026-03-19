@@ -47,3 +47,10 @@ keywords: ["limits of tabular methods", "function approximation", "curse of dime
 1. **Warm-up:** A 10×10 grid has 100 states and 4 actions. How many floats for a Q-table with 4 bytes each? (100 × 4 × 4 = 1600 bytes.)
 2. **Coding:** Implement a linear function approximator for Q: state s (e.g. 4-dim) → feature vector φ(s) (e.g. identity or tile coding), Q(s,a) = w^T φ(s,a). Train with Q-learning (semi-gradient) on CartPole or a small env. Plot episode return.
 3. **Challenge:** Estimate the number of parameters in a small neural network that takes a Backgammon state (encoded as a vector of size 100) and outputs Q-values for 50 actions (one hidden layer of 256 units). Compare that number to the tabular size. (E.g. 100×256 + 256×50 ≈ 38k parameters; 38k × 4 bytes ≈ 150 KB.)
+4. **Variant:** Consider a Connect-4 board: 6 rows × 7 columns × 3 values (empty, X, O) per cell. Estimate the upper bound on state count (\\(3^{42}\\)) and compare the Q-table memory to the neural network approach.
+5. **Debug:** The code below treats every unique continuous state as a separate dict key, so it never generalizes and the Q-table grows unboundedly. Explain the problem and how function approximation solves it.
+
+{{< pyrepl code="import random\nQ = {}  # maps state (float tuple) to dict of Q-values\n\ndef get_q(s, a):\n    # BUG: for continuous s, every s is a unique key -> no generalization\n    return Q.get((s,a), 0.0)\n\ndef update_q(s, a, td_target, alpha=0.1):\n    Q[(s,a)] = get_q(s,a) + alpha * (td_target - get_q(s,a))\n\n# Each call uses a slightly different float s -> huge table\nfor _ in range(100):\n    s = (random.gauss(0,1), random.gauss(0,1))\n    update_q(s, 0, 1.0)\nprint(f'Table size after 100 steps: {len(Q)} entries (too big!)')\nprint('Fix: use function approximation (linear or neural)')" height="240" >}}
+
+6. **Conceptual:** What is the "curse of dimensionality" in tabular RL? Give one concrete example.
+7. **Recall:** State in one sentence why function approximation is necessary for large or continuous state spaces.

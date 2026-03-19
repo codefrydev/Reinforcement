@@ -47,3 +47,10 @@ keywords: ["A2C", "advantage actor-critic", "CartPole", "multi-env"]
 1. **Warm-up:** What is the difference between A2C and REINFORCE in terms of what signal is used to update the policy (return \\(G_t\\) vs TD error \\(\delta\\))? Which has higher variance?
 2. **Coding:** Implement A2C with 4 parallel CartPole envs. Plot mean episode return (over the 4 envs) every 10 updates. Compare training time (wall clock) to single-env REINFORCE for the same number of steps.
 3. **Challenge:** Use **n-step returns** (e.g. n=5): collect 5 steps per env, compute \\(G_{t:t+5} = \sum_{i=0}^{4} \gamma^i r_{t+i} + \gamma^5 V(s_{t+5})\\), and use \\(G_{t:t+5} - V(s_t)\\) as advantage. Compare stability and sample efficiency to 1-step TD.
+4. **Variant:** Try 1, 4, and 8 parallel environments in A2C. Does the number of envs affect the final performance or just wall-clock speed? Plot learning curves for all three settings.
+5. **Debug:** The code below forgets to detach \\(V(s')\\) when computing the TD advantage for the actor loss, causing gradients to flow into the critic through the actor update. Fix it.
+
+{{< pyrepl code="import torch\n\ndef a2c_loss(actor, critic, states, actions, rewards, next_states, dones, gamma=0.99):\n    V = critic(states).squeeze()\n    # BUG: V_next has no .detach() — gradient flows through it\n    V_next = critic(next_states).squeeze()\n    delta = rewards + gamma * (1 - dones) * V_next - V  # BUG\n    log_probs = actor(states).log_prob(actions)\n    actor_loss = -(log_probs * delta.detach()).mean()\n    # Wait — delta itself still depends on V_next without detach...\n    critic_loss = delta.pow(2).mean()\n    return actor_loss + critic_loss\n\n# Fix: V_next = critic(next_states).squeeze().detach()\nprint('Fix: V_next should be detached for delta used in actor_loss')" height="240" >}}
+
+6. **Conceptual:** Why does synchronous batching (A2C) typically lead to more stable training than asynchronous updates (A3C)? What is the main downside of synchronous updates?
+7. **Recall:** Describe the A2C update loop in pseudocode: collect batch, compute TD advantage, update actor and critic in one sentence each.

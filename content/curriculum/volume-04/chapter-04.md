@@ -46,3 +46,10 @@ The policy gradient with a baseline is \\(\mathbb{E}[ \nabla \log \pi(a|s) \, (G
 1. **Warm-up:** In one sentence, why does subtracting a state-dependent baseline \\(b(s)\\) from \\(G_t\\) keep the policy gradient unbiased? (Hint: \\(\mathbb{E}[ \nabla \log \pi \, b(s) ] = ?\\))
 2. **Coding:** Implement REINFORCE with baseline. Plot the mean and standard deviation of \\(G_t - V(s_t)\\) over the last 100 steps (or one episode) every 500 episodes. Does the std decrease as V gets better?
 3. **Challenge:** Use a **moving average** baseline \\(b(s) = \bar{G}\\) (global average return) instead of a learned V(s). Implement it and compare variance and learning speed to the learned baseline.
+4. **Variant:** Try using a **constant** baseline (e.g. the mean return from the previous episode) versus a learned \\(V(s)\\). Does the constant baseline reduce variance? Which performs better after 500 episodes?
+5. **Debug:** The code below uses a baseline that depends on the action \\(a_t\\) (specifically, it uses \\(Q(s,a)\\) as the baseline), introducing bias. Explain why this is wrong and how to fix it.
+
+{{< pyrepl code="def biased_policy_gradient(log_probs, states, actions, returns, Q_table):\n    \"\"\"BUG: baseline depends on the action, introducing bias.\"\"\"\n    loss = 0\n    for lp, s, a, G in zip(log_probs, states, actions, returns):\n        # BUG: Q(s,a) depends on a, so E[grad log pi * Q(s,a)] != 0\n        baseline = Q_table.get((s, a), 0.0)\n        loss += -lp * (G - baseline)\n    return loss\n\n# Fix: use V(s) = E_a[Q(s,a)] as baseline, NOT Q(s,a)\n# E[grad log pi * V(s)] = 0 since V(s) does not depend on a\nprint('Fix: baseline must not depend on the current action')" height="200" >}}
+
+6. **Conceptual:** Explain mathematically why \\(\\mathbb{E}[\\nabla_\\theta \\log \\pi(a|s) \\cdot b(s)] = 0\\) when \\(b\\) depends only on the state \\(s\\) (not on \\(a\\)).
+7. **Recall:** State the advantage definition \\(A^\\pi(s,a) = Q^\\pi(s,a) - V^\\pi(s)\\) from memory and explain why \\(G_t - V(s_t)\\) estimates it.

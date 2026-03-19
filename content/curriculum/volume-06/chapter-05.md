@@ -46,3 +46,6 @@ keywords: ["AlphaZero", "MCTS", "neural network", "self-play", "tic-tac-toe"]
 1. **Warm-up:** Why does AlphaZero use MCTS policy as the training target instead of the raw network policy?
 2. **Coding:** Implement mini AlphaZero for tic-tac-toe. Every 100 self-play games, evaluate vs random (20 games). Plot win rate over training.
 3. **Challenge:** Add a **replay buffer** of past games (e.g. last 10k positions) and sample from it for training. Does it improve stability?
+4. **Variant:** Change the number of MCTS simulations per move from 50 to 200 and to 10. How does win rate and training speed trade off? At what point does fewer simulations hurt policy quality?
+5. **Debug:** Mini AlphaZero trains but win rate plateaus at 50% (no better than random). The network outputs the same prior probability for all moves. Identify two possible causes: one related to network initialization and one related to the loss function.
+6. **Conceptual:** AlphaZero improves its own training targets over time via self-play. Why could this feedback loop become unstable (the "forgetting" problem), and how does the replay buffer mitigate it?

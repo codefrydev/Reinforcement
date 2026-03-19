@@ -45,3 +45,10 @@ Standard DQN uses \\(y = r + \\gamma \\max_{a'} Q_{target}(s',a')\\). The max ov
 1. **Warm-up:** In one sentence, why does \\(\\max_a Q(s,a)\\) overestimate the true value when \\(Q\\) is noisy?
 2. **Coding:** Modify your DQN to Double DQN: use online network for argmax action, target network for Q(s', a*). Compare Q-values (mean over batch) after 10k steps with standard DQN on CartPole.
 3. **Challenge:** Log the *max* Q-value per batch (before and after training) for DQN vs DDQN. Does DDQN's max Q stay more moderate? Relate to overestimation.
+4. **Variant:** Apply Double DQN to LunarLander (a more challenging env). Is overestimation more pronounced there than on CartPole? Measure mean Q-values for both.
+5. **Debug:** The code below uses the target network for both action selection and evaluation (standard DQN, not Double DQN). Fix it to use the online network for selection.
+
+{{< pyrepl code="import torch\n\ndef compute_target_dqn(online_net, target_net, s_next, r, done, gamma=0.9):\n    with torch.no_grad():\n        # BUG: uses target_net for action selection (standard DQN)\n        q_next = target_net(s_next)  # should be online_net for DDQN\n        a_star = q_next.argmax(dim=1)  # action selection from target (wrong)\n        q_target = target_net(s_next).gather(1, a_star.unsqueeze(1)).squeeze(1)\n    return r + gamma * (1 - done) * q_target\n\n# Fix: use online_net for a_star, target_net only for evaluation\ndef compute_target_ddqn(online_net, target_net, s_next, r, done, gamma=0.9):\n    with torch.no_grad():\n        a_star = online_net(s_next).argmax(dim=1)  # FIXED: online selects\n        q_target = target_net(s_next).gather(1, a_star.unsqueeze(1)).squeeze(1)\n    return r + gamma * (1 - done) * q_target\n\nprint('DDQN: online selects action, target evaluates Q(s\\', a*)')" height="260" >}}
+
+6. **Conceptual:** Why does using the *same* network for both action selection and evaluation in the TD target lead to overestimation bias?
+7. **Recall:** State the Double DQN target formula \\(y = r + \\gamma Q_{target}(s', \\arg\\max_a Q_{online}(s',a))\\) from memory.

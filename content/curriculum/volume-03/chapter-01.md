@@ -45,3 +45,10 @@ keywords: ["linear function approximation", "tile coding", "semi-gradient SARSA"
 1. **Warm-up:** For a 1D state in [0,1] with one tiling of 4 tiles, what is \\(\\phi(0.25)\\)? (One tile is "on"; the rest 0. So a 4-dim vector with one 1.)
 2. **Coding:** Implement tile coding for a 2D state (e.g. position in [0,1]×[0,1]) with 4 tilings and 8 tiles per dimension. Return the feature vector for (0.5, 0.5). What is the total number of features?
 3. **Challenge:** Replace tile coding with **radial basis functions** (RBFs): \\(\\phi_i(s) = \\exp(-\\|s - c_i\\|^2 / (2\\sigma^2))\\) for a grid of centers \\(c_i\\). Compare learning speed with tile coding on MountainCar.
+4. **Variant:** Try 4 tilings and 16 tilings on MountainCar. Does more tilings improve performance? What is the trade-off in feature vector size and memory?
+5. **Debug:** The code below computes the gradient through the target \\(Q(s',a';w)\\) when updating \\(w\\), violating semi-gradient. Fix it by treating the target as a constant.
+
+{{< pyrepl code="import numpy as np\n\ndef semi_gradient_sarsa_update(w, phi_s, phi_s_next, r, alpha=0.01, gamma=0.9):\n    Q_sa = w @ phi_s\n    Q_s_next = w @ phi_s_next\n    # BUG: delta uses w for both terms -> gradient flows through target\n    delta = r + gamma * Q_s_next - Q_sa\n    # Should NOT update w toward Q_s_next gradient\n    # Fix: treat Q_s_next as a constant (already correct in delta,\n    # but gradient only applies to phi_s)\n    w += alpha * delta * phi_s  # correct: gradient is phi_s only\n    return w\n\nphi = np.array([1.0, 0.0, 0.0, 0.0])\nw = np.zeros(4)\nw = semi_gradient_sarsa_update(w, phi, phi, 1.0)\nprint('Updated w:', w[:2])" height="240" >}}
+
+6. **Conceptual:** What is the "deadly triad" in reinforcement learning with function approximation? Name the three components.
+7. **Recall:** Write the semi-gradient SARSA weight update \\(w \\leftarrow w + \\alpha \\delta \\nabla_w Q(s,a;w)\\) and state what \\(\\nabla_w Q\\) equals for linear approximation.

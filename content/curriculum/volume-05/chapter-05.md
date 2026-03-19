@@ -46,3 +46,10 @@ keywords: ["PPO implementation", "LunarLanderContinuous", "GAE", "rollout buffer
 1. **Warm-up:** Why do we do multiple epochs of updates on the same rollout data? What is the risk if we do too many epochs?
 2. **Coding:** Implement PPO for LunarLanderContinuous. Plot episode return every 10 episodes. How many episodes until you first get a successful landing (positive return)?
 3. **Challenge:** Ablate: (a) remove the entropy bonus; (b) set \\(\\epsilon = 0\\) (no clip). How does learning stability and final performance change?
+4. **Variant:** Change rollout length from 2048 to 512 or 4096 steps. Does a shorter rollout hurt GAE accuracy? Does a longer one slow learning per update? Compare learning curves.
+5. **Debug:** The code below stores the log-probs from the *updated* network during the ratio computation — it should use the *old* log-probs stored during rollout. Fix it.
+
+{{< pyrepl code="# Simulated PPO minibatch update\nimport torch\n\ndef ppo_ratio_buggy(actor, states, actions, old_log_probs, eps=0.2):\n    # BUG: recomputes old_log_probs from current network!\n    new_log_probs = actor(states).log_prob(actions)\n    old_log_probs_wrong = actor(states).log_prob(actions)  # same network!\n    ratio = torch.exp(new_log_probs - old_log_probs_wrong)  # ratio ~ 1 always\n    return ratio\n\ndef ppo_ratio_fixed(actor, states, actions, old_log_probs, eps=0.2):\n    # Fix: old_log_probs should be stored during rollout and passed in\n    new_log_probs = actor(states).log_prob(actions)\n    ratio = torch.exp(new_log_probs - old_log_probs)  # correct\n    return ratio\n\nprint('Bug: ratio will always be ~1.0 (no policy update detected)')\nprint('Fix: pass old_log_probs stored at rollout time')" height="240" >}}
+
+6. **Conceptual:** Why does PPO apply multiple gradient steps on the same rollout batch while REINFORCE only does one? Why does the clipping make it safe to do multiple steps?
+7. **Recall:** List the four components of the full PPO loss (policy loss, value loss, entropy bonus, and their signs/coefficients) from memory.

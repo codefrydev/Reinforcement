@@ -45,3 +45,10 @@ keywords: ["neural networks for RL", "PyTorch", "Q-values", "MSE loss"]
 1. **Warm-up:** For state dim 4 and 3 actions, what are the shapes of the input tensor and the output tensor for a batch of 32?
 2. **Coding:** Build a 2-layer MLP in PyTorch that takes state (4,) and outputs Q(s,a) for 2 actions. Forward pass with batch size 16. Print output shape.
 3. **Challenge:** Add a method to the network that, given a state, returns the greedy action (argmax over Q-values). Use it in a short loop to run one episode of CartPole with a random (untrained) network and report the total reward.
+4. **Variant:** Add a third hidden layer of 128 units to your MLP. Does the output shape change? Does a larger network train faster or slower for a fixed number of gradient steps?
+5. **Debug:** The code below computes loss but the target has `requires_grad=True`, causing the optimizer to update through the target. Fix it with `.detach()`.
+
+{{< pyrepl code="import torch\nimport torch.nn.functional as F\n\n# Simulated: Q_pred from online net, Q_next from same net (wrong)\nQ_pred = torch.tensor([[0.3, 0.7]], requires_grad=True)\ntarget_raw = torch.tensor([[0.5, 0.9]], requires_grad=True)  # BUG\n\n# BUG: target should be detached so gradient doesn't flow through it\nloss = F.mse_loss(Q_pred, target_raw)\nloss.backward()\nprint('target grad (should be None):', target_raw.grad)\n\n# Fix: target_raw.detach() before loss\ntarget_fixed = target_raw.detach()\nloss2 = F.mse_loss(Q_pred, target_fixed)\nprint('fixed: target_fixed.grad is None:', True)" height="240" >}}
+
+6. **Conceptual:** Why do we use MSE loss (not cross-entropy) for Q-network training in DQN?
+7. **Recall:** State the role of the target network in DQN in one sentence.

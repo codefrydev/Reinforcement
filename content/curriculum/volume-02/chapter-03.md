@@ -45,3 +45,10 @@ keywords: ["SARSA", "on-policy TD control", "Cliff Walking", "temporal differenc
 1. **Warm-up:** For one transition \\((s,a,r,s',a')\\), write the SARSA update in one line. What is the TD error \\(r + \\gamma Q(s',a') - Q(s,a)\\)?
 2. **Coding:** Implement SARSA for a 5×5 gridworld with a goal. Use a tabular Q-table, ε-greedy (ε=0.1). Run 500 episodes and plot episode return vs episode.
 3. **Challenge:** Run SARSA with \\(\epsilon=0\\) (greedy) from the start. Does it learn a good policy? Compare with \\(\epsilon=0.1\\). Why does some exploration help?
+4. **Variant:** Run SARSA with \\(\epsilon=0.05\\) and \\(\epsilon=0.3\\) on Cliff Walking. Compare episode return curves and the final policy. Which \\(\epsilon\\) leads to a safer path?
+5. **Debug:** The code below uses \\(\\max_{a'} Q(s',a')\\) instead of \\(Q(s',a')\\) where \\(a'\\) is the action actually taken. This makes it Q-learning, not SARSA. Fix it.
+
+{{< pyrepl code="import random\nQ = {}  # defaultdict-like; initialize lazily\nactions = [0,1,2,3]\nalpha, gamma, eps = 0.5, 0.9, 0.1\n\ndef get_q(s, a):\n    return Q.get((s,a), 0.0)\n\ndef sarsa_update(s, a, r, s_next, a_next):\n    # BUG: uses max instead of Q(s', a_next)\n    td_target = r + gamma * max(get_q(s_next, a2) for a2 in actions)\n    Q[(s,a)] = get_q(s,a) + alpha * (td_target - get_q(s,a))\n\n# Fix: use get_q(s_next, a_next) — the actual next action\nsarsa_update('S0', 0, -1, 'S1', 1)\nprint('Q[(S0,0)]:', Q.get(('S0',0), 0))" height="240" >}}
+
+6. **Conceptual:** Why does SARSA learn a safer policy than Q-learning on Cliff Walking, even when both use ε-greedy exploration?
+7. **Recall:** Write the SARSA update rule from memory in one line.

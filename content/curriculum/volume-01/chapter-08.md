@@ -47,3 +47,10 @@ keywords: ["policy iteration", "value iteration", "dynamic programming", "optima
 1. **Warm-up:** After one round of policy iteration (evaluate once, improve once), is the new policy necessarily different from the initial random policy? Explain in one sentence.
 2. **Coding:** Implement policy iteration (evaluate until convergence, then improve, repeat). On a 4×4 gridworld, start with a random policy and run until the policy does not change. Compare the final \\(V\\) with value iteration.
 3. **Challenge:** Count how many policy iteration iterations (evaluate + improve) you need until the policy stabilizes for the 4×4 gridworld. Compare with the number of value iteration sweeps needed to reach the same \\(V^*\\) (within 1e-4). Which converged faster in your implementation?
+4. **Variant:** Instead of running policy evaluation until full convergence each iteration, perform exactly 5 Bellman sweeps then improve. Does the final policy change? How many improvement steps are needed compared to full evaluation?
+5. **Debug:** The "policy stable" check below never triggers because it compares lists by identity instead of value. Find and fix the bug.
+
+{{< pyrepl code="import copy\npolicy = [[0,1,2,3],[0,1,2,3],[0,1,2,3],[0,1,2,3]]  # 4x4 grid\n\ndef improve(policy, V):\n    new_policy = copy.deepcopy(policy)\n    # ... (update new_policy based on V)\n    return new_policy\n\ndef policy_iteration(policy, V):\n    for _ in range(100):\n        new_policy = improve(policy, V)\n        if new_policy is policy:  # BUG: identity check, not equality\n            print('converged')\n            break\n        policy = new_policy\n    return policy\n\n# Fix: use == or compare elementwise\nprint('Policy stable check: use == not is')" height="220" >}}
+
+6. **Conceptual:** Why does policy improvement guarantee the new policy is at least as good as the old one? State the key inequality that makes this work.
+7. **Recall:** State the policy improvement theorem in one sentence from memory.

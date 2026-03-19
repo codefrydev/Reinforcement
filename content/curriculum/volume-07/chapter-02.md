@@ -46,3 +46,6 @@ keywords: ["intrinsic motivation", "state visitation count", "exploration bonus"
 1. **Warm-up:** Why does \\(1/\\sqrt{N(s)}\\) encourage visiting rarely visited states more than \\(1/N(s)\\)?
 2. **Coding:** Implement count-based intrinsic reward in a 5×5 gridworld. Plot coverage (% cells visited at least once) vs steps for beta=0, 0.1, 1.0. Which explores fastest?
 3. **Challenge:** Use **pseudo-counts** from a density model (e.g. fit a kernel density estimator on visited states). Use bonus = 1/sqrt(pseudo_count). Does it work in a continuous state space (e.g. 2D position)?
+4. **Variant:** Use a finer state discretization (e.g. 10×10 bins instead of 5×5) for pseudo-counts in a 2D continuous env. How does granularity affect exploration coverage and computation?
+5. **Debug:** A count-based agent achieves high coverage but final task performance is poor. The intrinsic bonus is never annealed — after the agent has fully explored, it keeps getting equal bonus for all states. What fix ensures the agent transitions from exploration to exploitation?
+6. **Conceptual:** Count-based exploration works well in tabular settings but breaks in high-dimensional or continuous spaces. Explain precisely why: what property of the state space makes exact counts uninformative or impractical?

@@ -130,3 +130,29 @@ plt.close()
 ---
 
 **Docs:** [matplotlib.org](https://matplotlib.org/stable/contents.html). Optional: [Seaborn](https://seaborn.pydata.org/) for statistical plots.
+
+---
+
+## Additional exercises
+
+### Micro-exercises
+
+1. `import matplotlib.pyplot as plt; plt.plot([1,2,3]); plt.show()` — run this and describe what you see.
+2. Add `plt.xlabel('x')`, `plt.ylabel('y')`, `plt.title('Test')` to the plot above.
+3. What does `plt.figure(figsize=(8,4))` do? Try different sizes.
+4. Plot a horizontal line at y=0.5 across x=[0,100] using `plt.axhline(0.5, color='red')`.
+5. `plt.bar(['A','B','C'], [0.3, 0.7, 0.5]); plt.show()` — what kind of chart is this?
+
+{{< pyrepl code="import matplotlib.pyplot as plt\n# Micro-exercise: plot a learning curve\nreturns = [1, 3, 5, 7, 8, 9, 9, 10]\nplt.figure(figsize=(6,3))\nplt.plot(returns)\nplt.xlabel('Episode')\nplt.ylabel('Return')\nplt.title('Learning Curve')\nplt.show()" height="260" >}}
+
+### Build something small
+
+1. Plot the function y = x² for x in [-3, 3] (use `np.linspace(-3,3,100)`).
+2. Create a side-by-side comparison (2 subplots) of epsilon=0.1 vs epsilon=0 reward curves (use `plt.subplot(1,2,1)` and `plt.subplot(1,2,2)`).
+3. Plot a 5×5 heatmap of random values using `plt.imshow` with `plt.colorbar()`.
+
+### Mini-project: Bandit learning curve with multiple lines
+
+Plot average reward over 1000 steps for ε=0, 0.01, 0.1, 0.5 on a 5-armed bandit. Each line a different epsilon. Include a legend and title.
+
+{{< pyrepl code="import numpy as np\nimport matplotlib.pyplot as plt\nnp.random.seed(0)\n# TODO: run bandits with different epsilon values\n# and plot average reward curves\nprint('Plot multiple epsilon learning curves here')" height="220" >}}

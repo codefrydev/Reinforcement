@@ -163,6 +163,26 @@ menu:
       name: Archives
       url: /archives/
       weight: 25
+    # New pages
+    - identifier: glossary
+      name: Glossary
+      url: /glossary/
+      parent: learn
+      weight: 6
+    - identifier: assessments
+      name: Assessments
+      url: /assessment/
+      parent: learn
+      weight: 7
+    - identifier: lab
+      name: "🧪 Lab (Python)"
+      url: "https://codefrydev.in/Reinforcement/lab/"
+      weight: 5
+    - identifier: appendix
+      name: Appendix
+      url: /appendix/
+      parent: learn
+      weight: 8
 
 pygmentsUseClasses: true
 markup:
@@ -172,3 +192,5 @@ markup:
     lineNos: true
     noClasses: false
     style: monokai
+  mermaid:
+    enable: true

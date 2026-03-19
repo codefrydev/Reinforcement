@@ -46,3 +46,21 @@ For **continuous actions** (e.g. torque, throttle), we cannot use a softmax over
 1. **Warm-up:** For a 1D Gaussian with \\(\mu=0, \sigma=1\\), write the log-probability of \\(a=0.5\\) in closed form. Check with `scipy.stats.norm(0,1).logpdf(0.5)`.
 2. **Coding:** Implement a Gaussian policy network for Pendulum: input 3-dim state, output \\(\mu\\) and \\(\log \\sigma\\). Sample 100 actions from the policy (with a fixed random state) and plot a histogram. Compute the mean log-prob of those samples.
 3. **Challenge:** Add **tanh squashing** so the action is in \\((-1, 1)\\): \\(a = \tanh(a_{raw})\\). Derive the log-probability of \\(a\\) given \\(a_{raw} \\sim \mathcal{N}(\\mu, \\sigma^2)\\) (include the derivative of tanh). Implement it and use it in a short REINFORCE loop for Pendulum.
+4. **Variant:** Try a very small \\(\\log \\sigma = -5\\) (deterministic) vs \\(\\log \\sigma = 0\\) (unit std). How does exploration change? Does the near-deterministic policy get stuck in local optima?
+
+{{< pyrepl code="import torch\nimport torch.distributions as dist\n\n# Gaussian policy for 1D action\nmu = torch.tensor([0.0])\nfor log_sigma in [-2.0, 0.0, 1.0]:\n    sigma = torch.exp(torch.tensor(log_sigma))\n    p = dist.Normal(mu, sigma)\n    actions = p.sample((100,))\n    print(f'log_sigma={log_sigma:.1f}: mean={actions.mean():.2f}, std={actions.std():.2f}')" height="200" >}}
+
+5. **Debug:** The code below forgets to add the tanh Jacobian correction to the log-probability, causing the gradient to be wrong for bounded actions. Fix it.
+
+```python
+def log_prob_squashed(mu, log_sigma, a_raw):
+    sigma = log_sigma.exp()
+    dist = torch.distributions.Normal(mu, sigma)
+    lp = dist.log_prob(a_raw)
+    # BUG: missing tanh correction
+    # Fix: lp -= torch.log(1 - a_raw.tanh().pow(2) + 1e-6)
+    return lp
+```
+
+6. **Conceptual:** Why do we output \\(\\log \\sigma\\) (log-standard deviation) instead of \\(\\sigma\\) directly? What numerical problem would arise if we used \\(\\sigma\\) without the log?
+7. **Recall:** Write the log-probability formula for a Gaussian policy \\(\\log \\pi(a|s) = \\ldots\\) in terms of \\(\\mu, \\sigma, a\\) from memory.

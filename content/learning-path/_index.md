@@ -33,6 +33,11 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Start here:** [Phase 0: Programming from zero](phase-0/)
 
+**New in this curriculum:**
+- [Python Confidence Builder](phase-0/python-confidence/) — 25 mini-challenges before Phase 1 (Level 0.5)
+- [RL in Plain English](rl-in-plain-english/) — no math, no code intuition builder (Level 1.5)
+- [Bridge Exercises](bridge-exercises/) — 15 problems combining Python + math + toy RL (Level 2.5)
+
 ---
 
 ## Phase 1 — Math foundations for RL
@@ -161,3 +166,13 @@ This learning path takes you from **zero programming experience** to understandi
 | 5 | [Volumes 6–10](../curriculum/) | Ongoing |
 
 Good luck on your journey from zero to mastery.
+
+---
+
+## Quick Reference
+
+- [Glossary](../glossary/) — 75 RL terms with definitions, chapter references, and examples
+- [Assessments](../assessment/) — Phase 0, Phase 5, and 5 mid-volume checkpoints
+- [Appendix: Debugging RL Code](../appendix/debugging-rl-code/) — Common bugs and 5 find-the-bug exercises
+- [Appendix: Reading RL Papers](../appendix/reading-rl-papers/) — How to read DQN, PPO, and SAC papers
+- [Interactive Lab](https://codefrydev.in/Reinforcement/lab/) — Run Python in your browser (JupyterLite)

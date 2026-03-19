@@ -45,3 +45,10 @@ keywords: ["Dyna-Q", "planning and learning", "tabular methods", "model-based"]
 1. **Warm-up:** After 100 real steps, how many (s,a) pairs might your model contain? How many total Q-updates does Dyna-Q do in those 100 steps (real + planning)?
 2. **Coding:** Implement a simple deterministic model (dict (s,a) -> (s', r)) and Dyna-Q: after each real step, do k=5 planning steps (sample random (s,a) from model, update Q). Compare with Q-learning (k=0) on a small gridworld.
 3. **Challenge:** Vary the number of planning steps \\(k \\in \\{0, 5, 20\\}\\). Plot learning curves. Does more planning always help? What if \\(k\\) is very large?
+4. **Variant:** Use a stochastic model: for each (s,a), store a list of observed (r,s') outcomes and sample from them during planning. Does Dyna-Q still converge to the same Q as the deterministic version?
+5. **Debug:** The code below only samples the most recently seen (s,a) from the model instead of a random one, making planning weak. Fix it.
+
+{{< pyrepl code="import random\nmodel = {}  # (s,a) -> (s', r)\nlast_sa = None\n\ndef update_model(s, a, s_next, r):\n    global last_sa\n    model[(s,a)] = (s_next, r)\n    last_sa = (s, a)  # only track the most recent\n\ndef planning_step(Q, alpha, gamma):\n    # BUG: only uses the last (s,a) instead of a random one\n    if last_sa is None:\n        return\n    s, a = last_sa  # BUG\n    s_next, r = model[(s,a)]\n    td = r + gamma * max(Q.get((s_next,a2),0) for a2 in range(4))\n    Q[(s,a)] = Q.get((s,a),0) + alpha * (td - Q.get((s,a),0))\n\n# Fix: sample a random key from model dict\nprint('Fix: use random.choice(list(model.keys()))')" height="260" >}}
+
+6. **Conceptual:** What assumption does a deterministic model make? In what kind of environment would this assumption fail?
+7. **Recall:** Explain the Dyna-Q planning loop in two sentences from memory.

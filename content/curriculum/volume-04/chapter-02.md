@@ -46,3 +46,16 @@ In **policy gradient** methods we maximize the expected return \\(J(\theta) = \m
 1. **Warm-up:** For a one-step MDP with two actions and \\(\pi(a_1|s)=p\\), \\(\pi(a_2|s)=1-p\\), and rewards \\(r_1, r_2\\), write \\(J(p)\\) and compute \\(dJ/dp\\) by hand. Then write it in the form \\(\mathbb{E}[ \nabla \log \pi \, r ]\\).
 2. **Coding:** In Python, for a discrete policy \\(\pi = \mathrm{softmax}(\\theta)\\) with two actions, compute \\(\nabla_\theta \log \pi(a|s)\\) numerically (finite differences) and symbolically (derivative of log-softmax) and check they match.
 3. **Challenge:** State the policy gradient theorem for the multi-step case (infinite horizon or episodic). What replaces \\(Q^\pi(s,a)\\) when we use Monte Carlo returns?
+4. **Variant:** For the one-step MDP with rewards \\(r_1=1, r_2=-1\\), plot \\(J(p)\\) for \\(p \\in [0,1]\\) and mark where \\(dJ/dp=0\\). Does the optimal \\(p\\) match your gradient calculation?
+
+{{< pyrepl code="import math\n\n# Log-derivative trick demo: one-step MDP, 2 actions\nr1, r2 = 1.0, -1.0\n\ndef J(p):\n    return p * r1 + (1 - p) * r2\n\ndef dJ_direct(p):\n    return r1 - r2  # analytical gradient\n\ndef dJ_log_trick(p, n_samples=10000):\n    \"\"\"Estimate dJ/dp via E[d/dp log pi(a) * r]\"\"\"\n    import random\n    total = 0\n    for _ in range(n_samples):\n        a = 0 if random.random() < p else 1\n        r = r1 if a == 0 else r2\n        # d/dp log pi(a): for a=0 it's 1/p, for a=1 it's -1/(1-p)\n        grad_log = 1/p if a == 0 else -1/(1-p)\n        total += grad_log * r\n    return total / n_samples\n\np = 0.4\nprint(f'Direct dJ/dp at p={p}:', dJ_direct(p))\nprint(f'Log-trick estimate:    ', round(dJ_log_trick(p), 2))" height="260" >}}
+
+5. **Debug:** The gradient below has the wrong sign because it minimizes \\(J\\) instead of maximizing it. Fix the update direction.
+
+```python
+# BUG: gradient descent instead of gradient ascent on J
+theta = theta - alpha * grad_log_pi * reward  # should be +
+```
+
+6. **Conceptual:** The log-derivative trick converts \\(\nabla_\theta \\pi(a|s;\\theta)\\) into \\(\\pi(a|s;\\theta) \\nabla_\theta \\log \\pi(a|s;\\theta)\\). Why is the log form more convenient for Monte Carlo estimation?
+7. **Recall:** State the policy gradient theorem in the form \\(\\nabla_\\theta J(\\theta) = \\mathbb{E}[\\ldots]\\) from memory.

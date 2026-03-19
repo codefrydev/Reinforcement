@@ -48,3 +48,10 @@ keywords: ["DDPG", "Deep Deterministic Policy Gradient", "Pendulum", "OU noise"]
 1. **Warm-up:** Why does DDPG need a replay buffer and target networks? (Same reasons as DQN: decorrelate samples and stabilize targets.)
 2. **Coding:** Implement DDPG for Pendulum. Plot episode return every 10 episodes. How many episodes until you reach an average return of -200 or better?
 3. **Challenge:** Replace OU noise with **Gaussian noise** (zero mean, constant std). Compare learning speed and final performance. Then try **decaying** the noise std over time (exploration schedule).
+4. **Variant:** Try different OU noise parameters: \\(\\theta=0.1\\) (slow decay) vs \\(\\theta=0.5\\) (fast decay). Does slower mean reversion improve exploration early in training?
+5. **Debug:** The code below forgets to detach the target networks when computing the Bellman target \\(y\\), causing incorrect gradient flow into the target network parameters. Fix it.
+
+{{< pyrepl code="import torch\n\ndef ddpg_critic_loss(critic, actor_target, critic_target,\n                     s, a, r, s_next, done, gamma=0.99):\n    with torch.no_grad():\n        a_next = actor_target(s_next)\n        # BUG: no torch.no_grad() for critic_target call\n        # (wrapped above, but critic_target needs .detach() on output or no_grad)\n        q_target = critic_target(s_next, a_next)\n    y = r + gamma * (1 - done) * q_target  # this is correct under no_grad\n    q_pred = critic(s, a)\n    return torch.nn.functional.mse_loss(q_pred, y)\n\nprint('Note: with torch.no_grad() the target is already detached')\nprint('Bug form: calling critic_target outside no_grad with requires_grad data')" height="220" >}}
+
+6. **Conceptual:** Why does DDPG's deterministic actor enable the policy gradient to be computed analytically as \\(\\nabla_{\\theta^\\mu} J \\approx \\nabla_a Q(s,a)|_{a=\\mu(s)} \\nabla_{\\theta^\\mu} \\mu(s)\\)? Why can't we use this formula with a stochastic policy?
+7. **Recall:** Describe the DDPG soft target update rule \\(\\theta' \\leftarrow \\tau\\theta + (1-\\tau)\\theta'\\) from memory and explain what \\(\\tau\\) controls.

@@ -46,3 +46,6 @@ keywords: ["model rollouts", "compounding error", "predicted vs true states", "v
 1. **Warm-up:** What does it mean if the predicted and true curves diverge after 5 steps?
 2. **Coding:** Implement the visualization for CartPole (plot 4 state dims over 20 steps). Use a model trained in Chapter 52. Save the figure and describe where error grows.
 3. **Challenge:** Train the model with **more data** (50k steps) and repeat the visualization. Does the divergence delay (more steps before curves separate)?
+4. **Variant:** Visualize prediction quality under two different policies: a random policy and a trained PPO policy. Does model accuracy differ between trajectories from a random vs a competent policy? Why might distribution of training data matter?
+5. **Debug:** A world-model evaluation shows near-zero MSE for position but very high MSE for velocity. The model architecture has separate output heads for position and velocity, but the velocity head was initialized with 10× larger weights. Explain how this causes the issue and how to fix it.
+6. **Conceptual:** How can you use prediction error over a held-out trajectory as an early warning that a MBPO or Dreamer agent is about to fail? Describe a practical monitoring scheme for a deployed model-based agent.

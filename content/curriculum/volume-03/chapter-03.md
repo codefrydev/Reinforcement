@@ -45,3 +45,10 @@ keywords: ["Deep Q-Networks", "DQN", "replay buffer", "target network", "CartPol
 1. **Warm-up:** For one transition (s, a, r, s', done=0), write the target \\(y\\) in terms of \\(Q_{target}\\) and \\(\\gamma\\). For done=1, what is \\(y\\)?
 2. **Coding:** Implement the DQN loss (MSE between Q(s,a) and target y) for a batch. Use a target network for y; compute y with no_grad. Test with dummy tensors.
 3. **Challenge:** Add **double DQN**: use the online network to select the action \\(a^* = \\arg\\max_a Q(s',a)\\), but use \\(Q_{target}(s', a^*)\\) as the target value. Compare learning curve with standard DQN on CartPole.
+4. **Variant:** Change the target network update frequency from every 100 steps to every 10 steps. Does more frequent target updates help or hurt stability on CartPole?
+5. **Debug:** The code below does not detach the TD target before computing the loss, causing the target to shift during backprop and creating an unstable feedback loop. Fix it.
+
+{{< pyrepl code="import torch\nimport torch.nn.functional as F\n\n# Simulated networks\nonline_q = torch.tensor([[0.3, 0.7]], requires_grad=True)\ntarget_q_next = torch.tensor([[0.5, 0.9]])  # from target net\nr = torch.tensor([1.0])\ngamma = 0.9\n\n# BUG: y is computed from target_q_next but without torch.no_grad()\n# In a real network, target_q_next.max() would have requires_grad=True\ny = r + gamma * target_q_next.max(dim=1)[0]  # no .detach()!\nprint('y.requires_grad:', y.requires_grad)  # should be False\n\n# Fix: wrap in torch.no_grad() when computing target\nwith torch.no_grad():\n    y_fixed = r + gamma * target_q_next.max(dim=1)[0]\nprint('y_fixed.requires_grad:', y_fixed.requires_grad)" height="240" >}}
+
+6. **Conceptual:** Why does experience replay help stabilize DQN training? What specific problem does it address?
+7. **Recall:** List the two key stability mechanisms in DQN (experience replay and target network) and the problem each solves.

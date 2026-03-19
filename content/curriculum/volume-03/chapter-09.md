@@ -45,3 +45,10 @@ keywords: ["Noisy Networks", "NoisyNet", "exploration", "epsilon-greedy"]
 1. **Warm-up:** In a noisy linear layer, why do we need *learnable* \\(\\sigma\\)? (So the network can reduce exploration when it has learned; state-dependent exploration.)
 2. **Coding:** Implement a noisy linear layer: weight = mu + sigma * epsilon, epsilon ~ N(0,1), with learnable mu and sigma. Use it as the last layer of a DQN. Run 5k steps on CartPole with no ε-greedy (noise only) and plot return.
 3. **Challenge:** Replace only the *last* layer with a noisy layer and keep the rest standard. Compare with full noisy DQN. Is most of the benefit from the last layer?
+4. **Variant:** Try initializing \\(\\sigma\\) at 0.1, 0.5, and 1.0. Does a larger initial \\(\\sigma\\) improve early exploration at the cost of instability? Which setting converges fastest on CartPole?
+5. **Debug:** The noisy layer below resamples \\(\\epsilon\\) only once at initialization (not every forward pass), so the "noise" is actually a fixed offset after the first step. Fix it.
+
+{{< pyrepl code="import torch\nimport torch.nn as nn\n\nclass BuggyNoisyLinear(nn.Module):\n    def __init__(self, in_f, out_f):\n        super().__init__()\n        self.mu = nn.Parameter(torch.zeros(out_f, in_f))\n        self.sigma = nn.Parameter(torch.ones(out_f, in_f) * 0.5)\n        # BUG: epsilon sampled once at init, never refreshed\n        self.epsilon = torch.randn(out_f, in_f)\n\n    def forward(self, x):\n        # Should resample epsilon each call\n        w = self.mu + self.sigma * self.epsilon\n        return x @ w.T\n\n# Fix: self.epsilon = torch.randn_like(self.sigma) inside forward\nlayer = BuggyNoisyLinear(4, 2)\nprint('Fixed: resample epsilon in forward()')" height="220" >}}
+
+6. **Conceptual:** In what situations does NoisyNet-style exploration outperform ε-greedy? Why can ε-greedy be suboptimal in environments with structured uncertainty?
+7. **Recall:** Describe the factorized Gaussian noise trick in one sentence: why does it reduce the number of random samples needed from \\(O(nm)\\) to \\(O(n+m)\\)?

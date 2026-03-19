@@ -45,6 +45,15 @@ jobs:
       - name: Build with Hugo
         # Use config baseURL so production URL (e.g. codefrydev.in/Reinforcement) is correct when using custom domain
         run: hugo --gc --minify
+      - name: Set up Python for JupyterLite
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install JupyterLite
+        run: pip install -r jupyterlite/requirements.txt
+      - name: Build JupyterLite
+        working-directory: jupyterlite
+        run: jupyter lite build --contents content --output-dir ../public/lab
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -46,3 +46,6 @@ keywords: ["MuZero", "latent model", "reward prediction", "model-based RL"]
 1. **Warm-up:** What is the main difference between the dynamics in MuZero and the dynamics in a world model that predicts the next observation?
 2. **Coding:** Sketch the MuZero architecture (representation, dynamics, reward, value, policy) in pseudocode or a diagram. Where does the MCTS run (in latent space)?
 3. **Challenge:** In MuZero, why is it acceptable that the latent dynamics do not match the true environment? (Hint: what is the loss used to train them?)
+4. **Variant:** Compare MuZero planning depth K=3 vs K=10 (simulated). How does deeper planning affect the quality of the policy prior at the root? Would deeper always be better?
+5. **Debug:** A MuZero implementation has reward prediction loss near zero but value loss stays high throughout training. The reward head and value head share a trunk network. What is a likely cause, and how would you diagnose it?
+6. **Conceptual:** MuZero learns *everything* from scratch (representation, dynamics, value, policy) with no ground-truth observations for latent states. Compare this to AlphaZero which has a known game simulator. What advantage does MuZero have? What makes it harder to train?

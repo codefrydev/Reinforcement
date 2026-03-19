@@ -197,6 +197,102 @@ The chart below shows that the standard deviation of the estimate (of \\(Q(a)\\)
 
 ---
 
+---
+
+8. **Drill — Compute by hand:** A coin lands heads with probability 0.6. You flip it 3 times. What is the probability of getting exactly 2 heads? (Hint: binomial — use P = C(3,2) * 0.6² * 0.4¹.)
+
+{{< collapse summary="Answer" >}}
+C(3,2) = 3. P = 3 × 0.36 × 0.4 = **0.432**.
+
+**Python:** `from math import comb; print(comb(3,2) * 0.6**2 * 0.4**1)` → 0.432.
+{{< /collapse >}}
+
+---
+
+9. **Apply — Bandit with uncertainty:** Arm A has been pulled 10 times with mean reward 0.4, sample variance 0.09. Arm B has been pulled 3 times with mean reward 0.6, sample variance 0.25. Which arm has more uncertainty? Which would UCB prefer? Why?
+
+{{< collapse summary="Answer" >}}
+Arm B has higher uncertainty: only 3 pulls, higher variance. UCB adds `c * sqrt(ln(t) / N(a))` to the estimate — the smaller N, the bigger the bonus. So UCB would prefer **Arm B** (less explored), even though its sample mean is already higher. If N=13 total steps and c=1, UCB(A) ≈ 0.4 + sqrt(ln(13)/10) ≈ 0.4 + 0.50 = 0.90; UCB(B) ≈ 0.6 + sqrt(ln(13)/3) ≈ 0.6 + 0.91 = 1.51. UCB chooses B.
+{{< /collapse >}}
+
+---
+
+10. **Drill — Conditional probability:** In a bandit, arm 1 gives reward 0 or 1. P(reward=1 | arm=1) = 0.3 and P(reward=1 | arm=2) = 0.7. You observe reward=1. What is the probability you pulled arm 1, given you choose each arm with probability 0.5 (uniform)?
+
+{{< collapse summary="Answer" >}}
+By Bayes' theorem: P(arm=1 | reward=1) = P(r=1|arm=1) × P(arm=1) / P(r=1).
+
+P(r=1) = 0.3×0.5 + 0.7×0.5 = 0.5.
+
+P(arm=1|r=1) = (0.3 × 0.5) / 0.5 = **0.3**.
+
+**Explanation:** Even though you picked arms equally, observing a reward of 1 makes arm 2 more likely (0.7 vs 0.3). This is the basis of Bayesian bandit algorithms (Thompson sampling).
+{{< /collapse >}}
+
+---
+
+11. **Apply — Monte Carlo variance:** You run 10 episodes from state s and observe returns [0.1, 0.9, 0.5, 0.3, 0.7, 0.2, 0.8, 0.4, 0.6, 0.5]. Compute: (a) MC estimate of V(s), (b) standard error of the estimate (std / sqrt(n)).
+
+{{< collapse summary="Answer" >}}
+(a) Mean = (0.1+0.9+0.5+0.3+0.7+0.2+0.8+0.4+0.6+0.5)/10 = 5.0/10 = **0.5**.
+
+(b) Sample std: compute deviations from 0.5: [-0.4, 0.4, 0, -0.2, 0.2, -0.3, 0.3, -0.1, 0.1, 0]. Squared: [0.16, 0.16, 0, 0.04, 0.04, 0.09, 0.09, 0.01, 0.01, 0]. Sum=0.6. Variance=0.6/9≈0.0667. Std≈0.258. Standard error = 0.258/sqrt(10) ≈ **0.082**.
+
+**Interpretation:** With only 10 episodes our V(s) estimate of 0.5 has a standard error of about 0.08 — meaningful uncertainty.
+{{< /collapse >}}
+
+{{< pyrepl code="data = [0.1,0.9,0.5,0.3,0.7,0.2,0.8,0.4,0.6,0.5]\nn = len(data)\nmean = sum(data)/n\nvar = sum((x-mean)**2 for x in data)/(n-1)\nimport math\nstd_err = math.sqrt(var/n)\nprint(f'V(s) estimate: {mean:.3f}')\nprint(f'Std error: {std_err:.3f}')" height="220" >}}
+
+---
+
+12. **Think — Independence in RL:** In one episode, consecutive rewards r_0, r_1, r_2 are often NOT independent (e.g. a bad state leads to bad rewards for multiple steps). Why does first-visit Monte Carlo still give an unbiased estimate of V(s)?
+
+{{< collapse summary="Answer" >}}
+First-visit MC averages returns G across **different independent episodes**. Within an episode, rewards are correlated — but each episode is an independent sample of the return starting from state s. Averaging over many independent episodes gives an unbiased estimate of E[G | S=s] = V(s), by the law of large numbers applied to the episode-level returns.
+
+**Key insight:** The law of large numbers requires independent observations. The observations here are **episode returns** (each episode is independent), not individual rewards within an episode.
+{{< /collapse >}}
+
+---
+
+13. **Drill — Normal distribution:** Reward from arm 3 is Normal(μ=2, σ²=0.25). What is P(reward > 2.5)?
+
+{{< collapse summary="Answer" >}}
+Standardize: z = (2.5 - 2) / 0.5 = 1.0. P(X > 2.5) = P(Z > 1) = 1 - Φ(1) ≈ 1 - 0.8413 = **0.1587** (about 16%).
+
+**Python:** `import scipy.stats as st; print(1 - st.norm.cdf(2.5, loc=2, scale=0.5))` → 0.1587.
+
+**In RL:** Gaussian rewards are common in bandit benchmarks. Knowing the tail probability helps when reasoning about worst-case outcomes or optimism-based algorithms.
+{{< /collapse >}}
+
+---
+
+14. **Apply — Thompson Sampling:** For a Bernoulli(p) arm, the Beta(α, β) posterior represents p. You have observed 7 successes and 3 failures. (a) What is the posterior? (b) What is the posterior mean (α/(α+β))? (c) Write a one-line Python expression to sample from this posterior.
+
+{{< collapse summary="Answer" >}}
+(a) Prior Beta(1,1) (uniform) + 7 successes + 3 failures → posterior **Beta(8, 4)**.
+
+(b) Posterior mean = 8 / (8+4) = **2/3 ≈ 0.667**.
+
+(c) `import random; print(random.betavariate(8, 4))` or with NumPy: `np.random.beta(8, 4)`.
+
+**In RL:** Thompson sampling draws from the posterior and greedily selects the arm with the highest draw. This naturally balances exploration (uncertain arms have spread-out posteriors) and exploitation.
+{{< /collapse >}}
+
+---
+
+15. **Think — Variance reduction:** REINFORCE has high variance because G_t is noisy. One fix is to subtract a baseline b(s). Write the expression for the advantage A_t = G_t - b(s_t). Why does subtracting b(s_t) not bias the gradient?
+
+{{< collapse summary="Answer" >}}
+A_t = G_t - b(s_t).
+
+It does not bias the gradient because b(s_t) does not depend on the action a_t. The policy gradient theorem says ∇J(θ) = E[∇log π(a|s;θ) * Q(s,a)]. Subtracting any function b(s) that doesn't depend on a gives E[∇log π * b(s)] = b(s) * E[∇log π] = b(s) * 0 = 0. So the extra term is zero in expectation — the gradient estimate remains unbiased.
+
+**Why it reduces variance:** b(s) can be chosen to be close to the mean Q-value (like V(s)), so G_t - b(s_t) is smaller in magnitude → lower variance.
+{{< /collapse >}}
+
+---
+
 ## Common pitfalls
 
 - **Confusing expectation with one sample:** The expected reward of an arm is not the same as the reward you got on one pull. Expectation is a property of the distribution; one sample is random.

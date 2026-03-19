@@ -46,3 +46,10 @@ Hyperparameter tuning is essential for getting the best from RL algorithms; **sw
 1. **Warm-up:** Why is it important to run multiple seeds when comparing hyperparameters?
 2. **Coding:** Run a small grid: lr in [1e-4, 3e-4], hidden size in [64, 256]. For each of the 4 configs, run 2 seeds for 100k steps. Report mean and std of final return. Which config wins?
 3. **Challenge:** Use **Bayesian optimization** (e.g. Optuna or wandb sweep with bayes) to suggest the next hyperparameters given past results. Compare with random search after 20 runs.
+4. **Variant:** Compare a **random search** over the same parameter space (lr, hidden size, entropy α) against grid search with the same total budget of runs. Does random search find a better configuration with the same number of evaluations?
+5. **Debug:** The code below uses the same random seed for all trials, making every trial identical and giving no meaningful variance estimate. Fix it.
+
+{{< pyrepl code="import random\n\ndef run_trial(lr, hidden_size, seed=42):  # BUG: same seed always\n    random.seed(seed)\n    # Simulate training: return is random with some signal\n    return random.gauss(lr * 10000 - 5, 3)\n\n# All 5 trials are identical!\nresults = [run_trial(3e-4, 256) for _ in range(5)]\nprint('All identical (seed=42):', results)\n\n# Fix: pass seed=i or seed=None\nresults_fixed = [run_trial(3e-4, 256, seed=i) for i in range(5)]\nprint('Different per seed:', [round(r,1) for r in results_fixed])" height="220" >}}
+
+6. **Conceptual:** What is the key advantage of Bayesian optimization over grid or random search? Why is it especially useful when each hyperparameter evaluation is expensive?
+7. **Recall:** Name two tools for hyperparameter sweeps in RL projects (e.g. Weights & Biases, Optuna, Ray Tune) and one metric you would track to compare runs.

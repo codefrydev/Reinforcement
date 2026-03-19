@@ -132,3 +132,27 @@ env.action_space.seed(0)
 ---
 
 **Docs:** [gymnasium.farama.org](https://gymnasium.farama.org/). Used in Chapters 11–12 (Blackjack), 13–16 (Cliff Walking), 23+ (CartPole, etc.).
+
+---
+
+## Additional exercises
+
+### Micro-exercises
+
+1. Run `env = gym.make('CartPole-v1'); obs, _ = env.reset(); print(obs)` — how many values in the observation?
+2. `env.action_space` — print it. How many actions does CartPole have?
+3. `env.observation_space` — print it. What are the observation bounds?
+4. Take 5 random steps: `for _ in range(5): obs, r, done, trunc, info = env.step(env.action_space.sample()); print(r, done)`
+5. What does `done=True` mean in CartPole?
+
+### Build something small
+
+1. Write a `random_agent(env, n_steps=100)` that takes random actions and returns the total reward.
+2. Run CartPole for 10 episodes using a random agent. Print the episode lengths.
+3. Access `env.observation_space.low` and `env.observation_space.high` — print the bounds for each observation dimension.
+
+### Mini-project: Episode statistics
+
+Run 50 episodes on CartPole-v1 with a random agent. Compute: mean episode length, max episode length, % of episodes that lasted >50 steps. Plot the episode lengths as a histogram.
+
+{{< pyrepl code="# Note: Gymnasium is not available in the browser\n# Run this code locally with: pip install gymnasium\n# import gymnasium as gym\n# env = gym.make('CartPole-v1')\n# Simulate what CartPole data might look like:\nimport random\nrandom.seed(42)\nepisode_lengths = [random.randint(10, 200) for _ in range(50)]\nprint(f'Mean: {sum(episode_lengths)/len(episode_lengths):.1f}')\nprint(f'Max: {max(episode_lengths)}')\nprint(f'>50 steps: {sum(l>50 for l in episode_lengths)/len(episode_lengths)*100:.0f}%')" height="260" >}}

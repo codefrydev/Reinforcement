@@ -46,3 +46,17 @@ keywords: ["TRPO", "Trust Region Policy Optimization", "KL constraint", "natural
 1. **Warm-up:** In one sentence, what is the role of the KL constraint in TRPO?
 2. **Coding:** For a small policy (e.g. 2 actions, parameter \\(\theta\\)), compute the Fisher information matrix \\(F = \\mathbb{E}[ (\\nabla \\log \\pi)^T (\\nabla \\log \\pi) ]\\) numerically (sample actions from \\(\pi\\)). Verify it is positive definite.
 3. **Challenge:** Implement a **simplified** TRPO step: one natural gradient step with a fixed step size that you tune so the mean KL after the update is roughly \\(\delta = 0.01\\). Compare with a vanilla policy gradient step of the same magnitude (in parameter space).
+4. **Variant:** Try different KL constraint values \\(\\delta \\in \\{0.001, 0.01, 0.05\\}\\) in your simplified TRPO. How does tighter vs looser constraint affect the speed of policy improvement?
+
+{{< pyrepl code="import math\n\ndef kl_divergence(p, q):\n    \"\"\"KL(p||q) for discrete distributions.\"\"\"\n    return sum(pi * math.log(pi / qi) for pi, qi in zip(p, q) if pi > 0)\n\n# Example: old policy [0.6, 0.4] vs new policies\npi_old = [0.6, 0.4]\nfor pi_new in [[0.7, 0.3], [0.8, 0.2], [0.61, 0.39]]:\n    kl = kl_divergence(pi_old, pi_new)\n    print(f'pi_new={pi_new} -> KL={kl:.4f}')" height="200" >}}
+
+5. **Debug:** The natural gradient computation below forgets to invert the Fisher matrix, computing an ordinary gradient step instead. Explain the fix.
+
+```python
+# BUG: uses F instead of F_inverse for natural gradient
+natural_grad = F @ gradient  # wrong: should be F_inv @ gradient
+# Fix: natural_grad = np.linalg.solve(F, gradient)
+```
+
+6. **Conceptual:** What is the "monotonic improvement guarantee" of TRPO (under assumptions)? Under what real-world conditions might this guarantee fail?
+7. **Recall:** State the TRPO constrained optimization objective and its constraint in mathematical notation from memory.

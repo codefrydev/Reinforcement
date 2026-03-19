@@ -46,3 +46,10 @@ Real RL often requires **custom environments**: simulators for robotics, games, 
 1. **Warm-up:** In your maze, how many possible observations (states) are there? How many actions? What is the size of a tabular Q-table?
 2. **Coding:** Implement a minimal Gym maze (e.g. 5×5, start (0,0), goal (4,4), walls optional). Implement reset() and step(action). Run a random policy for 10 episodes and log episode length and return.
 3. **Challenge:** Add a "time limit" (e.g. 100 steps): set `truncated=True` when step count exceeds 100. Return this in `info` as well. Run a random agent for one episode and confirm truncation occurs.
+4. **Variant:** Change the reward function from a step penalty (−1 per step) to a dense distance-based reward (e.g. −Euclidean distance to goal each step). Run Q-learning and compare learning speed with the step-penalty version.
+5. **Debug:** The code below returns `done` (a single boolean, old Gym API) instead of the Gymnasium-style `terminated, truncated`. Fix it.
+
+{{< pyrepl code="class BuggyMaze:\n    def step(self, action):\n        # Compute next state, reward, done\n        reward = -1\n        done = (self.pos == self.goal)\n        # BUG: should return terminated, truncated separately\n        return self.pos, reward, done, {}  # old API\n\n    # Fix: return (obs, reward, terminated, truncated, info)\n    def step_fixed(self, action):\n        reward = -1\n        terminated = (self.pos == self.goal)\n        truncated = (self.steps >= self.max_steps)\n        return self.pos, reward, terminated, truncated, {}\n\nprint('Fix: split done into terminated and truncated')" height="220" >}}
+
+6. **Conceptual:** What is the difference between `terminated` and `truncated` in the Gymnasium API? Why does this distinction matter for computing the TD target?
+7. **Recall:** List the four required methods of a Gymnasium environment from memory.

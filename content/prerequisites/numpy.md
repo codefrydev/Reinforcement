@@ -159,3 +159,31 @@ np.max(arr, axis=0) # [5, 6]
 ---
 
 **Docs:** [numpy.org/doc](https://numpy.org/doc/stable/).
+
+---
+
+## Additional exercises
+
+### Micro-exercises (do these now)
+
+1. `import numpy as np; a = np.array([1,2,3]); print(a * 2)` — predict the output before running.
+2. Create `np.zeros((3,3))` and set the diagonal to 1 using `np.eye(3)`. Print it.
+3. `a = np.array([3,1,4,1,5]); print(np.argmax(a))` — what does argmax return?
+4. `a = np.array([0.5, 0.3, 0.2]); print(a.sum(), a.mean())` — predict both outputs.
+5. `Q = np.zeros((5,4)); Q[2,3] = 1.5; print(Q[2])` — what is printed?
+
+{{< pyrepl code="import numpy as np\n# Try the micro-exercises above\na = np.array([1, 2, 3])\nprint(a * 2)" height="200" >}}
+
+### Build something small
+
+1. Create a 5×5 value grid `V = np.zeros((5,5))`. Set `V[4,4] = 10` (goal). Print the grid.
+2. Given Q-values `Q = np.random.seed(42); Q = np.random.randn(4)`, find the best action with `np.argmax(Q)`. Print Q and the best action.
+3. Simulate 100 bandit pulls: `rewards = np.random.normal(0.5, 1, 100)`. Compute mean, std, and max.
+
+{{< pyrepl code="import numpy as np\nnp.random.seed(42)\n# TODO: create 5x5 value grid, set goal, find best action\nV = np.zeros((5, 5))\nV[4, 4] = 10\nprint(V)" height="200" >}}
+
+### Mini-project: Bandit Q-estimates
+
+Simulate a 3-armed bandit for 500 steps using NumPy arrays (no Python lists). True means: `[0.2, 0.7, 0.1]`. Use `np.random.seed(42)`. Track `Q = np.zeros(3)` and `N = np.zeros(3, dtype=int)`. After 500 steps, plot Q estimates vs true means with matplotlib.
+
+{{< pyrepl code="import numpy as np\nnp.random.seed(42)\ntrue_means = np.array([0.2, 0.7, 0.1])\nQ = np.zeros(3)\nN = np.zeros(3, dtype=int)\n# TODO: 500 steps of epsilon-greedy (epsilon=0.1)\n# Update Q[a] += (reward - Q[a]) / N[a]\n" height="240" >}}

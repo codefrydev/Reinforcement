@@ -46,3 +46,22 @@ keywords: ["GAE", "Generalized Advantage Estimation", "PPO", "advantage"]
 1. **Warm-up:** For \\(\\lambda=0\\), what is \\(\\hat{A}_t\\) in terms of \\(\\delta_t\\)? For \\(\\lambda=1\\), what is \\(\\hat{A}_t\\) in terms of \\(G_t\\) and \\(V(s_t)\\)?
 2. **Coding:** Implement `gae(rewards, values, gamma=0.99, lambda_=0.95)` where `values[i]` is \\(V(s_i)\\) and length is len(rewards)+1. Test on a short trajectory of length 5; check that for \\(\\lambda=0\\) you get \\(\\hat{A}_t = \\delta_t\\).
 3. **Challenge:** Vectorize the backward loop (e.g. with NumPy or PyTorch) so you can compute GAE for a batch of trajectories at once.
+4. **Variant:** Compute GAE for the same 5-step trajectory with \\(\\lambda \\in \\{0, 0.5, 0.95, 1.0\\}\\). Plot the advantage estimates \\(\\hat{A}_t\\) for each. How does the variance of advantages change with \\(\\lambda\\)?
+
+{{< pyrepl code="def gae(rewards, values, gamma=0.99, lam=0.95):\n    \"\"\"values has len(rewards)+1 entries.\"\"\"\n    advantages = []\n    gae_val = 0\n    for t in reversed(range(len(rewards))):\n        delta = rewards[t] + gamma * values[t+1] - values[t]\n        gae_val = delta + gamma * lam * gae_val\n        advantages.insert(0, gae_val)\n    return advantages\n\n# Test: 5-step trajectory\nrewards = [0, 0, 1, 0, -1]\nvalues  = [0.5, 0.4, 0.6, 0.3, 0.2, 0.0]  # V(s_0)...V(s_5)\nfor lam in [0, 0.5, 0.95, 1.0]:\n    advs = gae(rewards, values, lam=lam)\n    print(f'lambda={lam}: A={[round(a,3) for a in advs]}')" height="240" >}}
+
+5. **Debug:** The GAE backward loop below has an off-by-one error — it uses `values[t]` as the next-state value instead of `values[t+1]`. Fix it.
+
+```python
+def gae_buggy(rewards, values, gamma=0.99, lam=0.95):
+    advantages, gae_val = [], 0
+    for t in reversed(range(len(rewards))):
+        # BUG: should be values[t+1], not values[t]
+        delta = rewards[t] + gamma * values[t] - values[t]
+        gae_val = delta + gamma * lam * gae_val
+        advantages.insert(0, gae_val)
+    return advantages
+```
+
+6. **Conceptual:** How does GAE interpolate between pure TD(0) (\\(\\lambda=0\\)) and full Monte Carlo (\\(\\lambda=1\\))? Explain the bias-variance trade-off as \\(\\lambda\\) increases from 0 to 1.
+7. **Recall:** Write the GAE recurrence \\(\\hat{A}_t = \\delta_t + \\gamma\\lambda \\hat{A}_{t+1}\\) and the closed-form sum it equals from memory.

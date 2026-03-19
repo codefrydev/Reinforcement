@@ -1,0 +1,34 @@
+{{- $code := .Get "code" | default "" -}}
+{{- $height := .Get "height" | default "260" -}}
+{{- $execute := .Get "execute" | default "0" -}}
+{{- $label := .Get "label" | default "Try it — edit and run (Shift+Enter)" -}}
+{{- $id := printf "repl-%s-%d" .Page.File.UniqueID .Ordinal -}}
+{{- $baseURL := "https://codefrydev.in/Reinforcement/lab/repl/index.html" -}}
+{{- $params := printf "kernel=python&toolbar=1&showBanner=0&execute=%s" $execute -}}
+{{- if $code -}}
+  {{- $params = printf "%s&code=%s" $params ($code | urlquery) -}}
+{{- end -}}
+<div class="pyrepl-wrapper" id="{{ $id }}">
+  <div class="pyrepl-label">
+    <svg class="pyrepl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+    {{ $label }}
+  </div>
+  <div class="pyrepl-frame-wrap" style="height:{{ $height }}px">
+    <iframe
+      class="pyrepl-frame"
+      data-src="{{ $baseURL }}?{{ $params }}"
+      width="100%"
+      height="{{ $height }}px"
+      loading="lazy"
+      title="Interactive Python REPL"
+      allow="cross-origin-isolated"
+    ></iframe>
+    <div class="pyrepl-overlay" aria-hidden="true">
+      <button class="pyrepl-load-btn" onclick="(function(el){var iframe=el.closest('.pyrepl-frame-wrap').querySelector('iframe');iframe.src=iframe.dataset.src;el.closest('.pyrepl-overlay').style.display='none';})(this)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+        Load Python REPL
+      </button>
+      <p class="pyrepl-overlay-note">Runs in your browser — no install needed</p>
+    </div>
+  </div>
+</div>

@@ -46,3 +46,18 @@ Standard policy gradient \\(\theta \leftarrow \theta + \alpha \nabla_\theta J\\)
 1. **Warm-up:** In one sentence, why does a very large policy gradient step size risk "collapsing" the policy to one action?
 2. **Coding:** Implement the bandit policy gradient with \\(\alpha \\in \\{0.01, 0.1, 0.5\\}\\). For each, plot policy probabilities over 500 steps. Which one collapses fastest?
 3. **Challenge:** Add a **KL penalty** to the update (e.g. penalize \\(D_{KL}(\\pi_{old} \\| \\pi_{new})\\)). Does a moderate penalty prevent collapse even with larger \\(\alpha\\)?
+4. **Variant:** Repeat the bandit experiment with 10 arms instead of 3. Does collapse happen faster with more arms? Which arm tends to dominate, and does it depend on the random seed?
+
+{{< pyrepl code="import math, random\nrandom.seed(0)\n\ndef softmax(theta):\n    e = [math.exp(t) for t in theta]\n    s = sum(e)\n    return [ei/s for ei in e]\n\nk = 3  # arms\ntrue_rewards = [0.1, 0.5, -0.2]\ntheta = [0.0] * k\nalpha = 0.3  # try 0.01, 0.1, 0.3\n\nfor step in range(200):\n    pi = softmax(theta)\n    a = random.choices(range(k), weights=pi)[0]\n    r = random.gauss(true_rewards[a], 0.5)\n    # REINFORCE update (no baseline)\n    for i in range(k):\n        theta[i] += alpha * r * ((1 if i == a else 0) - pi[i])\n    if step % 50 == 0:\n        print(f'step {step}: pi={[round(p,3) for p in softmax(theta)]}')" height="260" >}}
+
+5. **Debug:** The update below applies the gradient to all \\(\\theta_i\\) with \\(r\\) (the raw reward) rather than \\(r - b\\) (reward minus baseline), making the update very noisy when rewards have a large mean. Add a running-average baseline to fix it.
+
+```python
+# BUG: no baseline — large mean reward inflates all updates
+for i in range(k):
+    theta[i] += alpha * reward * ((1 if i == a else 0) - pi[i])
+# Fix: replace reward with (reward - running_avg_reward)
+```
+
+6. **Conceptual:** Explain why PPO's clipping mechanism solves the collapse problem shown in this chapter. What does it actually prevent in terms of probability ratios?
+7. **Recall:** Define "policy collapse" in one sentence and state one algorithmic fix (from TRPO or PPO) that prevents it.

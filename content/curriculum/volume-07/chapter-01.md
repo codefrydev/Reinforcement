@@ -48,3 +48,6 @@ The gradient only flows when the agent gets a non-zero reward; without that, Q-v
 1. **Warm-up:** Why does ε-greedy with ε=0.1 rarely find a goal that is 20 steps away in a maze?
 2. **Coding:** Implement a 10×10 maze with goal at (9,9), reward +1 at goal. Run DQN for 5000 episodes. Plot "best return so far" and "episodes until first +1 reward". How many episodes until first success?
 3. **Challenge:** Add a **dense shaping** reward (e.g. -0.01 per step, or +0.1 for moving toward goal). Does DQN now learn to reach the goal? Discuss the trade-off.
+4. **Variant:** Extend the maze to 20×20. How does the number of episodes to first goal scale? Try ε=0.3 vs ε=0.05 — does a higher ε help or hurt in larger mazes?
+5. **Debug:** An agent is given intrinsic reward on top of the sparse extrinsic reward, but learning curves show no improvement. Logging reveals the intrinsic reward coefficient β=1e-4 while extrinsic reward is 100. Explain the scaling problem and how to fix it.
+6. **Conceptual:** Why does standard ε-greedy fail on hard exploration problems even with many episodes? Describe what property of the environment makes random exploration exponentially unlikely to reach the goal.

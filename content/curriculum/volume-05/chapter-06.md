@@ -48,3 +48,19 @@ Start from the Bellman equation with entropy; the optimal policy has a closed fo
 1. **Warm-up:** For a discrete policy with two actions and \\(\\pi(a_1)=p\\), write the entropy \\(\\mathcal{H}\\) as a function of \\(p\\). At what \\(p\\) is \\(\\mathcal{H}\\) maximum?
 2. **Coding:** In a 2-armed bandit, implement a "soft" policy that maximizes \\(\\mathbb{E}[r] + \\alpha \\mathcal{H}(\\pi)\\). Vary \\(\\alpha\\) and plot the probability of the optimal arm vs \\(\\alpha\\) (should approach 1 as \\(\\alpha \\to 0\\) and 0.5 as \\(\\alpha \\to \\infty\\)).
 3. **Challenge:** Derive the optimal policy for a one-step MDP with max-ent objective: \\(\\pi^*(a|s) \\propto \\exp(Q(s,a)/\\alpha)\\). Show that as \\(\\alpha \\to 0\\) you get the greedy policy.
+4. **Variant:** Try \\(\\alpha \\in \\{0.01, 0.1, 1.0, 5.0\\}\\) in your soft bandit. Plot the optimal-arm probability for each value. At what \\(\\alpha\\) does the policy become indistinguishable from uniform?
+
+{{< pyrepl code="import math\n\ndef soft_policy(q_values, alpha):\n    \"\"\"Optimal max-entropy policy: proportional to exp(Q/alpha).\"\"\"\n    exp_q = [math.exp(q / alpha) for q in q_values]\n    total = sum(exp_q)\n    return [e / total for e in exp_q]\n\n# 2-armed bandit with Q(a1)=1.0, Q(a2)=0.5\nq = [1.0, 0.5]\nfor alpha in [0.01, 0.1, 1.0, 5.0]:\n    pi = soft_policy(q, alpha)\n    print(f'alpha={alpha:.2f}: pi(a1)={pi[0]:.3f}, pi(a2)={pi[1]:.3f}')" height="220" >}}
+
+5. **Debug:** The code below confuses entropy of the policy with entropy of the state distribution, computing \\(-\\sum_s d(s) \\log d(s)\\) instead of \\(-\\sum_a \\pi(a|s) \\log \\pi(a|s)\\). Explain the difference.
+
+```python
+# BUG: computing entropy of state visitation, not action distribution
+state_counts = {}
+# ... accumulate state visit counts ...
+entropy = -sum(p * math.log(p) for p in state_probs)  # wrong objective
+# Fix: compute -sum_a pi(a|s) * log(pi(a|s)) for each state s
+```
+
+6. **Conceptual:** What happens to the optimal policy under the max-entropy objective as \\(\\alpha \\to 0\\)? As \\(\\alpha \\to \\infty\\)? Explain intuitively.
+7. **Recall:** Write the maximum entropy RL objective \\(J_{max-ent} = \\mathbb{E}[\\ldots]\\) from memory and define \\(\\mathcal{H}(\\pi(\\cdot|s))\\).

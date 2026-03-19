@@ -46,3 +46,7 @@ keywords: ["model-free vs model-based", "Dreamer", "PPO", "Walker", "sample effi
 1. **Warm-up:** In one sentence, why can a learned model improve sample efficiency?
 2. **Coding:** Run PPO on Walker2d for 200k steps and Dreamer (or MBPO) for 200k steps. Plot mean return vs steps. Which reaches 1000 first?
 3. **Challenge:** Vary the model rollout length in the model-based method. How does very long rollout length affect performance (think compounding error)?
+4. **Variant:** Repeat the comparison with a lower-dimensional environment (e.g. Pendulum). Does the model-based advantage shrink or grow? Why might model learning be easier in low-dimensional spaces?
+5. **Debug:** A student writes: "I train the world model once at the start and then only update the policy." Identify the flaw and describe when this static-model approach would fail badly.
+6. **Conceptual:** When is model-based RL *not* preferred over model-free? Name two conditions (e.g. highly stochastic dynamics, non-stationary reward) that make learning a good model expensive or unreliable.
+7. **Recall:** Write down the two components that a typical world model must predict, and state what loss function is used for each.

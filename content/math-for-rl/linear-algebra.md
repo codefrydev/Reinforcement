@@ -179,6 +179,131 @@ With \\(\phi(s) = s\\) and state dimension 4, \\(w\\) has 4 components. The char
 
 ---
 
+---
+
+*(Additional exercises — graded from drill to applied)*
+
+8. **Drill:** Compute the matrix-vector product Mv where M = [[1, 2], [3, 4]] and v = [1, -1].
+
+{{< collapse summary="Answer" >}}
+Mv = [1×1 + 2×(-1), 3×1 + 4×(-1)] = [1-2, 3-4] = **[-1, -1]**.
+
+**Python:** `import numpy as np; M=np.array([[1,2],[3,4]]); v=np.array([1,-1]); print(M @ v)` → [-1, -1].
+
+**In RL:** The transition matrix P(s'|s) is a matrix. Matrix-vector products appear when computing the expected next state value: Pv gives the expected value of successor states for each current state.
+{{< /collapse >}}
+
+---
+
+9. **Apply — Linear TD update:** Linear value function V(s;w) = w·φ(s). Gradient of V w.r.t. w is φ(s). Semi-gradient TD update: w ← w + α * δ * φ(s).
+
+Given: w=[1, 0, -0.5], φ(s)=[0.5, 1, 2], δ=0.8 (TD error), α=0.05. Compute the new w.
+
+{{< collapse summary="Answer" >}}
+Δw = α * δ * φ(s) = 0.05 × 0.8 × [0.5, 1, 2] = [0.02, 0.04, 0.08].
+
+w_new = [1+0.02, 0+0.04, -0.5+0.08] = **[1.02, 0.04, -0.42]**.
+
+**Python:** `w=np.array([1,0,-0.5]); phi=np.array([0.5,1,2]); print(w + 0.05*0.8*phi)`.
+{{< /collapse >}}
+
+{{< pyrepl code="import numpy as np\nw = np.array([1.0, 0.0, -0.5])\nphi = np.array([0.5, 1.0, 2.0])\nalpha, delta = 0.05, 0.8\nw_new = w + alpha * delta * phi\nprint('w_new:', w_new)" height="200" >}}
+
+---
+
+10. **Drill — Cosine similarity:** The cosine similarity between two vectors measures how aligned they are. cos(u,v) = (u·v) / (||u|| ||v||). Compute it for u=[1,0] and v=[0,1] (expected: 0, orthogonal), and for u=[1,1] and v=[2,2] (expected: 1, parallel).
+
+{{< collapse summary="Answer" >}}
+u=[1,0], v=[0,1]: dot=0. ||u||=1, ||v||=1. cos=0. They are **orthogonal** (90° apart).
+
+u=[1,1], v=[2,2]: dot=1×2+1×2=4. ||u||=√2, ||v||=2√2. cos=4/(√2 × 2√2) = 4/4 = **1**. They are **parallel** (same direction).
+
+**In RL:** Cosine similarity can measure how similar two state representations or policy gradient directions are.
+{{< /collapse >}}
+
+---
+
+11. **Apply — Policy gradient direction:** Policy gradient update: θ ← θ + α * ∇J(θ). For a softmax policy with logits θ=[0.5, -0.3, 0.8], action=2 was taken with advantage A=1.2 and α=0.05.
+
+Gradient of log π(a=2|θ) w.r.t. θ_i = 1(i=2) - π_i (for softmax).
+
+Step 1: Compute π = softmax(θ). Step 2: Compute gradient. Step 3: Update θ.
+
+{{< collapse summary="Answer" >}}
+Step 1: exp(θ) = [exp(0.5), exp(-0.3), exp(0.8)] ≈ [1.649, 0.741, 2.226]. Sum≈4.616. π≈[0.357, 0.161, 0.482].
+
+Step 2: grad = [0-0.357, 0-0.161, 1-0.482] = [-0.357, -0.161, 0.518].
+
+Step 3: θ_new = θ + α * A * grad = [0.5, -0.3, 0.8] + 0.05×1.2×[-0.357, -0.161, 0.518]
+= [0.5-0.021, -0.3-0.010, 0.8+0.031] = **[0.479, -0.310, 0.831]**.
+
+The logit for action 2 increased (action rewarded), others decreased.
+{{< /collapse >}}
+
+{{< pyrepl code="import numpy as np\ntheta = np.array([0.5, -0.3, 0.8])\nprobs = np.exp(theta - theta.max())\nprobs /= probs.sum()\nprint('pi:', np.round(probs, 3))\ngrad = -probs.copy()\ngrad[2] += 1   # action taken = 2\nalpha, A = 0.05, 1.2\ntheta_new = theta + alpha * A * grad\nprint('theta_new:', np.round(theta_new, 4))" height="240" >}}
+
+---
+
+12. **Think — Why do we need vectors?** An RL agent playing Atari observes a game screen (84×84 pixels × 3 channels). How many numbers are in one state vector? Could a Q-table store a row for every distinct state? Why not?
+
+{{< collapse summary="Answer" >}}
+84 × 84 × 3 = **21,168 numbers** per state. The number of distinct states is at least 256^21168 (each pixel can be any of 256 values) — astronomically large. A Q-table would need one row per state: impossible to store, let alone visit. This is why function approximation (neural networks) is essential for large state spaces.
+
+**Lesson:** Vectors are not just notation — they motivate the entire field of deep RL.
+{{< /collapse >}}
+
+---
+
+13. **Drill — L2 norm:** The Euclidean (L2) norm of a vector measures its magnitude: ||w|| = sqrt(Σ w_i²). Compute ||w|| for w=[3, -4] (expected: 5) and w=[1, 1, 1, 1] (expected: 2).
+
+{{< collapse summary="Answer" >}}
+||[3,-4]|| = sqrt(9+16) = sqrt(25) = **5**.
+
+||[1,1,1,1]|| = sqrt(1+1+1+1) = sqrt(4) = **2**.
+
+**Python:** `import numpy as np; print(np.linalg.norm([3,-4]), np.linalg.norm([1,1,1,1]))`.
+
+**In RL:** L2 norms appear in weight regularization (L2 penalty keeps weights small) and in measuring how much a policy update changed parameters.
+{{< /collapse >}}
+
+---
+
+14. **Apply — Batch value computation:** You have 4 states with feature vectors (rows of matrix Φ) and weight vector w:
+
+Φ = [[1,0],[1,1],[0,1],[1,0.5]], w = [0.8, 0.3].
+
+Compute V = Φ @ w (the value of all 4 states at once).
+
+{{< collapse summary="Answer" >}}
+V = Φ @ w = [[1×0.8+0×0.3], [1×0.8+1×0.3], [0×0.8+1×0.3], [1×0.8+0.5×0.3]] = **[0.8, 1.1, 0.3, 0.95]**.
+
+**Python:**
+```python
+import numpy as np
+Phi = np.array([[1,0],[1,1],[0,1],[1,0.5]])
+w = np.array([0.8, 0.3])
+print(Phi @ w)   # [0.8, 1.1, 0.3, 0.95]
+```
+
+**In RL:** Neural networks compute exactly this in their forward pass — a batch of state features multiplied by weight matrices.
+{{< /collapse >}}
+
+{{< pyrepl code="import numpy as np\nPhi = np.array([[1,0],[1,1],[0,1],[1,0.5]])\nw = np.array([0.8, 0.3])\nV = Phi @ w\nprint('Values:', V)" height="180" >}}
+
+---
+
+15. **Think — Gradient direction:** In gradient descent for an RL loss L(w), we update w ← w - α∇L. Sketch (in words): if ∇L points "northeast" (positive in both dimensions), which direction does the update move w?
+
+{{< collapse summary="Answer" >}}
+Gradient descent subtracts the gradient: w moves **southwest** (negative in both dimensions). We move opposite to the direction of steepest ascent. This reduces the loss.
+
+**Analogy:** You're on a hill in thick fog. The gradient tells you which direction is "uphill." Gradient descent moves you downhill — opposite the gradient.
+
+**In RL:** We minimize a loss (e.g. TD error squared), so gradient descent reduces the loss. Policy gradient *maximizes* return, so it uses gradient *ascent*: w ← w + α∇J.
+{{< /collapse >}}
+
+---
+
 ## Common pitfalls
 
 - **Wrong shape in matrix-vector product:** \\(A w\\) requires that the number of *columns* of \\(A\\) equals the length of \\(w\\). The result has length = number of *rows* of \\(A\\).

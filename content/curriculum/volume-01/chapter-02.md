@@ -8,6 +8,8 @@ tags: ["multi-armed bandits", "epsilon-greedy", "exploration", "curriculum"]
 keywords: ["multi-armed bandits", "epsilon-greedy", "10-armed testbed", "exploration exploitation"]
 ---
 
+{{< notebook path="volume-01/ch02_bandits.ipynb" title="Open Chapter 2 notebook" >}}
+
 **Learning objectives**
 
 - Implement a multi-armed bandit environment with Gaussian rewards.
@@ -19,6 +21,8 @@ keywords: ["multi-armed bandits", "epsilon-greedy", "10-armed testbed", "explora
 A **multi-armed bandit** is an RL problem with a single state: the agent repeatedly chooses an "arm" (action) and receives a reward drawn from a distribution associated with that arm. The goal is to maximize cumulative reward. **Exploration** (trying different arms) is needed to discover which arm has the highest mean; **exploitation** (choosing the best arm so far) maximizes immediate reward. In practice, bandits model A/B testing, clinical trials, and recommender systems (which ad or item to show). The **10-armed testbed** is a standard benchmark: 10 arms with different unknown means; the agent learns from experience.
 
 **Exercise:** Implement a 10-armed testbed as in Sutton & Barto, where each arm's reward is drawn from a Gaussian with unit variance and mean \\(\mu_i \sim \mathcal{N}(0,1)\\). Run an epsilon-greedy agent (\\(\epsilon = 0.1\\)) for 1000 steps and plot the average reward over time. Compare with a purely greedy agent.
+
+{{< pyrepl code="import random\nrandom.seed(42)\n\n# 3-armed bandit\ntrue_means = [0.1, 0.5, -0.2]\nQ = [0.0, 0.0, 0.0]  # estimates\nN = [0, 0, 0]         # pull counts\n\n# TODO: run 100 steps of epsilon-greedy (epsilon=0.1)\nepsilon = 0.1\nfor step in range(100):\n    # choose action\n    if random.random() < epsilon:\n        action = random.randrange(3)\n    else:\n        action = Q.index(max(Q))\n    # pull arm\n    reward = random.gauss(true_means[action], 1)\n    # update\n    N[action] += 1\n    Q[action] += (reward - Q[action]) / N[action]\n\nprint('Q estimates:', [round(q,3) for q in Q])\nprint('True means: ', true_means)\nprint('Pull counts:', N)" height="320" >}}
 
 **Professor's hints**
 
@@ -52,3 +56,10 @@ The graph below shows the sample means [0.2, 0.4, -0.1] after 10 pulls per arm; 
 1. **Warm-up:** For 3 arms with known means [0.1, 0.5, -0.2], compute the expected reward of the optimal arm. If you pull each arm 10 times and get sample means [0.2, 0.4, -0.1], which arm would greedy choose? Would that be correct?
 2. **Coding:** Implement epsilon-greedy for a 5-armed bandit with Gaussian rewards (mean 0, variance 1 per arm, with different true means). Run for 1000 steps with ε=0.1 and plot the cumulative regret vs t.
 3. **Challenge:** Add a **UCB** (upper-confidence-bound) agent: choose \\(a = \\arg\\max_a \\bigl[ Q(a) + c \\sqrt{\\frac{\\ln t}{N(a)}} \\bigr]\\). Plot UCB alongside epsilon-greedy and greedy for \\(c=2\\).
+4. **Variant:** Try \\(\epsilon = 0.01\\) and \\(\epsilon = 0.5\\) on the same 10-armed testbed. Which finds the best arm faster? Which accumulates more regret over 1000 steps?
+5. **Debug:** The incremental update below has a bug — it divides by the wrong count. Find and fix it.
+
+{{< pyrepl code="Q = [0.0, 0.0, 0.0]\nN = [0, 0, 0]\n\ndef update(action, reward):\n    N[action] += 1\n    # BUG: should divide by N[action], not total steps\n    total = sum(N)\n    Q[action] += (reward - Q[action]) / total\n\nupdate(1, 1.0)\nupdate(1, 0.0)\nprint('Q[1] after 2 pulls:', Q[1])  # expected 0.5\n# TODO: fix update() so Q[1] == 0.5" height="220" >}}
+
+6. **Conceptual:** Why does a purely greedy agent (\\(\epsilon=0\\)) typically perform worse than \\(\epsilon\\)-greedy in the long run on the 10-armed testbed?
+7. **Recall:** State the incremental update formula \\(Q_{n+1} = Q_n + \frac{1}{n+1}(r - Q_n)\\) from memory and explain what each term means.

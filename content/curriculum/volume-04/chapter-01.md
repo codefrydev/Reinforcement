@@ -46,3 +46,17 @@ keywords: ["policy-based methods", "stochastic policy", "deterministic policy", 
 1. **Warm-up:** In one sentence each, give one example where a deterministic policy is fine and one where a stochastic policy is essential.
 2. **Coding:** Write a Python function `stochastic_policy(probs)` that takes a list of action probabilities (summing to 1) and returns a sampled action index using `random.choices` or equivalent. Test with `[0.5, 0.3, 0.2]` over 1000 calls and approximate the empirical distribution.
 3. **Challenge:** In rock-paper-scissors, what is the Nash-equilibrium policy? Is it deterministic or stochastic? Relate to the need for stochastic policies in games.
+4. **Variant:** Extend your stochastic policy function to work with 10 actions instead of 3. Verify empirically that for a uniform policy (`[0.1]*10`), all actions are visited roughly equally over 10000 calls.
+
+{{< pyrepl code="import random\n\ndef stochastic_policy(probs):\n    return random.choices(range(len(probs)), weights=probs, k=1)[0]\n\n# Test with 3 actions\nprobs = [0.5, 0.3, 0.2]\ncounts = [0, 0, 0]\nfor _ in range(1000):\n    a = stochastic_policy(probs)\n    counts[a] += 1\nprint('Empirical:', [c/1000 for c in counts])\nprint('True:     ', probs)" height="200" >}}
+
+5. **Debug:** The code below always picks action 0 because it uses `argmax` instead of sampling. Fix it to use proper stochastic selection.
+
+```python
+def broken_policy(probs):
+    # BUG: argmax makes this deterministic
+    return probs.index(max(probs))
+```
+
+6. **Conceptual:** In a fully observed, deterministic environment with no adversary, can the optimal policy always be deterministic? Explain why stochastic policies might still be useful for exploration.
+7. **Recall:** State the definition of a stochastic policy \\(\\pi(a|s)\\) and a deterministic policy \\(\\mu(s)\\) from memory in one line each.

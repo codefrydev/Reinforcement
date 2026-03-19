@@ -46,3 +46,6 @@ keywords: ["Monte Carlo Tree Search", "MCTS", "planning", "tree search"]
 1. **Warm-up:** What is the role of the exploration term \\(c \\sqrt{\\log N(s)/N(s,a)}\\) in UCT?
 2. **Coding:** Implement MCTS for tic-tac-toe. Plot win rate vs number of simulations per move (100, 500, 1000). Does win rate increase?
 3. **Challenge:** Implement MCTS for **connect four** (or another game). Compare win rate vs random with tic-tac-toe (harder game, need more simulations).
+4. **Variant:** Vary the exploration constant c ∈ {0.1, 0.5, 1.0, 2.0} in UCT. Plot win rate vs c for tic-tac-toe. Is there a range of c that works well, or is it very sensitive?
+5. **Debug:** An MCTS implementation always selects the same move at the root even after 1000 simulations. The bug is that the expansion step never creates child nodes — it returns early if a node has been visited before. Describe the correct expansion condition and how to fix it.
+6. **Conceptual:** UCT is asymptotically optimal (converges to minimax given enough simulations). Why is this property useful even though we use a finite simulation budget in practice? What determines how many simulations are "enough"?

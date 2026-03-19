@@ -46,3 +46,6 @@ When the **model is known** and deterministic, we can **plan** without learning:
 1. **Warm-up:** When is BFS preferable to value iteration for finding an optimal policy from a single start state?
 2. **Coding:** Implement BFS and value iteration on a 5×5 grid with goal at (4,4). Compare the policy from BFS (from (0,0)) with the policy from DP at (0,0). Do they match?
 3. **Challenge:** Add a small probability (e.g. 0.1) of a random transition. Use **value iteration** only (BFS no longer exact). Compare the optimal policy with the deterministic case.
+4. **Variant:** Scale the grid to 10×10 and add walls blocking some cells. How does the number of value iteration sweeps to convergence grow? Does BFS remain computationally cheaper for a single start state?
+5. **Debug:** A student implements value iteration but forgets to use the Bellman *max* and instead uses the Bellman *expectation* (averaging over actions equally). What policy does this converge to, and why is it suboptimal?
+6. **Conceptual:** Value iteration requires a known transition model P(s'|s,a). If the model is only approximate, how should you expect the resulting policy to differ from the true optimal? Is it better to have an over-optimistic or over-pessimistic model, and why?

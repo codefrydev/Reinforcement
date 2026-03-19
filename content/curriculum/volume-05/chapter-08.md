@@ -46,3 +46,15 @@ keywords: ["SAC vs PPO", "Hopper", "Walker2d", "when to use SAC or PPO"]
 1. **Warm-up:** List one advantage of PPO over SAC and one advantage of SAC over PPO.
 2. **Coding:** Run SAC and PPO on Hopper for 500k steps each (3 seeds). Plot learning curves with standard error. Which has higher final return on average?
 3. **Challenge:** On a task where PPO is sample-inefficient, try **PPO with a larger rollout** (e.g. 4096 steps) and more epochs. Does it close the gap with SAC?
+4. **Variant:** Run both algorithms on **Walker2d** instead of Hopper. Does the ranking change? Are there tasks where PPO outperforms SAC in final return (not just stability)?
+5. **Debug:** The comparison below uses different observation normalization for SAC and PPO, making the comparison unfair. Explain the bug and how to fix it.
+
+```python
+# BUG: PPO uses normalized observations, SAC uses raw observations
+ppo_env = gym.make('Hopper-v4', normalize_obs=True)
+sac_env = gym.make('Hopper-v4')  # no normalization
+# Fix: use the same wrapper for both, e.g. VecNormalize for both or neither
+```
+
+6. **Conceptual:** PPO is on-policy and SAC is off-policy. Give one scenario where off-policy learning is especially advantageous (e.g. a setting with expensive data collection).
+7. **Recall:** List two scenarios where PPO is typically preferred over SAC (e.g. RLHF, discrete actions) and two where SAC is preferred (e.g. sample efficiency, continuous control).

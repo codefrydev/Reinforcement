@@ -48,3 +48,10 @@ keywords: ["REINFORCE algorithm", "policy gradient", "CartPole", "variance"]
 1. **Warm-up:** For a 3-step episode with rewards [0, 0, 1] and \\(\gamma=0.9\\), write \\(G_0, G_1, G_2\\). Then write the REINFORCE update (one term per step) in symbols.
 2. **Coding:** Implement REINFORCE without a baseline for CartPole. Log the standard deviation of the last 10 episode returns every 100 episodes. Does it decrease over training?
 3. **Challenge:** Add a simple baseline \\(b(s) = V_\phi(s)\\) (one hidden layer). Train V to minimize \\((G_t - V(s_t))^2\\) and use \\(G_t - V(s_t)\\) in the policy gradient. Compare variance of updates and learning speed with and without baseline.
+4. **Variant:** Run REINFORCE with \\(\gamma=0.99\\) and \\(\gamma=0.9\\) on CartPole. Does discounting the future aggressively change what the policy learns to optimize? Which reaches 195 average return faster?
+5. **Debug:** The code below uses the per-step reward \\(r_t\\) instead of the return \\(G_t\\) when weighting the log-probability gradient — a very common mistake. Fix it.
+
+{{< pyrepl code="def reinforce_loss_buggy(log_probs, rewards, gamma=0.9):\n    \"\"\"BUG: uses r_t instead of G_t in the update.\"\"\"\n    loss = 0\n    for t, (lp, r) in enumerate(zip(log_probs, rewards)):\n        loss += -lp * r  # BUG: should use G_t, not r_t\n    return loss\n\ndef compute_returns(rewards, gamma=0.9):\n    G, returns = 0, []\n    for r in reversed(rewards):\n        G = r + gamma * G\n        returns.insert(0, G)\n    return returns\n\n# Demo with a 3-step episode\nrewards = [0, 0, 1]\nreturns = compute_returns(rewards)\nprint('Returns G_t:', [round(g,3) for g in returns])\n# Fix: replace 'r' with 'G' from compute_returns" height="240" >}}
+
+6. **Conceptual:** Why does REINFORCE have high variance? What is the key quantity that determines the scale of the gradient update, and why does it vary so much across episodes?
+7. **Recall:** Write the REINFORCE weight update \\(\\theta \\leftarrow \\theta + \\alpha \\sum_t G_t \\nabla_\\theta \\log \\pi(a_t|s_t;\\theta)\\) from memory.

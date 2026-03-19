@@ -45,3 +45,10 @@ keywords: ["Soft Actor-Critic", "SAC", "HalfCheetah", "automatic temperature"]
 1. **Warm-up:** What is the role of the minimum of two Q-networks in SAC (same as in TD3)?
 2. **Coding:** Implement SAC for HalfCheetah with auto \\(\\alpha\\). Log policy entropy and \\(\\alpha\\) every 1000 steps. Does entropy stay near the target?
 3. **Challenge:** Run SAC and PPO each for 500k steps on HalfCheetah. Plot learning curves. Which reaches -300 (or better) return first in terms of env steps?
+4. **Variant:** Run SAC with a fixed \\(\\alpha = 0.2\\) vs automatic temperature tuning on HalfCheetah. Does auto-tuning significantly improve final performance or convergence speed?
+5. **Debug:** The SAC target computation below uses the wrong sign for the entropy term — it adds \\(\\alpha \\log \\pi\\) instead of subtracting it, punishing high-entropy actions. Fix it.
+
+{{< pyrepl code="import torch\n\ndef sac_target_buggy(Q1_t, Q2_t, actor, s_next, r, done, alpha, gamma=0.99):\n    with torch.no_grad():\n        a_next, log_pi_next = actor.sample(s_next)\n        q_min = torch.min(Q1_t(s_next, a_next), Q2_t(s_next, a_next))\n        # BUG: should subtract alpha * log_pi, not add\n        target = r + gamma * (1 - done) * (q_min + alpha * log_pi_next)\n    return target\n\n# Fix: target = r + gamma * (1-done) * (q_min - alpha * log_pi_next)\nprint('Bug: + alpha*log_pi penalizes high-entropy actions (backwards)')\nprint('Fix: - alpha*log_pi encourages high entropy')" height="220" >}}
+
+6. **Conceptual:** Why does SAC use two Q-networks? How does taking the minimum of two Q-estimates reduce overestimation compared to using a single critic?
+7. **Recall:** Write the SAC actor loss \\(J_\\pi(\\theta) = \\mathbb{E}[\\ldots]\\) in terms of \\(Q, \\log \\pi, \\alpha\\) from memory.

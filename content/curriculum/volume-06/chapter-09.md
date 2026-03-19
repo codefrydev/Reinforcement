@@ -46,3 +46,6 @@ keywords: ["PETS", "Probabilistic Ensembles", "MPC", "trajectory sampling"]
 1. **Warm-up:** What is the difference between PETS and MBPO in terms of how the model is used (planning vs training a policy)?
 2. **Coding:** Implement PETS for Pendulum with horizon H=10 and 500 random action sequences per step. Plot return vs step. How does it compare to SAC with the same number of env steps?
 3. **Challenge:** Replace random shooting with **CEM**: maintain a Gaussian over action sequences; sample, evaluate, keep top 10%; update Gaussian; repeat for 5 iterations. Does CEM improve over random shooting?
+4. **Variant:** Vary the planning horizon H ∈ {5, 10, 20} in PETS. How does planning quality (return per step) change? At what horizon does computation become prohibitive?
+5. **Debug:** PETS with random shooting performs well on average but has very high variance per step. The action sequences are all sampled independently. What change to the sampling strategy (e.g. time-correlated noise, action smoothing) would reduce this variance?
+6. **Conceptual:** PETS replans at every timestep from scratch. How does this differ from policy-based methods that amortize planning into a neural network? What is the trade-off in online computation and adaptability to model changes?

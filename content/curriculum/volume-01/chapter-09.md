@@ -47,3 +47,10 @@ keywords: ["value iteration", "optimal V", "optimal policy", "dynamic programmin
 1. **Warm-up:** Run value iteration with \\(\\gamma=0.5\\) and then \\(\\gamma=0.99\\) on the same gridworld. How does the optimal \\(V\\) near the center change? (Higher \\(\\gamma\\) ⇒ future rewards matter more ⇒ values reflect longer horizons.)
 2. **Coding:** Implement value iteration for a 4×4 gridworld with goal and terminal states. Plot the optimal \\(V^*\\) as a heatmap and the optimal policy as arrows. Verify that the policy points toward the goal.
 3. **Challenge:** Add a single "obstacle" cell in the middle that the agent cannot enter (e.g. (1,1)). Update the transition model so actions into the obstacle leave the agent in place with reward -1. Re-run value iteration and show the optimal policy avoids the obstacle.
+4. **Variant:** Run value iteration on a 6×6 gridworld with two goal cells at opposite corners, with rewards +1 and +5 respectively. How does the optimal policy change compared to a single-goal grid?
+5. **Debug:** The code below updates \\(V\\) for terminal states (reward = 0, goal), causing the terminal's value to drift from 0. Find and fix it.
+
+{{< pyrepl code="# 1D gridworld: states 0-4, terminal at 4 (goal)\nV = [0.0] * 5\ngamma = 0.9\nfor _ in range(30):\n    new_V = V[:]\n    for s in range(5):  # BUG: should skip state 4 (terminal)\n        if s < 4:\n            new_V[s] = max(-1 + gamma*V[s-1] if s>0 else -float('inf'),\n                           -1 + gamma*V[s+1] if s<4 else 1)\n        else:\n            new_V[s] = -1 + gamma*V[s]  # BUG: terminal updated\n    V = new_V\nprint('V:', [round(v,2) for v in V])" height="240" >}}
+
+6. **Conceptual:** How does value iteration relate to policy iteration? In what sense is each VI sweep a combined evaluation + improvement step?
+7. **Recall:** Write the value iteration update rule \\(V(s) \\leftarrow \\ldots\\) from memory.

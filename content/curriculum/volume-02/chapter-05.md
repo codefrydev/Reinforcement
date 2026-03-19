@@ -45,3 +45,10 @@ keywords: ["Expected SARSA", "Q-learning", "variance", "learning curves"]
 1. **Warm-up:** For 2 actions and \\(\epsilon=0.1\\), write the Expected SARSA target in terms of \\(Q(s',0)\\) and \\(Q(s',1)\\) when the greedy action is 0.
 2. **Coding:** Implement Expected SARSA (target = expected Q under ε-greedy policy) for gridworld. Compare learning curve with Q-learning over 500 episodes.
 3. **Challenge:** Implement Expected SARSA where the *target* policy is greedy (\\(\\pi(a'|s') = 1\\) for \\(a' = \\arg\\max\\)) but the *behavior* policy is \\(\epsilon\\)-greedy. How does this differ from Q-learning? (It should be identical in the limit; the update is the same when the target policy is greedy.)
+4. **Variant:** Try \\(\epsilon=0.0\\) (greedy target) and \\(\epsilon=0.3\\) in Expected SARSA. For \\(\epsilon=0\\), is the target the same as Q-learning? Verify numerically.
+5. **Debug:** The expected-value computation below uses \\(\\max Q(s',a')\\) instead of the weighted average under ε-greedy. Fix it.
+
+{{< pyrepl code="Q_next = [0.3, 0.8, 0.1]  # Q(s', a) for 3 actions\neps = 0.1\nn_actions = len(Q_next)\n\n# BUG: uses max instead of expected value under eps-greedy\ndef expected_q_buggy(Q_next, eps):\n    return max(Q_next)\n\n# Fix: use (1-eps)*max + eps*(mean)\ndef expected_q_correct(Q_next, eps):\n    greedy_val = max(Q_next)\n    mean_val = sum(Q_next) / len(Q_next)\n    return (1 - eps) * greedy_val + eps * mean_val\n\nprint('Buggy:', expected_q_buggy(Q_next, eps))\nprint('Correct:', expected_q_correct(Q_next, eps))" height="240" >}}
+
+6. **Conceptual:** When does Expected SARSA have lower variance than (sample-based) SARSA? Why does taking the expectation reduce variance?
+7. **Recall:** Write the Expected SARSA target for an ε-greedy behavior policy with \\(n\\) actions from memory.

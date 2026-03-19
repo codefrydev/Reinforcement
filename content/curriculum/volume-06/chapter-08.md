@@ -43,6 +43,9 @@ keywords: ["MBPO", "Model-Based Policy Optimization", "ensemble dynamics", "SAC"
 
 **Extra practice**
 
-1. **Warm-up:** Why does MBPO add only short model rollouts to the buffer?
+1. **Warm-up:** Why does MBPO adds only short model rollouts to the buffer?
 2. **Coding:** Implement MBPO for Pendulum or Hopper. Plot return vs real env steps for MBPO and SAC. How much faster does MBPO reach a given return?
 3. **Challenge:** Vary the rollout length (1, 3, 5, 10 steps). Plot final return vs rollout length. Is there an optimal length?
+4. **Variant:** Change the ratio of model-generated to real transitions in the replay buffer (e.g. 50%/50% vs 90%/10% model). How does this ratio affect learning stability and final performance?
+5. **Debug:** An MBPO implementation collects model rollouts but the SAC policy never improves beyond random. Logging shows the model buffer is filled but the SAC update loop samples only from the real buffer. Identify the bug and fix it.
+6. **Conceptual:** MBPO uses short rollouts to limit compounding model error, but this restricts the policy from planning far ahead. How does MBPO's design implicitly assume the model is "good enough" for short horizons? What would you check to verify this assumption holds?

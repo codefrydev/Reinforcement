@@ -8,6 +8,8 @@ tags: ["reinforcement learning", "gridworld", "discounted return", "MDP", "curri
 keywords: ["RL framework", "gridworld", "discounted return", "agent environment", "reward"]
 ---
 
+{{< notebook path="volume-01/ch01_gridworld_return.ipynb" title="Open Chapter 1 notebook" >}}
+
 **Learning objectives**
 
 - Identify the main components of an RL system: agent, environment, state, action, reward.
@@ -24,7 +26,19 @@ In reinforcement learning, an **agent** interacts with an **environment**: at ea
 
 {{< chart type="line" palette="return" title="Cumulative discounted return (γ=0.9)" labels="1 step, 2 steps, 3 steps" data="0, 0, 0.81" xLabel="Step" yLabel="Return" >}}
 
+**Agent-environment interaction loop:**
+
+{{< mermaid >}}
+flowchart LR
+    Agent -->|"action a_t"| Environment
+    Environment -->|"reward r_t"| Agent
+    Environment -->|"next state s_{t+1}"| Agent
+    Agent -->|"observes state s_t"| Agent
+{{< /mermaid >}}
+
 **Exercise:** In a 3×3 gridworld, the agent starts at (0,0) and aims to reach a goal at (2,2) with a reward of +1. Every other step gives 0 reward, and hitting a wall (outside grid) gives -1 and stays in place. Write a Python function that takes a sequence of actions (up, down, left, right) and returns the total discounted return (\\(\gamma = 0.9\\)).
+
+{{< pyrepl code="def discounted_return(rewards, gamma=0.9):\n    # TODO: return sum(gamma**t * r for t, r in enumerate(rewards))\n    pass\n\nprint(discounted_return([0, 0, 1], 0.9))   # expected: 0.81" height="220" >}}
 
 **Professor's hints**
 
@@ -57,3 +71,10 @@ Or: `G = 0 + 0.9*0 + 0.81*1`. The same discounting structure is used in the grid
 1. **Warm-up:** For rewards \\([0, 0, 1]\\) and \\(\gamma = 0.9\\), compute \\(G_0\\) by hand. Then write a one-line loop that computes it in Python.
 2. **Coding:** Write a function `discounted_return(rewards, gamma)` that returns \\(G_0\\) for a list of rewards. Test with rewards = [0, 0, 1], gamma = 0.9 (expected 0.81).
 3. **Challenge:** Extend your function to support a **list of (state, reward)** pairs (e.g. from a saved trajectory) and compute the return from the first state. No environment logic—just the math.
+4. **Variant:** Try \\(\gamma=0.5\\) and \\(\gamma=0.99\\) with the same reward sequence \\([0, 0, 1]\\). How does \\(G_0\\) change? For which \\(\gamma\\) does future reward matter most?
+5. **Debug:** The code below has a bug — it sums raw rewards instead of discounting them. Find and fix it.
+
+{{< pyrepl code="def buggy_return(rewards, gamma=0.9):\n    return sum(rewards)  # BUG: discount missing\n\n# Expected for [0, 0, 1]: 0.81\nprint(buggy_return([0, 0, 1]))  # prints 1, not 0.81\n\n# TODO: fix the function\ndef fixed_return(rewards, gamma=0.9):\n    pass\n\nprint(fixed_return([0, 0, 1]))  # should print 0.81" height="220" >}}
+
+6. **Conceptual:** Explain why discounting (\\(\gamma < 1\\)) is useful even when the episode is finite. When would using \\(\gamma = 1\\) be problematic?
+7. **Recall:** State the formula for \\(G_0\\) (discounted return from step 0) in terms of rewards \\(r_0, r_1, r_2, \ldots\\) and \\(\gamma\\) from memory.

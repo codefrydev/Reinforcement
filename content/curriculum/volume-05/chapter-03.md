@@ -46,3 +46,17 @@ keywords: ["PPO", "Proximal Policy Optimization", "clipped objective", "surrogat
 1. **Warm-up:** If \\(r_t = 2\\) and \\(\\hat{A}_t = 0.5\\), and \\(\\epsilon = 0.2\\), what is the clipped objective value? What would the unclipped value be?
 2. **Coding:** Write a function `ppo_clip_loss(ratio, advantage, eps=0.2)` that returns the per-sample clipped objective (the term inside the expectation). Test with ratio=1.5, advantage=1.0 and with ratio=0.5, advantage=-0.5.
 3. **Challenge:** Plot the clipped objective as a function of \\(r_t\\) for fixed \\(\\hat{A}_t = 1\\) and \\(\\epsilon = 0.2\\). At what \\(r_t\\) does the gradient (with respect to \\(r_t\\)) become zero?
+4. **Variant:** Try \\(\\epsilon = 0.05\\) (tight) and \\(\\epsilon = 0.4\\) (loose) on a toy policy gradient loop. Which converges faster? Does \\(\\epsilon = 0.4\\) show signs of instability or oscillation?
+
+{{< pyrepl code="def ppo_clip_loss(ratio, advantage, eps=0.2):\n    clipped = max(1 - eps, min(1 + eps, ratio))\n    return min(ratio * advantage, clipped * advantage)\n\n# Test cases\ntest_cases = [\n    (1.5, 1.0, 0.2),   # ratio > 1+eps, positive advantage -> clipped\n    (0.5, -0.5, 0.2),  # ratio < 1-eps, negative advantage -> clipped\n    (1.1, 1.0, 0.2),   # within clip range -> not clipped\n]\nfor ratio, adv, eps in test_cases:\n    loss = ppo_clip_loss(ratio, adv, eps)\n    unclipped = ratio * adv\n    print(f'ratio={ratio}, A={adv}: clipped={loss:.3f}, unclipped={unclipped:.3f}')" height="240" >}}
+
+5. **Debug:** The code below computes the ratio as \\(\\log(\\pi_{new}) - \\log(\\pi_{old})\\) instead of \\(\\pi_{new}/\\pi_{old}\\), making the ratio always wrong. Fix it.
+
+```python
+# BUG: computes log-ratio, not ratio
+ratio = new_log_prob - old_log_prob  # wrong!
+# Fix: ratio = torch.exp(new_log_prob - old_log_prob)
+```
+
+6. **Conceptual:** What happens to PPO when \\(\\epsilon\\) is too small? Too large? Describe the failure mode in each case.
+7. **Recall:** Write the PPO clipped objective \\(L^{CLIP}(\\theta) = \\mathbb{E}[\\ldots]\\) from memory using the ratio notation.

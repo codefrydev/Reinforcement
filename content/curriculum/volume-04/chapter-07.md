@@ -46,3 +46,10 @@ keywords: ["A3C", "asynchronous advantage actor-critic", "multiprocessing", "A2C
 1. **Warm-up:** In one sentence each, what is the main advantage of A3C over A2C, and what is the main disadvantage?
 2. **Coding:** Implement A3C with 4 workers. Log the global episode return (from any worker) every 100 updates. Run for 2000 updates and plot; compare with A2C (4 envs) for 2000 updates.
 3. **Challenge:** Implement a **synchronous** version that collects rollouts from all workers and then does one batched update (this is A2C). Compare gradient norm and return variance over training for A3C vs this A2C.
+4. **Variant:** Run A3C with 2 vs 8 workers on CartPole. Compare wall-clock time to reach return = 195. Is there a point of diminishing returns for more workers?
+5. **Debug:** The code below has a race condition: two workers might update the global network simultaneously, corrupting shared parameters. Fix it with a threading lock.
+
+{{< pyrepl code="import threading\n\nglobal_net_params = [0.0]  # shared parameters (simplified)\nlock = threading.Lock()\n\ndef worker_update_buggy(gradient):\n    # BUG: no lock — concurrent updates can corrupt state\n    global_net_params[0] += gradient\n\ndef worker_update_fixed(gradient):\n    with lock:  # Fix: acquire lock before updating\n        global_net_params[0] += gradient\n\nprint('Fix: always acquire lock before writing to shared parameters')" height="200" >}}
+
+6. **Conceptual:** Why can stale gradients (gradients computed from an outdated policy snapshot) be harmful in A3C? Under what conditions are stale gradients more likely to cause problems?
+7. **Recall:** State the key difference between A2C and A3C in one sentence: what is synchronized vs asynchronous in each?

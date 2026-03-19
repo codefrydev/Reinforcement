@@ -49,3 +49,10 @@ The **reward hypothesis** says that we can capture what we want the agent to do 
 1. **Warm-up:** Give one example of reward hacking in a video game (e.g. "kill enemies" leading to farming spawn points). How would you change the reward to reduce the exploit?
 2. **Coding:** Write a Python function that takes a reward function (state, action → float) and a list of trajectories (each a list of (s, a, r) tuples) and returns the mean return per trajectory. Test with a small hand-made trajectory.
 3. **Challenge:** Design a reward for a warehouse robot that must pick items and place them in bins. List at least two possible reward hacks and how you would modify the reward to address them.
+4. **Variant:** Modify your self-driving reward to add a comfort term (e.g. penalize large steering angle changes). Does this introduce any new reward hacks? How would you prevent them?
+5. **Debug:** The function below always returns 0 because of a scoping bug. Find and fix it.
+
+{{< pyrepl code="def mean_return(trajectories, gamma=0.9):\n    total = 0\n    for traj in trajectories:\n        episode_return = 0\n        for t, (s, a, r) in enumerate(traj):\n            episode_return += gamma**t * r\n    # BUG: total is never updated inside the loop\n    return total / len(trajectories) if trajectories else 0\n\ntraj1 = [('s0','a0',0), ('s1','a1',0), ('s2','a2',1)]\nprint(mean_return([traj1]))  # expected ~0.81" height="220" >}}
+
+6. **Conceptual:** Can every goal be captured by a scalar reward? Give one real-world example where reward design is especially difficult (e.g. multi-objective tasks, human preferences).
+7. **Recall:** State the reward hypothesis in one sentence from memory.

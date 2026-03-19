@@ -51,3 +51,11 @@ keywords: ["limitations of DP", "function approximation", "state count", "tabula
 
 1. **Warm-up:** A 5×5 grid has 25 states. How many entries does a tabular \\(Q(s,a)\\) table have if there are 4 actions? (Answer: 25 × 4 = 100.)
 2. **Challenge:** Give one example of an RL problem where the state space is technically finite but too large for tabular methods (e.g. chess, or a discretized robot state with 10 dimensions and 100 bins per dimension). Estimate the number of states and explain why function approximation is necessary.
+3. **Coding:** Write a Python function `qtable_size(rows, cols, num_actions, bytes_per_entry=4)` that returns the number of Q-table entries and the total memory in bytes. Test for a 10×10 grid (4 actions) and a 100×100 grid.
+
+{{< pyrepl code="def qtable_size(rows, cols, num_actions, bytes_per=4):\n    entries = rows * cols * num_actions\n    memory = entries * bytes_per\n    return entries, memory\n\nfor dims in [(10, 10), (100, 100), (1000, 1000)]:\n    r, c = dims\n    entries, mem = qtable_size(r, c, 4)\n    print(f'{r}x{c} grid: {entries} entries, {mem/1e6:.2f} MB')" height="200" >}}
+
+4. **Variant:** A robot has 6 joint angles, each discretized into 50 bins, with 4 possible actions. Compute the total state count and the Q-table memory (in GB). Why is this infeasible?
+5. **Debug:** The estimate below forgets to multiply by the number of actions, reporting state count instead of Q-table size. Fix it: `q_size = rows * cols * bytes_per_entry`.
+6. **Conceptual:** Name two specific challenges that function approximation introduces compared to tabular methods (e.g. convergence, generalization error).
+7. **Recall:** State in one sentence why tabular RL cannot scale to large or continuous state spaces.

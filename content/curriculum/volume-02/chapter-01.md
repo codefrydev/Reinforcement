@@ -8,6 +8,8 @@ tags: ["Monte Carlo", "prediction", "blackjack", "curriculum"]
 keywords: ["Monte Carlo methods", "first-visit MC", "blackjack", "prediction"]
 ---
 
+{{< notebook path="volume-02/ch11_monte_carlo.ipynb" title="Open Monte Carlo notebook" >}}
+
 **Learning objectives**
 
 - Implement first-visit Monte Carlo prediction: estimate \\(V^\\pi(s)\\) by averaging returns from the first time \\(s\\) is visited in each episode.
@@ -25,6 +27,8 @@ keywords: ["Monte Carlo methods", "first-visit MC", "blackjack", "prediction"]
 {{< chart type="bar" title="V^π(s) for three blackjack states (dealer 6, no ace)" labels="(18,6,F), (19,6,F), (20,6,F)" data="0.81, 0.9, 1" >}}
 
 **Exercise:** Implement first-visit Monte Carlo prediction for the blackjack environment (OpenAI Gym). Estimate the state-value function for a policy that sticks on 20 or 21, otherwise hits. Run for 500,000 episodes and plot the value for a few key states.
+
+{{< pyrepl code="import random\nrandom.seed(0)\n\ndef episode():\n    \"\"\"Random walk: states 1-5, start=3, terminal at 0 or 6.\"\"\"\n    s = 3\n    traj = []\n    while s not in (0, 6):\n        s += 1 if random.random() < 0.5 else -1\n        r = 1 if s == 6 else 0\n        traj.append((s, r))\n    return traj\n\n# Run 100 episodes and estimate V(3)\nreturns_s3 = []\nfor _ in range(100):\n    ep = episode()\n    # First visit to state 3 in this episode (it starts there)\n    G = sum(r for _, r in ep)  # undiscounted return\n    returns_s3.append(G)\nprint(f'V(3) estimate after 100 episodes: {sum(returns_s3)/len(returns_s3):.3f}')\nprint('True V(3) = 0.5 (symmetric random walk to 6 = 50%)')" height="280" >}}
 
 **Professor's hints**
 
@@ -48,3 +52,10 @@ keywords: ["Monte Carlo methods", "first-visit MC", "blackjack", "prediction"]
 1. **Warm-up:** For one episode of blackjack with the given policy, list the states visited and the return from the first time each state is visited. Compute returns by hand for a 3-step episode.
 2. **Coding:** Write a function that, given a list of (state, reward) pairs for one episode and gamma, returns the partial return G_t from each first-visit state. Test on a 5-step episode.
 3. **Challenge:** Implement **every-visit** MC for the same policy. Compare first-visit and every-visit estimates for 2–3 states after 100k episodes. Are they similar?
+4. **Variant:** Increase the episode count from 100k to 500k. Do value estimates stabilize? For which states does MC converge most slowly and why?
+5. **Debug:** The code below accumulates returns from every visit to a state instead of just the first. Fix it to implement first-visit MC correctly.
+
+{{< pyrepl code="def first_visit_mc(episodes, gamma=1.0):\n    returns = {}\n    counts = {}\n    for ep in episodes:\n        visited = set()\n        for t, (s, r) in enumerate(ep):\n            # BUG: does not check if s was visited before\n            G = sum(gamma**(k-t) * ep[k][1] for k in range(t, len(ep)))\n            returns[s] = returns.get(s, 0) + G\n            counts[s] = counts.get(s, 0) + 1\n    return {s: returns[s]/counts[s] for s in returns}\n\n# TODO: add 'if s not in visited' check before accumulating\n# then 'visited.add(s)'\nprint('Fix: add first-visit check before accumulating G')" height="240" >}}
+
+6. **Conceptual:** Why does Monte Carlo estimation have higher variance than TD methods? In what task settings is MC's unbiasedness particularly valuable?
+7. **Recall:** Define first-visit MC prediction in one sentence from memory.

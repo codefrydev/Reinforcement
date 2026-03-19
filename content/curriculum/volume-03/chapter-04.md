@@ -45,3 +45,10 @@ keywords: ["experience replay", "replay buffer", "push and sample", "DQN"]
 1. **Warm-up:** After pushing 50 transitions with capacity 100, what is `len(buffer)`? After pushing 150 total, what is `len(buffer)`? (50, then 100 if circular.)
 2. **Coding:** Implement a replay buffer class: push(transition), sample(batch_size) returning a batch of (s, a, r, s', done). Use a circular buffer (deque or list with index). Test with 100 pushes and 32 samples.
 3. **Challenge:** Add a method `sample_sequential(n)` that returns `n` consecutive transitions (e.g. for n-step learning or RNN). Ensure you do not cross an episode boundary (done=True) if you want full n-step returns.
+4. **Variant:** Reduce capacity to 10 and push 50 transitions. What is the minimum and maximum age of a transition in the buffer? How does a very small buffer affect learning diversity?
+5. **Debug:** The code below stores a reference to the state array instead of a copy, so all entries end up pointing to the same (most recently mutated) state. Fix it.
+
+{{< pyrepl code="from collections import deque\nimport random\n\nbuffer = deque(maxlen=100)\nstate = [0.0, 0.0]  # mutable list\n\nfor i in range(5):\n    state[0] = float(i)\n    # BUG: stores reference, not copy\n    buffer.append((state, i % 2, float(i), state, False))\n\n# All entries show state = [4.0, 0.0] because of shared reference\nprint('All states same?', all(b[0][0] == 4.0 for b in buffer))\n\n# Fix: store state.copy() or tuple(state)\nbuffer2 = deque(maxlen=100)\nfor i in range(5):\n    state[0] = float(i)\n    buffer2.append((state.copy(), i % 2, float(i), state.copy(), False))\nprint('Fixed states different?', buffer2[0][0][0] != buffer2[-1][0][0])" height="260" >}}
+
+6. **Conceptual:** Why does random sampling from a replay buffer reduce the correlation between training samples? What happens if we train only on the most recent transitions?
+7. **Recall:** Explain in one sentence why experience replay improves sample efficiency in off-policy RL.

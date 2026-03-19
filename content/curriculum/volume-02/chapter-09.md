@@ -45,3 +45,10 @@ keywords: ["hyperparameter tuning", "grid search", "alpha epsilon", "Q-learning"
 1. **Warm-up:** For one (\\(\\alpha\\), \\(\\epsilon\\)) pair, run 3 trials and compute the mean and standard deviation of the mean reward per episode. Why is std useful?
 2. **Coding:** Run a small hyperparameter grid: α in [0.01, 0.1], ε in [0.05, 0.2] on Cliff Walking (or gridworld). For each of the 4 combinations, run 3 seeds and record mean return. Plot a bar chart or table of mean ± std.
 3. **Challenge:** Add \\(\\gamma\\) to the grid (e.g. 0.9, 0.99). You now have 3 parameters; use a small grid (e.g. 2×2×2) or fix one parameter and show 2D heatmaps for two values of \\(\\gamma\\).
+4. **Variant:** Run a finer grid: \\(\alpha \\in \\{0.05, 0.1, 0.2, 0.5\\}\\) with \\(\epsilon\\) fixed at 0.1. Is performance sensitive to small changes in \\(\alpha\\)? Is there a clear best value?
+5. **Debug:** The code below uses the same random seed for all trials, making all 3 trials identical. Fix it so each trial uses a different seed.
+
+{{< pyrepl code="import random\n\ndef run_trial(alpha, eps, seed=42):  # BUG: same seed always\n    random.seed(seed)\n    returns = []\n    for ep in range(100):\n        ep_return = random.gauss(-13, 3)  # simulated\n        returns.append(ep_return)\n    return sum(returns) / len(returns)\n\nresults = [run_trial(0.1, 0.1) for _ in range(3)]  # identical!\nprint('Results (should differ):', results)\n\n# Fix: pass different seeds, e.g. seed=trial_id or seed=None\nresults_fixed = [run_trial(0.1, 0.1, seed=i) for i in range(3)]\nprint('Fixed results:', results_fixed)" height="240" >}}
+
+6. **Conceptual:** Why do we report mean ± standard deviation over multiple seeds rather than just the best run?
+7. **Recall:** Name one advantage of Bayesian optimization over grid search for hyperparameter tuning.
