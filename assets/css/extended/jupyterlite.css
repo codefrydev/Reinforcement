@@ -79,37 +79,42 @@ details[open] > .collapse-summary::before {
   background: transparent;
 }
 
-/* Auto-loading spinner overlay — shown while JupyterLite initialises */
-.pyrepl-loading {
+/* Click-to-load overlay (shown before user activates) */
+.pyrepl-overlay {
   position: absolute;
   inset: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.6rem;
   background: var(--hljs-bg, #1e1e2e);
   z-index: 2;
-  pointer-events: none;
 }
 
-.pyrepl-spinner {
-  width: 28px;
-  height: 28px;
-  border: 3px solid rgba(129, 140, 248, 0.25);
-  border-top-color: #818cf8;
-  border-radius: 50%;
-  animation: pyrepl-spin 0.75s linear infinite;
+.pyrepl-load-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.5em 1.2em;
+  background: var(--theme);
+  color: var(--theme-inverse, #fff);
+  border: none;
+  border-radius: 6px;
+  font-size: 0.9em;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s;
 }
 
-@keyframes pyrepl-spin {
-  to { transform: rotate(360deg); }
+.pyrepl-load-btn:hover {
+  opacity: 0.85;
 }
 
-.pyrepl-loading-text {
+.pyrepl-overlay-note {
   font-size: 0.78em;
-  color: rgba(196, 196, 197, 0.7);
-  letter-spacing: 0.02em;
+  color: var(--secondary);
+  margin: 0;
 }
 
 /* Notebook open link / button */
@@ -138,9 +143,13 @@ details[open] > .collapse-summary::before {
   flex-shrink: 0;
 }
 
-/* Responsive */
+/* Responsive: full-width on mobile, slightly taller on very narrow screens */
 @media (max-width: 480px) {
   .pyrepl-frame-wrap {
     border-radius: 4px;
+  }
+  .pyrepl-load-btn {
+    font-size: 0.82em;
+    padding: 0.45em 0.9em;
   }
 }
