@@ -4,8 +4,12 @@ description: "DQN for CartPole with replay and target network."
 date: 2026-03-10T00:00:00Z
 weight: 23
 draft: false
+difficulty: 7
 tags: ["DQN", "CartPole", "experience replay", "target network", "curriculum"]
 keywords: ["Deep Q-Networks", "DQN", "replay buffer", "target network", "CartPole"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 3"
 ---
 
 **Learning objectives**

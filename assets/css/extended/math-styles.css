@@ -1,0 +1,209 @@
+/* =====================================================================
+   Math Equation Coloring — KaTeX rendered HTML
+
+   Every math "atom type" gets a distinct, harmonious colour so
+   readers can instantly distinguish:
+
+     Variables / Greek letters  (.mathnormal)  → indigo
+     Numbers / constants        (.mord plain)  → amber
+     Binary operators  +−×÷     (.mbin)        → rose
+     Relations  = < > ∈ ≤ ≈    (.mrel)        → teal
+     Functions  sin cos max ∑ ∫  (.mop)        → purple
+     Blackboard bold  ℝ ℕ ℤ     (.mathbb)      → green
+     Calligraphic  𝒜 ℬ 𝒞        (.mathcal)     → violet
+     Delimiters  ( ) [ ] { }   (.mopen/.mclose)→ muted
+
+   All colours come from the design tokens in roadmap-home.css.
+   ===================================================================== */
+
+/* ─────────────────────────────────────────────────────────────────────
+   Inline math: inherit page text colour by default so unclassed
+   elements don't stick out, then selectively override per atom type.
+   ───────────────────────────────────────────────────────────────────── */
+.katex {
+  font-size: 1.08em;       /* slightly larger than surrounding text */
+  color: var(--primary);
+}
+
+/* ── Variables: italic single-letter names (x, y, z) and Greek (α β γ) ── */
+.katex .mathnormal {
+  color: var(--rm-indigo);
+}
+
+/* ── Numbers: upright digits and numeric constants (1, 42, 3.14, ∞) ── */
+/* These are .mord elements without any "math*" font class attached */
+.katex .mord:not([class*="math"]) {
+  color: var(--rm-amber);
+}
+
+/* ── Binary operators: +  −  ×  ÷  ∧  ∨  ⊕ ── */
+.katex .mbin {
+  color: var(--rm-rose);
+  font-weight: 600;
+}
+
+/* ── Relations: =  <  >  ≤  ≥  ∈  ⊆  ≈  ∼  →  ↦ ── */
+.katex .mrel {
+  color: var(--rm-teal);
+  font-weight: 600;
+}
+
+/* ── Operators: sin cos tan log ln max min argmax ∑ ∫ ∏ lim ── */
+.katex .mop,
+.katex .mop.op-symbol,
+.katex .mop.op-limits {
+  color: var(--rm-purple);
+  font-weight: 700;
+}
+
+/* ── Blackboard bold: ℝ ℕ ℤ ℚ ℂ ── */
+.katex .mathbb {
+  color: var(--rm-green);
+  font-weight: 700;
+}
+
+/* ── Calligraphic: 𝒜 ℬ 𝒞 (commonly used for sets, spaces) ── */
+.katex .mathcal {
+  color: var(--rm-violet);
+}
+
+/* ── Delimiters: ( ) [ ] { } | ‖ ⟨ ⟩ — kept muted so they recede ── */
+.katex .mopen,
+.katex .mclose {
+  color: var(--secondary);
+  opacity: 0.85;
+}
+
+/* ── Punctuation: , ; ── */
+.katex .mpunct {
+  color: var(--secondary);
+}
+
+/* ── Bold math (\mathbf) — keep bold, inherit colour from atom type ── */
+.katex .mathbf {
+  font-weight: 800;
+}
+
+/* ── Upright roman (\mathrm) — e.g. "max" written manually ── */
+.katex .mathrm,
+.katex .mainrm {
+  color: var(--rm-purple);
+}
+
+/* ── Monospace (\mathtt) — code-like math ── */
+.katex .mathtt {
+  color: var(--rm-teal);
+  font-family: var(--code-font, monospace);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Structural elements
+   ───────────────────────────────────────────────────────────────────── */
+
+/* Fraction bar */
+.katex .frac-line {
+  background: var(--rm-accent-light) !important;
+  border-color: var(--rm-accent-light) !important;
+}
+
+/* Square root radical symbol */
+.katex .sqrt > .sqrt-sign {
+  color: var(--rm-green) !important;
+}
+
+/* Overline and underline decorators */
+.katex .overline .overline-line,
+.katex .underline .underline-line {
+  border-color: var(--rm-accent) !important;
+}
+
+/* Horizontal brace (overbrace / underbrace) */
+.katex .x-arrow-pad,
+.katex .mtable .vlist-r {
+  color: var(--secondary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Display math blocks  (\[...\]  or  $$...$$)
+   ───────────────────────────────────────────────────────────────────── */
+.katex-display {
+  background: var(--rm-accent-ghost);
+  border-left: 3px solid var(--rm-accent);
+  border-radius: 0 10px 10px 0;
+  padding: 1rem 1.5rem !important;
+  margin: 1.5rem 0 !important;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  /* subtle box shadow */
+  box-shadow: 0 1px 4px rgba(99, 102, 241, 0.08);
+}
+
+/* slightly larger in display mode */
+.katex-display .katex {
+  font-size: 1.15em;
+}
+
+/* Scrollbar for wide equations */
+.katex-display::-webkit-scrollbar        { height: 4px; }
+.katex-display::-webkit-scrollbar-track  { background: var(--border); border-radius: 99px; }
+.katex-display::-webkit-scrollbar-thumb  { background: var(--rm-accent-light); border-radius: 99px; }
+
+/* ─────────────────────────────────────────────────────────────────────
+   Dark-mode overrides
+   In dark mode bump up indigo variables to a lighter shade so they
+   read clearly against the dark background.
+   ───────────────────────────────────────────────────────────────────── */
+[data-theme="dark"] .katex .mathnormal {
+  color: var(--rm-accent-mid);       /* #818cf8 — lighter indigo */
+}
+
+[data-theme="dark"] .katex .mbin {
+  color: #fb7185;                    /* lighter rose */
+}
+
+[data-theme="dark"] .katex .mrel {
+  color: #2dd4bf;                    /* lighter teal */
+}
+
+[data-theme="dark"] .katex .mop,
+[data-theme="dark"] .katex .mop.op-symbol,
+[data-theme="dark"] .katex .mop.op-limits {
+  color: #c084fc;                    /* lighter purple */
+}
+
+[data-theme="dark"] .katex .mathbb {
+  color: #34d399;                    /* lighter green */
+}
+
+[data-theme="dark"] .katex .mathcal {
+  color: #a78bfa;                    /* lighter violet */
+}
+
+[data-theme="dark"] .katex .mathrm,
+[data-theme="dark"] .katex .mainrm {
+  color: #c084fc;
+}
+
+[data-theme="dark"] .katex .mathtt {
+  color: #2dd4bf;
+}
+
+[data-theme="dark"] .katex-display {
+  background: var(--rm-accent-ghost);
+  box-shadow: 0 1px 6px rgba(129, 140, 248, 0.10);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Equation labels / tags  (\tag{1})
+   ───────────────────────────────────────────────────────────────────── */
+.katex .tag {
+  color: var(--secondary) !important;
+  font-size: 0.82em;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   Matrix / pmatrix / bmatrix (array inside delimiters)
+   ───────────────────────────────────────────────────────────────────── */
+.katex .mtable .mtd {
+  padding: 0.15em 0.5em;
+}

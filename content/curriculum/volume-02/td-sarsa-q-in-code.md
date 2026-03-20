@@ -4,8 +4,12 @@ description: "Code walkthrough for TD(0) prediction, SARSA, and Q-learning (tabu
 date: 2026-03-10T00:00:00Z
 weight: 13
 draft: false
+difficulty: 6
 tags: ["temporal difference", "SARSA", "Q-learning", "code", "curriculum"]
 keywords: ["TD(0)", "SARSA", "Q-learning", "tabular", "code"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Td Sarsa Q In Code"
 ---
 
 **Learning objectives**

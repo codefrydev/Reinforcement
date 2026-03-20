@@ -4,8 +4,12 @@ description: "When to implement bandits from scratch vs. use existing librariesâ
 date: 2026-03-10T00:00:00Z
 weight: 7
 draft: false
+difficulty: 6
 tags: ["bandits", "pedagogy", "libraries", "curriculum"]
 keywords: ["bandits", "library", "implement from scratch", "learning"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 Â· Bandits Why Not Library"
 ---
 
 **Learning objectives**

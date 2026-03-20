@@ -4,6 +4,17 @@ description: "Chapters 81–90 — Multi-agent fundamentals, game theory, IQL, C
 date: 2026-03-10T00:00:00Z
 weight: 9
 draft: false
+difficulty: 8
+roadmap_icon: network
+roadmap_color: blue
+roadmap_phase_label: "Chapters 81–90 · Phase 8"
+roadmap_topics:
+  - "Multi-Agent Fundamentals and Game Theory"
+  - "Independent Q-Learning (IQL)"
+  - "Centralized Training, Decentralized Execution (CTDE)"
+  - "MADDPG, VDN, and QMIX"
+  - "Multi-Agent PPO (MAPPO)"
+  - "Self-Play, League Training, and Communication"
 tags: ["curriculum", "volume 9", "multi-agent RL", "MARL", "MADDPG", "QMIX", "game theory", "CTDE"]
 keywords: ["multi-agent reinforcement learning", "MARL", "MADDPG", "QMIX", "VDN", "MAPPO", "game theory", "self-play"]
 ---

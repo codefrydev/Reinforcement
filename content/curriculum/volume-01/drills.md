@@ -3,8 +3,12 @@ title: "Volume 1 Drills — Mathematical Foundations"
 description: "15 short drill problems for Volume 1: discounted return, MDPs, value functions, Bellman equations, and dynamic programming."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 6
 weight: 99
 tags: ["drills", "volume 1", "MDP", "Bellman", "dynamic programming", "practice"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Drills"
 ---
 
 {{< notebook path="volume-01/vol01_drills.ipynb" title="Open drills notebook (interactive)" >}}

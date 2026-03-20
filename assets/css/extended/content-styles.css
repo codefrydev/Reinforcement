@@ -1,0 +1,209 @@
+/* =====================================================================
+   Content Styles — tables, blockquotes, inline elements
+   Extends PaperMod without touching its source.
+   All colours come from the CSS custom properties defined in roadmap-home.css.
+   ===================================================================== */
+
+/* ─────────────────────────────────────────────────────────────────────
+   Background consistency
+   PaperMod's baseof sets body.list for section pages and (now) body.single
+   for content pages. This ensures every page type uses the clean --theme
+   background, not PaperMod's off-white --code-bg on list pages.
+   ───────────────────────────────────────────────────────────────────── */
+body.list,
+body.terms,
+body.home {
+  background: var(--theme) !important;
+}
+
+body.single {
+  background: var(--theme);
+}
+
+/* In dark mode PaperMod renders .post-single as a lighter card (--entry)
+   on top of the --theme body. Make it transparent so the page feels flat
+   and consistent, matching the roadmap list pages. */
+body.single .post-single {
+  background: transparent;
+}
+
+/* TOC: in dark mode PaperMod overrides to --entry; keep it consistent */
+body.single .toc {
+  background: var(--rm-accent-ghost);
+  border: 1px solid var(--rm-accent-light);
+  border-radius: var(--radius);
+}
+
+[data-theme="dark"] body.single .toc {
+  background: var(--rm-accent-ghost);
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   TABLE SCROLL WRAPPER  (added by JS in single.html)
+   ───────────────────────────────────────────────────────────────────── */
+.table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: var(--content-gap);
+  border-radius: 12px;
+  box-shadow:
+    0 0 0 1px var(--rm-accent-light),
+    0 2px 8px rgba(99, 102, 241, 0.10);
+}
+
+/* Scrollbar styling inside table wrapper */
+.table-scroll::-webkit-scrollbar        { height: 5px; }
+.table-scroll::-webkit-scrollbar-track  { background: var(--border); border-radius: 99px; }
+.table-scroll::-webkit-scrollbar-thumb  { background: var(--rm-accent-light); border-radius: 99px; }
+
+/* ─────────────────────────────────────────────────────────────────────
+   TABLE BASE  (excludes syntax-highlight tables)
+   ───────────────────────────────────────────────────────────────────── */
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  margin: 0;                    /* .table-scroll wrapper owns the gap */
+  border-left: 3px solid var(--rm-accent);
+  /* rounded corners need overflow:hidden + border-radius on the <table> itself
+     when it is NOT inside .table-scroll; the wrapper does it otherwise */
+  border-radius: 0;
+  overflow: hidden;
+  background: var(--entry);
+}
+
+/* When inside the scroll wrapper the wrapper owns the radius */
+.table-scroll table:not(.highlighttable, .highlight table) {
+  border-radius: 0;
+}
+
+/* ── HEADER ── */
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) thead {
+  background: var(--rm-gradient);
+}
+
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) th {
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 12px 16px !important;
+  border: none !important;
+  white-space: nowrap;
+  text-align: start;
+}
+
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) th:first-child {
+  padding-left: 20px !important;
+  border-radius: 0;             /* gradient bg handles it */
+}
+
+/* ── BODY ROWS ── */
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) tbody tr {
+  transition: background 0.15s ease;
+}
+
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) tbody tr:nth-child(even) {
+  background: var(--rm-accent-ghost);
+}
+
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) tbody tr:hover {
+  background: var(--rm-accent-dim);
+}
+
+/* ── CELLS ── */
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) td {
+  padding: 10px 16px !important;
+  border-bottom: 1px solid var(--border) !important;
+  vertical-align: top;
+  line-height: 1.55;
+  min-width: 80px;
+  color: var(--content);
+}
+
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) td:first-child {
+  padding-left: 20px !important;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+/* Remove bottom border from last row */
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) tbody tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* ── CODE INSIDE TABLE CELLS ── keep PaperMod's default code colours ── */
+
+/* ─────────────────────────────────────────────────────────────────────
+   BLOCKQUOTES — coloured left border + tinted background
+   ───────────────────────────────────────────────────────────────────── */
+.post-content blockquote {
+  border-left: 4px solid var(--rm-accent) !important;
+  background: var(--rm-accent-ghost);
+  border-radius: 0 8px 8px 0;
+  padding: 0.75rem 1.2rem;
+  margin: 1.2rem 0;
+  color: var(--secondary);
+  font-style: italic;
+}
+
+.post-content blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   HORIZONTAL RULE — gradient accent line
+   ───────────────────────────────────────────────────────────────────── */
+.post-content hr {
+  border: none;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--rm-accent-light),
+    var(--rm-accent),
+    var(--rm-accent-light),
+    transparent
+  );
+  margin: 2rem 0;
+  border-radius: 99px;
+  opacity: 0.6;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   INLINE CODE — accent-tinted pill
+   Targets only backtick-in-text code, NOT fenced / indented code blocks.
+   :not(pre) > code  =  <code> whose direct parent is NOT a <pre>
+   Multi-line code blocks (<pre><code>…</code></pre>) are untouched and
+   keep their monokai syntax highlighting.
+   ───────────────────────────────────────────────────────────────────── */
+.post-content :not(pre) > code {
+  background: var(--rm-accent-ghost) !important;
+  border: 1px solid var(--rm-accent-light);
+  color: var(--rm-accent);
+  border-radius: 5px;
+  padding: 0.12em 0.45em;
+  font-size: 0.875em;
+}
+
+[data-theme="dark"] .post-content :not(pre) > code {
+  color: var(--rm-accent-mid);
+}
+
+/* Code blocks (pre > code) keep PaperMod/monokai styling — no rules here */
+
+/* ─────────────────────────────────────────────────────────────────────
+   HEADINGS inside post-content — left colour accent rule
+   ───────────────────────────────────────────────────────────────────── */
+.post-content h2 {
+  border-left: 4px solid var(--rm-accent);
+  padding-left: 0.65rem;
+  margin-left: -0.65rem;
+}
+
+.post-content h3 {
+  border-left: 3px solid var(--rm-accent-light);
+  padding-left: 0.55rem;
+  margin-left: -0.55rem;
+}

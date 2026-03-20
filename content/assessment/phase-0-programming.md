@@ -5,6 +5,10 @@ date: 2026-03-19T00:00:00Z
 draft: false
 tags: ["assessment", "phase 0", "python", "self-check", "solutions"]
 keywords: ["phase 0 assessment", "python basics quiz", "RL programming check", "solutions", "10 questions"]
+weight: 1
+roadmap_icon: "terminal"
+roadmap_color: "blue"
+roadmap_phase_label: "Phase 0 Quiz"
 ---
 
 Use this self-check after completing [Phase 0: Programming from Zero](../learning-path/phase-0/). If you can answer at least 8 of 10 correctly, you are ready to move on.

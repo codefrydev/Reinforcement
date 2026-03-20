@@ -4,8 +4,12 @@ description: "Double DQN: online selects, target evaluates; compare with DQN."
 date: 2026-03-10T00:00:00Z
 weight: 26
 draft: false
+difficulty: 7
 tags: ["Double DQN", "DDQN", "DQN", "overestimation", "curriculum"]
 keywords: ["Double DQN", "DDQN", "overestimation", "target network"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 6"
 ---
 
 **Learning objectives**

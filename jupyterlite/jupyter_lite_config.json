@@ -2,6 +2,8 @@
   "LiteBuildConfig": {
     "contents": ["content"],
     "output_dir": "../public/lab",
-    "lite_dir": "."
+    "lite_dir": ".",
+    "settings_overrides": ["overrides.json"],
+    "extra_labextensions": []
   }
 }

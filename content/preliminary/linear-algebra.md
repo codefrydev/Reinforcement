@@ -3,8 +3,13 @@ title: "Linear Algebra"
 description: "Vectors, dot product, matrix-vector product, and gradients — with RL motivation and explained solutions."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["linear algebra", "vectors", "dot product", "gradients", "preliminary"]
 keywords: ["linear algebra", "vectors", "dot product", "matrix-vector", "gradients", "RL motivation"]
+weight: 4
+roadmap_icon: "layers"
+roadmap_color: "amber"
+roadmap_phase_label: "Topic 4 · Linear Algebra"
 ---
 
 This page covers the linear algebra you need for the preliminary assessment: dot product, matrix-vector multiplication, and gradients with respect to vectors. [Back to Preliminary](../).

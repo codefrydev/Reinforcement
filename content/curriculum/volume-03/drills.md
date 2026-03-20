@@ -3,8 +3,12 @@ title: "Volume 3 Drills — Function Approximation & DQN"
 description: "15 short drill problems for Volume 3: linear FA, semi-gradient TD, DQN, replay buffer, target network, Double DQN, and dueling networks."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 7
 weight: 99
 tags: ["drills", "volume 3", "DQN", "function approximation", "replay buffer", "target network", "Double DQN", "dueling", "practice"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Drills"
 ---
 
 {{< notebook path="volume-03/vol03_drills.ipynb" title="Open drills notebook (interactive)" >}}

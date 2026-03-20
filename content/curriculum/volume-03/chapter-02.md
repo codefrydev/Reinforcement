@@ -4,8 +4,12 @@ description: "Two-hidden-layer PyTorch network for Q-values; MSE loss."
 date: 2026-03-10T00:00:00Z
 weight: 22
 draft: false
+difficulty: 7
 tags: ["neural networks", "PyTorch", "Q-values", "curriculum"]
 keywords: ["neural networks for RL", "PyTorch", "Q-values", "MSE loss"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 2"
 ---
 
 **Learning objectives**

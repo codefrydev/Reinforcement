@@ -3,9 +3,13 @@ title: "RL in Plain English"
 description: "Reinforcement learning explained with everyday analogies — no math, no code. Read this before starting the curriculum."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 0
 weight: 3
 tags: ["RL intro", "plain English", "beginner", "analogies", "reinforcement learning"]
 keywords: ["RL in plain English", "reinforcement learning for beginners", "RL analogies", "what is reinforcement learning", "no math RL"]
+roadmap_icon: "book"
+roadmap_color: "teal"
+roadmap_phase_label: "RL in Plain English"
 ---
 
 Before any formulas or code, let's build intuition. Every concept in RL has a natural everyday version. This page explains RL ideas using plain English and real-world situations. There is **no math and no code** here — just understanding.

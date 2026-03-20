@@ -3,8 +3,13 @@ title: "Linear Algebra"
 description: "Vectors, dot product, matrices, matrix-vector product, and gradients — with RL motivation and practice."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["linear algebra", "vectors", "matrices", "gradients", "math for RL"]
 keywords: ["linear algebra for RL", "vectors", "dot product", "matrix-vector", "gradients"]
+weight: 3
+roadmap_icon: "layers"
+roadmap_color: "green"
+roadmap_phase_label: "Phase 3 · Linear Algebra"
 ---
 
 This page covers the linear algebra you need for RL: vectors, dot products, matrices, matrix-vector multiplication, and the idea of gradients. [Back to Math for RL](../).

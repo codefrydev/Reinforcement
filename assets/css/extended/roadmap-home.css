@@ -1,0 +1,527 @@
+/* =====================================================================
+   Roadmap design system
+   All accent and palette values live here as CSS custom properties.
+   Change --rm-accent once to restyle the entire roadmap across every page.
+   ===================================================================== */
+
+/* ── Design tokens ── */
+:root {
+  /* Primary accent – indigo, harmonises with PaperMod's link colour */
+  --rm-accent:        #6366f1;
+  --rm-accent-mid:    #818cf8;   /* hover / lighter tint */
+  --rm-accent-light:  #a5b4fc;   /* border, subtle ring   */
+  --rm-accent-dim:    rgba(99, 102, 241, 0.12);
+  --rm-accent-ghost:  rgba(99, 102, 241, 0.06);
+
+  /* Progress gradient */
+  --rm-gradient: linear-gradient(90deg, #6366f1, #8b5cf6);
+
+  /* Badge */
+  --rm-badge-bg:   #e0e7ff;
+  --rm-badge-fg:   #4338ca;
+
+  /* Completed node */
+  --rm-done-bg:  #6366f1;
+  --rm-done-fg:  #ffffff;
+
+  /* Step palette (node stroke / mobile icon bg / topic dot) */
+  --rm-blue:   #3B82F6;
+  --rm-teal:   #14B8A6;
+  --rm-green:  #10B981;
+  --rm-amber:  #F59E0B;
+  --rm-purple: #A855F7;
+  --rm-rose:   #F43F5E;
+  --rm-indigo: #6366F1;
+  --rm-violet: #7C3AED;
+}
+
+/* Dark-mode overrides */
+[data-theme="dark"] {
+  --rm-accent-dim:   rgba(129, 140, 248, 0.15);
+  --rm-accent-ghost: rgba(129, 140, 248, 0.07);
+  --rm-badge-bg:     #1e1b4b;
+  --rm-badge-fg:     #a5b4fc;
+  --rm-done-bg:      #818cf8;
+}
+
+/* ── Override PaperMod list-page background so it matches regular pages ── */
+/* PaperMod sets .list { background: var(--code-bg) } which is off-white.
+   Roadmap pages should share the same clean --theme background. */
+body.list {
+  background: var(--theme);
+}
+
+/* Roadmap layout reset */
+body.list .main:has(.roadmap-page) {
+  padding: 0;
+  max-width: 100%;
+}
+
+/* ── Page wrapper ── */
+.roadmap-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1rem 5rem;
+  font-family: inherit;
+}
+
+/* ── Hero ── */
+.roadmap-hero {
+  text-align: center;
+  padding: 2.5rem 1rem 2.25rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 3rem;
+}
+
+.roadmap-hero h1 {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+  margin: 0 0 0.7rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 600px) {
+  .roadmap-hero h1 { font-size: 2.5rem; }
+}
+
+.roadmap-hero p {
+  color: var(--secondary);
+  max-width: 38rem;
+  margin: 0 auto 1.75rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+/* ── Progress bar ── */
+.roadmap-progress { max-width: 26rem; margin: 0 auto; }
+
+.roadmap-progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--secondary);
+  margin-bottom: 0.45rem;
+}
+
+.roadmap-progress-track {
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.roadmap-progress-fill {
+  height: 100%;
+  background: var(--rm-gradient);
+  border-radius: 999px;
+  width: 0%;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ── Roadmap container ── */
+.roadmap-container { position: relative; }
+
+.roadmap-line {
+  display: none;
+  position: absolute;
+  left: 31px;
+  top: 36px;
+  bottom: 36px;
+  width: 4px;
+  background: var(--border);
+  border-radius: 999px;
+  z-index: 0;
+}
+
+@media (min-width: 580px) { .roadmap-line { display: block; } }
+
+.roadmap-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Step row ── */
+.roadmap-step {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* ── Circular node (desktop) ── */
+.roadmap-node {
+  display: none;
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--entry);
+  border: 4px solid var(--theme);
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s ease;
+}
+
+@media (min-width: 580px) { .roadmap-node { display: flex; } }
+
+.roadmap-node svg {
+  width: 26px;
+  height: 26px;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  transition: stroke 0.3s;
+}
+
+/* Completed node uses accent color */
+.roadmap-step.completed .roadmap-node {
+  background: var(--rm-done-bg);
+}
+
+.roadmap-step.completed .roadmap-node svg {
+  stroke: var(--rm-done-fg) !important;
+}
+
+/* ── Card ── */
+.roadmap-card {
+  flex: 1;
+  min-width: 0;
+  background: var(--entry);
+  border: 1.5px solid var(--border);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+}
+
+.roadmap-step.expanded .roadmap-card {
+  border-color: var(--rm-accent-light);
+  box-shadow: 0 4px 20px var(--rm-accent-dim);
+}
+
+.roadmap-step.completed .roadmap-card { opacity: 0.78; }
+
+.roadmap-card-header {
+  padding: 1.2rem 1.2rem 1.2rem 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.roadmap-card-header:hover .roadmap-card-title {
+  color: var(--rm-accent);
+}
+
+/* ── Mobile icon (inside card) ── */
+.roadmap-card-icon {
+  display: flex;
+  flex-shrink: 0;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (min-width: 580px) { .roadmap-card-icon { display: none; } }
+
+.roadmap-card-icon svg {
+  width: 20px;
+  height: 20px;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+  stroke: #fff;
+}
+
+/* ── Title area ── */
+.roadmap-card-title-area { flex: 1; min-width: 0; }
+
+.roadmap-card-step-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 0.2rem;
+  flex-wrap: wrap;
+}
+
+.roadmap-card-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  background: var(--rm-badge-bg);
+  color: var(--rm-badge-fg);
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  display: none;
+}
+
+.roadmap-step.completed .roadmap-card-badge { display: inline; }
+
+.roadmap-card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 0;
+  padding: 0;
+  border: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s;
+}
+
+@media (min-width: 480px) {
+  .roadmap-card-title { font-size: 1.25rem; white-space: normal; }
+}
+
+.roadmap-step.completed .roadmap-card-title {
+  color: var(--secondary);
+  text-decoration: line-through;
+  text-decoration-color: var(--border);
+  text-decoration-thickness: 2px;
+}
+
+/* ── Actions ── */
+.roadmap-card-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.roadmap-complete-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.2rem;
+  line-height: 0;
+  color: var(--border);
+  transition: color 0.2s, transform 0.15s;
+  display: flex;
+  align-items: center;
+}
+
+.roadmap-complete-btn:hover        { color: var(--rm-accent); transform: scale(1.1); }
+.roadmap-step.completed .roadmap-complete-btn { color: var(--rm-accent); }
+
+.roadmap-complete-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  display: block;
+}
+
+.roadmap-chevron {
+  color: var(--secondary);
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+  line-height: 0;
+}
+
+.roadmap-step.expanded .roadmap-chevron { transform: rotate(180deg); }
+
+.roadmap-chevron svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Card body (expandable) ── */
+.roadmap-card-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.roadmap-step.expanded .roadmap-card-body { max-height: 640px; }
+
+.roadmap-card-body-inner {
+  padding: 0 1.2rem 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+.roadmap-card-desc {
+  color: var(--secondary);
+  line-height: 1.65;
+  margin: 0.9rem 0 1rem;
+  font-size: 0.88rem;
+}
+
+/* ── Topics box ── */
+.roadmap-topics {
+  background: var(--rm-accent-ghost);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+
+.roadmap-topics-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--secondary);
+  margin-bottom: 0.65rem;
+}
+
+.roadmap-topics-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.45rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 480px) {
+  .roadmap-topics-list { grid-template-columns: 1fr 1fr; }
+}
+
+.roadmap-topics-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  color: var(--primary);
+  line-height: 1.4;
+}
+
+.roadmap-topic-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.32rem;
+}
+
+/* ── Start button ── */
+.roadmap-card-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.9rem;
+}
+
+.roadmap-start-btn {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--rm-accent);
+  text-decoration: none;
+  padding: 0.35rem 0.85rem;
+  border: 1.5px solid var(--rm-accent-light);
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.roadmap-start-btn:hover {
+  background: var(--rm-accent);
+  color: #fff;
+  border-color: var(--rm-accent);
+  text-decoration: none;
+}
+
+/* ── Body content section (below steps) ── */
+.roadmap-body-content {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ── Empty state ── */
+.roadmap-empty {
+  color: var(--secondary);
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+}
+
+/* =====================================================================
+   Single-page phase badge
+   Shown above the title on every content page that has roadmap params.
+   Uses the same .ri-* colour classes as the roadmap step cards.
+   ===================================================================== */
+.page-phase-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.28rem 0.75rem 0.28rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin-bottom: 0.85rem;
+  line-height: 1;
+}
+
+.page-phase-badge svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke: #fff;
+  fill: none;
+  flex-shrink: 0;
+}
+
+/* =====================================================================
+   Colour system — all values drawn from CSS custom properties above
+   ===================================================================== */
+
+/* Node stroke (desktop circle icon) */
+.rn-blue   svg { stroke: var(--rm-blue);   }
+.rn-teal   svg { stroke: var(--rm-teal);   }
+.rn-green  svg { stroke: var(--rm-green);  }
+.rn-amber  svg { stroke: var(--rm-amber);  }
+.rn-purple svg { stroke: var(--rm-purple); }
+.rn-rose   svg { stroke: var(--rm-rose);   }
+.rn-indigo svg { stroke: var(--rm-indigo); }
+.rn-violet svg { stroke: var(--rm-violet); }
+
+/* Mobile icon background (inside card header) */
+.ri-blue   { background: var(--rm-blue);   }
+.ri-teal   { background: var(--rm-teal);   }
+.ri-green  { background: var(--rm-green);  }
+.ri-amber  { background: var(--rm-amber);  }
+.ri-purple { background: var(--rm-purple); }
+.ri-rose   { background: var(--rm-rose);   }
+.ri-indigo { background: var(--rm-indigo); }
+.ri-violet { background: var(--rm-violet); }
+
+/* Topic bullet dots */
+.rd-blue   { background: var(--rm-blue);   }
+.rd-teal   { background: var(--rm-teal);   }
+.rd-green  { background: var(--rm-green);  }
+.rd-amber  { background: var(--rm-amber);  }
+.rd-purple { background: var(--rm-purple); }
+.rd-rose   { background: var(--rm-rose);   }
+.rd-indigo { background: var(--rm-indigo); }
+.rd-violet { background: var(--rm-violet); }

@@ -3,8 +3,13 @@ title: "Final Self-Assessment"
 description: "Reflect on your readiness across math, Python, NumPy, PyTorch, and RL concepts before starting the curriculum."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["self-assessment", "readiness", "math", "Python", "NumPy", "PyTorch", "preliminary"]
 keywords: ["self-assessment", "readiness", "math Python NumPy PyTorch", "RL concepts", "before curriculum"]
+weight: 11
+roadmap_icon: "book"
+roadmap_color: "green"
+roadmap_phase_label: "Final Self-Assessment"
 ---
 
 This is the final self-assessment step of the preliminary material. Use it to reflect on your readiness and to find gaps before starting the 100-chapter curriculum. [Back to Preliminary](../).

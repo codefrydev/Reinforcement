@@ -3,8 +3,12 @@ title: "Volume 3 Review & Bridge to Volume 4"
 description: "Review Volume 3 (DQN and variants) and preview Volume 4 (Policy Gradients). From value-based to policy-based methods."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 7
 weight: 100
 tags: ["review", "bridge", "Volume 3", "Volume 4", "DQN", "policy gradient"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Review"
 ---
 
 ## Volume 3 Recap Quiz (5 questions)

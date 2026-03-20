@@ -3,8 +3,13 @@ title: "Value Functions and Bellman Equation"
 description: "V^π(s), Q^π(s,a), and the Bellman expectation equation — with worked examples and explanations."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["value function", "Bellman", "V pi", "Q pi", "preliminary"]
 keywords: ["value function", "Bellman expectation", "V pi Q pi", "Bellman equation", "worked examples"]
+weight: 8
+roadmap_icon: "brain"
+roadmap_color: "violet"
+roadmap_phase_label: "Topic 8 · Value Functions"
 ---
 
 This page covers value functions and the Bellman equation you need for the preliminary assessment: state-value \\(V^\pi(s)\\), action-value \\(Q^\pi(s,a)\\), and the Bellman expectation equation for \\(V^\pi\\). [Back to Preliminary](../).

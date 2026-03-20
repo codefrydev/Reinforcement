@@ -4,8 +4,12 @@ description: "Sketch two-network actor-critic; pseudocode for TD error updates."
 date: 2026-03-10T00:00:00Z
 weight: 35
 draft: false
+difficulty: 7
 tags: ["actor-critic", "TD error", "advantage", "curriculum"]
 keywords: ["actor-critic", "two-network", "TD error", "advantage"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 5"
 ---
 
 **Learning objectives**

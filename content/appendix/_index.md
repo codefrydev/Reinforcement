@@ -5,6 +5,9 @@ date: 2026-03-19T00:00:00Z
 draft: false
 weight: 98
 tags: ["appendix", "debugging", "papers", "reference"]
+roadmap_icon: "book"
+roadmap_color: "violet"
+roadmap_phase_label: "Appendix"
 ---
 
 Practical reference guides for the RL practitioner.

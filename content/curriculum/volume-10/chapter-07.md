@@ -4,8 +4,12 @@ description: "DPO loss from Bradley-Terry and KL-optimal policy; compare with PP
 date: 2026-03-10T00:00:00Z
 weight: 97
 draft: false
+difficulty: 8
 tags: ["DPO", "Direct Preference Optimization", "Bradley-Terry", "PPO", "curriculum"]
 keywords: ["DPO", "Direct Preference Optimization", "Bradley-Terry", "KL-optimal policy"]
+roadmap_color: "teal"
+roadmap_icon: "globe"
+roadmap_phase_label: "Vol 10 · Ch 7"
 ---
 
 **Learning objectives**

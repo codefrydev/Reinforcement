@@ -3,8 +3,13 @@ title: "Probability & Statistics"
 description: "Sample mean, variance, expectation, and law of large numbers — with bandit-style problems and explained solutions."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["probability", "sample mean", "variance", "expectation", "bandits", "preliminary"]
 keywords: ["probability", "sample mean variance", "expectation", "law of large numbers", "bandit"]
+weight: 3
+roadmap_icon: "calculator"
+roadmap_color: "green"
+roadmap_phase_label: "Topic 3 · Probability"
 ---
 
 This page covers the probability and statistics you need for the preliminary assessment: sample mean, unbiased sample variance, expectation vs sample average, and the law of large numbers. [Back to Preliminary](../).

@@ -4,8 +4,12 @@ description: "Derive Bellman optimality equation for Q*(s,a)."
 date: 2026-03-10T00:00:00Z
 weight: 6
 draft: false
+difficulty: 6
 tags: ["Bellman equation", "value function", "MDP", "curriculum"]
 keywords: ["Bellman equation", "value function", "Bellman expectation", "MDP"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Ch 6"
 ---
 
 **Learning objectives**

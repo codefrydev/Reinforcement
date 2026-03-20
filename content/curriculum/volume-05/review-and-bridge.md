@@ -3,8 +3,12 @@ title: "Volume 5 Review & Bridge to Volume 6"
 description: "Review Volume 5 (PPO, TRPO, SAC) and preview Volume 6 (Model-Based RL — learning world models and planning)."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 7
 weight: 100
 tags: ["review", "bridge", "Volume 5", "Volume 6", "PPO", "SAC", "model-based"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Review"
 ---
 
 ## Volume 5 Recap Quiz (5 questions)

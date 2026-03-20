@@ -3,9 +3,13 @@ title: "Bridge Exercises: Python + Math + RL"
 description: "15 problems combining Python, probability, and toy RL. Complete before starting Volume 1."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 3
 weight: 5
 tags: ["bridge exercises", "phase 2.5", "Python", "math", "RL", "practice"]
 keywords: ["bridge exercises", "Python RL practice", "pre-curriculum exercises", "tabular RL beginner", "discounted return exercises"]
+roadmap_icon: "calculator"
+roadmap_color: "green"
+roadmap_phase_label: "Bridge Exercises"
 ---
 
 These 15 exercises sit at **Level 2.5** — after prerequisites (Python, NumPy, math) but before Volume 1. They combine the skills you have learned so far in a context that looks like real RL code. If you can complete all 15, you are ready for the curriculum.

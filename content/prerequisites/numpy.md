@@ -4,8 +4,12 @@ description: "NumPy for RL: arrays, indexing, broadcasting, random, and batch op
 date: 2026-03-10T00:00:00Z
 weight: 20
 draft: false
+difficulty: 2
 tags: ["NumPy", "arrays", "RL", "prerequisites"]
 keywords: ["NumPy for RL", "arrays", "indexing", "matrix operations", "RL examples"]
+roadmap_icon: "layers"
+roadmap_color: "teal"
+roadmap_phase_label: "Phase 2 · NumPy"
 ---
 
 Used in [Preliminary: NumPy](../preliminary/numpy/) and throughout the curriculum for state/observation arrays, reward vectors, and batch operations. RL environments return observations as arrays; neural networks consume batches of arrays—NumPy is the standard bridge.

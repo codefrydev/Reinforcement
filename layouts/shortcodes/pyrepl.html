@@ -1,13 +1,14 @@
-{{- $code := .Get "code" | default "" -}}
-{{- $height := .Get "height" | default "260" -}}
+{{- $code    := .Get "code"    | default "" -}}
+{{- $height  := .Get "height"  | default "260" -}}
 {{- $execute := .Get "execute" | default "0" -}}
-{{- $label := .Get "label" | default "Try it — edit and run (Shift+Enter)" -}}
-{{- $id := printf "repl-%s-%d" .Page.File.UniqueID .Ordinal -}}
+{{- $label   := .Get "label"   | default "Try it — edit and run (Shift+Enter)" -}}
+{{- $id      := printf "repl-%s-%d" .Page.File.UniqueID .Ordinal -}}
 {{- $baseURL := "https://codefrydev.in/Reinforcement/lab/repl/index.html" -}}
-{{- $params := printf "kernel=python&toolbar=1&showBanner=0&execute=%s" $execute -}}
+{{- $params  := printf "kernel=python&toolbar=1&showBanner=0&execute=%s" $execute -}}
 {{- if $code -}}
   {{- $params = printf "%s&code=%s" $params ($code | urlquery) -}}
 {{- end -}}
+
 <div class="pyrepl-wrapper" id="{{ $id }}">
   <div class="pyrepl-label">
     <svg class="pyrepl-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
@@ -19,16 +20,81 @@
       data-src="{{ $baseURL }}?{{ $params }}"
       width="100%"
       height="{{ $height }}px"
-      loading="lazy"
       title="Interactive Python REPL"
       allow="cross-origin-isolated"
     ></iframe>
-    <div class="pyrepl-overlay" aria-hidden="true">
-      <button class="pyrepl-load-btn" onclick="(function(el){var iframe=el.closest('.pyrepl-frame-wrap').querySelector('iframe');iframe.src=iframe.dataset.src;el.closest('.pyrepl-overlay').style.display='none';})(this)">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
-        Load Python REPL
-      </button>
-      <p class="pyrepl-overlay-note">Runs in your browser — no install needed</p>
+    {{/* Loading state — visible until iframe content initialises */}}
+    <div class="pyrepl-loading" aria-label="Loading Python environment">
+      <div class="pyrepl-spinner"></div>
+      <span class="pyrepl-loading-text">Loading Python environment…</span>
     </div>
   </div>
 </div>
+
+<script>
+(function () {
+  var wrapper = document.getElementById('{{ $id }}');
+  if (!wrapper) return;
+  var iframe  = wrapper.querySelector('.pyrepl-frame');
+  var loading = wrapper.querySelector('.pyrepl-loading');
+
+  function autoSelectKernel(iframeEl) {
+    // On production both pages share the same origin so we can reach into
+    // the iframe DOM and auto-click the "Select" button if the kernel
+    // picker dialog appears (fallback for older JupyterLite builds).
+    var attempts = 0;
+    var poll = setInterval(function () {
+      attempts++;
+      if (attempts > 60) { clearInterval(poll); return; } // give up after ~12s
+      try {
+        var doc = iframeEl.contentDocument || iframeEl.contentWindow.document;
+        // Find and click the primary "Select" button inside the kernel dialog
+        var btns = doc.querySelectorAll('button.jp-Dialog-button.jp-mod-accept, button.jp-mod-accept');
+        if (btns.length) {
+          btns[0].click();
+          clearInterval(poll);
+          return;
+        }
+        // Broader fallback: any visible button whose text is "Select"
+        var allBtns = doc.querySelectorAll('button');
+        for (var i = 0; i < allBtns.length; i++) {
+          if (allBtns[i].textContent.trim() === 'Select') {
+            allBtns[i].click();
+            clearInterval(poll);
+            return;
+          }
+        }
+      } catch (e) {
+        // Cross-origin (local dev) — can't access iframe DOM, skip
+        clearInterval(poll);
+      }
+    }, 200);
+  }
+
+  function load() {
+    if (iframe.src) return;           // already loading / loaded
+    iframe.src = iframe.dataset.src;  // kick off the JupyterLite load
+    // Hide the spinner once the iframe document fires its load event.
+    // JupyterLite shows its own in-app spinner after this point.
+    iframe.addEventListener('load', function () {
+      if (loading) loading.style.display = 'none';
+      autoSelectKernel(iframe); // auto-dismiss kernel picker if it appears
+    }, { once: true });
+  }
+
+  // Load when the REPL enters the viewport (50px early so it's
+  // already initialising by the time the user reaches it).
+  // A small rootMargin avoids loading every REPL on the page at once.
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        load();
+        obs.disconnect();
+      }
+    }, { rootMargin: '50px' });
+    obs.observe(wrapper);
+  } else {
+    load(); // fallback: load immediately
+  }
+})();
+</script>

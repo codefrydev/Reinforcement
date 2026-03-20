@@ -3,8 +3,13 @@ title: "Function Approximation and Deep RL"
 description: "Why FA, policy gradient update, DQN exploration, experience replay, and actor-critic — with explanations."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["function approximation", "policy gradient", "DQN", "actor-critic", "preliminary"]
 keywords: ["function approximation", "policy gradient", "DQN", "experience replay", "actor-critic", "deep RL"]
+weight: 9
+roadmap_icon: "network"
+roadmap_color: "blue"
+roadmap_phase_label: "Topic 9 · Deep RL"
 ---
 
 This page covers function approximation and deep RL concepts you need for the preliminary assessment: why we need FA, the policy gradient update, exploration in DQN, experience replay, and the advantage of actor-critic. [Back to Preliminary](../).

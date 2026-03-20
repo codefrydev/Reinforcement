@@ -4,8 +4,12 @@ description: "Bradley-Terry from pairwise comparisons; train policy with PPO."
 date: 2026-03-10T00:00:00Z
 weight: 80
 draft: false
+difficulty: 8
 tags: ["RLHF", "Bradley-Terry", "preferences", "PPO", "curriculum"]
 keywords: ["RLHF", "human feedback", "Bradley-Terry", "pairwise comparisons", "PPO"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 10"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "Simple PAIRED: adversary designs maze, agent solves; train both."
 date: 2026-03-10T00:00:00Z
 weight: 70
 draft: false
+difficulty: 8
 tags: ["UED", "PAIRED", "adversarial", "environment design", "curriculum"]
 keywords: ["unsupervised environment design", "PAIRED", "adversary", "maze", "agent"]
+roadmap_color: "indigo"
+roadmap_icon: "sparkles"
+roadmap_phase_label: "Vol 7 · Ch 10"
 ---
 
 **Learning objectives**

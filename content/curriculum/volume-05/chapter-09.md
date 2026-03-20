@@ -4,8 +4,12 @@ description: "Custom 2D point mass with continuous action; test with SAC."
 date: 2026-03-10T00:00:00Z
 weight: 49
 draft: false
+difficulty: 7
 tags: ["custom Gym", "continuous action", "point mass", "SAC", "curriculum"]
 keywords: ["custom Gym environment", "continuous action", "point mass", "SAC"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Ch 9"
 ---
 
 **Learning objectives**

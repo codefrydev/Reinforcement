@@ -3,8 +3,13 @@ title: "Calculus"
 description: "Derivatives, chain rule, sigmoid and softmax — with RL motivation and explained solutions."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["calculus", "derivatives", "chain rule", "sigmoid", "softmax", "preliminary"]
 keywords: ["calculus", "derivatives", "chain rule", "sigmoid softmax", "RL motivation"]
+weight: 5
+roadmap_icon: "trend-up"
+roadmap_color: "purple"
+roadmap_phase_label: "Topic 5 · Calculus"
 ---
 
 This page covers the calculus you need for the preliminary assessment: derivatives of common functions, the chain rule, and how they appear in logistic regression and policy gradients. [Back to Preliminary](../).

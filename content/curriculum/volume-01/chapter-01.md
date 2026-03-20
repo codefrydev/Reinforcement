@@ -4,8 +4,12 @@ description: "Gridworld discounted return from a sequence of actions."
 date: 2026-03-10T00:00:00Z
 weight: 1
 draft: false
+difficulty: 6
 tags: ["reinforcement learning", "gridworld", "discounted return", "MDP", "curriculum"]
 keywords: ["RL framework", "gridworld", "discounted return", "agent environment", "reward"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Ch 1"
 ---
 
 {{< notebook path="volume-01/ch01_gridworld_return.ipynb" title="Open Chapter 1 notebook" >}}

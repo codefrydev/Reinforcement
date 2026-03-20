@@ -4,8 +4,12 @@ description: "Task distribution (e.g. goal positions); meta-training loop, few-s
 date: 2026-03-10T00:00:00Z
 weight: 67
 draft: false
+difficulty: 8
 tags: ["meta-learning", "task distribution", "few-shot", "curriculum"]
 keywords: ["meta-learning", "learning to learn", "task distribution", "few-step adapt"]
+roadmap_color: "indigo"
+roadmap_icon: "sparkles"
+roadmap_phase_label: "Vol 7 · Ch 7"
 ---
 
 **Learning objectives**

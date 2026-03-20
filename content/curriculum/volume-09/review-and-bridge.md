@@ -3,8 +3,12 @@ title: "Volume 9 Review & Bridge to Volume 10"
 description: "Review Volume 9 (Multi-Agent RL, game theory, QMIX, MAPPO) and preview Volume 10 (Real-World RL — safety, alignment, LLMs, deployment)."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 8
 weight: 100
 tags: ["review", "bridge", "Volume 9", "Volume 10", "multi-agent", "QMIX", "MAPPO", "safety", "RLHF", "LLMs"]
+roadmap_color: "blue"
+roadmap_icon: "network"
+roadmap_phase_label: "Vol 9 · Review"
 ---
 
 ## Volume 9 Recap Quiz (5 questions)

@@ -4,8 +4,12 @@ description: "ICM: forward model, prediction error as intrinsic reward; A2C on m
 date: 2026-03-10T00:00:00Z
 weight: 63
 draft: false
+difficulty: 8
 tags: ["ICM", "curiosity", "intrinsic reward", "A2C", "maze", "curriculum"]
 keywords: ["ICM", "curiosity-driven exploration", "forward model", "intrinsic reward", "A2C"]
+roadmap_color: "indigo"
+roadmap_icon: "sparkles"
+roadmap_phase_label: "Vol 7 · Ch 3"
 ---
 
 **Learning objectives**

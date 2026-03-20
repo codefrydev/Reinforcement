@@ -4,6 +4,10 @@ description: "5 quick questions after Chapters 1–5 of Volume 1. Check you're r
 date: 2026-03-19T00:00:00Z
 draft: false
 tags: ["checkpoint", "volume 1", "assessment", "value functions", "Bellman"]
+weight: 8
+roadmap_icon: "book"
+roadmap_color: "rose"
+roadmap_phase_label: "Vol 1 Mid-Point"
 ---
 
 Take this checkpoint after completing Chapters 1–5 (RL framework, bandits, MDPs, reward hypothesis, value functions). All 5 should feel manageable — if any are unclear, re-read the relevant chapter before continuing.

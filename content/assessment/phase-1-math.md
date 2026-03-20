@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["assessment", "phase 1", "math", "self-check", "solutions"]
 keywords: ["phase 1 assessment", "math for RL", "readiness", "10 questions", "solutions", "probability linear algebra calculus"]
+weight: 2
+roadmap_icon: "calculator"
+roadmap_color: "teal"
+roadmap_phase_label: "Phase 1 Quiz"
 ---
 
 Use this self-check after completing [Probability](../math-for-rl/probability/), [Linear algebra](../math-for-rl/linear-algebra/), and [Calculus](../math-for-rl/calculus/). If you can answer at least 8 correctly and feel comfortable with the concepts, you are ready for Phase 2 and the curriculum.

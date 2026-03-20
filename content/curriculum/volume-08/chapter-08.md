@@ -4,8 +4,12 @@ description: "AMP paper: task reward + adversarial style reward; combined reward
 date: 2026-03-10T00:00:00Z
 weight: 78
 draft: false
+difficulty: 8
 tags: ["AMP", "adversarial motion priors", "imitation", "style reward", "curriculum"]
 keywords: ["AMP", "Adversarial Motion Priors", "task reward", "adversarial style reward"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 8"
 ---
 
 **Learning objectives**

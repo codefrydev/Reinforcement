@@ -4,8 +4,12 @@ description: "Dyna-Q on 4×4 deterministic gridworld."
 date: 2026-03-10T00:00:00Z
 weight: 17
 draft: false
+difficulty: 6
 tags: ["Dyna-Q", "planning", "tabular", "gridworld", "curriculum"]
 keywords: ["Dyna-Q", "planning and learning", "tabular methods", "model-based"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Ch 7"
 ---
 
 **Learning objectives**

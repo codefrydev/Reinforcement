@@ -3,8 +3,13 @@ title: "RL Framework"
 description: "Agent, environment, state, action, reward, Markov property, exploration-exploitation, and discount factor — with explanations."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["RL framework", "agent", "environment", "MDP", "exploration", "preliminary"]
 keywords: ["reinforcement learning framework", "agent environment", "state action reward", "Markov", "discount factor"]
+weight: 6
+roadmap_icon: "gamepad"
+roadmap_color: "rose"
+roadmap_phase_label: "Topic 6 · RL Framework"
 ---
 
 This page covers the core RL framework you need for the preliminary assessment: the four main components, the Markov property, exploration vs exploitation, and the discount factor. [Back to Preliminary](../).

@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["installation", "FAQ", "Python", "libraries"]
 keywords: ["NumPy", "Matplotlib", "Pandas", "PyTorch", "TensorFlow", "install"]
+weight: 7
+roadmap_icon: "database"
+roadmap_color: "indigo"
+roadmap_phase_label: "Libraries"
 ---
 
 **Learning objectives**

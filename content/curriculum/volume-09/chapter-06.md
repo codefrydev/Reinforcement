@@ -4,8 +4,12 @@ description: "VDN: sum individual Q to joint Q; compare with IQL."
 date: 2026-03-10T00:00:00Z
 weight: 86
 draft: false
+difficulty: 8
 tags: ["VDN", "value decomposition", "multi-agent", "curriculum"]
 keywords: ["VDN", "value decomposition", "multi-agent", "cooperative MARL"]
+roadmap_color: "blue"
+roadmap_icon: "network"
+roadmap_phase_label: "Vol 9 · Ch 6"
 ---
 
 **Learning objectives**

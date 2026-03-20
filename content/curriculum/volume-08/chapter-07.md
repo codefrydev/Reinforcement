@@ -4,8 +4,12 @@ description: "Discriminator expert vs agent; use as reward for policy gradient."
 date: 2026-03-10T00:00:00Z
 weight: 77
 draft: false
+difficulty: 8
 tags: ["GAIL", "imitation", "discriminator", "policy gradient", "curriculum"]
 keywords: ["GAIL", "Generative Adversarial Imitation Learning", "discriminator", "expert vs agent"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 7"
 ---
 
 **Learning objectives**

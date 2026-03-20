@@ -4,8 +4,12 @@ description: "Covariate shift; DAgger: mix expert and BC, retrain."
 date: 2026-03-10T00:00:00Z
 weight: 75
 draft: false
+difficulty: 8
 tags: ["DAgger", "behavioral cloning", "covariate shift", "curriculum"]
 keywords: ["DAgger", "covariate shift", "expert and BC", "behavioral cloning limits"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 5"
 ---
 
 **Learning objectives**

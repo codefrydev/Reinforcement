@@ -4,8 +4,12 @@ description: "The classic gridworld environment: states, actions, transitions, a
 date: 2026-03-10T00:00:00Z
 weight: 4
 draft: false
+difficulty: 6
 tags: ["gridworld", "MDP", "environment", "curriculum"]
 keywords: ["gridworld", "MDP", "reinforcement learning", "environment"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Gridworld"
 ---
 
 **Learning objectives**

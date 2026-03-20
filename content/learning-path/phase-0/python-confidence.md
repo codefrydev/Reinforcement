@@ -3,9 +3,13 @@ title: "Python Confidence Builder"
 description: "25 mini-challenges combining variables, loops, functions, lists, dicts, and imports. Complete before Phase 1."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 1
 weight: 2
 tags: ["python", "phase 0", "practice", "exercises", "confidence builder"]
 keywords: ["python exercises", "mini challenges", "RL programming", "beginner python", "confidence builder"]
+roadmap_icon: "sparkles"
+roadmap_color: "teal"
+roadmap_phase_label: "Confidence Builder"
 ---
 
 Work through these 25 challenges before moving to [Phase 1 (Math for RL)](../../math-for-rl/). Each challenge is small and self-contained. If you get stuck, use the hint; only check the solution after a genuine attempt.

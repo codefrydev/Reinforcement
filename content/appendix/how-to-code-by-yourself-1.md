@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["FAQ", "coding", "learning", "beginners"]
 keywords: ["how to code", "coding by yourself", "programming", "learning"]
+weight: 8
+roadmap_icon: "calculator"
+roadmap_color: "violet"
+roadmap_phase_label: "Coding Guide 1"
 ---
 
 **Learning objectives**

@@ -4,6 +4,10 @@ description: "5 quick questions after Chapters 31–35 of Volume 4. Check you're
 date: 2026-03-19T00:00:00Z
 draft: false
 tags: ["checkpoint", "volume 4", "assessment", "policy gradients", "REINFORCE", "actor-critic"]
+weight: 12
+roadmap_icon: "book"
+roadmap_color: "indigo"
+roadmap_phase_label: "Vol 4 Mid-Point"
 ---
 
 Take this checkpoint after completing Chapters 31–35 (introduction to policy gradients, REINFORCE, actor-critic methods). All 5 should feel manageable — if any are unclear, re-read the relevant chapter before continuing.

@@ -4,8 +4,12 @@ description: "Train in sim (e.g. arm reaching); domain randomization; sim-to-rea
 date: 2026-03-10T00:00:00Z
 weight: 91
 draft: false
+difficulty: 8
 tags: ["robotics", "sim-to-real", "domain randomization", "curriculum"]
 keywords: ["RL in robotics", "sim-to-real", "domain randomization", "arm reaching"]
+roadmap_color: "teal"
+roadmap_icon: "globe"
+roadmap_phase_label: "Vol 10 · Ch 1"
 ---
 
 **Learning objectives**

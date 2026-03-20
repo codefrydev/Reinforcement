@@ -4,8 +4,12 @@ description: "Count-based with hash table; pseudo-counts with density model for 
 date: 2026-03-10T00:00:00Z
 weight: 65
 draft: false
+difficulty: 8
 tags: ["count-based exploration", "pseudo-counts", "density model", "curriculum"]
 keywords: ["count-based exploration", "hash table", "pseudo-counts", "density model"]
+roadmap_color: "indigo"
+roadmap_icon: "sparkles"
+roadmap_phase_label: "Vol 7 · Ch 5"
 ---
 
 **Learning objectives**

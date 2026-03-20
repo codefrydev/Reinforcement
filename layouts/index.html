@@ -1,0 +1,32 @@
+{{- define "main" }}
+<div class="roadmap-page">
+
+  {{/* ════════════════════════════════════ HERO ════════════════════════════════════ */}}
+  <div class="roadmap-hero">
+    <h1>The Reinforcement Learning Path</h1>
+    <p>From absolute beginner to Deep Reinforcement Learning expert. Follow this structured roadmap to master the concepts in the correct order — every step builds on the last.</p>
+    <div class="roadmap-progress">
+      <div class="roadmap-progress-header">
+        <span>Overall Progress</span>
+        <span id="rmp-pct">0%</span>
+      </div>
+      <div class="roadmap-progress-track">
+        <div class="roadmap-progress-fill" id="rmp-fill"></div>
+      </div>
+    </div>
+  </div>
+
+  {{/* ════════════════════════════════════ STEPS ════════════════════════════════════ */}}
+  <div class="roadmap-container">
+    <div class="roadmap-line"></div>
+    <div class="roadmap-steps">
+      {{- range .Site.Data.roadmap.steps }}
+      {{ partial "roadmap-step.html" . }}
+      {{- end }}
+    </div>
+  </div>
+
+</div>{{/* end .roadmap-page */}}
+
+{{ partial "roadmap-js.html" (dict "total" (len .Site.Data.roadmap.steps) "key" "rl-roadmap-v1") }}
+{{- end }}

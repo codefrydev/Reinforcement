@@ -5,6 +5,10 @@ date: 2026-03-19T00:00:00Z
 draft: false
 tags: ["debugging", "RL code", "common bugs", "appendix", "practical guide"]
 keywords: ["debug RL code", "RL bugs", "common mistakes", "reward sign bug", "TD target bug"]
+weight: 10
+roadmap_icon: "chart"
+roadmap_color: "teal"
+roadmap_phase_label: "Debugging"
 ---
 
 RL bugs are uniquely hard to catch because a wrong implementation often still trains — it just learns more slowly or converges to a suboptimal policy. This guide covers the most common bugs, how to detect them, and how to fix them.

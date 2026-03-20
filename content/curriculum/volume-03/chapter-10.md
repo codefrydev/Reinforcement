@@ -4,8 +4,12 @@ description: "Combine DDQN, Dueling, PER, NoisyNet, multi-step; train on Pong."
 date: 2026-03-10T00:00:00Z
 weight: 30
 draft: false
+difficulty: 7
 tags: ["Rainbow", "DQN", "Pong", "DDQN", "Dueling", "PER", "curriculum"]
 keywords: ["Rainbow DQN", "DDQN Dueling PER NoisyNet", "Pong", "combined improvements"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 10"
 ---
 
 **Learning objectives**

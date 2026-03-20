@@ -4,8 +4,12 @@ description: "Constrained MDP for self-driving; Lagrangian penalty."
 date: 2026-03-10T00:00:00Z
 weight: 92
 draft: false
+difficulty: 8
 tags: ["safe RL", "constrained MDP", "Lagrangian", "self-driving", "curriculum"]
 keywords: ["safe reinforcement learning", "constrained MDP", "Lagrangian", "self-driving"]
+roadmap_color: "teal"
+roadmap_icon: "globe"
+roadmap_phase_label: "Vol 10 · Ch 2"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "Compare SAC and PPO on Hopper, Walker2d; when to choose which."
 date: 2026-03-10T00:00:00Z
 weight: 48
 draft: false
+difficulty: 7
 tags: ["SAC", "PPO", "Hopper", "Walker2d", "comparison", "curriculum"]
 keywords: ["SAC vs PPO", "Hopper", "Walker2d", "when to use SAC or PPO"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Ch 8"
 ---
 
 **Learning objectives**

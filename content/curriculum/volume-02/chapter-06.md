@@ -4,8 +4,12 @@ description: "n-step SARSA (n=4) on Cliff Walking."
 date: 2026-03-10T00:00:00Z
 weight: 16
 draft: false
+difficulty: 6
 tags: ["n-step", "SARSA", "Cliff Walking", "bootstrapping", "curriculum"]
 keywords: ["n-step SARSA", "n-step bootstrapping", "Cliff Walking", "TD"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Ch 6"
 ---
 
 **Learning objectives**

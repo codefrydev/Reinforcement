@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["FAQ", "how to succeed", "curriculum", "learning"]
 keywords: ["succeed", "course", "advice", "reinforcement learning"]
+weight: 2
+roadmap_icon: "sparkles"
+roadmap_color: "teal"
+roadmap_phase_label: "Study Guide"
 ---
 
 **Learning objectives**

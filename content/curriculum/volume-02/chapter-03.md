@@ -4,8 +4,12 @@ description: "SARSA on Cliff Walking; plot sum of rewards per episode."
 date: 2026-03-10T00:00:00Z
 weight: 13
 draft: false
+difficulty: 6
 tags: ["SARSA", "on-policy", "Cliff Walking", "curriculum"]
 keywords: ["SARSA", "on-policy TD control", "Cliff Walking", "temporal difference"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Ch 3"
 ---
 
 **Learning objectives**

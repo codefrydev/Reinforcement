@@ -4,8 +4,12 @@ description: "Policy network for Pendulum: Gaussian mean and log-std; log-prob."
 date: 2026-03-10T00:00:00Z
 weight: 38
 draft: false
+difficulty: 7
 tags: ["continuous actions", "Pendulum", "Gaussian policy", "curriculum"]
 keywords: ["continuous action spaces", "Gaussian policy", "log-prob", "Pendulum"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 8"
 ---
 
 **Learning objectives**

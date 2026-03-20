@@ -3,8 +3,13 @@ title: "NumPy"
 description: "Arrays, indexing, slicing, and element-wise vs matrix operations — with RL-relevant examples and explanations."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["NumPy", "arrays", "indexing", "slicing", "preliminary"]
 keywords: ["NumPy for RL", "arrays", "indexing slicing", "element-wise matrix operations"]
+weight: 2
+roadmap_icon: "layers"
+roadmap_color: "teal"
+roadmap_phase_label: "Topic 2 · NumPy"
 ---
 
 This page covers the NumPy you need for the preliminary assessment: creating arrays, indexing, slicing, and element-wise operations. [Back to Preliminary](../).

@@ -4,8 +4,12 @@ description: "Code walkthrough for gridworld, iterative policy evaluation, and p
 date: 2026-03-10T00:00:00Z
 weight: 9
 draft: false
+difficulty: 6
 tags: ["dynamic programming", "gridworld", "code", "curriculum"]
 keywords: ["policy evaluation", "policy iteration", "gridworld", "code"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Dp Gridworld In Code"
 ---
 
 **Learning objectives**

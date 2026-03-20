@@ -4,8 +4,12 @@ description: "Self-play in Tic-Tac-Toe; track ELO."
 date: 2026-03-10T00:00:00Z
 weight: 89
 draft: false
+difficulty: 8
 tags: ["self-play", "league training", "Tic-Tac-Toe", "ELO", "curriculum"]
 keywords: ["self-play", "league training", "Tic-Tac-Toe", "ELO", "MARL"]
+roadmap_color: "blue"
+roadmap_icon: "network"
+roadmap_phase_label: "Vol 9 · Ch 9"
 ---
 
 **Learning objectives**

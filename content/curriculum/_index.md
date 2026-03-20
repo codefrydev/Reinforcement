@@ -5,6 +5,9 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["curriculum", "reinforcement learning", "100 chapters", "exercises", "volumes"]
 keywords: ["reinforcement learning curriculum", "100 chapters", "RL exercises", "mathematical foundations", "advanced RL", "curriculum volumes"]
+roadmap_icon: "layers"
+roadmap_color: "rose"
+roadmap_phase_label: "RL Curriculum"
 ---
 
 Ten volumes, 100 chapters—each with an exercise to reinforce the material. Start with [Volume 1: Mathematical Foundations](volume-01/) and work through in order, or jump to a volume that matches your level.

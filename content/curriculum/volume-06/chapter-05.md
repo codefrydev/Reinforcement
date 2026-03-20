@@ -4,8 +4,12 @@ description: "Mini AlphaZero for tic-tac-toe: NN + MCTS, self-play."
 date: 2026-03-10T00:00:00Z
 weight: 55
 draft: false
+difficulty: 8
 tags: ["AlphaZero", "MCTS", "tic-tac-toe", "self-play", "curriculum"]
 keywords: ["AlphaZero", "MCTS", "neural network", "self-play", "tic-tac-toe"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Ch 5"
 ---
 
 **Learning objectives**

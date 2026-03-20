@@ -4,8 +4,12 @@ description: "TensorFlow and Keras for RL: models, GradientTape, optimizers, and
 date: 2026-03-10T00:00:00Z
 weight: 60
 draft: false
+difficulty: 6
 tags: ["TensorFlow", "Keras", "GradientTape", "RL", "prerequisites"]
 keywords: ["TensorFlow for RL", "Keras", "GradientTape", "optimizers", "GPU", "RL models"]
+roadmap_icon: "brain"
+roadmap_color: "indigo"
+roadmap_phase_label: "Phase 6 · TensorFlow"
 ---
 
 Alternative to PyTorch for implementing DQN, policy gradients, and other deep RL algorithms. The Keras API provides layers and optimizers; `GradientTape` gives full control over custom loss functions (e.g. policy gradient, CQL).
@@ -77,6 +81,73 @@ class QNetwork(tf.keras.Model):
         x = self.d2(x)
         return self.out(x)
 ```
+
+---
+
+## Worked examples
+
+{{< collapse summary="Worked example 1: Q-network in TensorFlow (click to expand)" >}}
+
+Building and training a simple Q-network — input: 4 features, one hidden layer of 16 neurons, output: Q-values for 2 actions. We train it on one batch of (state, target\_Q) pairs.
+
+```python
+import tensorflow as tf
+import numpy as np
+np.random.seed(42)
+tf.random.set_seed(42)
+
+# Build Q-network
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(16, activation='relu', input_shape=(4,)),
+    tf.keras.layers.Dense(2)  # output: Q-values for 2 actions
+])
+model.compile(optimizer=tf.keras.optimizers.Adam(lr=0.001), loss='mse')
+
+# Fake batch: 5 state-target pairs
+states = np.random.randn(5, 4).astype(np.float32)
+target_Q = np.random.randn(5, 2).astype(np.float32)
+
+# Training step
+loss = model.train_on_batch(states, target_Q)
+print(f'Loss after 1 batch: {loss:.4f}')
+predictions = model.predict(states[:2])
+print(f'Q-values for first 2 states:\n{predictions}')
+```
+
+{{< /collapse >}}
+
+{{< collapse summary="Worked example 2: GradientTape policy gradient (click to expand)" >}}
+
+Using `GradientTape` for a custom REINFORCE-style policy gradient step: we compute \\(-\log \pi(a|s) \cdot R\\) and apply gradients manually.
+
+```python
+import tensorflow as tf
+import numpy as np
+
+# Policy network: state → action probabilities
+policy = tf.keras.Sequential([
+    tf.keras.layers.Dense(8, activation='relu', input_shape=(3,)),
+    tf.keras.layers.Dense(2, activation='softmax')
+])
+optimizer = tf.keras.optimizers.Adam(lr=0.01)
+
+# Simulate one REINFORCE update
+state = tf.constant([[0.5, -0.3, 0.8]], dtype=tf.float32)
+action_taken = 1  # agent chose action 1
+reward = 1.0      # received reward +1
+
+with tf.GradientTape() as tape:
+    probs = policy(state)  # [p(a0), p(a1)]
+    log_prob = tf.math.log(probs[0, action_taken])
+    loss = -log_prob * reward  # REINFORCE: maximize log_prob * reward
+
+grads = tape.gradient(loss, policy.trainable_variables)
+optimizer.apply_gradients(zip(grads, policy.trainable_variables))
+print(f'Policy gradient loss: {loss.numpy():.4f}')
+print(f'Action probabilities: {probs.numpy()}')
+```
+
+{{< /collapse >}}
 
 ---
 

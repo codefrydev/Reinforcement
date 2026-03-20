@@ -4,8 +4,12 @@ description: "The CartPole (Inverted Pendulum) environment: state, actions, and 
 date: 2026-03-10T00:00:00Z
 weight: 22
 draft: false
+difficulty: 7
 tags: ["CartPole", "Gym", "reinforcement learning", "curriculum"]
 keywords: ["CartPole", "inverted pendulum", "OpenAI Gym", "control"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Cartpole"
 ---
 
 **Learning objectives**

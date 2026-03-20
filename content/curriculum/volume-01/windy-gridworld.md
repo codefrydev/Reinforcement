@@ -4,8 +4,12 @@ description: "Gridworld with wind: actions are shifted by a wind effect. Theory 
 date: 2026-03-10T00:00:00Z
 weight: 8
 draft: false
+difficulty: 6
 tags: ["windy gridworld", "MDP", "dynamic programming", "curriculum"]
 keywords: ["windy gridworld", "Sutton and Barto", "gridworld", "wind"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Windy Gridworld"
 ---
 
 **Learning objectives**

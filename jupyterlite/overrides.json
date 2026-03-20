@@ -1,0 +1,12 @@
+{
+  "@jupyterlab/console-extension:tracker": {
+    "kernelPreference": {
+      "name": "python",
+      "autoStartDefault": true,
+      "shouldStart": true
+    }
+  },
+  "@jupyterlab/apputils-extension:notification": {
+    "fetchNews": "never"
+  }
+}

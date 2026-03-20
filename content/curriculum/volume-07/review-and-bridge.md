@@ -3,8 +3,12 @@ title: "Volume 7 Review & Bridge to Volume 8"
 description: "Review Volume 7 (Exploration, ICM, RND, Go-Explore, Meta-RL) and preview Volume 8 (Offline RL, Imitation Learning, RLHF)."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 8
 weight: 100
 tags: ["review", "bridge", "Volume 7", "Volume 8", "exploration", "ICM", "offline RL", "RLHF"]
+roadmap_color: "indigo"
+roadmap_icon: "sparkles"
+roadmap_phase_label: "Vol 7 · Review"
 ---
 
 ## Volume 7 Recap Quiz (5 questions)

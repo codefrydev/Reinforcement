@@ -4,8 +4,12 @@ description: "Sum-tree prioritized buffer with TD error; importance-sampling wei
 date: 2026-03-10T00:00:00Z
 weight: 28
 draft: false
+difficulty: 7
 tags: ["prioritized experience replay", "PER", "sum-tree", "importance sampling", "curriculum"]
 keywords: ["prioritized replay", "PER", "TD error", "importance sampling", "DQN"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 8"
 ---
 
 **Learning objectives**

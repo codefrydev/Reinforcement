@@ -4,6 +4,10 @@ description: "5 quick questions after Chapters 41–45 of Volume 5. Check you're
 date: 2026-03-19T00:00:00Z
 draft: false
 tags: ["checkpoint", "volume 5", "assessment", "PPO", "TRPO", "GAE", "SAC"]
+weight: 14
+roadmap_icon: "book"
+roadmap_color: "violet"
+roadmap_phase_label: "Vol 5 Mid-Point"
 ---
 
 Take this checkpoint after completing Chapters 41–45 (TRPO, PPO, and GAE). All 5 should feel manageable — if any are unclear, re-read the relevant chapter before continuing.

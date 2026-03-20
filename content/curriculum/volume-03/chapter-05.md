@@ -4,8 +4,12 @@ description: "Hard vs soft target updates in DQN."
 date: 2026-03-10T00:00:00Z
 weight: 25
 draft: false
+difficulty: 7
 tags: ["target network", "DQN", "hard update", "soft update", "curriculum"]
 keywords: ["target networks", "DQN", "hard update", "soft update"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 5"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "MAML for locomotion (e.g. different velocities); one-step adapt."
 date: 2026-03-10T00:00:00Z
 weight: 68
 draft: false
+difficulty: 8
 tags: ["MAML", "meta-learning", "locomotion", "adaptation", "curriculum"]
 keywords: ["MAML", "Model-Agnostic Meta-Learning", "one-step adapt", "locomotion"]
+roadmap_color: "indigo"
+roadmap_icon: "sparkles"
+roadmap_phase_label: "Vol 7 · Ch 8"
 ---
 
 **Learning objectives**

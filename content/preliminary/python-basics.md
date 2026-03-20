@@ -3,8 +3,13 @@ title: "Python basics for RL and the preliminary assessment"
 description: "Functions, lists, loops, and list comprehensions — with RL-relevant examples and explained solutions."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["Python", "functions", "loops", "list comprehensions", "preliminary"]
 keywords: ["Python basics", "functions lists loops", "list comprehensions", "RL-relevant examples"]
+weight: 1
+roadmap_icon: "terminal"
+roadmap_color: "blue"
+roadmap_phase_label: "Topic 1 · Python"
 ---
 
 This page covers the Python you need for the preliminary assessment: writing functions, working with lists, and using list comprehensions. [Back to Preliminary](../).

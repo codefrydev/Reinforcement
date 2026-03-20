@@ -4,8 +4,12 @@ description: "Bayesian bandits and Thompson Sampling—sample from the posterior
 date: 2026-03-10T00:00:00Z
 weight: 5
 draft: false
+difficulty: 6
 tags: ["bandits", "Thompson sampling", "Bayesian", "curriculum"]
 keywords: ["Thompson sampling", "Bayesian bandits", "posterior", "Beta Bernoulli"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Bandits Thompson Sampling"
 ---
 
 **Learning objectives**

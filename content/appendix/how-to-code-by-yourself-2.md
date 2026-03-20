@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["FAQ", "coding", "learning", "practice"]
 keywords: ["coding practice", "solutions", "debugging", "habit"]
+weight: 9
+roadmap_icon: "calculator"
+roadmap_color: "blue"
+roadmap_phase_label: "Coding Guide 2"
 ---
 
 **Learning objectives**

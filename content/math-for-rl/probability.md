@@ -3,8 +3,13 @@ title: "Probability & Statistics"
 description: "Expectations, variance, sample mean, distributions, and law of large numbers — with RL motivation and practice."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["probability", "statistics", "expectation", "variance", "math for RL"]
 keywords: ["probability for RL", "expectation", "variance", "sample mean", "law of large numbers"]
+weight: 1
+roadmap_icon: "calculator"
+roadmap_color: "blue"
+roadmap_phase_label: "Phase 3 · Probability"
 ---
 
 This page covers the probability and statistics you need for RL: expectations, variance, sample means, and the idea that sample averages converge to expectations. [Back to Math for RL](../).

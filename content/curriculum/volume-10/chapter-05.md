@@ -4,8 +4,12 @@ description: "PPO fine-tune small LM (e.g. GPT-2) for sentiment; KL penalty."
 date: 2026-03-10T00:00:00Z
 weight: 95
 draft: false
+difficulty: 8
 tags: ["PPO", "LLM", "GPT-2", "sentiment", "KL penalty", "curriculum"]
 keywords: ["PPO for LLM", "training language models", "GPT-2", "sentiment", "KL penalty"]
+roadmap_color: "teal"
+roadmap_icon: "globe"
+roadmap_phase_label: "Vol 10 · Ch 5"
 ---
 
 **Learning objectives**

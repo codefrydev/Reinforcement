@@ -4,8 +4,12 @@ description: "Weights & Biases sweep for SAC on custom env."
 date: 2026-03-10T00:00:00Z
 weight: 50
 draft: false
+difficulty: 7
 tags: ["hyperparameter tuning", "Weights and Biases", "SAC", "sweep", "curriculum"]
 keywords: ["hyperparameter tuning", "Weights and Biases", "wandb sweep", "SAC"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Ch 10"
 ---
 
 **Learning objectives**

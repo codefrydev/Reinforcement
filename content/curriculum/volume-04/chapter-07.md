@@ -4,8 +4,12 @@ description: "A3C with multiprocessing workers; compare speed with A2C."
 date: 2026-03-10T00:00:00Z
 weight: 37
 draft: false
+difficulty: 7
 tags: ["A3C", "asynchronous", "multiprocessing", "actor-critic", "curriculum"]
 keywords: ["A3C", "asynchronous advantage actor-critic", "multiprocessing", "A2C"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 7"
 ---
 
 **Learning objectives**

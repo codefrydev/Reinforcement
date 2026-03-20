@@ -4,8 +4,12 @@ description: "Decision Transformer: returns-to-go, states, actions; GPT-like pre
 date: 2026-03-10T00:00:00Z
 weight: 73
 draft: false
+difficulty: 8
 tags: ["Decision Transformer", "returns-to-go", "offline RL", "curriculum"]
 keywords: ["Decision Transformer", "returns-to-go", "GPT", "action prediction"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 3"
 ---
 
 **Learning objectives**

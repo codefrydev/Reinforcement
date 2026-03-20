@@ -4,8 +4,12 @@ description: "10-armed testbed with epsilon-greedy vs greedy."
 date: 2026-03-10T00:00:00Z
 weight: 2
 draft: false
+difficulty: 6
 tags: ["multi-armed bandits", "epsilon-greedy", "exploration", "curriculum"]
 keywords: ["multi-armed bandits", "epsilon-greedy", "10-armed testbed", "exploration exploitation"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Ch 2"
 ---
 
 {{< notebook path="volume-01/ch02_bandits.ipynb" title="Open Chapter 2 notebook" >}}

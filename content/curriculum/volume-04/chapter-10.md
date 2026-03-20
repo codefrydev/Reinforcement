@@ -4,8 +4,12 @@ description: "TD3: clipped double Q, delayed policy, target smoothing."
 date: 2026-03-10T00:00:00Z
 weight: 40
 draft: false
+difficulty: 7
 tags: ["TD3", "clipped double Q", "delayed policy", "curriculum"]
 keywords: ["TD3", "Twin Delayed DDPG", "clipped double Q", "target smoothing"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 10"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "State visitation count bonus; exploration in gridworld."
 date: 2026-03-10T00:00:00Z
 weight: 62
 draft: false
+difficulty: 8
 tags: ["intrinsic motivation", "state visitation", "exploration", "gridworld", "curriculum"]
 keywords: ["intrinsic motivation", "state visitation count", "exploration bonus", "gridworld"]
+roadmap_color: "indigo"
+roadmap_icon: "sparkles"
+roadmap_phase_label: "Vol 7 · Ch 2"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "Expected SARSA vs Q-learning; variance and learning curves."
 date: 2026-03-10T00:00:00Z
 weight: 15
 draft: false
+difficulty: 6
 tags: ["Expected SARSA", "Q-learning", "variance", "curriculum"]
 keywords: ["Expected SARSA", "Q-learning", "variance", "learning curves"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Ch 5"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "Expert demos from PPO on LunarLander; behavioral cloning."
 date: 2026-03-10T00:00:00Z
 weight: 74
 draft: false
+difficulty: 8
 tags: ["imitation learning", "behavioral cloning", "LunarLander", "PPO", "curriculum"]
 keywords: ["imitation learning", "behavioral cloning", "expert demos", "LunarLander"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 4"
 ---
 
 **Learning objectives**

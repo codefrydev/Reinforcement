@@ -5,6 +5,9 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["prerequisites", "Python", "NumPy", "PyTorch", "TensorFlow", "Gym", "libraries"]
 keywords: ["prerequisites", "Python NumPy Pandas", "PyTorch TensorFlow", "Gym", "RL stack", "curriculum tools"]
+roadmap_icon: "terminal"
+roadmap_color: "blue"
+roadmap_phase_label: "Prerequisites"
 ---
 
 Learn or brush up on the tools and libraries used across the [curriculum](../curriculum/) and in the [preliminary assessment](../preliminary/). Each topic page includes detailed explanations, multiple examples, and **5 exercises** to practice before tackling the chapter exercises.

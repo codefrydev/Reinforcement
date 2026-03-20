@@ -4,8 +4,12 @@ description: "First-visit MC prediction for blackjack."
 date: 2026-03-10T00:00:00Z
 weight: 11
 draft: false
+difficulty: 6
 tags: ["Monte Carlo", "prediction", "blackjack", "curriculum"]
 keywords: ["Monte Carlo methods", "first-visit MC", "blackjack", "prediction"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Ch 1"
 ---
 
 {{< notebook path="volume-02/ch11_monte_carlo.ipynb" title="Open Monte Carlo notebook" >}}

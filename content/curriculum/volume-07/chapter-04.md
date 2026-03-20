@@ -4,8 +4,12 @@ description: "RND: fixed target, predictor; prediction error as intrinsic reward
 date: 2026-03-10T00:00:00Z
 weight: 64
 draft: false
+difficulty: 8
 tags: ["RND", "random network distillation", "intrinsic reward", "curriculum"]
 keywords: ["RND", "random network distillation", "prediction error", "intrinsic reward"]
+roadmap_color: "indigo"
+roadmap_icon: "sparkles"
+roadmap_phase_label: "Vol 7 · Ch 4"
 ---
 
 **Learning objectives**

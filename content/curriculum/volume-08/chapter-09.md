@@ -4,8 +4,12 @@ description: "Pretrain SAC offline; finetune online; Q-filter for bad actions."
 date: 2026-03-10T00:00:00Z
 weight: 79
 draft: false
+difficulty: 8
 tags: ["offline-to-online", "SAC", "Q-filter", "finetuning", "curriculum"]
 keywords: ["offline-to-online", "finetune", "SAC", "Q-filter", "pretrain offline"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 9"
 ---
 
 **Learning objectives**

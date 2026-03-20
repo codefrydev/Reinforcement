@@ -4,8 +4,12 @@ description: "Custom 2D maze Gym env with text render."
 date: 2026-03-10T00:00:00Z
 weight: 18
 draft: false
+difficulty: 6
 tags: ["Gym", "custom environment", "maze", "curriculum"]
 keywords: ["custom Gym environment", "OpenAI Gym", "environment API", "maze"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Ch 8"
 ---
 
 **Learning objectives**

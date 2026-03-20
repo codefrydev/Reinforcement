@@ -4,8 +4,12 @@ description: "How to design reward signals for MDPs and gridworld—shaping, ter
 date: 2026-03-10T00:00:00Z
 weight: 5
 draft: false
+difficulty: 6
 tags: ["rewards", "reward design", "MDP", "curriculum"]
 keywords: ["reward design", "reward shaping", "MDP", "reinforcement learning"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Choosing Rewards"
 ---
 
 **Learning objectives**

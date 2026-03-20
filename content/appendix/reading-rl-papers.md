@@ -5,6 +5,10 @@ date: 2026-03-19T00:00:00Z
 draft: false
 tags: ["papers", "research", "appendix", "DQN", "PPO", "SAC", "how to read"]
 keywords: ["how to read RL papers", "research papers RL", "DQN paper", "PPO paper", "SAC paper", "notation guide"]
+weight: 11
+roadmap_icon: "brain"
+roadmap_color: "green"
+roadmap_phase_label: "Reading Papers"
 ---
 
 By Phase 5, you can implement standard RL algorithms. Reading the original papers lets you go further: understand design choices, see ablations, and extend methods. This guide teaches you to read RL papers efficiently.

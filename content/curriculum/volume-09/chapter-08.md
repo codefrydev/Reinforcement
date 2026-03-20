@@ -4,8 +4,12 @@ description: "MAPPO with parameter sharing; centralized value; compare with IPPO
 date: 2026-03-10T00:00:00Z
 weight: 88
 draft: false
+difficulty: 8
 tags: ["MAPPO", "multi-agent PPO", "parameter sharing", "curriculum"]
 keywords: ["MAPPO", "multi-agent PPO", "parameter sharing", "centralized value", "IPPO"]
+roadmap_color: "blue"
+roadmap_icon: "network"
+roadmap_phase_label: "Vol 9 · Ch 8"
 ---
 
 **Learning objectives**

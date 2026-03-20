@@ -4,8 +4,12 @@ description: "Grid search over α and ε for Q-learning on Cliff Walking."
 date: 2026-03-10T00:00:00Z
 weight: 19
 draft: false
+difficulty: 6
 tags: ["hyperparameter tuning", "Q-learning", "grid search", "Cliff Walking", "curriculum"]
 keywords: ["hyperparameter tuning", "grid search", "alpha epsilon", "Q-learning"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Ch 9"
 ---
 
 **Learning objectives**

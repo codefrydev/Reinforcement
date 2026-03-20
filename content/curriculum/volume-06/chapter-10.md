@@ -4,8 +4,12 @@ description: "Plot true vs predicted states; compounding error visualization."
 date: 2026-03-10T00:00:00Z
 weight: 60
 draft: false
+difficulty: 8
 tags: ["model-based", "rollouts", "compounding error", "visualization", "curriculum"]
 keywords: ["model rollouts", "compounding error", "predicted vs true states", "visualization"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Ch 10"
 ---
 
 **Learning objectives**

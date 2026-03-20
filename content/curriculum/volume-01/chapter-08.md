@@ -4,8 +4,12 @@ description: "Policy iteration and comparison with value iteration."
 date: 2026-03-10T00:00:00Z
 weight: 8
 draft: false
+difficulty: 6
 tags: ["dynamic programming", "policy iteration", "value iteration", "curriculum"]
 keywords: ["policy iteration", "value iteration", "dynamic programming", "optimal policy"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Ch 8"
 ---
 
 **Learning objectives**

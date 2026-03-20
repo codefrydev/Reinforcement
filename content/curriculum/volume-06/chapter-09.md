@@ -4,8 +4,12 @@ description: "PETS: ensemble dynamics, MPC with random shooting."
 date: 2026-03-10T00:00:00Z
 weight: 59
 draft: false
+difficulty: 8
 tags: ["PETS", "ensemble", "MPC", "random shooting", "curriculum"]
 keywords: ["PETS", "Probabilistic Ensembles", "MPC", "trajectory sampling"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Ch 9"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "A2C for CartPole with TD error as advantage; sync multi-env."
 date: 2026-03-10T00:00:00Z
 weight: 36
 draft: false
+difficulty: 7
 tags: ["A2C", "advantage actor-critic", "CartPole", "TD error", "curriculum"]
 keywords: ["A2C", "advantage actor-critic", "CartPole", "multi-env"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 6"
 ---
 
 **Learning objectives**

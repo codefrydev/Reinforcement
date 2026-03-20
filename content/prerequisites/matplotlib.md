@@ -4,8 +4,12 @@ description: "Matplotlib for RL: learning curves, subplots, heatmaps, and saving
 date: 2026-03-10T00:00:00Z
 weight: 40
 draft: false
+difficulty: 2
 tags: ["Matplotlib", "plotting", "learning curves", "prerequisites"]
 keywords: ["Matplotlib for RL", "learning curves", "subplots", "heatmaps", "saving figures"]
+roadmap_icon: "chart"
+roadmap_color: "purple"
+roadmap_phase_label: "Phase 2 · Matplotlib"
 ---
 
 Used in many chapter exercises to plot average reward over time, value functions, policy comparisons, and hyperparameter heatmaps. A clear plot often reveals convergence or instability at a glance.

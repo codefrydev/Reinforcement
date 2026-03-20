@@ -4,8 +4,12 @@ description: "Python basics for RL: data structures, classes, functions, control
 date: 2026-03-10T00:00:00Z
 weight: 10
 draft: false
+difficulty: 1
 tags: ["Python", "data structures", "OOP", "prerequisites"]
 keywords: ["Python for RL", "data structures", "classes", "functions", "control flow", "OOP"]
+roadmap_icon: "terminal"
+roadmap_color: "blue"
+roadmap_phase_label: "Phase 1 · Python"
 ---
 
 Concepts used in the curriculum and in [Preliminary: Python basics](../preliminary/python-basics/): **data structures** (list, tuple, dict, set), **classes and objects**, functions, list comprehensions, loops, and conditionals. RL code is full of trajectories, configs, and custom types (agents, buffers)—all built from these basics.

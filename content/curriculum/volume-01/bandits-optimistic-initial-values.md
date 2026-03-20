@@ -4,8 +4,12 @@ description: "Using optimistic initial Q-values to encourage early exploration i
 date: 2026-03-10T00:00:00Z
 weight: 3
 draft: false
+difficulty: 6
 tags: ["bandits", "optimistic initial values", "exploration", "curriculum"]
 keywords: ["optimistic initial values", "multi-armed bandits", "exploration", "Q initialization"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Bandits Optimistic Initial Values"
 ---
 
 **Learning objectives**

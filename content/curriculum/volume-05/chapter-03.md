@@ -4,8 +4,12 @@ description: "Clipped surrogate objective; contrast with unclipped."
 date: 2026-03-10T00:00:00Z
 weight: 43
 draft: false
+difficulty: 7
 tags: ["PPO", "clipped surrogate", "proximal policy", "curriculum"]
 keywords: ["PPO", "Proximal Policy Optimization", "clipped objective", "surrogate"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Ch 3"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "QMIX: mixing network, monotonicity via hypernetworks."
 date: 2026-03-10T00:00:00Z
 weight: 87
 draft: false
+difficulty: 8
 tags: ["QMIX", "mixing network", "multi-agent", "curriculum"]
 keywords: ["QMIX", "mixing network", "monotonicity", "hypernetworks", "MARL"]
+roadmap_color: "blue"
+roadmap_icon: "network"
+roadmap_phase_label: "Vol 9 · Ch 7"
 ---
 
 **Learning objectives**

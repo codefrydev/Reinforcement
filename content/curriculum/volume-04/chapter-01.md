@@ -4,8 +4,12 @@ description: "When a stochastic policy is essential; why deterministic fails."
 date: 2026-03-10T00:00:00Z
 weight: 31
 draft: false
+difficulty: 7
 tags: ["policy gradient", "stochastic policy", "REINFORCE", "curriculum"]
 keywords: ["policy-based methods", "stochastic policy", "deterministic policy", "exploration"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 1"
 ---
 
 **Learning objectives**

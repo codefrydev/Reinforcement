@@ -3,8 +3,12 @@ title: "Volume 8 Review & Bridge to Volume 9"
 description: "Review Volume 8 (Offline RL, Imitation Learning, IRL, RLHF) and preview Volume 9 (Multi-Agent RL — cooperation, competition, game theory)."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 8
 weight: 100
 tags: ["review", "bridge", "Volume 8", "Volume 9", "offline RL", "RLHF", "multi-agent", "game theory"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Review"
 ---
 
 ## Volume 8 Recap Quiz (5 questions)

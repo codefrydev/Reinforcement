@@ -4,8 +4,12 @@ description: "Compare Dreamer and PPO sample efficiency on Walker."
 date: 2026-03-10T00:00:00Z
 weight: 51
 draft: false
+difficulty: 8
 tags: ["model-free", "model-based", "Dreamer", "PPO", "sample efficiency", "curriculum"]
 keywords: ["model-free vs model-based", "Dreamer", "PPO", "Walker", "sample efficiency"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Ch 1"
 ---
 
 **Learning objectives**

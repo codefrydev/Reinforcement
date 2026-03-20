@@ -4,8 +4,12 @@ description: "Pandas for RL: DataFrames, Series, grouping, and logging metrics."
 date: 2026-03-10T00:00:00Z
 weight: 30
 draft: false
+difficulty: 2
 tags: ["Pandas", "DataFrames", "metrics", "prerequisites"]
 keywords: ["Pandas for RL", "DataFrames", "Series", "grouping", "logging metrics"]
+roadmap_icon: "database"
+roadmap_color: "green"
+roadmap_phase_label: "Phase 2 · Pandas"
 ---
 
 Useful for logging training metrics (rewards per episode, loss curves), loading small datasets, and analyzing results. Many curriculum exercises ask you to "plot the sum of rewards per episode"—storing those in a DataFrame keeps things tidy and easy to export.

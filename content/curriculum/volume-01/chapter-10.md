@@ -4,8 +4,12 @@ description: "State and transition count for 10×10 gridworld; function approxim
 date: 2026-03-10T00:00:00Z
 weight: 10
 draft: false
+difficulty: 6
 tags: ["dynamic programming", "function approximation", "tabular limits", "curriculum"]
 keywords: ["limitations of DP", "function approximation", "state count", "tabular methods"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Ch 10"
 ---
 
 **Learning objectives**

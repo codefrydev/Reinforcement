@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["Anaconda", "conda", "environment", "FAQ"]
 keywords: ["Anaconda", "conda", "virtual environment", "setup"]
+weight: 5
+roadmap_icon: "terminal"
+roadmap_color: "purple"
+roadmap_phase_label: "Setup"
 ---
 
 **Learning objectives**

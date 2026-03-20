@@ -3,8 +3,12 @@ title: "Volume 6 Review & Bridge to Volume 7"
 description: "Review Volume 6 (Model-Based RL, MCTS, Dyna-Q, world models) and preview Volume 7 (Exploration — intrinsic motivation, curiosity, and sparse rewards)."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 8
 weight: 100
 tags: ["review", "bridge", "Volume 6", "Volume 7", "model-based", "MCTS", "exploration", "curiosity"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Review"
 ---
 
 ## Volume 6 Recap Quiz (5 questions)

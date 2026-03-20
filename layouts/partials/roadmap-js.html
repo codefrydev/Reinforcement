@@ -1,0 +1,59 @@
+<script>
+(function () {
+  var TOTAL = {{ .total }};
+  var KEY   = '{{ .key }}';
+  var completed = [];
+  var expanded  = [1]; // first step open by default
+
+  /* ── Load persisted state ── */
+  try {
+    var saved = JSON.parse(localStorage.getItem(KEY) || '{}');
+    if (Array.isArray(saved.completed)) completed = saved.completed;
+    if (Array.isArray(saved.expanded))  expanded  = saved.expanded;
+  } catch (e) {}
+
+  function save() {
+    try { localStorage.setItem(KEY, JSON.stringify({completed: completed, expanded: expanded})); } catch(e){}
+  }
+
+  function render() {
+    var count = 0;
+    for (var i = 1; i <= TOTAL; i++) {
+      var step = document.getElementById('step-' + i);
+      if (!step) continue;
+      var done = completed.indexOf(i) > -1;
+      var open = expanded.indexOf(i)  > -1;
+      if (done) { step.classList.add('completed');    count++; }
+      else        step.classList.remove('completed');
+      if (open)   step.classList.add('expanded');
+      else        step.classList.remove('expanded');
+      var circ  = step.querySelector('.rm-icon-circle');
+      var check = step.querySelector('.rm-icon-check');
+      if (circ)  circ.style.display  = done ? 'none' : '';
+      if (check) check.style.display = done ? ''     : 'none';
+    }
+    var pct    = TOTAL > 0 ? Math.round((count / TOTAL) * 100) : 0;
+    var pctEl  = document.getElementById('rmp-pct');
+    var fillEl = document.getElementById('rmp-fill');
+    if (pctEl)  pctEl.textContent  = pct + '%';
+    if (fillEl) fillEl.style.width = pct + '%';
+  }
+
+  window.rmToggle = function (id) {
+    var idx = expanded.indexOf(id);
+    if (idx > -1) expanded.splice(idx, 1);
+    else          expanded.push(id);
+    save(); render();
+  };
+
+  window.rmComplete = function (e, id) {
+    e.stopPropagation();
+    var idx = completed.indexOf(id);
+    if (idx > -1) completed.splice(idx, 1);
+    else          completed.push(id);
+    save(); render();
+  };
+
+  render();
+})();
+</script>

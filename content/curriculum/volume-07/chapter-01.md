@@ -4,8 +4,12 @@ description: "DQN with ε-greedy on Montezuma's Revenge; sparse rewards."
 date: 2026-03-10T00:00:00Z
 weight: 61
 draft: false
+difficulty: 8
 tags: ["exploration", "sparse rewards", "Montezuma's Revenge", "DQN", "curriculum"]
 keywords: ["hard exploration", "sparse rewards", "Montezuma's Revenge", "epsilon-greedy"]
+roadmap_color: "indigo"
+roadmap_icon: "sparkles"
+roadmap_phase_label: "Vol 7 · Ch 1"
 ---
 
 **Learning objectives**

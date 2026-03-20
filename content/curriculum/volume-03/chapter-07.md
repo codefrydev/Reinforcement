@@ -4,8 +4,12 @@ description: "Dueling architecture V(s) + A(s,a); compare with DQN."
 date: 2026-03-10T00:00:00Z
 weight: 27
 draft: false
+difficulty: 7
 tags: ["Dueling DQN", "value function", "advantage", "curriculum"]
 keywords: ["Dueling DQN", "V(s) A(s,a)", "advantage function", "DQN"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 7"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "MBPO: ensemble dynamics, short rollouts, SAC buffer."
 date: 2026-03-10T00:00:00Z
 weight: 58
 draft: false
+difficulty: 8
 tags: ["MBPO", "ensemble dynamics", "SAC", "short rollouts", "curriculum"]
 keywords: ["MBPO", "Model-Based Policy Optimization", "ensemble dynamics", "SAC"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Ch 8"
 ---
 
 **Learning objectives**

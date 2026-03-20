@@ -149,11 +149,21 @@ menu:
       url: /prerequisites/
       parent: learn
       weight: 4
+    - identifier: ml-foundations
+      name: ML Foundations
+      url: /ml-foundations/
+      parent: learn
+      weight: 4
+    - identifier: dl-foundations
+      name: DL Foundations
+      url: /dl-foundations/
+      parent: learn
+      weight: 5
     - identifier: curriculum
       name: Curriculum
       url: /curriculum/
       parent: learn
-      weight: 5
+      weight: 6
     # Top-level links
     - identifier: Search
       name: search
@@ -172,21 +182,22 @@ menu:
       name: Glossary
       url: /glossary/
       parent: learn
-      weight: 6
+      weight: 7
     - identifier: assessments
       name: Assessments
       url: /assessment/
       parent: learn
-      weight: 7
+      weight: 8
     - identifier: lab
       name: "🧪 Lab (Python)"
       url: "https://codefrydev.in/Reinforcement/lab/"
+      parent: learn
       weight: 5
     - identifier: appendix
       name: Appendix
       url: /appendix/
       parent: learn
-      weight: 8
+      weight: 9
 
 pygmentsUseClasses: true
 markup:

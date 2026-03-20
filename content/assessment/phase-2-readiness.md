@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["assessment", "phase 2", "readiness", "prerequisites", "solutions"]
 keywords: ["phase 2 readiness", "prerequisites quiz", "Python NumPy PyTorch", "solutions", "readiness check"]
+weight: 3
+roadmap_icon: "layers"
+roadmap_color: "green"
+roadmap_phase_label: "Phase 2 Quiz"
 ---
 
 Use this quiz after working through [Python](../prerequisites/python/), [NumPy](../prerequisites/numpy/), and [PyTorch](../prerequisites/pytorch/) (and optionally [Gym](../prerequisites/gym/)). If you can answer at least 6 correctly, you are ready for [Phase 3](../learning-path/#phase-3--rl-foundations) and [Volume 1](../curriculum/volume-01/).

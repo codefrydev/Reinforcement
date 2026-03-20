@@ -4,8 +4,12 @@ description: "Linear FA with tile coding for MountainCar; semi-gradient SARSA."
 date: 2026-03-10T00:00:00Z
 weight: 21
 draft: false
+difficulty: 7
 tags: ["function approximation", "linear FA", "tile coding", "MountainCar", "curriculum"]
 keywords: ["linear function approximation", "tile coding", "semi-gradient SARSA", "MountainCar"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 1"
 ---
 
 **Learning objectives**

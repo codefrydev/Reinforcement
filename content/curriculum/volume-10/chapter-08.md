@@ -4,8 +4,12 @@ description: "PPO on 10 seeds; mean, std; rliable confidence intervals."
 date: 2026-03-10T00:00:00Z
 weight: 98
 draft: false
+difficulty: 8
 tags: ["evaluation", "PPO", "rliable", "confidence intervals", "curriculum"]
 keywords: ["evaluating RL agents", "multiple seeds", "mean std", "rliable", "confidence intervals"]
+roadmap_color: "teal"
+roadmap_icon: "globe"
+roadmap_phase_label: "Vol 10 · Ch 8"
 ---
 
 **Learning objectives**

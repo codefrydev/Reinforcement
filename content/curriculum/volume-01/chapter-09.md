@@ -4,8 +4,12 @@ description: "Value iteration on 4×4 gridworld, optimal V and policy."
 date: 2026-03-10T00:00:00Z
 weight: 9
 draft: false
+difficulty: 6
 tags: ["value iteration", "dynamic programming", "optimal policy", "gridworld", "curriculum"]
 keywords: ["value iteration", "optimal V", "optimal policy", "dynamic programming"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Ch 9"
 ---
 
 **Learning objectives**

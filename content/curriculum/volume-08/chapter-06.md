@@ -4,8 +4,12 @@ description: "Max-ent IRL: learn reward from expert; linear reward, forward RL."
 date: 2026-03-10T00:00:00Z
 weight: 76
 draft: false
+difficulty: 8
 tags: ["inverse RL", "IRL", "reward learning", "max entropy", "curriculum"]
 keywords: ["inverse reinforcement learning", "IRL", "max entropy", "reward from expert"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 6"
 ---
 
 **Learning objectives**

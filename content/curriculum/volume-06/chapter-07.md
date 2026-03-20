@@ -4,8 +4,12 @@ description: "Simplified Dreamer: RSSM, imagination phase, actor-critic."
 date: 2026-03-10T00:00:00Z
 weight: 57
 draft: false
+difficulty: 8
 tags: ["Dreamer", "RSSM", "imagination", "actor-critic", "curriculum"]
 keywords: ["Dreamer", "RSSM", "latent imagination", "world model", "actor-critic"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Ch 7"
 ---
 
 **Learning objectives**

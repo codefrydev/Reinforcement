@@ -4,8 +4,12 @@ description: "Max-entropy objective; why entropy encourages exploration."
 date: 2026-03-10T00:00:00Z
 weight: 46
 draft: false
+difficulty: 7
 tags: ["max entropy", "SAC", "exploration", "entropy", "curriculum"]
 keywords: ["maximum entropy RL", "entropy bonus", "exploration", "SAC"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Ch 6"
 ---
 
 **Learning objectives**

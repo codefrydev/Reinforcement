@@ -4,6 +4,10 @@ description: "5 quick questions after Chapters 21–25 of Volume 3. Check you're
 date: 2026-03-19T00:00:00Z
 draft: false
 tags: ["checkpoint", "volume 3", "assessment", "function approximation", "DQN", "neural networks"]
+weight: 11
+roadmap_icon: "book"
+roadmap_color: "indigo"
+roadmap_phase_label: "Vol 3 Mid-Point"
 ---
 
 Take this checkpoint after completing Chapters 21–25 (linear function approximation, neural networks for RL, DQN basics). All 5 should feel manageable — if any are unclear, re-read the relevant chapter before continuing.

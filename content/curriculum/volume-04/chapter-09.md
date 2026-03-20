@@ -4,8 +4,12 @@ description: "DDPG for Pendulum with OU noise and target networks."
 date: 2026-03-10T00:00:00Z
 weight: 39
 draft: false
+difficulty: 7
 tags: ["DDPG", "Pendulum", "OU noise", "target networks", "curriculum"]
 keywords: ["DDPG", "Deep Deterministic Policy Gradient", "Pendulum", "OU noise"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 9"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "When reward distributions change over time—exponential recency-w
 date: 2026-03-10T00:00:00Z
 weight: 6
 draft: false
+difficulty: 6
 tags: ["bandits", "nonstationary", "step size", "recency", "curriculum"]
 keywords: ["nonstationary bandits", "running average", "step size", "recency weighting"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Bandits Nonstationary"
 ---
 
 **Learning objectives**

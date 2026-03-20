@@ -4,8 +4,12 @@ description: "Model Rock-Paper-Scissors as Dec-POMDP."
 date: 2026-03-10T00:00:00Z
 weight: 81
 draft: false
+difficulty: 8
 tags: ["multi-agent", "MARL", "Dec-POMDP", "game theory", "curriculum"]
 keywords: ["multi-agent RL", "Dec-POMDP", "Rock-Paper-Scissors", "game theory"]
+roadmap_color: "blue"
+roadmap_icon: "network"
+roadmap_phase_label: "Vol 9 · Ch 1"
 ---
 
 **Learning objectives**

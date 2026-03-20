@@ -4,8 +4,12 @@ description: "MCTS for tic-tac-toe with UCT; play vs random."
 date: 2026-03-10T00:00:00Z
 weight: 54
 draft: false
+difficulty: 8
 tags: ["MCTS", "planning", "tree search", "curriculum"]
 keywords: ["Monte Carlo Tree Search", "MCTS", "planning", "tree search"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Ch 4"
 ---
 
 **Learning objectives**

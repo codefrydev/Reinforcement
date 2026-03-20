@@ -4,8 +4,12 @@ description: "Noisy linear layers with factorized Gaussian; compare with ε-gree
 date: 2026-03-10T00:00:00Z
 weight: 29
 draft: false
+difficulty: 7
 tags: ["NoisyNet", "exploration", "factorized Gaussian", "curriculum"]
 keywords: ["Noisy Networks", "NoisyNet", "exploration", "epsilon-greedy"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 9"
 ---
 
 **Learning objectives**

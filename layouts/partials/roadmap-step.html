@@ -1,0 +1,48 @@
+{{- $id    := .id -}}
+{{- $color := .color | default "blue" -}}
+<div class="roadmap-step" id="step-{{ $id }}">
+  <div class="roadmap-node rn-{{ $color }}">
+    {{- partial "roadmap-icon.html" (dict "name" .icon) -}}
+  </div>
+  <div class="roadmap-card">
+    <div class="roadmap-card-header" onclick="rmToggle({{ $id }})">
+      <div class="roadmap-card-icon ri-{{ $color }}">
+        {{- partial "roadmap-icon.html" (dict "name" .icon) -}}
+      </div>
+      <div class="roadmap-card-title-area">
+        <div class="roadmap-card-step-label">
+          Step {{ $id }} &mdash; {{ .phase_label }}
+          <span class="roadmap-card-badge">Completed</span>
+        </div>
+        <h2 class="roadmap-card-title">{{ .title }}</h2>
+      </div>
+      <div class="roadmap-card-actions">
+        <button class="roadmap-complete-btn" onclick="rmComplete(event,{{ $id }})" title="Mark complete">
+          <svg class="rm-icon-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle></svg>
+          <svg class="rm-icon-check" viewBox="0 0 24 24" style="display:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 13.01 9 10.01"></polyline></svg>
+        </button>
+        <div class="roadmap-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </div>
+    </div>
+    <div class="roadmap-card-body">
+      <div class="roadmap-card-body-inner">
+        {{- with .description }}<p class="roadmap-card-desc">{{ . }}</p>{{ end -}}
+        {{- with .topics }}
+        <div class="roadmap-topics">
+          <div class="roadmap-topics-title">Key Topics to Learn</div>
+          <ul class="roadmap-topics-list">
+            {{- range . }}
+            <li><span class="roadmap-topic-dot rd-{{ $color }}"></span>{{ . }}</li>
+            {{- end }}
+          </ul>
+        </div>
+        {{- end }}
+        {{- with .link }}
+        <div class="roadmap-card-footer">
+          <a href="{{ . | relURL }}" class="roadmap-start-btn">{{ $.link_label | default "Start →" }}</a>
+        </div>
+        {{- end }}
+      </div>
+    </div>
+  </div>
+</div>

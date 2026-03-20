@@ -1,13 +1,17 @@
 ---
-title: "Phase 4 Deep RL Quiz"
+title: "Phase 7 Assessment: Deep RL"
 description: "10–12 questions on DQN, policy gradient, PPO, replay, target network. Solutions included."
 date: 2026-03-10T00:00:00Z
 draft: false
-tags: ["assessment", "phase 4", "deep RL", "DQN", "PPO", "policy gradient", "solutions"]
-keywords: ["phase 4 deep RL", "DQN", "policy gradient", "PPO", "replay target network", "solutions", "deep RL quiz"]
+tags: ["assessment", "phase 7", "deep RL", "DQN", "PPO", "policy gradient", "solutions"]
+keywords: ["phase 7 deep RL", "DQN", "policy gradient", "PPO", "replay target network", "solutions", "deep RL quiz"]
+weight: 13
+roadmap_icon: "rocket"
+roadmap_color: "indigo"
+roadmap_phase_label: "Phase 7 Quiz"
 ---
 
-Use this quiz after completing [Volumes 3–5](../curriculum/) (or the [Phase 4 coding challenges](../learning-path/phase-4/)). If you can answer at least 9 of 12 correctly, you are ready for [Phase 5](../learning-path/#phase-5--advanced-topics) and [Volume 6](../curriculum/volume-06/).
+Use this quiz after completing [Volumes 3–5](../curriculum/) (or the [Phase 7 coding challenges](../learning-path/phase-4/)). If you can answer at least 9 of 12 correctly, you are ready for [Phase 8](../learning-path/#phase-8--advanced-topics) and [Volume 6](../curriculum/volume-06/).
 
 ---
 

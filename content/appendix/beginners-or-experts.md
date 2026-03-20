@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["FAQ", "beginners", "experts", "pacing", "course"]
 keywords: ["beginners", "experts", "academic", "practical", "pace"]
+weight: 1
+roadmap_icon: "book"
+roadmap_color: "blue"
+roadmap_phase_label: "Start Here"
 ---
 
 **Learning objectives**

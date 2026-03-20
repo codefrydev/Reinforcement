@@ -1,0 +1,128 @@
+steps:
+  - id: 1
+    title: "Python Programming"
+    phase_label: "Phase 0–1"
+    icon: terminal
+    color: blue
+    description: "The foundational language for modern AI and data science. You will learn to write Python programs from scratch, work with essential data structures, and build the coding habits that power every RL implementation."
+    topics:
+      - "Basic Syntax, Variables, and Data Types"
+      - "Control Flow (If/Else, Loops)"
+      - "Functions and Object-Oriented Programming"
+      - "Data Structures (Lists, Dictionaries, Sets)"
+      - "25 Mini-Challenges — Python Confidence Builder"
+      - "Debugging and Reading Error Messages"
+    link: "learning-path/phase-0/"
+    link_label: "Start Phase 0 →"
+
+  - id: 2
+    title: "Data Tools"
+    phase_label: "Phase 2"
+    icon: database
+    color: teal
+    description: "Master the scientific Python stack that underpins all RL implementations: array operations with NumPy, data manipulation with Pandas, and learning-curve visualisations with Matplotlib."
+    topics:
+      - "NumPy Arrays, Broadcasting, Indexing"
+      - "Vectorised Operations and Random Sampling"
+      - "Pandas DataFrames and CSV I/O"
+      - "Matplotlib: Line Plots, Subplots, Heatmaps"
+      - "Smoothing Learning Curves and Error Bars"
+      - "Mini-Project: 3-Armed Bandit with NumPy"
+    link: "prerequisites/"
+    link_label: "Start Phase 2 →"
+
+  - id: 3
+    title: "Mathematics for AI"
+    phase_label: "Phase 3"
+    icon: calculator
+    color: green
+    description: "The core mathematical concepts that explain what RL algorithms are actually doing. Every topic is taught with RL motivation — so every formula has a purpose you can see in practice."
+    topics:
+      - "Linear Algebra: Vectors, Matrices, Dot Products"
+      - "Calculus: Derivatives, Chain Rule, Partial Derivatives"
+      - "Probability: Random Variables, Expectation, Variance"
+      - "Statistics: Mean, Std Dev, Standard Error"
+      - "Distributions: Normal, Bernoulli, Bayes Theorem"
+      - "15 Practice Problems per Topic (45 total)"
+    link: "math-for-rl/"
+    link_label: "Start Phase 3 →"
+
+  - id: 4
+    title: "Machine Learning Basics"
+    phase_label: "Phase 4"
+    icon: trend-up
+    color: amber
+    description: "Understanding how machines learn from data is the bridge to RL. You will build every algorithm from scratch in NumPy first, then see how scikit-learn wraps it — so nothing is a black box."
+    topics:
+      - "Supervised Learning: Regression vs. Classification"
+      - "Loss Functions and Gradient Descent from Scratch"
+      - "Logistic Regression and Cross-Entropy"
+      - "Model Evaluation: Train/Test Split, Precision, Recall"
+      - "K-Fold Cross-Validation, KNN, Decision Trees"
+      - "Practical Implementation with Scikit-Learn"
+    link: "ml-foundations/"
+    link_label: "Start Phase 4 →"
+
+  - id: 5
+    title: "Neural Networks & Deep Learning"
+    phase_label: "Phase 5"
+    icon: network
+    color: purple
+    description: "The architecture that powers modern RL. You will implement forward propagation and backpropagation from scratch in NumPy — understanding every gradient — then connect to PyTorch for practical RL networks."
+    topics:
+      - "Perceptrons and Multi-Layer Perceptrons (MLP)"
+      - "Activation Functions: ReLU, Sigmoid, Tanh, Softmax"
+      - "Forward Propagation (NumPy, step-by-step)"
+      - "Backpropagation and Chain Rule (NumPy)"
+      - "SGD, Momentum, and Adam Optimisers"
+      - "CNNs, PyTorch nn.Module, Mini-Project: MNIST"
+    link: "dl-foundations/"
+    link_label: "Start Phase 5 →"
+
+  - id: 6
+    title: "RL Foundations"
+    phase_label: "Phase 6"
+    icon: gamepad
+    color: rose
+    description: "The core RL framework — where learning by interaction begins. You will understand MDPs, value functions, and Bellman equations, and implement tabular methods that form the foundation for everything that follows."
+    topics:
+      - "Agent-Environment Interface and Rewards"
+      - "Markov Decision Processes (MDPs)"
+      - "Value Functions V(s) and Q(s,a)"
+      - "Bellman Equations and Dynamic Programming"
+      - "Monte Carlo Methods and Temporal Difference"
+      - "Q-Learning and SARSA (tabular)"
+    link: "curriculum/volume-01/"
+    link_label: "Start Phase 6 →"
+
+  - id: 7
+    title: "Deep Reinforcement Learning"
+    phase_label: "Phase 7"
+    icon: rocket
+    color: indigo
+    description: "Combine neural networks with RL to solve complex, high-dimensional problems. This phase covers the algorithms that power real-world applications — from Atari games to robotic control."
+    topics:
+      - "Deep Q-Networks (DQN) and Experience Replay"
+      - "Target Networks and Double DQN"
+      - "Policy Gradient Methods (REINFORCE)"
+      - "Actor-Critic Architecture (A2C)"
+      - "Proximal Policy Optimisation (PPO)"
+      - "Soft Actor-Critic (SAC)"
+    link: "curriculum/volume-03/"
+    link_label: "Start Phase 7 →"
+
+  - id: 8
+    title: "Advanced RL Paradigms"
+    phase_label: "Phase 8"
+    icon: sparkles
+    color: violet
+    description: "Cutting-edge research areas and specialised applications: from model-based planning and multi-agent coordination to offline RL, imitation learning, and RLHF — the technique behind modern LLMs."
+    topics:
+      - "Model-Based RL and World Models"
+      - "Multi-Agent RL (MARL) and QMIX"
+      - "Offline RL and Conservative Q-Learning"
+      - "Imitation Learning and Inverse RL"
+      - "Exploration and Meta-Learning"
+      - "RLHF — RL from Human Feedback (used in LLMs)"
+    link: "curriculum/volume-06/"
+    link_label: "Start Phase 8 →"

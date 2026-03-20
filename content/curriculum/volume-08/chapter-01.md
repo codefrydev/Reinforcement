@@ -4,8 +4,12 @@ description: "Random policy dataset on Hopper; naive SAC overestimation."
 date: 2026-03-10T00:00:00Z
 weight: 71
 draft: false
+difficulty: 8
 tags: ["offline RL", "Hopper", "SAC", "overestimation", "curriculum"]
 keywords: ["offline RL", "random policy dataset", "SAC overestimation", "Hopper"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 1"
 ---
 
 **Learning objectives**

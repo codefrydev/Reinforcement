@@ -4,8 +4,12 @@ description: "BFS planner for gridworld; compare with DP."
 date: 2026-03-10T00:00:00Z
 weight: 53
 draft: false
+difficulty: 8
 tags: ["planning", "BFS", "gridworld", "dynamic programming", "curriculum"]
 keywords: ["planning with known models", "BFS planner", "gridworld", "DP"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Ch 3"
 ---
 
 **Learning objectives**

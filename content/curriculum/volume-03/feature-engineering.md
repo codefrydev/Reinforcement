@@ -4,8 +4,12 @@ description: "Designing state and state-action features for linear value approxi
 date: 2026-03-10T00:00:00Z
 weight: 21
 draft: false
+difficulty: 7
 tags: ["feature engineering", "function approximation", "curriculum"]
 keywords: ["features", "tile coding", "linear approximation", "RL"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Feature Engineering"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "Large step size and policy collapse in bandit; visualize probabili
 date: 2026-03-10T00:00:00Z
 weight: 41
 draft: false
+difficulty: 7
 tags: ["policy gradient", "policy collapse", "step size", "bandit", "curriculum"]
 keywords: ["policy gradient problems", "policy collapse", "step size", "bandit"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Ch 1"
 ---
 
 **Learning objectives**

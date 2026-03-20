@@ -4,8 +4,12 @@ description: "PyTorch for RL: tensors, autograd, nn.Module, optimizers, and GPU.
 date: 2026-03-10T00:00:00Z
 weight: 50
 draft: false
+difficulty: 6
 tags: ["PyTorch", "tensors", "autograd", "RL", "prerequisites"]
 keywords: ["PyTorch for RL", "tensors", "autograd", "neural networks", "RL models"]
+roadmap_icon: "sparkles"
+roadmap_color: "rose"
+roadmap_phase_label: "Phase 6 · PyTorch"
 ---
 
 Used in [Preliminary: PyTorch basics](../preliminary/pytorch-basics/) and in the curriculum for DQN, policy gradients, actor-critic, PPO, and SAC. PyTorch's define-by-run style and clear autograd make it a natural fit for custom RL loss functions.

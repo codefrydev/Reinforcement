@@ -4,8 +4,12 @@ description: "Derive policy gradient theorem for one-step MDP."
 date: 2026-03-10T00:00:00Z
 weight: 32
 draft: false
+difficulty: 7
 tags: ["policy gradient", "policy objective", "gradient theorem", "curriculum"]
 keywords: ["policy objective function", "policy gradient theorem", "one-step MDP"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 2"
 ---
 
 **Learning objectives**

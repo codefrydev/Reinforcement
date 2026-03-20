@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["FAQ", "prerequisites", "roadmap", "machine learning"]
 keywords: ["prerequisite", "roadmap", "ML", "AI", "before RL"]
+weight: 4
+roadmap_icon: "layers"
+roadmap_color: "amber"
+roadmap_phase_label: "Prerequisites"
 ---
 
 **Learning objectives**

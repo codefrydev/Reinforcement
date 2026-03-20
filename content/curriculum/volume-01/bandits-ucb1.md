@@ -4,8 +4,12 @@ description: "Upper Confidence Bound (UCB1) algorithm for multi-armed bandits—
 date: 2026-03-10T00:00:00Z
 weight: 4
 draft: false
+difficulty: 6
 tags: ["bandits", "UCB1", "upper confidence bound", "exploration", "curriculum"]
 keywords: ["UCB1", "UCB", "multi-armed bandits", "exploration exploitation"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Bandits Ucb1"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "Simple stock MDP: buy/sell/hold; profit reward; Sharpe ratio."
 date: 2026-03-10T00:00:00Z
 weight: 93
 draft: false
+difficulty: 8
 tags: ["algorithmic trading", "MDP", "Sharpe ratio", "trading", "curriculum"]
 keywords: ["RL for trading", "algorithmic trading", "buy sell hold", "Sharpe ratio"]
+roadmap_color: "teal"
+roadmap_icon: "globe"
+roadmap_phase_label: "Vol 10 · Ch 3"
 ---
 
 **Learning objectives**

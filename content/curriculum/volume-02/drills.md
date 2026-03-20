@@ -3,8 +3,12 @@ title: "Volume 2 Drills — Tabular Model-Free Methods"
 description: "15 short drill problems for Volume 2: Monte Carlo, TD(0), SARSA, Q-learning, and n-step methods."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 6
 weight: 99
 tags: ["drills", "volume 2", "Monte Carlo", "TD", "SARSA", "Q-learning", "n-step", "practice"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Drills"
 ---
 
 {{< notebook path="volume-02/vol02_drills.ipynb" title="Open drills notebook (interactive)" >}}

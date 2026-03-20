@@ -3,8 +3,12 @@ title: "Volume 2 Review & Bridge to Volume 3"
 description: "Review Volume 2 tabular methods and preview Volume 3. From Q-tables to neural network function approximation."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 6
 weight: 100
 tags: ["review", "bridge", "Volume 2", "Volume 3", "function approximation", "DQN", "tabular"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Review"
 ---
 
 You have finished Volume 2. Before starting Volume 3, take this 10-minute review.

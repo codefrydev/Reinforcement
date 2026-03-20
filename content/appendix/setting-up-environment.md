@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["setup", "environment", "FAQ", "installation"]
 keywords: ["environment setup", "pre-installation", "RL curriculum", "Python"]
+weight: 6
+roadmap_icon: "terminal"
+roadmap_color: "rose"
+roadmap_phase_label: "Environment"
 ---
 
 **Learning objectives**

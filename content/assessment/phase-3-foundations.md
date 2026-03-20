@@ -1,13 +1,17 @@
 ---
-title: "Phase 3 Foundations Quiz"
+title: "Phase 6 Assessment: RL Foundations"
 description: "10–15 questions on MDPs, Bellman, MC vs TD, SARSA vs Q-learning. Solutions included."
 date: 2026-03-10T00:00:00Z
 draft: false
-tags: ["assessment", "phase 3", "foundations", "MDP", "Bellman", "SARSA", "Q-learning", "solutions"]
-keywords: ["phase 3 foundations", "MDP Bellman", "Monte Carlo TD", "SARSA Q-learning", "solutions", "RL foundations quiz"]
+tags: ["assessment", "phase 6", "foundations", "MDP", "Bellman", "SARSA", "Q-learning", "solutions"]
+keywords: ["phase 6 foundations", "MDP Bellman", "Monte Carlo TD", "SARSA Q-learning", "solutions", "RL foundations quiz"]
+weight: 10
+roadmap_icon: "gamepad"
+roadmap_color: "rose"
+roadmap_phase_label: "Phase 6 Quiz"
 ---
 
-Use this quiz after completing [Volume 1](../curriculum/volume-01/) and [Volume 2](../curriculum/volume-02/) (or the [Phase 3 mini-project](../learning-path/phase-3/)). If you can answer at least 12 of 15 correctly, you are ready for [Phase 4](../learning-path/#phase-4--deep-rl) and [Volume 3](../curriculum/volume-03/).
+Use this quiz after completing [Volume 1](../curriculum/volume-01/) and [Volume 2](../curriculum/volume-02/) (or the [Phase 6 mini-project](../learning-path/phase-3/)). If you can answer at least 12 of 15 correctly, you are ready for [Phase 7](../learning-path/#phase-7--deep-rl) and [Volume 3](../curriculum/volume-03/).
 
 ---
 

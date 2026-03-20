@@ -5,6 +5,10 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["FAQ", "learning", "study strategies", "machine learning"]
 keywords: ["learning strategies", "ML", "study", "effective learning"]
+weight: 3
+roadmap_icon: "trend-up"
+roadmap_color: "green"
+roadmap_phase_label: "Strategies"
 ---
 
 **Learning objectives**

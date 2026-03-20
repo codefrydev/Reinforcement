@@ -4,8 +4,12 @@ description: "Iterative policy evaluation on 4×4 gridworld."
 date: 2026-03-10T00:00:00Z
 weight: 7
 draft: false
+difficulty: 6
 tags: ["dynamic programming", "policy evaluation", "gridworld", "curriculum"]
 keywords: ["policy evaluation", "iterative policy evaluation", "dynamic programming", "gridworld"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Ch 7"
 ---
 
 **Learning objectives**

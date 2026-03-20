@@ -4,8 +4,12 @@ description: "Broken SAC: unit tests, logging Q/reward/entropy; diagnose."
 date: 2026-03-10T00:00:00Z
 weight: 99
 draft: false
+difficulty: 8
 tags: ["debugging", "RL", "curriculum"]
 keywords: ["debugging RL", "RL code", "troubleshooting"]
+roadmap_color: "teal"
+roadmap_icon: "globe"
+roadmap_phase_label: "Vol 10 · Ch 9"
 ---
 
 **Learning objectives**

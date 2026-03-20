@@ -3,8 +3,12 @@ title: "Volume 4 Review & Bridge to Volume 5"
 description: "Review Volume 4 (Policy Gradients, Actor-Critic, DDPG, TD3) and preview Volume 5 (PPO, TRPO, SAC — stable, scalable policy optimization)."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 7
 weight: 100
 tags: ["review", "bridge", "Volume 4", "Volume 5", "REINFORCE", "actor-critic", "PPO"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Review"
 ---
 
 ## Volume 4 Recap Quiz (5 questions)

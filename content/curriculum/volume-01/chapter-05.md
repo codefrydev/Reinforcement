@@ -4,8 +4,12 @@ description: "State-value function V^π for random policy on Chapter 3 MDP."
 date: 2026-03-10T00:00:00Z
 weight: 5
 draft: false
+difficulty: 6
 tags: ["value function", "state-value", "policy evaluation", "curriculum"]
 keywords: ["value function", "V pi", "state-value function", "random policy"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Ch 5"
 ---
 
 **Learning objectives**

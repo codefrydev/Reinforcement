@@ -4,8 +4,12 @@ description: "MuZero: model in latent space; reward prediction."
 date: 2026-03-10T00:00:00Z
 weight: 56
 draft: false
+difficulty: 8
 tags: ["MuZero", "latent space", "reward prediction", "model-based", "curriculum"]
 keywords: ["MuZero", "latent model", "reward prediction", "model-based RL"]
+roadmap_color: "rose"
+roadmap_icon: "brain"
+roadmap_phase_label: "Vol 6 · Ch 6"
 ---
 
 **Learning objectives**

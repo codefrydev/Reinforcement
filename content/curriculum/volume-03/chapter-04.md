@@ -4,8 +4,12 @@ description: "Replay buffer class with push and sample."
 date: 2026-03-10T00:00:00Z
 weight: 24
 draft: false
+difficulty: 7
 tags: ["experience replay", "replay buffer", "DQN", "curriculum"]
 keywords: ["experience replay", "replay buffer", "push and sample", "DQN"]
+roadmap_color: "green"
+roadmap_icon: "chart"
+roadmap_phase_label: "Vol 3 · Ch 4"
 ---
 
 **Learning objectives**

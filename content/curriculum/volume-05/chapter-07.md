@@ -4,8 +4,12 @@ description: "SAC for HalfCheetah with automatic temperature tuning."
 date: 2026-03-10T00:00:00Z
 weight: 47
 draft: false
+difficulty: 7
 tags: ["SAC", "HalfCheetah", "temperature tuning", "curriculum"]
 keywords: ["Soft Actor-Critic", "SAC", "HalfCheetah", "automatic temperature"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Ch 7"
 ---
 
 **Learning objectives**

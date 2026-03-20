@@ -4,8 +4,12 @@ description: "Code walkthrough for Monte Carlo policy evaluation and Monte Carlo
 date: 2026-03-10T00:00:00Z
 weight: 12
 draft: false
+difficulty: 6
 tags: ["Monte Carlo", "code", "policy evaluation", "control", "curriculum"]
 keywords: ["Monte Carlo", "first-visit", "MC control", "exploring starts", "code"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Monte Carlo In Code"
 ---
 
 **Learning objectives**

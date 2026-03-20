@@ -3,8 +3,13 @@ title: "Calculus"
 description: "Derivatives, chain rule, and partial derivatives — with RL motivation and practice."
 date: 2026-03-10T00:00:00Z
 draft: false
+difficulty: 3
 tags: ["calculus", "derivatives", "chain rule", "gradients", "math for RL"]
 keywords: ["calculus for RL", "derivatives", "chain rule", "partial derivatives", "gradient descent"]
+weight: 4
+roadmap_icon: "trend-up"
+roadmap_color: "amber"
+roadmap_phase_label: "Phase 3 · Calculus"
 ---
 
 This page covers the calculus you need for RL: derivatives, the chain rule, and partial derivatives. [Back to Math for RL](../).

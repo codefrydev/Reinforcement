@@ -4,8 +4,12 @@ description: "Two-state MDP transition probability matrices."
 date: 2026-03-10T00:00:00Z
 weight: 3
 draft: false
+difficulty: 6
 tags: ["MDP", "Markov decision process", "transition probability", "curriculum"]
 keywords: ["Markov decision process", "MDP", "transition probability", "state action reward"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Ch 3"
 ---
 
 **Learning objectives**

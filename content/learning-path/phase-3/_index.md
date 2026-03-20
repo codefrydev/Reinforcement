@@ -5,6 +5,14 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["phase 3", "foundations", "Q-learning", "Gridworld", "milestones", "learning path"]
 keywords: ["RL foundations", "Volume 1 Volume 2", "tabular Q-learning", "Gridworld", "milestones", "mini-project"]
+weight: 2
+roadmap_icon: "gamepad"
+roadmap_color: "rose"
+roadmap_phase_label: "Phase 6 · RL Foundations"
+roadmap_topics:
+  - "Volumes 1–2: Bandits, MDPs, Bellman Equations"
+  - "Monte Carlo, TD, SARSA, Q-Learning (tabular)"
+  - "Milestone checkpoints and mini-project"
 ---
 
 Phase 3 is [Volume 1: Mathematical Foundations](../../curriculum/volume-01/) and [Volume 2: Tabular Methods](../../curriculum/volume-02/) (chapters 1–20). Use the milestones below to confirm you are on track, then do the mini-project and take the foundations quiz.

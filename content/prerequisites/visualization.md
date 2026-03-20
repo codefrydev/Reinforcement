@@ -4,8 +4,12 @@ description: "What to plot, how to read learning curves, and when to use Matplot
 date: 2026-03-10T00:00:00Z
 weight: 35
 draft: false
+difficulty: 2
 tags: ["visualization", "plotting", "learning curves", "Matplotlib", "Chart.js", "prerequisites"]
 keywords: ["visualization for RL", "learning curves", "what to plot", "Matplotlib", "Chart.js"]
+roadmap_icon: "trend-up"
+roadmap_color: "amber"
+roadmap_phase_label: "Phase 2 · Visualization"
 ---
 
 This page ties together **when** and **what** to plot in reinforcement learning, **how to read** common charts, and **which tool** to use: [Matplotlib](matplotlib/) for Python scripts and notebooks, or **Chart.js** for interactive web demos and dashboards.
@@ -109,3 +113,27 @@ For more on interpreting results and reporting, see the curriculum chapters on h
 - [Matplotlib](matplotlib/) — Full prerequisite page with line plots, heatmaps, smoothing, and exercises.
 - [rliable](https://github.com/google-research/rliable) — Library for confidence intervals and aggregate metrics on RL runs.
 - [Chart.js docs](https://www.chartjs.org/docs/latest/) — Official Chart.js documentation.
+
+---
+
+## Exercises
+
+**Exercise 1 (Warm-up).** Run this code and describe what each parameter does: `plt.plot([1,2,3], [4,5,6], color='red', linestyle='--', linewidth=2, label='line')`. What does `label=` do?
+
+**Exercise 2 (Coding).** Plot two learning curves (episode returns) for two agents over 100 episodes. Agent A has returns `[10, 15, 20, 25, 30, 35, 40, 45, 50, 55]` (10 samples). Agent B has `[5, 8, 12, 18, 25, 35, 40, 42, 44, 45]` (10 samples). Both on the same axes, with legend, title "Agent Comparison", xlabel "Episode", ylabel "Return".
+
+{{< pyrepl code="import matplotlib.pyplot as plt\n# TODO: plot two learning curves\nepisodes = list(range(1, 11))\nagent_a = [10, 15, 20, 25, 30, 35, 40, 45, 50, 55]\nagent_b = [5, 8, 12, 18, 25, 35, 40, 42, 44, 45]\n# plt.plot(...)\n# Add legend, title, labels\nprint('Plot your curves!')" height="260" >}}
+
+**Exercise 3 (Challenge).** Extend exercise 2 to add a rolling mean (window=3) for each agent. Use a simple Python loop: for each index i, `rolling_mean[i]` = mean of last 3 values.
+
+**Exercise 4 (Variant).** Change the y-axis scale to logarithmic: `plt.yscale('log')`. When would this be useful in RL? *(Answer: when reward spans multiple orders of magnitude, e.g., from 1 to 10000.)*
+
+**Exercise 5 (Debug).** The code below plots a learning curve but has a bug — it shows nothing. Find and fix it.
+
+{{< pyrepl code="import matplotlib.pyplot as plt\nreturns = [5, 10, 15, 20, 25]\n# BUG: missing plt.show() or display call\nplt.figure()\nplt.plot(returns)\nplt.title('Learning Curve')\n# TODO: add what is missing\nprint('Should show a plot')" height="200" >}}
+
+**Exercise 6 (Conceptual).** Explain the difference between a learning curve (return vs episode) and a loss curve (loss vs training step). Which one tells you if the agent is improving at the task? Which one tells you if the neural network is learning?
+
+**Exercise 7 (RL-specific).** Why is smoothing (rolling average) important for RL learning curves? What would an unsmoothed curve look like for a stochastic environment?
+
+**Exercise 8 (Recall).** List 3 things you should always include in any RL learning curve plot to make it reproducible and readable.

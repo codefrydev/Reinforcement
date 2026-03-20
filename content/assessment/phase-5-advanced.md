@@ -1,13 +1,17 @@
 ---
-title: "Phase 5 Assessment: Advanced RL"
+title: "Phase 8 Assessment: Advanced RL"
 description: "15 questions spanning Volumes 6–10: model-based RL, exploration, offline RL, multi-agent, and real-world applications."
 date: 2026-03-19T00:00:00Z
 draft: false
-tags: ["assessment", "phase 5", "advanced RL", "self-check", "solutions"]
-keywords: ["phase 5 assessment", "advanced RL quiz", "model-based MARL offline RLHF", "solutions"]
+tags: ["assessment", "phase 8", "advanced RL", "self-check", "solutions"]
+keywords: ["phase 8 assessment", "advanced RL quiz", "model-based MARL offline RLHF", "solutions"]
+weight: 15
+roadmap_icon: "brain"
+roadmap_color: "violet"
+roadmap_phase_label: "Phase 8 Quiz"
 ---
 
-Use this self-check after completing Volumes 6–10 (Phase 5). These questions test conceptual understanding and the ability to connect ideas across topics.
+Use this self-check after completing Volumes 6–10 (Phase 8). These questions test conceptual understanding and the ability to connect ideas across topics.
 
 ---
 

@@ -1,0 +1,60 @@
+{{- define "main" }}
+{{- $colors := slice "blue" "teal" "green" "amber" "purple" "rose" "indigo" "violet" -}}
+
+{{- /* Use subsections if present, otherwise regular pages */ -}}
+{{- $pages := .Sections -}}
+{{- if not $pages }}{{- $pages = .RegularPages -}}{{ end -}}
+{{- $total := len $pages -}}
+
+<div class="roadmap-page">
+
+  {{/* ═══════════ HERO ═══════════ */}}
+  <div class="roadmap-hero">
+    <h1>{{ .Title }}</h1>
+    {{- with .Description }}<p>{{ . }}</p>{{ end }}
+    {{- if gt $total 0 }}
+    <div class="roadmap-progress">
+      <div class="roadmap-progress-header">
+        <span>Overall Progress</span>
+        <span id="rmp-pct">0%</span>
+      </div>
+      <div class="roadmap-progress-track">
+        <div class="roadmap-progress-fill" id="rmp-fill"></div>
+      </div>
+    </div>
+    {{- end }}
+  </div>
+
+  {{/* ═══════════ STEPS ═══════════ */}}
+  {{- if gt $total 0 }}
+  <div class="roadmap-container">
+    <div class="roadmap-line"></div>
+    <div class="roadmap-steps">
+      {{- range $i, $page := $pages }}
+      {{- $color := index $colors (mod $i (len $colors)) -}}
+      {{- $step := dict
+        "id"          (add $i 1)
+        "title"       $page.Title
+        "phase_label" ($page.Params.roadmap_phase_label | default (printf "Step %d" (add $i 1)))
+        "icon"        ($page.Params.roadmap_icon | default "book")
+        "color"       ($page.Params.roadmap_color | default $color)
+        "description" $page.Description
+        "topics"      $page.Params.roadmap_topics
+        "link"        $page.RelPermalink
+        "link_label"  ($page.Params.roadmap_link_label | default (printf "Go to %s →" $page.Title))
+      -}}
+      {{ partial "roadmap-step.html" $step }}
+      {{- end }}
+    </div>
+  </div>
+  {{- end }}
+
+  {{/* ═══════════ BODY CONTENT ═══════════ */}}
+  {{- with .Content }}
+  <div class="roadmap-body-content post-content">{{ . }}</div>
+  {{- end }}
+
+</div>{{/* end .roadmap-page */}}
+
+{{ partial "roadmap-js.html" (dict "total" $total "key" (printf "rm-%s" (.RelPermalink | urlize))) }}
+{{- end }}

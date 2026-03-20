@@ -4,8 +4,12 @@ description: "State-value baseline with REINFORCE; compare gradient variance."
 date: 2026-03-10T00:00:00Z
 weight: 34
 draft: false
+difficulty: 7
 tags: ["REINFORCE", "baseline", "variance reduction", "curriculum"]
 keywords: ["variance reduction", "baseline", "state-value baseline", "policy gradient"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 4"
 ---
 
 **Learning objectives**

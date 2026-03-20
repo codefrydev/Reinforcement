@@ -4,8 +4,12 @@ description: "Agents output message + action; train for coordination task."
 date: 2026-03-10T00:00:00Z
 weight: 90
 draft: false
+difficulty: 8
 tags: ["MARL", "communication", "coordination", "message", "curriculum"]
 keywords: ["communication in MARL", "coordination", "message and action", "multi-agent"]
+roadmap_color: "blue"
+roadmap_icon: "network"
+roadmap_phase_label: "Vol 9 · Ch 10"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "CQL loss penalizing Q for OOD actions; compare with naive SAC."
 date: 2026-03-10T00:00:00Z
 weight: 72
 draft: false
+difficulty: 8
 tags: ["CQL", "Conservative Q-Learning", "OOD", "offline RL", "curriculum"]
 keywords: ["CQL", "Conservative Q-Learning", "OOD actions", "offline RL", "SAC"]
+roadmap_color: "violet"
+roadmap_icon: "database"
+roadmap_phase_label: "Vol 8 · Ch 2"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "Memory for Backgammon Q-table; necessity of function approximation
 date: 2026-03-10T00:00:00Z
 weight: 20
 draft: false
+difficulty: 6
 tags: ["tabular methods", "function approximation", "Backgammon", "curriculum"]
 keywords: ["limits of tabular methods", "function approximation", "curse of dimensionality"]
+roadmap_color: "teal"
+roadmap_icon: "book"
+roadmap_phase_label: "Vol 2 · Ch 10"
 ---
 
 **Learning objectives**

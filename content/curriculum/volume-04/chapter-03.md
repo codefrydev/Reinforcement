@@ -4,8 +4,12 @@ description: "REINFORCE for CartPole with softmax policy; note variance."
 date: 2026-03-10T00:00:00Z
 weight: 33
 draft: false
+difficulty: 7
 tags: ["REINFORCE", "CartPole", "softmax policy", "variance", "curriculum"]
 keywords: ["REINFORCE algorithm", "policy gradient", "CartPole", "variance"]
+roadmap_color: "amber"
+roadmap_icon: "trend-up"
+roadmap_phase_label: "Vol 4 · Ch 3"
 ---
 
 **Learning objectives**

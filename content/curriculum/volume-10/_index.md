@@ -4,6 +4,17 @@ description: "Chapters 91–100 — RL in robotics, safe RL, algorithmic trading
 date: 2026-03-10T00:00:00Z
 weight: 10
 draft: false
+difficulty: 8
+roadmap_icon: globe
+roadmap_color: teal
+roadmap_phase_label: "Chapters 91–100 · Phase 8"
+roadmap_topics:
+  - "RL in Robotics and Sim-to-Real Transfer"
+  - "Safe Reinforcement Learning"
+  - "Algorithmic Trading and Recommender Systems"
+  - "Training LLMs with PPO and RLHF"
+  - "Direct Preference Optimization (DPO)"
+  - "Evaluating and Debugging RL Agents"
 tags: ["curriculum", "volume 10", "robotics", "safe RL", "RLHF", "DPO", "recommender systems", "LLM"]
 keywords: ["reinforcement learning robotics", "safe RL", "RLHF", "DPO", "algorithmic trading", "recommender systems", "LLM training", "evaluating RL agents"]
 ---

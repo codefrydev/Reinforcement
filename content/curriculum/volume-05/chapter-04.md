@@ -4,8 +4,12 @@ description: "Generalized Advantage Estimation (GAE) function."
 date: 2026-03-10T00:00:00Z
 weight: 44
 draft: false
+difficulty: 7
 tags: ["PPO", "GAE", "generalized advantage estimation", "curriculum"]
 keywords: ["GAE", "Generalized Advantage Estimation", "PPO", "advantage"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Ch 4"
 ---
 
 **Learning objectives**

@@ -4,8 +4,12 @@ description: "TRPO constrained optimization and natural gradient; KL constraint.
 date: 2026-03-10T00:00:00Z
 weight: 42
 draft: false
+difficulty: 7
 tags: ["TRPO", "trust region", "KL constraint", "natural gradient", "curriculum"]
 keywords: ["TRPO", "Trust Region Policy Optimization", "KL constraint", "natural gradient"]
+roadmap_color: "purple"
+roadmap_icon: "rocket"
+roadmap_phase_label: "Vol 5 · Ch 2"
 ---
 
 **Learning objectives**

@@ -5,6 +5,14 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["phase 4", "deep RL", "DQN", "PPO", "milestones", "coding challenges", "learning path"]
 keywords: ["deep RL milestones", "DQN PPO", "Volume 3 4 5", "coding challenges", "reinforcement learning"]
+weight: 3
+roadmap_icon: "rocket"
+roadmap_color: "indigo"
+roadmap_phase_label: "Phase 7 · Deep RL"
+roadmap_topics:
+  - "Volumes 3–5: DQN, Policy Gradients, PPO, SAC"
+  - "Experience replay, target networks, actor-critic"
+  - "Coding challenges and benchmarks"
 ---
 
 Phase 4 is [Volume 3: Value Function Approximation & Deep Q-Learning](../../curriculum/volume-03/), [Volume 4: Policy Gradients](../../curriculum/volume-04/), and [Volume 5: Advanced Policy Optimization](../../curriculum/volume-05/) (chapters 21–50). Use the milestones below, then try the coding challenges and take the Deep RL quiz.

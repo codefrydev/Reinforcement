@@ -23,6 +23,53 @@ This page lists every topic in the intended order: from welcome and bandits thro
 
 ---
 
+## ML Foundations
+
+| Topic | Where to find it |
+|-------|------------------|
+| [What is Machine Learning?](../ml-foundations/what-is-ml/) | Dedicated page |
+| [Linear Regression](../ml-foundations/linear-regression/) | Dedicated page |
+| [Gradient Descent](../ml-foundations/gradient-descent/) | Dedicated page |
+| [Logistic Regression](../ml-foundations/logistic-regression/) | Dedicated page |
+| [Model Evaluation](../ml-foundations/model-evaluation/) | Dedicated page |
+| [Decision Trees](../ml-foundations/decision-trees/) | Dedicated page |
+| [K-Nearest Neighbors](../ml-foundations/knn/) | Dedicated page |
+| [Datasets and Features](../ml-foundations/datasets-and-features/) | Dedicated page |
+| [Bias-Variance Tradeoff](../ml-foundations/bias-variance/) | Dedicated page |
+| [Intro to sklearn](../ml-foundations/sklearn-intro/) | Dedicated page |
+| [Cross-Validation](../ml-foundations/cross-validation/) | Dedicated page |
+| [Classification Metrics](../ml-foundations/classification-metrics/) | Dedicated page |
+| [Regression Metrics](../ml-foundations/regression-metrics/) | Dedicated page |
+| [ML Mini-Project](../ml-foundations/ml-mini-project/) | Dedicated page |
+| [Review & Bridge to DL](../ml-foundations/review-and-bridge/) | Dedicated page |
+| [ML Foundations Drills](../ml-foundations/drills/) | Dedicated page |
+| [Phase 4 Assessment: ML](../assessment/phase-4-ml/) | [Assessment](../assessment/phase-4-ml/) |
+
+---
+
+## DL Foundations
+
+| Topic | Where to find it |
+|-------|------------------|
+| [Biological Inspiration](../dl-foundations/biological-inspiration/) | Dedicated page |
+| [Perceptrons and the XOR Problem](../dl-foundations/perceptrons-xor/) | Dedicated page |
+| [Multi-Layer Perceptrons](../dl-foundations/mlp/) | Dedicated page |
+| [Activation Functions](../dl-foundations/activation-functions/) | Dedicated page |
+| [Forward Propagation](../dl-foundations/forward-propagation/) | Dedicated page |
+| [Loss Functions](../dl-foundations/loss-functions-dl/) | Dedicated page |
+| [Backpropagation](../dl-foundations/backpropagation/) | Dedicated page |
+| [Optimizers: SGD, Momentum, Adam](../dl-foundations/optimizers/) | Dedicated page |
+| [The Training Loop](../dl-foundations/training-loop/) | Dedicated page |
+| [Regularization and Overfitting](../dl-foundations/regularization/) | Dedicated page |
+| [CNN Basics: Convolutions and Pooling](../dl-foundations/cnn-basics/) | Dedicated page |
+| [PyTorch: Building Networks with nn.Module](../dl-foundations/pytorch-nn-practice/) | Dedicated page |
+| [DL Mini-Project: Digits Classifier](../dl-foundations/dl-mini-project/) | Dedicated page |
+| [DL Foundations Drills](../dl-foundations/drills/) | Dedicated page |
+| [Review & Bridge to RL](../dl-foundations/review-and-bridge/) | Dedicated page |
+| [Phase 5 Assessment: DL](../assessment/phase-5-dl/) | [Assessment](../assessment/phase-5-dl/) |
+
+---
+
 ## Warmup — Multi-Armed Bandit
 
 | Topic | Where to find it |

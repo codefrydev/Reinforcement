@@ -3,8 +3,12 @@ title: "Volume 1 Review & Bridge to Volume 2"
 description: "Review Volume 1 concepts and preview Volume 2. From dynamic programming (model-given) to model-free methods."
 date: 2026-03-19T00:00:00Z
 draft: false
+difficulty: 6
 weight: 100
 tags: ["review", "bridge", "Volume 1", "Volume 2", "model-free", "dynamic programming"]
+roadmap_color: "blue"
+roadmap_icon: "layers"
+roadmap_phase_label: "Vol 1 · Review"
 ---
 
 You have finished Volume 1. Before starting Volume 2, take this 10-minute review.

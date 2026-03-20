@@ -4,8 +4,12 @@ description: "Toy recommender, 100 items, changing user; maximize engagement."
 date: 2026-03-10T00:00:00Z
 weight: 94
 draft: false
+difficulty: 8
 tags: ["recommender systems", "engagement", "RL", "curriculum"]
 keywords: ["RL in recommender systems", "recommendation", "engagement", "changing user"]
+roadmap_color: "teal"
+roadmap_icon: "globe"
+roadmap_phase_label: "Vol 10 · Ch 4"
 ---
 
 **Learning objectives**

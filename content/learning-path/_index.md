@@ -5,6 +5,9 @@ date: 2026-03-10T00:00:00Z
 draft: false
 tags: ["learning path", "roadmap", "beginner", "zero to RL", "reinforcement learning"]
 keywords: ["learning path", "zero to reinforcement learning", "beginner roadmap", "RL from scratch", "step-by-step RL"]
+roadmap_icon: "rocket"
+roadmap_color: "indigo"
+roadmap_phase_label: "Learning Path"
 ---
 
 This learning path takes you from **zero programming experience** to understanding and building reinforcement learning systems. Follow the phases in order; each phase builds on the previous one. The order matches the [Course outline](../course-outline/) (basic to advanced).
@@ -50,9 +53,10 @@ This learning path takes you from **zero programming experience** to understandi
 
 **Sub-phases:**
 
-- **1a — Probability:** [Probability & statistics](../math-for-rl/probability/). Expectations, variance, sample mean, law of large numbers. *In RL:* bandit rewards, Monte Carlo returns, value functions as expectations.
-- **1b — Linear algebra:** [Linear algebra](../math-for-rl/linear-algebra/). Vectors, dot product, matrices, gradients. *In RL:* state vectors, linear value approximation \\(V(s) = w^T \\phi(s)\\), gradient updates.
-- **1c — Calculus:** [Calculus](../math-for-rl/calculus/). Derivatives, chain rule, partial derivatives. *In RL:* policy gradients, loss minimization, backprop.
+- **1a — Probability:** [Probability & Statistics](../math-for-rl/probability/). Expectations, variance, sample mean, law of large numbers. *In RL:* bandit rewards, Monte Carlo returns, value functions as expectations.
+- **1b — Statistics:** [Statistics for RL](../math-for-rl/statistics/). Mean, variance, standard deviation, standard error, histograms, correlation. *In RL:* analyzing episode returns, reporting results with error bars.
+- **1c — Linear algebra:** [Linear algebra](../math-for-rl/linear-algebra/). Vectors, dot product, matrices, gradients. *In RL:* state vectors, linear value approximation \\(V(s) = w^T \\phi(s)\\), gradient updates.
+- **1d — Calculus:** [Calculus](../math-for-rl/calculus/). Derivatives, chain rule, partial derivatives. *In RL:* policy gradients, loss minimization, backprop.
 
 **Outcomes:**
 
@@ -86,13 +90,71 @@ This learning path takes you from **zero programming experience** to understandi
 
 ---
 
-## Phase 3 — RL foundations
+## Phase 3 — Math for RL (deep dive)
 
-**For:** Learners who have completed (or tested out of) Phases 0–2 and are ready for the core RL curriculum.
+**For:** Learners who have completed Phases 0–2 and want a deeper foundation before RL.
+
+**Duration:** About 2–3 weeks.
+
+**What you will do:** Complete [Math for RL](../math-for-rl/) — probability, statistics, linear algebra, and calculus with RL-motivated examples. Work through the drills at the end of each math page.
+
+**Outcomes:**
+
+- You can interpret RL notation fluently.
+- You understand why value functions are expectations, why gradients are used for optimization, and how to compute sample statistics from RL evaluation runs.
+
+**Start here:** [Math for RL](../math-for-rl/) index
+
+---
+
+## Phase 4 — ML Foundations
+
+**For:** Learners who want to understand supervised learning before tackling deep RL.
+
+**Duration:** About 3–5 weeks.
+
+**What you will do:** Complete [ML Foundations](../ml-foundations/) — supervised learning, linear/logistic regression, gradient descent, model evaluation, decision trees, and KNN. Take the checkpoint at the midpoint and the Phase 4 assessment at the end.
+
+**Outcomes:**
+
+- You understand how supervised learning trains models from labeled data using gradient descent.
+- You can implement and evaluate linear regression, logistic regression, and simple classifiers.
+- You know how to split data, evaluate with metrics (accuracy, precision, recall, F1), and avoid data leakage.
+
+**In RL, this leads to:** Deep RL builds on these foundations. DQN uses supervised-style regression on Q-values; policy networks are trained with gradient descent. Understanding supervised learning makes deep RL much clearer.
+
+**Start here:** [ML Foundations](../ml-foundations/) → [ML Mid-Point Checkpoint](../assessment/checkpoint-ml-mid/) → [Phase 4 assessment](../assessment/phase-4-ml/)
+
+---
+
+## Phase 5 — DL Foundations
+
+**For:** Learners who have completed ML Foundations and are ready for neural networks.
+
+**Duration:** About 4–6 weeks.
+
+**What you will do:** Complete [DL Foundations](../dl-foundations/) — biological inspiration, perceptrons, MLP, backpropagation, loss functions, activations, optimizers, training loops, regularization, CNNs, PyTorch, and the mini-project. Take the DL mid-point checkpoint and Phase 5 assessment.
+
+**Outcomes:**
+
+- You can implement a full neural network from scratch in NumPy (forward pass, loss, backprop, gradient update).
+- You understand how Adam, SGD, and Momentum work and when to use each.
+- You can build a QNetwork and PolicyNetwork in PyTorch using `nn.Module`.
+- You are ready to implement DQN and policy gradient methods.
+
+**In RL, this leads to:** Everything in deep RL. DQN, REINFORCE, PPO, and actor-critic all use neural networks with the exact patterns you built here.
+
+**Start here:** [DL Foundations](../dl-foundations/) → [DL Mid-Point Checkpoint](../assessment/checkpoint-dl-mid/) → [Phase 5 assessment](../assessment/phase-5-dl/)
+
+---
+
+## Phase 6 — RL foundations
+
+**For:** Learners who have completed (or tested out of) Phases 0–5 and are ready for the core RL curriculum.
 
 **Duration:** About 4–8 weeks.
 
-**What you will do:** Complete [Volume 1: Mathematical Foundations](../curriculum/volume-01/) and [Volume 2: Tabular Methods & Classic Algorithms](../curriculum/volume-02/) (chapters 1–20). Use the **milestone checkpoints** and **mini-project** (tabular Q-learning on a 5×5 Gridworld) on the [Phase 3](phase-3/) page, then take the **Phase 3 foundations quiz**.
+**What you will do:** Complete [Volume 1: Mathematical Foundations](../curriculum/volume-01/) and [Volume 2: Tabular Methods & Classic Algorithms](../curriculum/volume-02/) (chapters 1–20). Use the **milestone checkpoints** and **mini-project** (tabular Q-learning on a 5×5 Gridworld) on the [Phase 6](phase-3/) page, then take the **Phase 6 foundations quiz**.
 
 **Outcomes:**
 
@@ -102,11 +164,11 @@ This learning path takes you from **zero programming experience** to understandi
 
 **In RL, this leads to:** Everything that follows (DQN, policy gradients, etc.) builds on these ideas. Do not skip this phase.
 
-**Start here:** [Volume 1: Mathematical Foundations](../curriculum/volume-01/) → [Phase 3 milestones & mini-project](phase-3/) → [Phase 3 foundations quiz](../assessment/phase-3-foundations/)
+**Start here:** [Volume 1: Mathematical Foundations](../curriculum/volume-01/) → [Phase 6 milestones & mini-project](phase-3/) → [Phase 6 foundations quiz](../assessment/phase-3-foundations/)
 
 ---
 
-## Phase 4 — Deep RL
+## Phase 7 — Deep RL
 
 **For:** Learners who have finished Volumes 1–2 and want to scale to large or continuous state spaces.
 
@@ -119,19 +181,19 @@ This learning path takes you from **zero programming experience** to understandi
 - You can implement and tune DQN-style methods (replay, target networks, etc.) and policy gradient methods (REINFORCE, actor-critic, PPO).
 - You understand why function approximation is needed and how gradient-based updates work in RL.
 
-**In RL, this leads to:** Most practical applications use deep RL. This phase is where you go from “understanding the theory” to “building agents that work in complex environments.”
+**In RL, this leads to:** Most practical applications use deep RL. This phase is where you go from "understanding the theory" to "building agents that work in complex environments."
 
-**Start here:** [Volume 3: Value Function Approximation & Deep Q-Learning](../curriculum/volume-03/) → [Phase 4 milestones & coding challenges](phase-4/) → [Phase 4 Deep RL quiz](../assessment/phase-4-deep-rl/)
+**Start here:** [Volume 3: Value Function Approximation & Deep Q-Learning](../curriculum/volume-03/) → [Phase 7 milestones & coding challenges](phase-4/) → [Phase 7 Deep RL quiz](../assessment/phase-4-deep-rl/)
 
 ---
 
-## Phase 5 — Advanced topics
+## Phase 8 — Advanced topics
 
-**For:** Learners who have completed Phases 3–4 and want to go deeper.
+**For:** Learners who have completed Phases 6–7 and want to go deeper.
 
 **Duration:** Ongoing (pick topics as needed).
 
-**What you will do:** Work through [Volumes 6–10](../curriculum/) (chapters 51–100): model-based RL, exploration, offline RL, multi-agent RL, real-world applications, safety, and RL with large language models. Each volume has a **topic roadmap** (what you will learn per chapter); use it to pick a path. An **optional Phase 5 project** (e.g. offline RL on a fixed dataset, or a simple multi-agent scenario) ties concepts together.
+**What you will do:** Work through [Volumes 6–10](../curriculum/) (chapters 51–100): model-based RL, exploration, offline RL, multi-agent RL, real-world applications, safety, and RL with large language models. Each volume has a **topic roadmap** (what you will learn per chapter); use it to pick a path. An **optional Phase 8 project** (e.g. offline RL on a fixed dataset, or a simple multi-agent scenario) ties concepts together.
 
 **Topic roadmaps (after this you will…):**
 
@@ -161,9 +223,12 @@ This learning path takes you from **zero programming experience** to understandi
 | 0 | [Programming from zero](phase-0/) | 2–4 weeks |
 | 1 | [Math for RL](../math-for-rl/) | 2–4 weeks |
 | 2 | [Prerequisites](../prerequisites/) | 3–6 weeks |
-| 3 | [Volume 1](../curriculum/volume-01/) + [Volume 2](../curriculum/volume-02/) | 4–8 weeks |
-| 4 | [Volumes 3–5](../curriculum/) | 6–12 weeks |
-| 5 | [Volumes 6–10](../curriculum/) | Ongoing |
+| 3 | [Math for RL (deep dive)](../math-for-rl/) | 2–3 weeks |
+| 4 | [ML Foundations](../ml-foundations/) | 3–5 weeks |
+| 5 | [DL Foundations](../dl-foundations/) | 4–6 weeks |
+| 6 | [Volume 1](../curriculum/volume-01/) + [Volume 2](../curriculum/volume-02/) | 4–8 weeks |
+| 7 | [Volumes 3–5](../curriculum/) | 6–12 weeks |
+| 8 | [Volumes 6–10](../curriculum/) | Ongoing |
 
 Good luck on your journey from zero to mastery.
 
@@ -172,7 +237,7 @@ Good luck on your journey from zero to mastery.
 ## Quick Reference
 
 - [Glossary](../glossary/) — 75 RL terms with definitions, chapter references, and examples
-- [Assessments](../assessment/) — Phase 0, Phase 5, and 5 mid-volume checkpoints
+- [Assessments](../assessment/) — Phase 0 through Phase 8, mid-point checkpoints
 - [Appendix: Debugging RL Code](../appendix/debugging-rl-code/) — Common bugs and 5 find-the-bug exercises
 - [Appendix: Reading RL Papers](../appendix/reading-rl-papers/) — How to read DQN, PPO, and SAC papers
 - [Interactive Lab](https://codefrydev.in/Reinforcement/lab/) — Run Python in your browser (JupyterLite)

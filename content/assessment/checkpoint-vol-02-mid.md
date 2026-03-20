@@ -4,6 +4,10 @@ description: "5 quick questions after Chapters 11–15 of Volume 2. Check you're
 date: 2026-03-19T00:00:00Z
 draft: false
 tags: ["checkpoint", "volume 2", "assessment", "Monte Carlo", "TD", "SARSA"]
+weight: 9
+roadmap_icon: "book"
+roadmap_color: "rose"
+roadmap_phase_label: "Vol 2 Mid-Point"
 ---
 
 Take this checkpoint after completing Chapters 11–15 (Monte Carlo methods, TD learning, SARSA). All 5 should feel manageable — if any are unclear, re-read the relevant chapter before continuing.
