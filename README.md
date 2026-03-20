@@ -32,6 +32,8 @@ hugo server
 
 Then open http://localhost:1313/ (or the URL Hugo prints). The site will live-reload as you edit content.
 
+Production uses a **subpath** (`baseURL` ends with `/Reinforcement/`). If links or assets look wrong locally, run `hugo server --baseURL http://localhost:1313/Reinforcement/` so paths match the deployed layout.
+
 ## Build for production
 
 ```bash

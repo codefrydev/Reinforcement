@@ -70,21 +70,8 @@ params:
     icon: apple-touch-icon.png
     iconHeight: 35
 
-  # profile-mode
   profileMode:
-    enabled: false # needs to be explicitly set
-    title: codefrydev
-    subtitle: "Reinforcement Learning Curriculum"
-    imageUrl: "<img location>"
-    imageWidth: 120
-    imageHeight: 120
-    imageTitle: my image
-    buttons:
-      - name: Posts
-        url: posts
-      - name: Tags
-        url: tags
-
+    enabled: false
 
   socialIcons:
     - name: email
@@ -153,17 +140,17 @@ menu:
       name: ML Foundations
       url: /ml-foundations/
       parent: learn
-      weight: 4
+      weight: 5
     - identifier: dl-foundations
       name: DL Foundations
       url: /dl-foundations/
       parent: learn
-      weight: 5
+      weight: 6
     - identifier: curriculum
       name: Curriculum
       url: /curriculum/
       parent: learn
-      weight: 6
+      weight: 7
     # Top-level links
     - identifier: Search
       name: search
@@ -182,22 +169,22 @@ menu:
       name: Glossary
       url: /glossary/
       parent: learn
-      weight: 7
+      weight: 9
     - identifier: assessments
       name: Assessments
       url: /assessment/
       parent: learn
-      weight: 8
+      weight: 10
     - identifier: lab
       name: "🧪 Lab (Python)"
-      url: "https://codefrydev.in/Reinforcement/lab/"
+      url: /lab/
       parent: learn
-      weight: 5
+      weight: 8
     - identifier: appendix
       name: Appendix
       url: /appendix/
       parent: learn
-      weight: 9
+      weight: 11
 
 pygmentsUseClasses: true
 markup:

@@ -5,26 +5,28 @@
     {{- partial "roadmap-icon.html" (dict "name" .icon) -}}
   </div>
   <div class="roadmap-card">
-    <div class="roadmap-card-header" onclick="rmToggle({{ $id }})">
-      <div class="roadmap-card-icon ri-{{ $color }}">
-        {{- partial "roadmap-icon.html" (dict "name" .icon) -}}
-      </div>
-      <div class="roadmap-card-title-area">
-        <div class="roadmap-card-step-label">
-          Step {{ $id }} &mdash; {{ .phase_label }}
-          <span class="roadmap-card-badge">Completed</span>
+    <div class="roadmap-card-header">
+      <button type="button" class="roadmap-card-toggle" data-rm-step="{{ $id }}" aria-expanded="false" aria-controls="roadmap-body-{{ $id }}" id="roadmap-head-{{ $id }}">
+        <div class="roadmap-card-icon ri-{{ $color }}">
+          {{- partial "roadmap-icon.html" (dict "name" .icon) -}}
         </div>
-        <h2 class="roadmap-card-title">{{ .title }}</h2>
-      </div>
+        <div class="roadmap-card-title-area">
+          <div class="roadmap-card-step-label">
+            Step {{ $id }} &mdash; {{ .phase_label }}
+            <span class="roadmap-card-badge">Completed</span>
+          </div>
+          <h2 class="roadmap-card-title">{{ .title }}</h2>
+        </div>
+        <div class="roadmap-chevron" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      </button>
       <div class="roadmap-card-actions">
-        <button class="roadmap-complete-btn" onclick="rmComplete(event,{{ $id }})" title="Mark complete">
+        <button type="button" class="roadmap-complete-btn" data-rm-complete="{{ $id }}" title="Mark complete" aria-label="Mark step {{ $id }} complete">
           <svg class="rm-icon-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle></svg>
           <svg class="rm-icon-check" viewBox="0 0 24 24" style="display:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 13.01 9 10.01"></polyline></svg>
         </button>
-        <div class="roadmap-chevron"><svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
       </div>
     </div>
-    <div class="roadmap-card-body">
+    <div class="roadmap-card-body" id="roadmap-body-{{ $id }}" role="region" aria-labelledby="roadmap-head-{{ $id }}">
       <div class="roadmap-card-body-inner">
         {{- with .description }}<p class="roadmap-card-desc">{{ . }}</p>{{ end -}}
         {{- with .topics }}

@@ -31,6 +31,8 @@
       var check = step.querySelector('.rm-icon-check');
       if (circ)  circ.style.display  = done ? 'none' : '';
       if (check) check.style.display = done ? ''     : 'none';
+      var headBtn = step.querySelector('.roadmap-card-toggle[data-rm-step]');
+      if (headBtn) headBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
     var pct    = TOTAL > 0 ? Math.round((count / TOTAL) * 100) : 0;
     var pctEl  = document.getElementById('rmp-pct');
@@ -53,6 +55,19 @@
     else          completed.push(id);
     save(); render();
   };
+
+  document.querySelectorAll('.roadmap-card-toggle[data-rm-step]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = parseInt(btn.getAttribute('data-rm-step'), 10);
+      window.rmToggle(id);
+    });
+  });
+  document.querySelectorAll('[data-rm-complete]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      var id = parseInt(btn.getAttribute('data-rm-complete'), 10);
+      window.rmComplete(e, id);
+    });
+  });
 
   render();
 })();

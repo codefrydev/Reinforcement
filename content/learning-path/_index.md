@@ -240,4 +240,4 @@ Good luck on your journey from zero to mastery.
 - [Assessments](../assessment/) — Phase 0 through Phase 8, mid-point checkpoints
 - [Appendix: Debugging RL Code](../appendix/debugging-rl-code/) — Common bugs and 5 find-the-bug exercises
 - [Appendix: Reading RL Papers](../appendix/reading-rl-papers/) — How to read DQN, PPO, and SAC papers
-- [Interactive Lab](https://codefrydev.in/Reinforcement/lab/) — Run Python in your browser (JupyterLite)
+- [Interactive Lab]({{< laburl >}}) — Run Python in your browser (JupyterLite)

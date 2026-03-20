@@ -3,7 +3,7 @@
 {{- $execute := .Get "execute" | default "0" -}}
 {{- $label := .Get "label" | default "Try it — edit and run (Shift+Enter)" -}}
 {{- $id := printf "repl-%s-%d" .Page.File.UniqueID .Ordinal -}}
-{{- $baseURL := "https://codefrydev.in/Reinforcement/lab/repl/index.html" -}}
+{{- $baseURL := printf "%slab/repl/index.html" site.BaseURL -}}
 {{- $params := printf "kernel=python&toolbar=1&showBanner=0&execute=%s" $execute -}}
 {{- if $code -}}
   {{- $params = printf "%s&code=%s" $params ($code | urlquery) -}}
@@ -24,7 +24,7 @@
       allow="cross-origin-isolated"
     ></iframe>
     <div class="pyrepl-overlay" aria-hidden="true">
-      <button class="pyrepl-load-btn" onclick="(function(el){var iframe=el.closest('.pyrepl-frame-wrap').querySelector('iframe');iframe.src=iframe.dataset.src;el.closest('.pyrepl-overlay').style.display='none';})(this)">
+      <button type="button" class="pyrepl-load-btn">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" width="20" height="20"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
         Load Python REPL
       </button>

@@ -1,0 +1,13 @@
+<script>
+document.addEventListener('click', function (e) {
+  var btn = e.target.closest('.pyrepl-load-btn');
+  if (!btn) return;
+  var wrap = btn.closest('.pyrepl-frame-wrap');
+  if (!wrap) return;
+  var iframe = wrap.querySelector('iframe.pyrepl-frame');
+  if (!iframe || !iframe.dataset.src) return;
+  iframe.src = iframe.dataset.src;
+  var overlay = wrap.querySelector('.pyrepl-overlay');
+  if (overlay) overlay.style.display = 'none';
+});
+</script>

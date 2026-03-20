@@ -211,16 +211,37 @@ body.list .main:has(.roadmap-page) {
 
 .roadmap-card-header {
   padding: 1.2rem 1.2rem 1.2rem 1rem;
-  cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.6rem;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
 }
 
-.roadmap-card-header:hover .roadmap-card-title {
+.roadmap-card-toggle {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.roadmap-card-toggle:hover .roadmap-card-title {
   color: var(--rm-accent);
+}
+
+.roadmap-card-toggle:focus-visible {
+  outline: 2px solid var(--rm-accent-light);
+  outline-offset: 2px;
 }
 
 /* ── Mobile icon (inside card) ── */
@@ -303,7 +324,7 @@ body.list .main:has(.roadmap-page) {
   flex-shrink: 0;
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.35rem;
 }
 
 .roadmap-complete-btn {

@@ -128,9 +128,27 @@ body.single .toc {
   color: var(--primary);
 }
 
+.post-content table:not(.highlighttable, .highlight table, .gist .highlight) td a {
+  color: var(--rm-accent);
+  font-weight: 600;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 2px;
+}
+
 /* Remove bottom border from last row */
 .post-content table:not(.highlighttable, .highlight table, .gist .highlight) tbody tr:last-child td {
   border-bottom: none !important;
+}
+
+/* Phase assessments table styling (scoped to heading) */
+#phase-assessments + table td:first-child {
+  font-weight: 700;
+  color: var(--primary);
+}
+
+#phase-assessments + table td:nth-child(3) {
+  font-weight: 700;
+  color: var(--rm-accent);
 }
 
 /* ── CODE INSIDE TABLE CELLS ── keep PaperMod's default code colours ── */
