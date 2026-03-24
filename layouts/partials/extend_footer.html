@@ -11,3 +11,21 @@ document.addEventListener('click', function (e) {
   if (overlay) overlay.style.display = 'none';
 });
 </script>
+<script>
+document.addEventListener('click', function (e) {
+  var btn = e.target.closest('.module-code-copy');
+  if (!btn) return;
+  var wrap = btn.closest('.module-code-wrap');
+  var pre = wrap && wrap.querySelector('pre');
+  if (!pre) return;
+  var text = pre.textContent || '';
+  if (!navigator.clipboard || !navigator.clipboard.writeText) return;
+  navigator.clipboard.writeText(text).then(function () {
+    var lab = btn.querySelector('.module-code-copy-label');
+    if (!lab) return;
+    var prev = lab.textContent;
+    lab.textContent = 'Copied';
+    window.setTimeout(function () { lab.textContent = prev; }, 1500);
+  });
+});
+</script>

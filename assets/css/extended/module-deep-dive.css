@@ -1,0 +1,623 @@
+/* Module deep-dive layout — uses roadmap design tokens from roadmap-home.css */
+
+body.single .main:has(.module-deep-dive-page) {
+  padding: 0;
+  max-width: 100%;
+}
+
+.module-deep-dive-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0 1rem 4rem;
+  font-family: inherit;
+}
+
+/* ── Header ── */
+.module-dd-header {
+  background: var(--entry);
+  border-bottom: 1px solid var(--border);
+  margin: 0 -1rem 2rem;
+  padding: 0 1rem;
+}
+
+.module-dd-header-inner {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.5rem 0 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .module-dd-header-inner {
+    padding: 2rem 0 1.5rem;
+  }
+}
+
+.module-dd-breadcrumb .breadcrumbs {
+  margin-bottom: 1.25rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.module-dd-title-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .module-dd-title-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+.module-dd-icon {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px var(--rm-accent-dim);
+}
+
+.module-dd-icon svg {
+  width: 32px;
+  height: 32px;
+  stroke: #fff;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.module-dd-title-block {
+  flex: 1;
+  min-width: 0;
+}
+
+.module-dd-phase {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin-bottom: 0.35rem;
+}
+
+.module-dd-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--primary);
+  margin: 0 0 0.5rem;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .module-dd-title { font-size: 2rem; }
+}
+
+.module-dd-desc {
+  color: var(--secondary);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 40rem;
+}
+
+/* Progress */
+.module-dd-progress-wrap {
+  margin-top: 2rem;
+  max-width: 100%;
+}
+
+.module-dd-progress-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--secondary);
+  margin-bottom: 0.45rem;
+}
+
+.module-dd-progress-meta {
+  font-weight: 700;
+}
+
+.module-dd-progress-track {
+  height: 8px;
+  background: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.module-dd-progress-fill {
+  height: 100%;
+  background: var(--rm-gradient);
+  border-radius: 999px;
+  width: 0%;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.module-dd-progress-fill.is-complete {
+  background: linear-gradient(90deg, #10b981, #34d399);
+}
+
+/* Intro markdown */
+.module-dd-intro {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ── Lessons ── */
+.module-dd-lessons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .module-dd-lessons { gap: 1.25rem; }
+}
+
+.module-lesson {
+  scroll-margin-top: 5rem;
+  background: var(--entry);
+  border: 1.5px solid var(--border);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, opacity 0.3s ease;
+}
+
+.module-lesson.is-expanded {
+  border-color: var(--rm-accent-light);
+  box-shadow: 0 4px 20px var(--rm-accent-dim);
+}
+
+.module-lesson.is-done {
+  opacity: 0.88;
+}
+
+.module-lesson-header {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+  padding: 0.75rem 0.75rem 0.75rem 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .module-lesson-header {
+    padding: 1rem 1rem 1rem 0.75rem;
+  }
+}
+
+.module-lesson-complete {
+  flex-shrink: 0;
+  align-self: center;
+  padding: 0.25rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--border);
+  line-height: 0;
+  border-radius: 999px;
+}
+
+.module-lesson-complete:hover {
+  color: #10b981;
+}
+
+.module-lesson-complete svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+.module-lesson-complete .mdd-icon-check {
+  stroke: #10b981;
+}
+
+.module-lesson-toggle {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background: none;
+  font: inherit;
+  text-align: left;
+  color: inherit;
+  cursor: pointer;
+  border-radius: 0.75rem;
+}
+
+.module-lesson-toggle:hover .module-lesson-title {
+  color: var(--rm-accent);
+}
+
+.module-lesson-toggle:focus-visible {
+  outline: 2px solid var(--rm-accent-light);
+  outline-offset: 2px;
+}
+
+.module-lesson-toggle-inner {
+  flex: 1;
+  min-width: 0;
+  display: block;
+}
+
+.module-lesson-badges {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.module-lesson-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  background: var(--code-bg);
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.35rem;
+}
+
+.module-lesson-type svg {
+  width: 12px;
+  height: 12px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.module-lesson-duration {
+  font-size: 0.75rem;
+  color: var(--secondary);
+  font-weight: 500;
+}
+
+.module-lesson-title {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.35;
+  transition: color 0.2s;
+}
+
+@media (min-width: 480px) {
+  .module-lesson-title { font-size: 1.15rem; }
+}
+
+.module-lesson.is-done .module-lesson-title {
+  color: var(--secondary);
+  text-decoration: line-through;
+  text-decoration-color: var(--border);
+  text-decoration-thickness: 2px;
+}
+
+.module-lesson-chevron svg {
+  width: 20px;
+  height: 20px;
+  stroke: var(--secondary);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.module-lesson:not(.is-expanded) .mdd-chev-up { display: none; }
+.module-lesson.is-expanded .mdd-chev-down { display: none; }
+
+/* Body collapse */
+.module-lesson-body {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s ease;
+  border-top: 1px solid transparent;
+}
+
+.module-lesson.is-expanded .module-lesson-body {
+  max-height: 2500px;
+  opacity: 1;
+  border-top-color: var(--border);
+}
+
+.module-lesson-body-inner {
+  padding: 0 1rem 1.25rem;
+  padding-left: calc(28px + 1.25rem);
+}
+
+@media (min-width: 768px) {
+  .module-lesson-body-inner {
+    padding: 0 1.25rem 1.5rem;
+    padding-left: calc(28px + 1.5rem);
+  }
+}
+
+.module-lesson-details {
+  margin: 1rem 0 1.25rem;
+  color: var(--secondary);
+  font-size: 0.92rem;
+  line-height: 1.65;
+}
+
+.module-lesson-rich {
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.module-block-p {
+  margin: 0;
+  color: var(--primary);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.module-block-h {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin: 1.5rem 0 0.5rem;
+}
+
+.module-block-h:first-child {
+  margin-top: 0;
+}
+
+.module-block-figure {
+  margin: 1rem 0;
+}
+
+.module-block-img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.75rem;
+  border: 1px solid var(--border);
+}
+
+.module-block-caption {
+  font-size: 0.8rem;
+  color: var(--secondary);
+  margin-top: 0.5rem;
+}
+
+.module-block-image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--secondary);
+  gap: 0.75rem;
+}
+
+.module-block-image-placeholder svg {
+  width: 48px;
+  height: 48px;
+  stroke: currentColor;
+  opacity: 0.35;
+  fill: none;
+  stroke-width: 1.5;
+}
+
+.module-block-quote {
+  margin: 1rem 0;
+  padding: 1rem 1.25rem;
+  background: var(--rm-accent-ghost);
+  border-left: 4px solid var(--rm-accent);
+  border-radius: 0 0.75rem 0.75rem 0;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+
+.module-quote-mark {
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--rm-accent-mid);
+  opacity: 0.45;
+  font-family: Georgia, serif;
+}
+
+.module-quote-text {
+  flex: 1;
+  font-style: italic;
+  font-weight: 500;
+  color: var(--primary);
+  line-height: 1.65;
+  font-size: 0.95rem;
+}
+
+.module-quote-text p {
+  margin: 0;
+}
+
+/* Code block — uses Hugo Chroma (same as .post-content .highlight) */
+.module-code-wrap {
+  margin: 1rem 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--code-block-bg, var(--code-bg));
+}
+
+.module-code-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.45rem 0.85rem;
+  background: var(--code-bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.module-code-lang {
+  font-size: 0.7rem;
+  font-family: ui-monospace, monospace;
+  color: var(--secondary);
+  text-transform: lowercase;
+}
+
+.module-code-copy {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.5rem;
+  border: none;
+  background: none;
+  color: var(--secondary);
+  cursor: pointer;
+  border-radius: 0.35rem;
+}
+
+.module-code-copy:hover {
+  color: var(--primary);
+  background: var(--border);
+}
+
+/* Chroma output lives inside .highlight > pre.chroma */
+.module-code-highlight .highlight {
+  margin: 0;
+}
+
+.module-code-highlight .chroma {
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.module-code-highlight pre.chroma {
+  margin: 0;
+  padding: 1rem;
+  overflow-x: auto;
+  border-radius: 0;
+  background: transparent !important;
+}
+
+/* PaperMod also injects a .copy-code button on pre>code; we keep the toolbar copy only */
+.module-code-wrap .highlight .copy-code {
+  display: none !important;
+}
+
+/* Resources */
+.module-resources {
+  margin-top: 1.5rem;
+}
+
+.module-resources-title {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary);
+  margin: 0 0 0.75rem;
+}
+
+.module-resource-row {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  border-radius: 0.75rem;
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  color: var(--primary);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.module-resource-row:hover {
+  border-color: var(--rm-accent-light);
+  background: var(--rm-accent-ghost);
+}
+
+.module-resource-row svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  stroke: var(--secondary);
+  fill: none;
+  stroke-width: 2;
+}
+
+.module-resource-row:hover svg {
+  stroke: var(--rm-accent);
+}
+
+.module-resource-open {
+  margin-left: auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--rm-accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.module-resource-row:hover .module-resource-open {
+  opacity: 1;
+}
+
+.module-resource-static {
+  cursor: default;
+}
+
+.module-resource-static:hover {
+  border-color: var(--border);
+  background: var(--code-bg);
+}
+
+.module-lesson-next-btn {
+  margin-top: 1.5rem;
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 0.75rem;
+  background: var(--rm-accent);
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px var(--rm-accent-dim);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.module-lesson-next-btn:hover {
+  filter: brightness(1.08);
+}
+
+.module-dd-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}

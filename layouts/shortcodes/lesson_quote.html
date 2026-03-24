@@ -1,0 +1,5 @@
+{{- $text := .Get "text" | default .Inner -}}
+<blockquote class="module-block-quote">
+  <span class="module-quote-mark" aria-hidden="true">“</span>
+  <div class="module-quote-text">{{ $text | markdownify }}</div>
+</blockquote>

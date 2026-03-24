@@ -236,6 +236,7 @@ Good luck on your journey from zero to mastery.
 
 ## Quick Reference
 
+- **[Interactive phase modules (0–8)](modules/)** — Module-style hubs with progress and links into each phase (same UI as the [Deep RL demo](deep-rl-module-deep-dive/)).
 - [Glossary](../glossary/) — 75 RL terms with definitions, chapter references, and examples
 - [Assessments](../assessment/) — Phase 0 through Phase 8, mid-point checkpoints
 - [Appendix: Debugging RL Code](../appendix/debugging-rl-code/) — Common bugs and 5 find-the-bug exercises

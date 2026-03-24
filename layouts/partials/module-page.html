@@ -1,0 +1,158 @@
+{{- $color := .Params.roadmap_color | default "indigo" -}}
+{{- $icon  := .Params.roadmap_icon  | default "rocket" -}}
+{{- $lessons := .Params.lessons | default slice -}}
+{{- $n := len $lessons -}}
+{{- $storageKey := .Params.module_id | default (printf "module-%s" (urlize .RelPermalink)) -}}
+{{- $firstId := "" -}}
+{{- if gt $n 0 -}}
+  {{- $first := index $lessons 0 -}}
+  {{- $firstId = printf "%v" $first.id -}}
+{{- end -}}
+
+<article class="module-deep-dive-page" data-storage-key="{{ $storageKey | htmlEscape }}" data-lesson-count="{{ $n }}" data-first-lesson-id="{{ $firstId }}">
+  <header class="module-dd-header">
+    <div class="module-dd-header-inner">
+      {{- if (.Param "ShowBreadCrumbs") -}}
+      <nav class="module-dd-breadcrumb" aria-label="Breadcrumb">
+        {{ partial "breadcrumbs.html" . }}
+      </nav>
+      {{- end -}}
+
+      <div class="module-dd-title-row">
+        <div class="module-dd-icon ri-{{ $color }}" aria-hidden="true">
+          {{- partial "roadmap-icon.html" (dict "name" $icon) -}}
+        </div>
+        <div class="module-dd-title-block">
+          {{- with .Params.roadmap_phase_label -}}
+          <div class="module-dd-phase">{{ . }}</div>
+          {{- end -}}
+          <h1 class="module-dd-title">{{ .Title }}{{ if .Draft }} <span class="entry-hint" title="Draft">(draft)</span>{{ end }}</h1>
+          {{- with .Description -}}
+          <p class="module-dd-desc">{{ . }}</p>
+          {{- end -}}
+        </div>
+      </div>
+
+      <div class="module-dd-progress-wrap" role="status" aria-live="polite">
+        <div class="module-dd-progress-head">
+          <span>Module progress</span>
+          <span class="module-dd-progress-meta"><span class="module-dd-count-done">0</span> of {{ $n }} completed (<span class="module-dd-pct">0</span>%)</span>
+        </div>
+        <div class="module-dd-progress-track">
+          <div class="module-dd-progress-fill" style="width:0%"></div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  {{- if .Content -}}
+  <div class="module-dd-intro post-content">
+    {{- if not (.Param "disableAnchoredHeadings") -}}
+    {{- partial "anchored_headings.html" .Content -}}
+    {{- else }}{{ .Content }}{{ end -}}
+  </div>
+  {{- end -}}
+
+  <div class="module-dd-main">
+    {{- if eq $n 0 -}}
+    <p class="roadmap-empty">No lessons defined yet. Add a <code>lessons</code> array in the page front matter, or use the <code>module</code> archetype.</p>
+    {{- else -}}
+    <div class="module-dd-lessons">
+      {{- range $index, $lesson := $lessons -}}
+      {{- $lid := printf "%v" $lesson.id -}}
+      {{- $isLast := eq (add $index 1) $n -}}
+      {{- $isFirst := eq $index 0 -}}
+      <section id="module-lesson-{{ $lid }}" class="module-lesson{{ if $isFirst }} is-expanded{{ end }}" data-lesson-id="{{ $lid }}" data-lesson-index="{{ $index }}">
+        <div class="module-lesson-header">
+          <button type="button" class="module-lesson-complete" data-mdd-complete="{{ $lid }}" title="Mark complete" aria-pressed="false">
+            <svg class="mdd-icon-circle" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle></svg>
+            <svg class="mdd-icon-check" viewBox="0 0 24 24" aria-hidden="true" style="display:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 13.01 9 10.01"></polyline></svg>
+          </button>
+          <button type="button" class="module-lesson-toggle" data-mdd-toggle="{{ $lid }}" aria-expanded="{{ if $isFirst }}true{{ else }}false{{ end }}" aria-controls="module-body-{{ $lid }}" id="module-head-{{ $lid }}">
+            <span class="module-lesson-toggle-inner">
+              <span class="module-lesson-badges">
+                <span class="module-lesson-type">
+                  {{- partial "module-type-icon.html" ($lesson.type | default "article") -}}
+                  {{ $lesson.type | default "article" }}
+                </span>
+                {{- with $lesson.duration -}}
+                <span class="module-lesson-duration">{{ . }}</span>
+                {{- end -}}
+              </span>
+              <span class="module-lesson-title">{{ add $index 1 }}. {{ $lesson.title }}</span>
+            </span>
+            <span class="module-lesson-chevron" aria-hidden="true">
+              <svg viewBox="0 0 24 24" class="mdd-chev-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+              <svg viewBox="0 0 24 24" class="mdd-chev-up"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            </span>
+          </button>
+        </div>
+
+        <div class="module-lesson-body" id="module-body-{{ $lid }}" role="region" aria-labelledby="module-head-{{ $lid }}" {{- if not $isFirst }} aria-hidden="true"{{- end -}}>
+          <div class="module-lesson-body-inner">
+            {{- with $lesson.details -}}
+            <p class="module-lesson-details">{{ . }}</p>
+            {{- end -}}
+
+            {{- with $lesson.content -}}
+            <div class="module-lesson-rich">
+              {{- range . -}}
+              {{- partial "module-content-block.html" (dict "block" .) -}}
+              {{- end -}}
+            </div>
+            {{- end -}}
+
+            {{- with $lesson.resources -}}
+            <div class="module-resources">
+              <h3 class="module-resources-title">Learning materials</h3>
+              {{- range . -}}
+              {{- if reflect.IsMap . -}}
+              <a class="module-resource-row" href="{{ .url }}" target="_blank" rel="noopener noreferrer">
+                {{- partial "module-type-icon.html" "article" -}}
+                <span>{{ .label }}</span>
+                <span class="module-resource-open">Open</span>
+              </a>
+              {{- else -}}
+              <div class="module-resource-row module-resource-static">
+                {{- partial "module-type-icon.html" "article" -}}
+                <span>{{ . }}</span>
+              </div>
+              {{- end -}}
+              {{- end -}}
+            </div>
+            {{- end -}}
+
+            {{- if not $isLast -}}
+            <button type="button" class="module-lesson-next-btn" data-mdd-next="{{ $lid }}">Mark lesson complete &amp; next</button>
+            {{- else -}}
+            <button type="button" class="module-lesson-next-btn module-lesson-next-btn-last" data-mdd-next="{{ $lid }}">Mark lesson complete</button>
+            {{- end -}}
+          </div>
+        </div>
+      </section>
+      {{- end -}}
+    </div>
+    {{- end -}}
+  </div>
+
+  <footer class="module-dd-footer post-footer">
+    {{- $tags := .Language.Params.Taxonomies.tag | default "tags" }}
+    <ul class="post-tags">
+      {{- range ($.GetTerms $tags) }}
+      <li><a href="{{ .Permalink }}">{{ .LinkTitle }}</a></li>
+      {{- end }}
+    </ul>
+    {{- if (.Param "ShowPostNavLinks") }}
+    {{- partial "post_nav_links.html" . }}
+    {{- end }}
+    {{- if (and site.Params.ShowShareButtons (ne .Params.disableShare true)) }}
+    {{- partial "share_icons.html" . -}}
+    {{- end }}
+  </footer>
+
+  {{- if (.Param "comments") }}
+  {{- partial "comments.html" . }}
+  {{- end }}
+</article>
+
+{{ partial "module-js.html" . }}

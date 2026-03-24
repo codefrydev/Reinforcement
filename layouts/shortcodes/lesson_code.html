@@ -1,0 +1,10 @@
+{{- $lang := .Get "lang" | default (.Get "language") | default "text" | lower -}}
+<div class="module-code-wrap">
+  <div class="module-code-toolbar">
+    <span class="module-code-lang">{{ $lang }}</span>
+    <button type="button" class="module-code-copy" title="Copy code"><span class="module-code-copy-label">Copy</span></button>
+  </div>
+  <div class="module-code-highlight">
+    {{- transform.Highlight .Inner $lang "lineNos=false" | safeHTML -}}
+  </div>
+</div>

@@ -1,0 +1,145 @@
+<script>
+(function () {
+  var root = document.querySelector('.module-deep-dive-page');
+  if (!root) return;
+
+  var rawKey = root.getAttribute('data-storage-key');
+  if (!rawKey) return;
+  var STORAGE_KEY = 'mdd-' + rawKey;
+  var lessons = [].slice.call(root.querySelectorAll('.module-lesson'));
+  var total = lessons.length;
+  if (!total) return;
+
+  var ids = lessons.map(function (el) { return el.getAttribute('data-lesson-id'); });
+
+  var expandedId = null;
+  var completed = [];
+
+  function load() {
+    try {
+      var raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      var saved = JSON.parse(raw);
+      if (Array.isArray(saved.completed)) completed = saved.completed.map(String);
+      if (saved.expanded != null && ids.indexOf(String(saved.expanded)) > -1) {
+        expandedId = String(saved.expanded);
+      }
+    } catch (e) {}
+  }
+
+  function save() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        completed: completed,
+        expanded: expandedId
+      }));
+    } catch (e) {}
+  }
+
+  function setExpanded(id) {
+    expandedId = id;
+    lessons.forEach(function (sec) {
+      var lid = sec.getAttribute('data-lesson-id');
+      var open = lid === expandedId;
+      sec.classList.toggle('is-expanded', open);
+      var toggle = sec.querySelector('[data-mdd-toggle]');
+      var body = sec.querySelector('.module-lesson-body');
+      if (toggle) toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (body) body.setAttribute('aria-hidden', open ? 'false' : 'true');
+    });
+    save();
+  }
+
+  function toggleExpanded(id) {
+    if (expandedId === id) setExpanded(null);
+    else setExpanded(id);
+  }
+
+  function renderProgress() {
+    var done = completed.length;
+    var pct = total > 0 ? Math.round((done / total) * 100) : 0;
+    var pctEl = root.querySelector('.module-dd-pct');
+    var cntEl = root.querySelector('.module-dd-count-done');
+    var fill = root.querySelector('.module-dd-progress-fill');
+    if (pctEl) pctEl.textContent = String(pct);
+    if (cntEl) cntEl.textContent = String(done);
+    if (fill) {
+      fill.style.width = pct + '%';
+      fill.classList.toggle('is-complete', pct === 100);
+    }
+  }
+
+  function renderCompletion() {
+    lessons.forEach(function (sec) {
+      var lid = sec.getAttribute('data-lesson-id');
+      var isDone = completed.indexOf(lid) > -1;
+      sec.classList.toggle('is-done', isDone);
+      var btn = sec.querySelector('[data-mdd-complete]');
+      if (btn) btn.setAttribute('aria-pressed', isDone ? 'true' : 'false');
+      var circ = sec.querySelector('.mdd-icon-circle');
+      var check = sec.querySelector('.mdd-icon-check');
+      if (circ) circ.style.display = isDone ? 'none' : '';
+      if (check) check.style.display = isDone ? '' : 'none';
+    });
+    renderProgress();
+  }
+
+  function toggleComplete(id) {
+    var i = completed.indexOf(id);
+    if (i > -1) completed.splice(i, 1);
+    else completed.push(id);
+    save();
+    renderCompletion();
+  }
+
+  function scrollToLesson(id) {
+    window.setTimeout(function () {
+      var el = document.getElementById('module-lesson-' + id);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 400);
+  }
+
+  load();
+
+  if (expandedId == null) {
+    expandedId = ids[0] || null;
+  }
+  if (expandedId) setExpanded(expandedId);
+  renderCompletion();
+
+  root.querySelectorAll('[data-mdd-toggle]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var id = btn.getAttribute('data-mdd-toggle');
+      toggleExpanded(id);
+      if (expandedId === id) scrollToLesson(id);
+    });
+  });
+
+  root.querySelectorAll('[data-mdd-complete]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var id = btn.getAttribute('data-mdd-complete');
+      toggleComplete(id);
+    });
+  });
+
+  root.querySelectorAll('[data-mdd-next]').forEach(function (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      var id = btn.getAttribute('data-mdd-next');
+      if (completed.indexOf(id) === -1) {
+        completed.push(id);
+        save();
+        renderCompletion();
+      }
+      var idx = ids.indexOf(id);
+      if (idx > -1 && idx < ids.length - 1) {
+        var nextId = ids[idx + 1];
+        setExpanded(nextId);
+        scrollToLesson(nextId);
+      }
+    });
+  });
+
+})();
+</script>
