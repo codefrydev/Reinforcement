@@ -40,7 +40,15 @@ body.single .toc {
 
 /* ─────────────────────────────────────────────────────────────────────
    TABLE SCROLL WRAPPER  (added by JS in single.html)
+   Fills the prose column; min-width:0 avoids flex/grid shrink quirks.
    ───────────────────────────────────────────────────────────────────── */
+.post-content .table-scroll {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
 .table-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -59,8 +67,12 @@ body.single .toc {
 /* ─────────────────────────────────────────────────────────────────────
    TABLE BASE  (excludes syntax-highlight tables)
    ───────────────────────────────────────────────────────────────────── */
+/* PaperMod reset sets `table { display: block }`, which shrink-wraps markdown
+   tables so they no longer span the prose column — restore real table layout. */
 .post-content table:not(.highlighttable, .highlight table, .gist .highlight) {
+  display: table;
   width: 100%;
+  min-width: 100%;
   border-collapse: collapse;
   font-size: 0.875rem;
   margin: 0;                    /* .table-scroll wrapper owns the gap */
@@ -75,6 +87,18 @@ body.single .toc {
 /* When inside the scroll wrapper the wrapper owns the radius */
 .table-scroll table:not(.highlighttable, .highlight table) {
   border-radius: 0;
+}
+
+/* Full-width column grid; long math/text wraps instead of shrinking the table */
+.post-content .table-scroll table:not(.highlighttable, .highlight table, .gist .highlight) {
+  table-layout: fixed;
+}
+
+.post-content .table-scroll table:not(.highlighttable, .highlight table, .gist .highlight) th,
+.post-content .table-scroll table:not(.highlighttable, .highlight table, .gist .highlight) td {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 /* ── HEADER ── */
@@ -149,6 +173,75 @@ body.single .toc {
 #phase-assessments + table td:nth-child(3) {
   font-weight: 700;
   color: var(--rm-accent);
+}
+
+/* ── SECTION “TABLE OF CONTENTS” (lesson list under ## Table of contents) ──
+   Calmer nav-style treatment; does not apply to concept matrices on the same page.
+   DOM: h2#table-of-contents + .table-scroll > table
+   ── */
+#table-of-contents + .table-scroll {
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] #table-of-contents + .table-scroll {
+  box-shadow:
+    0 0 0 1px var(--border),
+    0 1px 6px rgba(0, 0, 0, 0.25);
+}
+
+#table-of-contents + .table-scroll table:not(.highlighttable, .highlight table, .gist .highlight) {
+  border-left: 1px solid var(--border);
+  border-top: 1px solid var(--border);
+  border-right: 1px solid var(--border);
+}
+
+#table-of-contents + .table-scroll thead {
+  background: var(--rm-accent-ghost);
+}
+
+#table-of-contents + .table-scroll th {
+  color: var(--secondary) !important;
+  font-weight: 700;
+  font-size: 0.68rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  padding: 10px 14px !important;
+  border-bottom: 1px solid var(--border) !important;
+  white-space: normal;
+}
+
+#table-of-contents + .table-scroll tbody tr:nth-child(even) {
+  background: transparent;
+}
+
+#table-of-contents + .table-scroll tbody tr:hover {
+  background: var(--rm-accent-dim);
+}
+
+#table-of-contents + .table-scroll td:first-child {
+  width: 2.5rem;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: var(--secondary);
+}
+
+#table-of-contents + .table-scroll td:nth-child(2) a {
+  color: var(--rm-accent);
+  font-weight: 600;
+}
+
+#table-of-contents + .table-scroll td a {
+  box-shadow: none;
+  text-decoration: none;
+  text-underline-offset: 2px;
+}
+
+#table-of-contents + .table-scroll td a:hover,
+#table-of-contents + .table-scroll td a:focus-visible {
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
 }
 
 /* ── CODE INSIDE TABLE CELLS ── keep PaperMod's default code colours ── */

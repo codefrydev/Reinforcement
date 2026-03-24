@@ -56,5 +56,18 @@
 
 </div>{{/* end .roadmap-page */}}
 
+{{/* Same as single.html: wrap markdown tables for scroll + shared table CSS */}}
+<script>
+(function () {
+  document.querySelectorAll('.post-content table:not(.highlighttable)').forEach(function (t) {
+    if (t.closest('.table-scroll')) return;
+    var w = document.createElement('div');
+    w.className = 'table-scroll';
+    t.parentNode.insertBefore(w, t);
+    w.appendChild(t);
+  });
+})();
+</script>
+
 {{ partial "roadmap-js.html" (dict "total" $total "key" (printf "rm-%s" (.RelPermalink | urlize))) }}
 {{- end }}
