@@ -474,6 +474,277 @@ body.list .main:has(.roadmap-page) {
   border-top: 1px solid var(--border);
 }
 
+.roadmap-body-content.has-collapsible-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.post-content.has-collapsible-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.roadmap-body-sections {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.roadmap-body-toc {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--entry);
+  padding: 0.75rem 0.85rem;
+}
+
+.roadmap-body-toc-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.roadmap-body-toc-link {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--secondary);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.roadmap-body-toc-link:hover {
+  color: var(--primary);
+}
+
+.roadmap-body-toc-icon svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.roadmap-body-toc-done {
+  margin-left: auto;
+  color: var(--rm-accent);
+  opacity: 0;
+}
+
+.roadmap-body-toc-link.is-viewed .roadmap-body-toc-done {
+  opacity: 1;
+}
+
+.roadmap-body-toc-done svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.roadmap-body-section {
+  border: 1px solid color-mix(in srgb, var(--border) 94%, var(--primary) 6%);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--entry) 98%, var(--primary) 2%);
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.04);
+}
+
+.roadmap-body-section.is-expanded {
+  border-color: var(--rm-accent-light);
+  box-shadow: 0 3px 12px var(--rm-accent-dim);
+}
+
+.roadmap-body-heading {
+  margin: 0;
+}
+
+.roadmap-body-toggle {
+  width: 100%;
+  margin: 0;
+  padding: 1rem 1.1rem;
+  border: none;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.roadmap-body-head-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.roadmap-body-title-wrap {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  gap: 0.18rem;
+}
+
+.roadmap-body-step-label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.roadmap-body-title {
+  color: var(--primary);
+  font-size: 1.38rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.roadmap-body-start-icon {
+  color: var(--rm-accent-mid);
+  line-height: 1;
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--theme);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+}
+
+.roadmap-body-start-icon svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.roadmap-body-head-actions {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.roadmap-body-done {
+  color: var(--secondary);
+  line-height: 0;
+  opacity: 1;
+  border: none;
+  background: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.roadmap-body-done svg {
+  width: 21px;
+  height: 21px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.roadmap-body-done.is-viewed {
+  color: var(--rm-accent);
+  opacity: 1;
+}
+
+.roadmap-body-section.is-viewed .roadmap-body-title {
+  color: var(--secondary);
+  text-decoration: line-through;
+  text-decoration-color: var(--border);
+  text-decoration-thickness: 2px;
+}
+
+.roadmap-body-toc-link.is-viewed .roadmap-body-toc-text {
+  color: var(--secondary);
+  text-decoration: line-through;
+  text-decoration-color: var(--border);
+}
+
+.roadmap-body-done:hover {
+  color: var(--rm-accent-mid);
+}
+
+.roadmap-body-done .rb-icon-circle {
+  stroke-width: 2.25;
+}
+
+.roadmap-body-done:focus-visible {
+  outline: 2px solid var(--rm-accent-light);
+  outline-offset: 3px;
+  border-radius: 999px;
+}
+
+.roadmap-body-toggle:hover .roadmap-body-title {
+  color: var(--rm-accent);
+}
+
+.roadmap-body-toggle:focus-visible {
+  outline: 2px solid var(--rm-accent-light);
+  outline-offset: -2px;
+}
+
+.roadmap-body-chevron {
+  color: var(--secondary);
+  line-height: 0;
+  display: flex;
+  align-items: center;
+  transition: transform 0.2s ease;
+}
+
+.roadmap-body-section.is-expanded .roadmap-body-chevron {
+  transform: rotate(180deg);
+}
+
+.roadmap-body-chevron svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.roadmap-body-panel {
+  border-top: 1px solid var(--border);
+}
+
+.roadmap-body-panel[hidden] {
+  display: none;
+}
+
+.roadmap-body-panel-inner {
+  padding: 1rem 1.1rem 1.15rem;
+}
+
+.roadmap-body-panel-inner > :first-child {
+  margin-top: 0;
+}
+
 /* ── Empty state ── */
 .roadmap-empty {
   color: var(--secondary);

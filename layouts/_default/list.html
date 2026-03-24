@@ -51,7 +51,7 @@
 
   {{/* ═══════════ BODY CONTENT ═══════════ */}}
   {{- with .Content }}
-  <div class="roadmap-body-content post-content">{{ . }}</div>
+  <div class="roadmap-body-content post-content js-roadmap-body-accordion" data-rm-body-key="{{ printf "%s:body" ($.RelPermalink | urlize) }}">{{ . }}</div>
   {{- end }}
 
 </div>{{/* end .roadmap-page */}}

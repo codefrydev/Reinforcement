@@ -4,6 +4,8 @@
   var KEY   = '{{ .key }}';
   var completed = [];
   var expanded  = [1]; // first step open by default
+  var bodyTotal = 0;
+  var bodyViewed = [];
 
   /* ── Load persisted state ── */
   try {
@@ -34,11 +36,225 @@
       var headBtn = step.querySelector('.roadmap-card-toggle[data-rm-step]');
       if (headBtn) headBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
     }
-    var pct    = TOTAL > 0 ? Math.round((count / TOTAL) * 100) : 0;
+    var overallDone = count + bodyViewed.length;
+    var overallTotal = TOTAL + bodyTotal;
+    var pct    = overallTotal > 0 ? Math.round((overallDone / overallTotal) * 100) : 0;
     var pctEl  = document.getElementById('rmp-pct');
     var fillEl = document.getElementById('rmp-fill');
     if (pctEl)  pctEl.textContent  = pct + '%';
     if (fillEl) fillEl.style.width = pct + '%';
+  }
+
+  function initBodyAccordion() {
+    var container = document.querySelector('.js-roadmap-body-accordion');
+    if (!container) return;
+
+    var children = Array.prototype.slice.call(container.children);
+    if (!children.length) return;
+
+    var sections = [];
+    var introNodes = [];
+    var current = null;
+
+    children.forEach(function (node) {
+      if (node.tagName === 'H2') {
+        current = { heading: node, nodes: [] };
+        sections.push(current);
+        return;
+      }
+      if (current) current.nodes.push(node);
+      else introNodes.push(node);
+    });
+
+    if (!sections.length) return;
+
+    var bodyKey = container.getAttribute('data-rm-body-key') || (KEY + ':body');
+    var openIds = [];
+    try {
+      var savedBody = JSON.parse(localStorage.getItem(bodyKey) || '{}');
+      if (Array.isArray(savedBody.openIds)) openIds = savedBody.openIds;
+      if (Array.isArray(savedBody.viewedIds)) bodyViewed = savedBody.viewedIds;
+    } catch (e) {}
+
+    var sectionsWrap = document.createElement('div');
+    sectionsWrap.className = 'roadmap-body-sections';
+    var tocWrap = document.createElement('nav');
+    tocWrap.className = 'roadmap-body-toc';
+    tocWrap.setAttribute('aria-label', 'Section table of contents');
+    var tocList = document.createElement('ul');
+    tocList.className = 'roadmap-body-toc-list';
+    tocWrap.appendChild(tocList);
+
+    function persistBodyState() {
+      try {
+        localStorage.setItem(bodyKey, JSON.stringify({ openIds: openIds, viewedIds: bodyViewed }));
+      } catch (e) {}
+    }
+
+    function setOpen(sectionEl, headingId, shouldOpen) {
+      var button = sectionEl.querySelector('.roadmap-body-toggle');
+      var panel = sectionEl.querySelector('.roadmap-body-panel');
+      if (!button || !panel) return;
+
+      sectionEl.classList.toggle('is-expanded', shouldOpen);
+      button.setAttribute('aria-expanded', shouldOpen ? 'true' : 'false');
+      panel.hidden = !shouldOpen;
+
+      var idx = openIds.indexOf(headingId);
+      if (shouldOpen && idx === -1) openIds.push(headingId);
+      if (!shouldOpen && idx > -1) openIds.splice(idx, 1);
+    }
+
+    function setViewed(sectionEl, headingId, isViewed) {
+      var doneBtn = sectionEl.querySelector('.roadmap-body-done');
+      var iconCircle = sectionEl.querySelector('.rb-icon-circle');
+      var iconCheck = sectionEl.querySelector('.rb-icon-check');
+      var idx = bodyViewed.indexOf(headingId);
+      if (isViewed && idx === -1) bodyViewed.push(headingId);
+      if (!isViewed && idx > -1) bodyViewed.splice(idx, 1);
+
+      if (doneBtn) {
+        doneBtn.setAttribute('aria-pressed', isViewed ? 'true' : 'false');
+        doneBtn.classList.toggle('is-viewed', isViewed);
+      }
+      sectionEl.classList.toggle('is-viewed', isViewed);
+      if (iconCircle) iconCircle.style.display = isViewed ? 'none' : '';
+      if (iconCheck) iconCheck.style.display = isViewed ? '' : 'none';
+
+      var tocLink = tocList.querySelector('[data-rm-body-toc="' + headingId + '"]');
+      if (tocLink) {
+        tocLink.classList.toggle('is-viewed', isViewed);
+      }
+    }
+
+    sections.forEach(function (section, index) {
+      var originalHeading = section.heading;
+      var headingId = originalHeading.id || ('roadmap-body-section-' + (index + 1));
+      var panelId = headingId + '-panel';
+      var buttonId = headingId + '-toggle';
+
+      var sectionEl = document.createElement('section');
+      sectionEl.className = 'roadmap-body-section';
+      sectionEl.setAttribute('data-rm-body-section', headingId);
+
+      var headingEl = document.createElement('h2');
+      headingEl.className = 'roadmap-body-heading';
+      headingEl.id = headingId;
+
+      var button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'roadmap-body-toggle';
+      button.id = buttonId;
+      button.setAttribute('aria-controls', panelId);
+      button.setAttribute('aria-expanded', 'false');
+      button.innerHTML =
+        '<span class="roadmap-body-head-main">' +
+          '<span class="roadmap-body-start-icon" aria-hidden="true">' +
+            '<svg viewBox="0 0 24 24"><path d="M4 19.5V8.5a1.5 1.5 0 0 1 1.5-1.5h13A1.5 1.5 0 0 1 20 8.5v11"></path><path d="M8 7V5.5A1.5 1.5 0 0 1 9.5 4h5A1.5 1.5 0 0 1 16 5.5V7"></path><path d="M9 12h6"></path><path d="M9 15h4"></path></svg>' +
+          '</span>' +
+          '<span class="roadmap-body-title-wrap">' +
+            '<span class="roadmap-body-step-label">Section ' + (index + 1) + '</span>' +
+            '<span class="roadmap-body-title">' + originalHeading.innerHTML + '</span>' +
+          '</span>' +
+        '</span>' +
+        '<span class="roadmap-body-head-actions">' +
+          '<span class="roadmap-body-chevron" aria-hidden="true">' +
+            '<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>' +
+          '</span>' +
+          '<button type="button" class="roadmap-body-done" aria-label="Mark section ' + (index + 1) + ' complete" aria-pressed="false">' +
+            '<svg class="rb-icon-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle></svg>' +
+            '<svg class="rb-icon-check" viewBox="0 0 24 24" style="display:none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 13.01 9 10.01"></polyline></svg>' +
+          '</button>' +
+        '</span>' +
+        '';
+
+      headingEl.appendChild(button);
+      sectionEl.appendChild(headingEl);
+
+      var panel = document.createElement('div');
+      panel.className = 'roadmap-body-panel';
+      panel.id = panelId;
+      panel.setAttribute('role', 'region');
+      panel.setAttribute('aria-labelledby', buttonId);
+      panel.hidden = true;
+
+      var panelInner = document.createElement('div');
+      panelInner.className = 'roadmap-body-panel-inner';
+
+      section.nodes.forEach(function (node) {
+        panelInner.appendChild(node);
+      });
+      panel.appendChild(panelInner);
+      sectionEl.appendChild(panel);
+      sectionsWrap.appendChild(sectionEl);
+
+      var tocItem = document.createElement('li');
+      var tocLink = document.createElement('a');
+      tocLink.href = '#' + headingId;
+      tocLink.setAttribute('data-rm-body-toc', headingId);
+      tocLink.className = 'roadmap-body-toc-link';
+      tocLink.innerHTML =
+        '<span class="roadmap-body-toc-icon" aria-hidden="true">' +
+          '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle></svg>' +
+        '</span>' +
+        '<span class="roadmap-body-toc-text">' + originalHeading.textContent + '</span>' +
+        '<span class="roadmap-body-toc-done" aria-hidden="true">' +
+          '<svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>' +
+        '</span>';
+      tocItem.appendChild(tocLink);
+      tocList.appendChild(tocItem);
+
+      var defaultOpen = index === 0;
+      var shouldOpen = openIds.length ? openIds.indexOf(headingId) > -1 : defaultOpen;
+      setOpen(sectionEl, headingId, shouldOpen);
+      setViewed(sectionEl, headingId, bodyViewed.indexOf(headingId) > -1);
+
+      button.addEventListener('click', function () {
+        var expanded = button.getAttribute('aria-expanded') === 'true';
+        setOpen(sectionEl, headingId, !expanded);
+        persistBodyState();
+      });
+
+      var doneBtn = sectionEl.querySelector('.roadmap-body-done');
+      if (doneBtn) {
+        doneBtn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          e.preventDefault();
+          var isViewed = bodyViewed.indexOf(headingId) > -1;
+          setViewed(sectionEl, headingId, !isViewed);
+          persistBodyState();
+          render();
+        });
+      }
+    });
+
+    bodyTotal = sections.length;
+
+    while (container.firstChild) container.removeChild(container.firstChild);
+    introNodes.forEach(function (node) { container.appendChild(node); });
+    container.appendChild(tocWrap);
+    container.appendChild(sectionsWrap);
+    container.classList.add('has-collapsible-sections');
+
+    function openSectionForHash() {
+      if (!window.location.hash) return;
+      var hashId = window.location.hash.slice(1);
+      if (!hashId) return;
+
+      var target = document.getElementById(hashId);
+      if (!target) return;
+
+      var targetSection = target.closest('.roadmap-body-section');
+      if (!targetSection) return;
+
+      var sectionId = targetSection.getAttribute('data-rm-body-section');
+      setOpen(targetSection, sectionId, true);
+      persistBodyState();
+    }
+
+    openSectionForHash();
+    window.addEventListener('hashchange', openSectionForHash);
+    render();
   }
 
   window.rmToggle = function (id) {
@@ -70,5 +286,6 @@
   });
 
   render();
+  initBodyAccordion();
 })();
 </script>

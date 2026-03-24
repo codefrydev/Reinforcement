@@ -46,7 +46,7 @@
   {{- end }}
 
   {{- if .Content }}
-  <div class="post-content">
+  <div class="post-content js-roadmap-body-accordion" data-rm-body-key="{{ printf "%s:body" (.RelPermalink | urlize) }}">
     {{- if not (.Param "disableAnchoredHeadings") }}
     {{- partial "anchored_headings.html" .Content -}}
     {{- else }}{{ .Content }}{{ end }}
@@ -85,5 +85,7 @@
   });
 })();
 </script>
+
+{{ partial "roadmap-js.html" (dict "total" 0 "key" (printf "rm-%s" (.RelPermalink | urlize))) }}
 
 {{- end }}{{/* end main */}}
